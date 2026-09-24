@@ -13,7 +13,7 @@
       "from": "Portfolio/OlderVersions/cable.html (the full-quality original of compare/cable/v3.html on staging/compare-cable)"
     },
     "note": "The Figma Cable _air frame built as one page. Shown on the staging compare page, never on the live folio.",
-    "path": "versions/cable/2024-07-06/site/index.html"
+    "path": "versions/cable/2024-07-06/site/index.html?v=aa633066"
   },
   {
     "project": "cable",
@@ -30,7 +30,7 @@
       "committed": "2026-09-21T14:55:16+01:00"
     },
     "note": "The page as it was when the 21 September rebuild replaced it. Shipped is the oldest production deploy Vercel still lists.",
-    "path": "versions/cable/2026-07-08/site/cable/index.html"
+    "path": "versions/cable/2026-07-08/site/cable/index.html?v=61964987"
   },
   {
     "project": "cable",
@@ -47,7 +47,7 @@
       "committed": "2026-09-21T19:57:45Z"
     },
     "note": "The third column on the staging compare page.",
-    "path": "versions/cable/2026-09-21/site/cable/index.html"
+    "path": "versions/cable/2026-09-21/site/cable/index.html?v=7c427803"
   },
   {
     "project": "cable",
@@ -66,8 +66,8 @@
       ],
       "values": {}
     },
-    "note": "Text only. Never shipped.",
-    "path": "versions/cable/2026-09-22-noir/site/index.html"
+    "note": "Text only. Never shipped. Dark mode added here on 2026-09-24 (the canvas is light only): its six colours became light and dark tokens, light as drawn.",
+    "path": "versions/cable/2026-09-22-noir/site/index.html?v=faaa80b2"
   },
   {
     "project": "cable",
@@ -92,7 +92,7 @@
       }
     },
     "note": "Noir with images. Never shipped.",
-    "path": "versions/cable/2026-09-23-color/site/index.html"
+    "path": "versions/cable/2026-09-23-color/site/index.html?v=9afd33b4"
   },
   {
     "project": "cable",
@@ -109,6 +109,6 @@
       "committed": "2026-09-23T23:12:08+01:00"
     },
     "note": "Live on cesarxdesign.com/cable.",
-    "path": "versions/cable/2026-09-23-shipped/site/cable/index.html"
+    "path": "versions/cable/2026-09-23-shipped/site/cable/index.html?v=ee731222"
   }
 ]

@@ -8,10 +8,10 @@ works, offline, forever.
 `index.html` is the viewer. One header line: **Project**, **Version**, **Compare** (1 to 6
 pages side by side) and, when the screen is too narrow for all of them, **‹ ›** to step
 through, and a light/dark switch that sets every page shown that has both themes (the
-Figma page and Noir have one look). Panes are never narrower than 360px; the page never
+Figma page has one look). Panes are never narrower than 360px; the page never
 scrolls sideways. Each page is drawn at the width it was designed for and scaled into its
-pane. Compare shows the chosen version and the ones after it. A view can be linked: `index.html#cable/2026-09-21/3/0`
-(project / version / how many / first one shown).
+pane. Compare shows the chosen version and the ones after it. A view can be linked:
+`index.html#cable/2026-09-21/3/0` (project / version / how many / first one shown).
 
     python3 -m http.server 4174 --directory ~/Claude/FolioCatalog
 
@@ -24,7 +24,7 @@ Serve it rather than opening the file: fonts do not load from `file://`.
 | `2024-07-06` | the Figma "Cable _air" frame, built as one page | never | |
 | `2026-07-08` | the August page | 6 Aug 2026 18:04 | 21 Sep 2026 21:23 |
 | `2026-09-21` | Rebuild, the third column on the staging compare page | 21 Sep 2026 21:23 | 23 Sep 2026 23:12 |
-| `2026-09-22-noir` | Noir, text only (Claude Design) | never, made 22 Sep 09:31 | |
+| `2026-09-22-noir` | Noir, text only (Claude Design); dark mode added here | never, made 22 Sep 09:31 | |
 | `2026-09-23-color` | Color, Noir with images (Claude Design) | never, made 23 Sep 17:30 | |
 | `2026-09-23-shipped` | Shipped: the Crazy canvas (made 23 Sep 22:19) built into the site | 23 Sep 2026 23:12 | live |
 
@@ -73,6 +73,8 @@ Changed on the way in, and nothing else:
 - Google Fonts and any other external file a page loads are downloaded into `site/_vendor/`
 - the PostHog script is removed, and every page is `noindex`
 - Claude Design artboards are flattened to plain HTML with their settings applied
+
+One addition, by request: Noir got a dark mode on 2026-09-24. Its light look is unchanged.
 
 `catalog.json` and `index.html` are built by `tools/build.py` from the meta files. Never
 hand-edit them.

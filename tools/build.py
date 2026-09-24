@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Rebuild catalog.json and index.html from versions/*/*/meta.json."""
-import json
+import hashlib, json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -15,6 +15,8 @@ def main():
     metas = [json.loads(p.read_text()) for p in sorted(ROOT.glob("versions/*/*/meta.json"))]
     for m in metas:
         m["path"] = f"versions/{m['project']}/{m['id']}/{m['page']}"
+        # A changed page gets a new address, so no browser shows a cached copy of the old one.
+        m["path"] += "?v=" + hashlib.sha1((ROOT / m["path"]).read_bytes()).hexdigest()[:8]
     # Projects A-Z, versions oldest first, so side by side reads left to right in time.
     metas.sort(key=lambda m: (m["project"], when(m), m["id"]))
     (ROOT / "catalog.json").write_text(json.dumps(metas, indent=2, ensure_ascii=False) + "\n")
