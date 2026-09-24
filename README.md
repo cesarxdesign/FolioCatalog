@@ -5,6 +5,10 @@ left Claude. Each version is the complete page as code in this repo (HTML, CSS, 
 images), with no link out to where it came from. Open any `site/…/index.html` and it
 works, offline, forever.
 
+Live at **https://cesar-foliocatalog.vercel.app**: its own Vercel project, separate from the
+folio and its staging, open to anyone with the link, no sign-in. Every push to `main`
+redeploys it within a minute, and the URL stays the same if the repo goes private.
+
 `index.html` is the viewer. One header line: **Project**, **Version**, **Compare** (1 to 6
 pages side by side) and, when the screen is too narrow for all of them, **‹ ›** to step
 through, and a light/dark switch that sets every page shown that has both themes (the
@@ -13,7 +17,7 @@ scrolls sideways. Each page is drawn at the width it was designed for and scaled
 pane. Compare shows the chosen version and the ones after it. A view can be linked:
 `index.html#cable/2026-09-21/3/0` (project / version / how many / first one shown).
 
-    python3 -m http.server 4174 --directory ~/Claude/FolioCatalog
+    python3 -m http.server 4174 --directory ~/Claude/FolioCatalog      to run it locally
 
 Serve it rather than opening the file: fonts do not load from `file://`.
 
