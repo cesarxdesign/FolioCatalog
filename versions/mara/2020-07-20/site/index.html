@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>Mara · Crypto wallet</title>
+<meta name="description" content="Mara: head of design case study. A crypto and fiat wallet for the African market, redesigned end to end.">
+<link rel="preload" href="fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/RobotoMono.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Built from Figma "-cxd.com" > MARA _air (98:75481), 1920 x 32962, 17 sections.
+   Every coordinate, size, colour and type value is read from the Figma file (get_metadata,
+   get_design_context and a read-only plugin dump of fills, effects and text segments).
+   Narrative text is live. Images are Figma's own renders of the phone mockups: @1x is Figma's 1x
+   render, the plain file the 2x export of the same box. Wherever a live text node sat inside a
+   plate, it was painted out of the render with the section background of that row. */
+@font-face{font-family:'Roboto';src:url(fonts/Roboto.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Roboto';src:url(fonts/Roboto-Italic.woff2) format('woff2');font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Roboto Mono';src:url(fonts/RobotoMono.woff2) format('woff2');font-weight:100 700;font-style:normal;font-display:swap}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#FFFFFF;-webkit-text-size-adjust:100%}
+body{background:#FFFFFF;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  font-feature-settings:"liga" 1} /* Figma keeps the fi/fl ligatures in tracked text; Chrome drops them unless asked */
+img{display:block}
+ul{list-style:none}
+
+.page{position:relative;width:1920px;margin:0 auto;background:#FFFFFF;overflow:hidden}
+.s{position:relative;width:1920px;overflow:hidden;background:#FFFFFF}
+.a{position:absolute}
+.nw{white-space:nowrap}
+.col{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.b{font-weight:700}
+.sb{font-weight:600}
+.r{font-weight:400}
+.i{font-style:italic}
+.grey{background:#F1F1F1}
+.grey0{background:#F0F0F0}
+.mul{mix-blend-mode:multiply} /* Figma layer blend MULTIPLY */
+.sub{transform:translateX(.354px)} /* 10 sketches: node x is 35.354, the export starts at its left edge */
+/* inline slot for an SF Symbol glyph (a render placed over it; SF Pro is not shipped) */
+.gap{display:inline-block;height:1px}
+
+/* ---------- type (one class per Figma style) ---------- */
+/* Two measured renderer corrections, both taken off Figma's own render of this frame:
+   - tracking: Figma sets these faces a hair wider than Chrome does with the google/fonts builds
+     (0.4-0.9px over a 1000px line); each style's letter-spacing carries that small excess, so long
+     lines end where Figma's do. The Figma value is in each comment.
+   - baseline: for Roboto 22/30, 22/28 and Roboto Mono 22/32, 22/40 Figma's baseline sits ~1px lower
+     than Chrome's (Chrome floors the half-leading), so those styles move down 1px.
+   - wrapping: Figma fits a line without the tracking after its last glyph, Chrome with it, so
+     negatively tracked wrapping styles give that amount back as padding-right. */
+/* Roboto Bold 69, auto (box 81), -2% (-1.38px), #2D3648 */
+.t-h1{font-family:'Roboto',sans-serif;font-weight:700;font-size:69px;line-height:81px;letter-spacing:-1.363px;color:#2D3648;white-space:nowrap}
+/* Roboto Light 32 / 42, 1% (.32px) */
+.t-lead{font-family:'Roboto',sans-serif;font-weight:300;font-size:32px;line-height:42px;letter-spacing:.3275px;color:#424747}
+/* Roboto Regular 24 / 32, 0%, #989898 */
+.t-body{font-family:'Roboto',sans-serif;font-weight:400;font-size:24px;line-height:32px;letter-spacing:.0022px;color:#989898}
+/* Roboto Regular 24 / 32, -1.4% (-.336px), #868F97 */
+.t-body2{font-family:'Roboto',sans-serif;font-weight:400;font-size:24px;line-height:32px;letter-spacing:-.3332px;color:#868F97;padding-right:.336px}
+/* Roboto ExtraBold 24, auto (box 28), -1.4%, #424747 */
+.t-h3{font-family:'Roboto',sans-serif;font-weight:800;font-size:24px;line-height:28px;letter-spacing:-.336px;color:#424747}
+/* Roboto Bold 20 / 30 */
+.t-cap{font-family:'Roboto',sans-serif;font-weight:700;font-size:20px;line-height:30px;white-space:nowrap}
+/* Roboto Regular 22 / 30, -1.4% (-.308px), #868F97 */
+.t-small{font-family:'Roboto',sans-serif;font-weight:400;font-size:22px;line-height:30px;letter-spacing:-.3062px;color:#868F97;translate:0 1px;padding-right:.308px}
+/* Roboto Mono Medium 48, auto (box 63), -2% (-.96px), small caps, #FF7500 */
+.t-kicker{font-family:'Roboto Mono',monospace;font-weight:500;font-size:48px;line-height:63px;letter-spacing:-.9395px;font-variant-caps:small-caps;color:#FF7500;white-space:nowrap;text-align:center}
+/* Roboto Mono Medium 42, auto (box 55), -2% (-.84px), small caps */
+.t-path{font-family:'Roboto Mono',monospace;font-weight:500;font-size:42px;line-height:55px;letter-spacing:-.8237px;font-variant-caps:small-caps;white-space:nowrap}
+/* centred tracked text: cancel the tracking CSS adds after the last glyph (Figma does not) */
+.trk-96{margin-right:.9395px}
+.trk-84{margin-right:.8237px}
+.trk32{margin-right:-.32px}
+
+/* ---------- 02 desc (same component as the other _air pages) ---------- */
+.kicker{font-family:'Roboto Mono',monospace;font-size:18px;line-height:42px;letter-spacing:4.32px;text-transform:uppercase;color:#000000;white-space:nowrap}
+.kicker-a{font-weight:400;box-shadow:inset 0 1px 0 #000000} /* 1px top stroke, inside */
+.kicker-b{font-weight:300}
+.card{background:#F7F7F7;border-radius:24px}
+.card-text{font-family:'Roboto Mono',monospace;font-weight:400;font-size:18px;line-height:24px;letter-spacing:1.4497px;color:#555555}
+.role{font-family:'Roboto Mono',monospace;font-weight:400;font-size:24px;line-height:40px;letter-spacing:1.9284px;text-transform:uppercase;color:#151515;white-space:nowrap} /* 1.92px */
+.dates{font-family:'Roboto Mono',monospace;font-weight:300;font-size:18px;line-height:32px;letter-spacing:.54px;color:#151515;white-space:nowrap}
+.dl{font-family:'Roboto Mono',monospace;font-weight:500;font-size:16px;line-height:38px;letter-spacing:1.92px;text-transform:uppercase;color:#151515;white-space:nowrap}
+.dd{font-family:'Roboto Mono',monospace;font-weight:300;font-size:18px;line-height:38px;letter-spacing:.54px;color:#151515;white-space:nowrap}
+
+/* ---------- section pieces ---------- */
+.fade-top{background:linear-gradient(180deg,#FFFFFF 0%,#F1F1F1 100%)}    /* Rectangle 830 */
+.fade-bottom{background:linear-gradient(0deg,#FFFFFF 0%,#F1F1F1 100%)}   /* Rectangle 830, flipped: y 1792..1912 */
+.foundation{background:linear-gradient(180deg,#FFFFFF 0%,#E5E5E5 100%)}  /* 07 frame fill */
+.oline{height:2px;background:#FF7500}   /* Lines 9-11, 2px stroke; Figma draws a horizontal line's stroke above its y (y - weight) */
+.rule{height:1px;background:#2D3648}                                     /* Rectangle 69 */
+.hair{height:.6px;opacity:.64}                                           /* Line 16, .6px stroke, drawn above its y like Lines 9-11 */
+/* Roboto Mono Bold 11, auto (box 15), #000000 */
+.dim{font-family:'Roboto Mono',monospace;font-weight:700;font-size:11px;line-height:15px;color:#000000;white-space:nowrap}
+/* Roboto Mono Regular 22 / 32, -2% (-.44px), #111111; bullets measured off Figma's render (the API has no marker geometry) */
+.analysis{font-family:'Roboto Mono',monospace;font-weight:400;font-size:22px;line-height:32px;letter-spacing:-.429px;color:#111111;translate:0 1px}
+.analysis li{position:relative;padding-left:26px;white-space:nowrap}
+.analysis li::before{content:"\2022";position:absolute;left:6.3px;top:0}
+/* Roboto Mono Regular 12 / 40, 6% (.72px), #888888 */
+.filler{font-family:'Roboto Mono',monospace;font-weight:400;font-size:12px;line-height:40px;letter-spacing:.7245px;color:#888888;white-space:nowrap}
+/* Roboto Mono Regular 22 / 40, -1% (-.22px), #696969 */
+.t-note{font-family:'Roboto Mono',monospace;font-weight:400;font-size:22px;line-height:40px;letter-spacing:-.213px;color:#696969;translate:0 1px}
+/* 10: "orange" rectangle: gradient fill at 12%, layer 40%, multiply */
+.orange{background:linear-gradient(180deg,rgba(255,117,0,.12) 72.5%,rgba(255,255,255,.12) 100%);opacity:.4;mix-blend-mode:multiply}
+/* 10: two "4.0" layers, Roboto Mono Regular 1144, auto (box 1509), tracking -36/-29/-36%,
+   1px #FF7500 stroke at 16% (outside in Figma, centred here), fill #FF7500 at 1% (first layer only),
+   layer 80% / 40%, linear burn (multiply is the nearest CSS blend) */
+.four{font-family:'Roboto Mono',monospace;font-weight:400;font-size:1144px;line-height:1509px;white-space:nowrap;
+  -webkit-text-stroke:1px rgba(255,117,0,.16);mix-blend-mode:multiply}
+.four .c1{letter-spacing:-411.84px}
+.four .c2{letter-spacing:-331.76px}
+</style>
+</head>
+<body>
+<main class="page">
+
+<!-- 01 hero -->
+<section class="s" style="height:960px" aria-label="Mara">
+  <picture><source type="image/avif" srcset="img/hero@1x.avif 1x, img/hero.avif 2x"><img class="a" src="img/hero.webp" srcset="img/hero@1x.webp 1x, img/hero.webp 2x" alt="Mara: two phones showing the wallet's portfolio over dark orange arcs" width="1920" height="960" style="left:0px;top:0px" fetchpriority="high"></picture>
+</section>
+
+<!-- 02 desc -->
+<section class="s" style="height:762px" aria-label="Summary">
+  <div class="a kicker kicker-a" style="left:128px;top:96px;width:57px;height:42px">mara</div>
+  <div class="a kicker kicker-b" style="left:201px;top:96px">crypto wallet</div>
+
+  <div class="a card" style="left:104px;top:178px;width:1024px;height:488px"></div>
+  <p class="a card-text" style="left:168px;top:242px;width:896px">A crypto &amp; fiat wallet for the African Market.<br><br>When I joined Mara it was in desperate need of Product leadership. I started off with a team of 4 designers, and ended up leading the design, customer support, and engineering teams. I focused on reliable and simple (agile) processes, paired with a strong and clear vision, that allowed each team to self manage, and stay motivated with high quality output.<br><br>I was also involved in providing product updates to current stakeholders, and pitching future product growth to current and potential investors.<br><br>As an individual contributor I started and completed the full redesign of the whole product in about a months time. Then helped manage following iterations and staggered development stages, until the full version was live and available to our 4M users.</p>
+
+  <h2 class="a role" style="left:1192px;top:194px">head of design, product owner</h2>
+  <p class="a dates" style="left:1192px;top:234px">Nov 2022 - Jun 2024</p>
+  <dl>
+    <dt class="a dl" style="left:1192px;top:298px">Market</dt>
+    <dd class="a dd" style="left:1192px;top:336px">/B2C<br>Fintech</dd>
+    <dt class="a dl" style="left:1192px;top:450px">platform</dt>
+    <dd class="a dd" style="left:1192px;top:488px">Android &amp; iOS</dd>
+    <dt class="a dl" style="left:1496px;top:298px">location</dt>
+    <dd class="a dd" style="left:1496px;top:336px">/Remote<br>Nigerian + UK company</dd>
+  </dl>
+</section>
+
+<!-- 03 this happened -->
+<section class="s" style="height:2264px" aria-label="This really happened">
+  <p class="a t-lead nw" style="left:808px;top:276px;width:303px;line-height:38px;color:#696969;text-align:center"><span class="trk32">This really happened.</span></p>
+  <picture><source type="image/avif" srcset="img/send@1x.avif 1x, img/send.avif 2x"><img class="a" src="img/send.webp" srcset="img/send@1x.webp 1x, img/send.webp 2x" alt="The old Send screen: mixed input styles, a Cancel transaction link and the swipe-to-send hidden under the keyboard" width="692" height="1097" style="left:613px;top:575px" loading="lazy" decoding="async"></picture>
+  <p class="a t-lead nw" style="left:392px;top:1956px;width:1136px;color:#696969;text-align:center"><span class="trk32">This screen might have been designed by about six people. Concurrently.</span><br><span class="trk32">Mara was rife with <span class="i">design opportunity</span>.</span></p>
+</section>
+
+<!-- 04 start -->
+<section class="s" style="height:2343px" aria-label="Design audit">
+  <h2 class="a t-h1" style="left:160px;top:304px">Design audit</h2>
+  <picture><source type="image/avif" srcset="img/audit@1x.avif 1x, img/audit.avif 2x"><img class="a" src="img/audit.webp" srcset="img/audit@1x.webp 1x, img/audit.webp 2x" alt="The Send screen annotated with callout lines" width="649" height="922" style="left:635px;top:659px" loading="lazy" decoding="async"></picture>
+  <picture><source type="image/avif" srcset="img/sf-octagon@1x.avif 1x, img/sf-octagon.avif 2x"><img class="a" src="img/sf-octagon.webp" srcset="img/sf-octagon@1x.webp 1x, img/sf-octagon.webp 2x" alt="" width="25" height="24" style="left:1353px;top:608px" loading="lazy" decoding="async"></picture>
+  <picture><source type="image/avif" srcset="img/sf-xx@1x.avif 1x, img/sf-xx.avif 2x"><img class="a" src="img/sf-xx.webp" srcset="img/sf-xx@1x.webp 1x, img/sf-xx.webp 2x" alt="" width="53" height="25" style="left:1480px;top:976px" loading="lazy" decoding="async"></picture>
+  <p class="a t-body" style="left:244px;top:888px;width:360px;text-align:right">The user is bombarded with contrasting visual styles in just the first half of the screen.</p>
+  <p class="a t-body" style="left:1315px;top:710px;width:360px">Canceling something that hasn’t, or isn’t happening yet. Should have been a Back button.</p>
+  <p class="a t-body" style="left:1155px;top:572px;width:360px">I shouldn’t, but actually love that this is an octagon <span class="gap" id="g-oct" style="width:30px" role="img" aria-label="x in an octagon"></span> for absolutely no good reason.</p>
+  <p class="a t-body" style="left:1315px;top:853px;width:360px">Target practice.</p>
+  <p class="a t-body" style="left:1315px;top:973px;width:360px">If you hit either<span class="gap" id="g-xx" style="width:66px" role="img" aria-label="x in an octagon, twice"></span>above, you go for all the marbles on this one.</p>
+  <p class="a t-body" style="left:1315px;top:1288px;width:360px">Genuinely the only way to cap this off was to hide the primary action under the keyboard.</p>
+  <p class="a t-body" style="left:244px;top:1223px;width:360px;text-align:right">Second half actually outdoes the first, nesting the previous styles creating a new design dimension.</p>
+  <div class="a col" style="left:160px;top:1841px;width:1048px;gap:8px">
+    <h3 class="t-h3" style="width:1048px">Immediate action</h3>
+    <p class="t-body" style="width:1048px">This screen was actually a gift. Once I saw it, it allowed me to bypass a lot of assumptions I would have had otherwise — which would delay the necessary corrective actions for weeks or months. Within a week of joining, I had a full audit of the current state of Design.</p>
+  </div>
+</section>
+
+<!-- 05 anal home -->
+<section class="s grey" style="height:1960px" aria-label="Home">
+  <div class="a fade-top" style="left:0;top:0;width:1920px;height:120px"></div>
+  <h2 class="a t-kicker" style="left:903px;top:404px;width:113px"><span class="trk-96">home</span></h2>
+  <picture><source type="image/avif" srcset="img/home-row@1x.avif 1x, img/home-row.avif 2x"><img class="a" src="img/home-row.webp" srcset="img/home-row@1x.webp 1x, img/home-row.webp 2x" alt="Six versions of the old Home screen: portfolio, chart, verification, referrals and academy tabs" width="1760" height="607" style="left:80px;top:724px" loading="lazy" decoding="async"></picture>
+  <div class="a oline" style="left:81px;top:1400.9px;width:871px"></div>
+  <div class="a oline" style="left:968px;top:1401px;width:576px;opacity:.56"></div>
+  <div class="a oline" style="left:1562px;top:1401px;width:278px;opacity:.24"></div>
+  <div class="a col" style="left:89px;top:1464.9px;width:847px">
+    <h3 class="t-h3" style="width:847px">Same version</h3>
+    <p class="t-body" style="width:847px">All these screens are the same view and version. There was an embedded navigation for <span class="b">Portfolio/Referrals/Academy</span>, in addition to the more traditional navbar. And In-app notifications were less than consistent and sometimes affected the always-on <span class="b">Balance/Available Balance</span> component.</p>
+  </div>
+  <div class="a col" style="left:976px;top:1465px;width:560px">
+    <h3 class="t-h3" style="width:560px">Visual hierarchy</h3>
+    <p class="t-body" style="width:560px">Nobody could tell what’s the first or second thing a user would see on either of these screens. And like the previous three, are also the same view and version of “<span class="b">Home</span>”.</p>
+  </div>
+  <div class="a col" style="left:1562px;top:1465px;width:278px">
+    <h3 class="t-h3" style="width:278px">Academy</h3>
+    <p class="t-body" style="width:278px">This should have been a standalone App. Ended up being a subsection of a main view.</p>
+  </div>
+</section>
+
+<!-- 06 anal profile -->
+<section class="s grey" style="height:1912px" aria-label="Profile and preferences">
+  <h2 class="a t-kicker" style="left:694px;top:344px;width:531px"><span class="trk-96">profile/preferences</span></h2>
+  <picture><source type="image/avif" srcset="img/profile@1x.avif 1x, img/profile.avif 2x"><img class="a" src="img/profile.webp" srcset="img/profile@1x.webp 1x, img/profile.webp 2x" alt="Profile screens with pending and verified states" width="920" height="560" style="left:500px;top:600px" loading="lazy" decoding="async"></picture>
+  <div class="a col" style="left:569px;top:1222px;width:782px">
+    <h3 class="t-h3" style="width:782px">Overly zealous affordances</h3>
+    <p class="t-body" style="width:782px">This was surely important information to convey to the user — and I knew the goal was to be annoying and nudge the user to complete verification, but it is my experience that users like a softer, more considerate touch when nudging.</p>
+  </div>
+  <div class="a fade-bottom" style="left:0;top:1792px;width:1920px;height:120px"></div>
+</section>
+
+<!-- 07 foundation -->
+<section class="s foundation" style="height:3561px" aria-label="Set a foundation">
+  <h2 class="a t-h1" style="left:160px;top:452px">Set a foundation.</h2>
+  <p class="a t-lead" style="left:160px;top:661px;width:1600px">Once I had a good grasp of the road ahead, and had prioritized accordingly with both design, engineering, and management, I started off on the basic design building blocks — analyzing the problem and detailing a solution to be carried out.</p>
+  <h3 class="a t-path" style="left:1415px;top:917px;width:367px;color:#FF7500;text-align:center"><span class="trk-84">benjamin button</span></h3>
+  <picture><source type="image/avif" srcset="img/bb-row@1x.avif 1x, img/bb-row.avif 2x"><img class="a" src="img/bb-row.webp" srcset="img/bb-row@1x.webp 1x, img/bb-row.webp 2x" alt="Eight bottom drawers from onboarding, profile and settings, each shorter than the last" width="1731" height="425" style="left:85px;top:988px" loading="lazy" decoding="async"></picture>
+  <span class="a dim" style="left:44px;top:1400px;width:34px;text-align:right">136px</span>
+  <span class="a dim" style="left:1823px;top:1400px">61px</span>
+  <p class="a t-body" style="left:138px;top:1436px;width:424px">From onboarding, to Profile, to Settings, this component kept getting shorter.</p>
+  <picture><source type="image/avif" srcset="img/analysis-frame@1x.avif 1x, img/analysis-frame.avif 2x"><img class="a" src="img/analysis-frame.webp" srcset="img/analysis-frame@1x.webp 1x, img/analysis-frame.webp 2x" alt="" width="789" height="236" style="left:131px;top:1740px" loading="lazy" decoding="async"></picture>
+  <div class="a analysis" style="left:159px;top:1758px;width:744px">
+    <p>Component Analysis</p>
+    <p><br></p>
+    <ul>
+      <li>varying width (but didn’t seem to be a hard requirement)</li>
+      <li>used as a “static” drawer, and inside actual drawers</li>
+      <li>could have header, body copy, or aux text above it</li>
+      <li>could have secondary button (with varying style)</li>
+    </ul>
+  </div>
+  <p class="a t-body" style="left:1046px;top:1823px;width:736px;letter-spacing:.2422px">First step in analyzing this component was identifying all variations and properties in use. The goal was not yet to assess and correct it’s usage, but to establish the an improved foundation for this specific component.</p>
+  <picture><source type="image/avif" srcset="img/bb-row2@1x.avif 1x, img/bb-row2.avif 2x"><img class="a" src="img/bb-row2.webp" srcset="img/bb-row2@1x.webp 1x, img/bb-row2.webp 2x" alt="The same eight drawers rebuilt from one component" width="1660" height="424" style="left:130px;top:2288px" loading="lazy" decoding="async"></picture>
+  <picture><source type="image/avif" srcset="img/drawer@1x.avif 1x, img/drawer.avif 2x"><img class="a" src="img/drawer.webp" srcset="img/drawer@1x.webp 1x, img/drawer.webp 2x" alt="The new drawer component: header, body, primary and secondary buttons" width="199" height="200" style="left:130px;top:2960px" loading="lazy" decoding="async"></picture>
+  <p class="a t-small mul" style="left:409px;top:2999.8px;width:544px">This solution (using just a few dynamic properties) replaced 8 components, that were adding unnecessary complexity both to the UI and user experience, as well as to the codebase and engineering maintenance efforts.</p>
+</section>
+
+<!-- 08 deep -->
+<section class="s" style="height:2040px" aria-label="Go deep">
+  <h2 class="a t-h1" style="left:160px;top:416px">Go deep.</h2>
+  <p class="a t-lead" style="left:160px;top:633px;width:1600px">After the smaller building bricks, I turned my focus to feature flows and user journeys. And there’s nothing quite like onboarding. Some apps get away without any onboarding, some require just 1 screen with email input before showing the home screen.<br><br><span class="b" style="letter-spacing:-.64px">Mara had 27 steps.</span></p>
+  <picture><source type="image/avif" srcset="img/warn@1x.avif 1x, img/warn.avif 2x"><img class="a" src="img/warn.webp" srcset="img/warn@1x.webp 1x, img/warn.webp 2x" alt="Warning" width="14" height="13" style="left:1414px;top:990px" loading="lazy" decoding="async"></picture>
+  <p class="a filler" style="left:1445px;top:976px">No filler screens were added for dramatic effect.</p>
+  <picture><source type="image/avif" srcset="img/onb1@1x.avif 1x, img/onb1.avif 2x"><img class="a" src="img/onb1.webp" srcset="img/onb1@1x.webp 1x, img/onb1.webp 2x" alt="Onboarding 1.0: twenty-seven screens in a row" width="1806" height="157" style="left:57px;top:1017px" loading="lazy" decoding="async"></picture>
+  <span class="a t-cap" style="left:73px;top:1182px;color:#888888">Onboarding 1.0</span>
+  <div class="a hair" style="left:228px;top:1196.4px;width:1619px;background:#888888"></div>
+  <span class="a t-cap" style="left:73px;top:1369px;color:#FF7500">Onboarding 2.0</span>
+  <div class="a hair" style="left:228px;top:1383.4px;width:365px;background:#FF7500"></div>
+  <picture><source type="image/avif" srcset="img/onb2@1x.avif 1x, img/onb2.avif 2x"><img class="a" src="img/onb2.webp" srcset="img/onb2@1x.webp 1x, img/onb2.webp 2x" alt="Onboarding 2.0: eight screens" width="552" height="157" style="left:57px;top:1408px" loading="lazy" decoding="async"></picture>
+  <div class="a col mul" style="left:751px;top:1412px;width:1088px;gap:2px">
+    <h3 class="t-cap" style="color:#2D3648">More than 70% reduced!</h3>
+    <p class="t-small" style="width:1088px;line-height:28px;letter-spacing:-.3055px">More than a dozen iterations in, I was able to narrow the onboarding to 8 screens — <span class="sb">less than a third of the original</span>.<br><br>By breaking it up into smaller modules, I was able to postpone or remove a lot of steps. Even when accounting for those, the new onboarding was less than <span class="sb">half</span> the original, with 13 screens for all flows combined.</p>
+  </div>
+</section>
+
+<!-- 09 context -->
+<section class="s" style="height:2264px" aria-label="The right context">
+  <div class="a rule" style="left:660px;top:0;width:600px"></div>
+  <h2 class="a t-h1" style="left:160px;top:374px">The right context.</h2>
+  <p class="a t-lead" style="left:160px;top:559px;width:1600px">Reducing onboarding by 70% is a neat trick. But I didn’t delete everything, there are still steps the user must do. And these steps should be served to the user in the right context, with minimum friction.</p>
+  <picture><source type="image/avif" srcset="img/kyc@1x.avif 1x, img/kyc.avif 2x"><img class="a" src="img/kyc.webp" srcset="img/kyc@1x.webp 1x, img/kyc.webp 2x" alt="Verification required on Home, and the Your info form" width="688" height="689" style="left:220px;top:845px" loading="lazy" decoding="async"></picture>
+  <picture><source type="image/avif" srcset="img/faceid@1x.avif 1x, img/faceid.avif 2x"><img class="a" src="img/faceid.webp" srcset="img/faceid@1x.webp 1x, img/faceid.webp 2x" alt="Enter PIN, then the offer to enable biometrics" width="688" height="689" style="left:1012px;top:845px" loading="lazy" decoding="async"></picture>
+  <div class="a col mul" style="left:228px;top:1630px;width:672px">
+    <h3 class="t-cap" style="color:#2D3648">Complete KYC</h3>
+    <p class="t-small" style="width:672px">Although not essential to create an account, and let the user browse the market values, and participate in the referral program, the KYC verification is mandatory by law to enable transactions such as buying and selling of assets. By removing it from onboarding, the user gets to have a partial experience of the app right away, and by serving up the flow in the context of the action that requires it, the user is more likely to complete it.</p>
+  </div>
+  <div class="a col mul" style="left:1020px;top:1630px;width:672px">
+    <h3 class="t-cap" style="color:#2D3648">Login with FaceID</h3>
+    <p class="t-small" style="width:672px">As a financial product, security is paramount — even before funds are added. Biometrics is a secondary layer that works on top of the primary authentication (PIN or other) making it non essential at onboarding. Having removed it, it was then important pick the right time to suggest it, such as after the first successful PIN authentication. This ensures the user is familiar with the primary security mechanism, and provides the alternative in the exact context in which it’ll be used.</p>
+  </div>
+</section>
+
+<!-- 10 4.0 -->
+<section class="s" style="height:1858px" aria-label="4.0">
+  <div class="a four" aria-hidden="true" style="left:660px;top:-144px;opacity:.8;color:rgba(255,117,0,.01)"><span class="c1">4</span><span class="c2">.</span><span class="c1">0</span></div>
+  <div class="a four" aria-hidden="true" style="left:660px;top:-144px;opacity:.4;color:transparent"><span class="c1">4</span><span class="c2">.</span><span class="c1">0</span></div>
+  <div class="a orange" style="left:0;top:0;width:1920px;height:1098px"></div>
+  <picture><source type="image/avif" srcset="img/sketches@1x.avif 1x, img/sketches.avif 2x"><img class="a mul sub" src="img/sketches.webp" srcset="img/sketches@1x.webp 1x, img/sketches.webp 2x" alt="Pencil sketches of the six main flows" width="1850" height="680" style="left:35px;top:991px" loading="lazy" decoding="async"></picture>
+  <p class="a t-lead" style="left:160px;top:234px;width:1600px;color:#323232">A full redesign should rarely be about <span class="i">design</span>.<br><br>From the moment I joined, I had a sense that big shake up was due — neither users nor the product team were particularly happy with anything. So with every iteration, I prepared, gathering important knowledge on the pain points for each flow, mapping user feedback and complaints to implementation shortcomings, and overall getting a feel for what was (or should be) the true essence of the app.<br><br>When the time came, I set my sights on the 6 main flows: <span class="r">Buy/Sell, Deposit/Withdraw, Send/Receive</span>. That was the foundation of what the app ought to be, and they were all very similar in nature (money in vs money out). Yet, neither in the design, nor in the code, was there any evidence that these flows were related. UI and UX abstractions and metaphors were all over the place, and similar concerns came from every dev I spoke with.<br><br>This was an opportunity to clean house on both fronts, setting a vision that would motivate and guide all teams.</p>
+  <picture><source type="image/avif" srcset="img/rectangz@1x.avif 1x, img/rectangz.avif 2x"><img class="a mul" src="img/rectangz.webp" srcset="img/rectangz@1x.webp 1x, img/rectangz.webp 2x" alt="" width="1739" height="633" style="left:122px;top:1020px" loading="lazy" decoding="async"></picture>
+</section>
+
+<!-- 11 essentials -->
+<section class="s grey0" style="height:1535px" aria-label="Essentials">
+  <h2 class="a t-h1" style="left:160px;top:310px">Essentials</h2>
+  <p class="a t-body2" style="left:160px;top:545px;width:528px">One of my first steps was to identify the essential components and combos, that either performed fundamental functions, or just showed up a lot.</p>
+  <p class="a t-body2" style="left:160px;top:729px;width:528px">The “value box input” had to be the most essential component of all. Part of the flow’s fundamental function, one all of the six main flows (and others). It was also the most ravaged by “creativity”. </p>
+  <p class="a t-body2" style="left:160px;top:945px;width:528px">After tracing every single usage of this component and itemizing all the possible properties it needed, I got started on a new component design that allowed for all the same functionality, without looking like Sloth from The Goonies.</p>
+  <picture><source type="image/avif" srcset="img/essentials@1x.avif 1x, img/essentials.avif 2x"><img class="a" src="img/essentials.webp" srcset="img/essentials@1x.webp 1x, img/essentials.webp 2x" alt="The value box input before (top) and after (bottom)" width="919" height="670" style="left:840px;top:551px" loading="lazy" decoding="async"></picture>
+  <p class="a t-body2" style="left:840px;top:1172px;width:320px;font-size:20px;line-height:28px;letter-spacing:-.28px">Top and bottom, have exactly the same functionality and information.</p>
+</section>
+
+<!-- 12 system -->
+<section class="s grey0" style="height:1241px" aria-label="System">
+  <h2 class="a t-h1" style="left:160px;top:187px">System</h2>
+  <p class="a t-body2" style="left:160px;top:447px;width:528px">A Design System isn’t just a collection of components used in a given app. The “system” part of it, is incredibly important — it should mean that the components work well with each other, and fit together, creating more complex structures.</p>
+  <p class="a t-body2" style="left:160px;top:695px;width:528px">When analyzing components, there’s tremendous care and attention, taking into account what’s happening around them. Top, down, left, right, what could cause a data refresh or fetch? Does it need empty states? Could it become blocked by a floating element like the keyboard? Etc.</p>
+  <picture><source type="image/avif" srcset="img/system@1x.avif 1x, img/system.avif 2x"><img class="a" src="img/system.webp" srcset="img/system@1x.webp 1x, img/system.webp 2x" alt="Deposit, withdrawal and send screens with their headers and the keyboard highlighted" width="900" height="567" style="left:830px;top:397px" loading="lazy" decoding="async"></picture>
+</section>
+
+<!-- 13 full dress -->
+<section class="s grey0" style="height:1518px" aria-label="Full dress">
+  <h2 class="a t-h1" style="left:160px;top:242px">Full dress</h2>
+  <p class="a t-body2" style="left:160px;top:387px;width:536px">Just one thing left to do — dress it up and compare.</p>
+  <picture><source type="image/avif" srcset="img/dress@1x.avif 1x, img/dress.avif 2x"><img class="a" src="img/dress.webp" srcset="img/dress@1x.webp 1x, img/dress.webp 2x" alt="Old and new deposit, withdraw and send screens side by side" width="1754" height="600" style="left:83px;top:521px" loading="lazy" decoding="async"></picture>
+</section>
+
+<!-- 14 catch it -->
+<section class="s" style="height:2161px" aria-label="Did you catch it?">
+  <h2 class="a t-path" style="left:87px;top:372px;color:#111111">/Did you catch it?</h2>
+  <p class="a t-note" style="left:114px;top:435px;width:400px">The 3rd screen had a note <span class="gap" style="width:0" role="img" aria-label="thumbs up"></span><br>The redesign didn’t <span class="gap" style="width:0" role="img" aria-label="thumbs down"></span></p>
+  <picture><source type="image/avif" srcset="img/emoji-up@1x.avif 1x, img/emoji-up.avif 2x"><img class="a" src="img/emoji-up.webp" srcset="img/emoji-up@1x.webp 1x, img/emoji-up.webp 2x" alt="" width="21" height="23" style="left:452px;top:443px" loading="lazy" decoding="async"></picture>
+  <picture><source type="image/avif" srcset="img/emoji-down@1x.avif 1x, img/emoji-down.avif 2x"><img class="a" src="img/emoji-down.webp" srcset="img/emoji-down@1x.webp 1x, img/emoji-down.webp 2x" alt="" width="21" height="23" style="left:374px;top:483px" loading="lazy" decoding="async"></picture>
+  <picture><source type="image/avif" srcset="img/catch@1x.avif 1x, img/catch.avif 2x"><img class="a" src="img/catch.webp" srcset="img/catch@1x.webp 1x, img/catch.webp 2x" alt="The new Send flow: amount, preview with a note, and success" width="1560" height="800" style="left:180px;top:716px" loading="lazy" decoding="async"></picture>
+  <p class="a t-lead" style="left:188px;top:1660px;width:1544px">Less isn’t always more. Sometimes less is less, more is more, and even still, on occasion, more is less.<br><br>When reviewing the flows, I noticed a lack of consistency on handling previews and confirmation screens before committing a transaction or similar. The case was further inconsistent when calculating fees based on input, and very short valuation timeouts (in the case of crypto transactions). With that in mind, I made every transaction flow a Preview+Commit pair. This creates a predictability on the user experience, building trust with the user over time. It also creates more space in the flow — for example, in this scenario it allowed me to place the note input on the preview screen, keeping the first screen focused on value input.</p>
+</section>
+
+<!-- 15 nop -->
+<section class="s" style="height:1679px" aria-label="No note">
+  <picture><source type="image/avif" srcset="img/nop@1x.avif 1x, img/nop.avif 2x"><img class="a" src="img/nop.webp" srcset="img/nop@1x.webp 1x, img/nop.webp 2x" alt="The Withdraw flow built from the same components, without the note" width="1560" height="800" style="left:180px;top:84px" loading="lazy" decoding="async"></picture>
+  <p class="a t-lead" style="left:188px;top:1020px;width:1544px">Components are created with reusability, and flexibility of use in mind. As a system, when an input is not needed (such as the note from the previous flow) it is hidden or removed without detriment to the other elements and overall layout and functionality.<br><br>Such a considered system brings immediate benefits to the users, in terms of familiarity and easy of use. But it also has tremendous advantages to the engineering team with not only reusable components, but whole reusable flows as well. And naturally, for the design team, where the same metaphor can be used successfully in multiple use cases with confidence.</p>
+</section>
+
+<!-- 16 6 rings -->
+<section class="s" style="height:2189px" aria-label="The six main flows">
+  <div class="a rule" style="left:660px;top:0;width:600px"></div>
+  <h2 class="a t-path" style="left:87px;top:356px;color:#111111">/the 6 main flows</h2>
+  <span class="a t-cap" style="left:112px;top:659px;color:#FF7500">Buy / Sell</span>
+  <span class="a t-cap" style="left:688px;top:659px;color:#FF7500">Deposit / Withdraw</span>
+  <span class="a t-cap" style="left:1263px;top:659px;color:#FF7500">Send / Receive</span>
+  <picture><source type="image/avif" srcset="img/rings@1x.avif 1x, img/rings.avif 2x"><img class="a" src="img/rings.webp" srcset="img/rings@1x.webp 1x, img/rings.webp 2x" alt="Transaction detail screens for buy, trade, add funds, withdrawal and two sends" width="1767" height="660" style="left:77px;top:697px" loading="lazy" decoding="async"></picture>
+  <span class="a t-cap" style="left:112px;top:1365px;color:#999999">Transaction detail screens</span>
+  <p class="a t-lead" style="left:188px;top:1625px;width:1544px">The whole redesign took a little over a month to design, and then maybe another one or two months to ship. I spent about 3 or 4 days sketching everything (I had months of experience with the app at this point, so was fairly comfortable with the direction most flows should take) and then did the 6 main flows in hi-fidelity to discuss and agree on milestones with management and engineering. The remainder of the flows I worked on whilst the devs were busy with the first batch. The reception by the users was overwhelmingly positive, incredulous even on a few marked circumstances.</p>
+</section>
+
+<!-- 17 grid -->
+<section class="s" style="height:2715px" aria-label="All screens">
+  <picture><source type="image/avif" srcset="img/grid@1x.avif 1x, img/grid.avif 2x"><img class="a" src="img/grid.webp" srcset="img/grid@1x.webp 1x, img/grid.webp 2x" alt="Fifteen screens of the redesigned Mara app" width="1784" height="2160" style="left:68px;top:278px" loading="lazy" decoding="async"></picture>
+</section>
+
+</main>
+<script>
+/* Fixed 1920px design shown as a centred column: it renders COLUMN px wide at most, and
+   shrinks to fit narrower windows instead of reflowing. #1x shows it at its native 1920px. */
+(function(){
+  if (location.hash === '#1x') return;
+  var COLUMN = 1280;
+  var r=document.documentElement;
+  function fit(){ r.style.zoom = 1; r.style.zoom = Math.min(COLUMN, r.clientWidth) / 1920; }
+  fit(); addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>

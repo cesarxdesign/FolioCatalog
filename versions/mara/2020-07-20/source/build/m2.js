@@ -1,0 +1,1 @@
+(()=>{const o={};for(const css of ['','font-variant-ligatures:common-ligatures','font-feature-settings:"liga" 1']){const c=document.createElement('span');c.className='t-lead';c.style.cssText='position:absolute;white-space:nowrap;left:0;top:0;'+css;c.textContent='flows flow fi';document.body.appendChild(c);o[css||'none']=c.getBoundingClientRect().width;}return o})()
