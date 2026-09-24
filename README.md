@@ -17,6 +17,19 @@ pane. Compare shows the chosen version and the ones after it. A view can be link
 
 Serve it rather than opening the file: fonts do not load from `file://`.
 
+## Before trusting it
+
+    python3 tools/check.py
+
+Exit 0 means every page stands on its own: nothing it loads comes from outside its own
+version folder (no http, no CDN, no Google Fonts, no claude.ai, no Figma), every file it
+loads exists, and every file is committed in git. Links a reader clicks (LinkedIn, the other
+case studies) are the only things pointing out, and a page renders without them.
+Tested against a deliberately broken clone: it caught a deleted image, an outside font, an
+outside `srcset` image, an outside `@import` and a missing file. On 2026-09-24 every page was
+also opened from a fresh `git clone` in Chrome: all images, fonts and stylesheets loaded, no
+request left localhost.
+
 ## Cable
 
 | id | what | shipped | left the folio |
