@@ -52,9 +52,25 @@ request left localhost.
 | id | what | shipped | left the folio |
 |---|---|---|---|
 | `2024-07-15` | Figma: the Figma "penfold _air" frame, built as one page | never | |
+| `2026-07-30` | Lite: the live page, as of 24 Sep 2026 | 30 Jul 2026 14:54 | live |
+
+## Confirmo, Mara, Starcount
+
+| project | id | what | shipped | left the folio |
+|---|---|---|---|---|
+| confirmo | `2026-07-29` | Lite: the live page, as of 24 Sep 2026 | 29 Jul 2026 01:51 | live |
+| mara | `2026-07-29` | Lite: the live page, as of 24 Sep 2026 | 29 Jul 2026 01:51 | live |
+| starcount | `2026-07-29` | Lite: the live page, as of 24 Sep 2026 | 29 Jul 2026 01:51 | live |
+
+## DONE
+
+| id | what | shipped | left the folio |
+|---|---|---|---|
+| `2026-08-03` | Lite: the page as it was when taken off | 3 Aug 2026 18:49 | 21 Sep 2026 14:47 |
 
 Times are UK time. Shipped times are the git push to `main` (Vercel deploys within
-seconds); the August page's is the oldest production deploy Vercel still lists. Made times
+seconds) where it is on record; the August Cable page's is the oldest production deploy
+Vercel still lists; the other Lite pages' are the commit that first put them live. Made times
 are the canvas's creation time on claude.ai.
 
 The Crazy canvas itself, desktop and mobile, is kept in git history rather than the list, since
