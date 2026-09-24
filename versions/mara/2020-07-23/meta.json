@@ -1,0 +1,16 @@
+{
+  "project": "mara",
+  "id": "2020-07-23",
+  "name": "Sqsp",
+  "page": "site/index.html",
+  "width": 1100,
+  "shipped": null,
+  "until": null,
+  "made": null,
+  "source": {
+    "kind": "rebuilt-from-screenshots",
+    "figma": "https://www.figma.com/design/Z9p4dGIT13UAJSSESrOAd5/-cxd.com?node-id=87-72069",
+    "screenshots": "source/screenshots (the old live site, captured 2024-07-07, 2x of a 2048px window)"
+  },
+  "note": "The Mara case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text, including the badge, sketch-board, montage and caption text taken out of the pictures; phone screens are cut from the screenshots and clipped to their measured boxes."
+}
