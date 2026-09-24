@@ -55,6 +55,8 @@ select{padding:4px 24px 4px 8px;appearance:none;max-width:260px;
 .step[hidden]{display:none}
 .step button{width:28px;height:26px;padding:0;font-size:15px;line-height:1}
 .step button:disabled{opacity:.35;cursor:default}
+#theme{margin-left:auto;display:flex;align-items:center;gap:6px;padding:4px 10px;font-size:12px}
+#theme svg{width:14px;height:14px}
 select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 .pane{flex:1 1 0;min-width:0;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
@@ -80,6 +82,7 @@ main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
     <button type="button" id="next" aria-label="Show later">&rsaquo;</button>
     <span id="range"></span>
   </div>
+  <button type="button" id="theme" aria-label="Dark mode" aria-pressed="false" title="Light or dark, for every page shown that has both"></button>
 </header>
 <main id="panes"></main>
 <script>
@@ -90,6 +93,26 @@ const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.crea
 const projects = [...new Set(ALL.map(v => v.project))];
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 const state = {project: projects[0], id: null, n: 1, off: 0};
+
+// One switch for the viewer and every page shown. Folio pages keep their theme on <html>
+// (and read localStorage "folio0" when they load); Claude Design pages on their root element.
+// Pages with a single look have no data-theme, so they are left as they are.
+const store = {get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
+               set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} }};
+let theme = store.get('fc-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+const ICON = {light: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>',
+              dark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>'};
+function themeFrame(f) {
+  try { f.contentDocument.querySelectorAll('[data-theme]').forEach(e => e.setAttribute('data-theme', theme)); } catch (e) {}
+}
+function applyTheme() {
+  document.documentElement.dataset.theme = theme;
+  store.set('fc-theme', theme);
+  store.set('folio0', theme);
+  $('theme').innerHTML = ICON[theme] + (theme === 'dark' ? 'Dark' : 'Light');
+  $('theme').setAttribute('aria-pressed', theme === 'dark');
+  document.querySelectorAll('.view iframe').forEach(themeFrame);
+}
 
 const fmt = iso => {
   if (!iso) return '';
@@ -140,6 +163,7 @@ function render() {
   if (have !== shown.map(v => v.path).join('|')) {
     $('panes').replaceChildren(...shown.map(v => {
       const frame = el('iframe', {src: v.path, title: label(v), loading: 'eager'});
+      frame.addEventListener('load', () => themeFrame(frame));
       const pane = el('section', {className: 'pane'},
         el('div', {className: 'cap'}, el('b', {textContent: label(v)}), el('span', {textContent: when(v)}),
            el('a', {href: v.path, target: '_blank', rel: 'noopener', textContent: 'Open ↗', title: 'The whole page, in a new tab'})),
@@ -179,6 +203,8 @@ if (!ALL.length) {
   $('next').onclick = () => { state.off++; render(); };
   window.onhashchange = () => { readHash(); render(); };
   let t; window.onresize = () => { clearTimeout(t); t = setTimeout(render, 60); };
+  $('theme').onclick = () => { theme = theme === 'dark' ? 'light' : 'dark'; applyTheme(); };
+  applyTheme();
   readHash();
   render();
 }

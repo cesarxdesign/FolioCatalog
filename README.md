@@ -7,9 +7,10 @@ works, offline, forever.
 
 `index.html` is the viewer. One header line: **Project**, **Version**, **Compare** (1 to 6
 pages side by side) and, when the screen is too narrow for all of them, **‹ ›** to step
-through. Panes are never narrower than 360px; the page never scrolls sideways. Each page
-is drawn at the width it was designed for and scaled into its pane. Compare shows the
-chosen version and the ones after it. A view can be linked: `index.html#cable/2026-09-21/3/0`
+through, and a light/dark switch that sets every page shown that has both themes (the
+Figma page and Noir have one look). Panes are never narrower than 360px; the page never
+scrolls sideways. Each page is drawn at the width it was designed for and scaled into its
+pane. Compare shows the chosen version and the ones after it. A view can be linked: `index.html#cable/2026-09-21/3/0`
 (project / version / how many / first one shown).
 
     python3 -m http.server 4174 --directory ~/Claude/FolioCatalog
@@ -25,12 +26,15 @@ Serve it rather than opening the file: fonts do not load from `file://`.
 | `2026-09-21` | Rebuild, the third column on the staging compare page | 21 Sep 2026 21:23 | 23 Sep 2026 23:12 |
 | `2026-09-22-noir` | Noir, text only (Claude Design) | never, made 22 Sep 09:31 | |
 | `2026-09-23-color` | Color, Noir with images (Claude Design) | never, made 23 Sep 17:30 | |
-| `2026-09-23-crazy` | Crazy (Claude Design), mobile in `site/mobile.html` | never, made 23 Sep 22:19 | |
-| `2026-09-23-shipped` | Shipped | 23 Sep 2026 23:12 | live |
+| `2026-09-23-shipped` | Shipped: the Crazy canvas (made 23 Sep 22:19) built into the site | 23 Sep 2026 23:12 | live |
 
 Times are UK time. Shipped times are the git push to `main` (Vercel deploys within
 seconds); the August page's is the oldest production deploy Vercel still lists. Made times
 are the canvas's creation time on claude.ai.
+
+The Crazy canvas itself, desktop and mobile, is kept in git history rather than the list, since
+Shipped is the same page: `git show a4abbf9:versions/cable/2026-09-23-crazy/meta.json`, or
+`git worktree add ../crazy a4abbf9` for the whole folder.
 
 ## Adding a version
 
