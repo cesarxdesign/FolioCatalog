@@ -1,4 +1,4 @@
-# Penfold, the old live page (2020)
+# Penfold, Sqsp: the live page on the 2020 Squarespace site
 
 Rebuilt 2026-09-24 with the image2code skill from the Figma section
 "Penfold _new" > Section 1 (120:5410).

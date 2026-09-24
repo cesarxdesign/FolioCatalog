@@ -14,9 +14,10 @@ pages side by side) and, when the screen is too narrow for all of them, **â€¹ â€
 through, and a light/dark switch that sets every page shown that has both themes (the
 Figma page has one look). Panes are never narrower than 360px; the page never
 scrolls sideways. Each page is drawn at the width it was designed for and scaled into its
-pane. Compare shows the chosen version and the ones after it. Each pane is display only, like
-an image: scroll works, nothing inside can be clicked, hovered or focused. The stored pages
-themselves are untouched, so a version taken out of `versions/` works in full. A view can be linked:
+pane. Compare shows the chosen version and the ones after it. In a pane, text selects and the
+page scrolls, but nothing navigates: the viewer takes the address off every link and swallows
+clicks on anything clickable. The stored pages themselves are untouched, so a version taken
+out of `versions/` works in full. A view can be linked:
 `index.html#cable/2026-09-21/3/0` (project / version / how many / first one shown).
 
     python3 -m http.server 4174 --directory ~/Claude/FolioCatalog      to run it locally
@@ -51,7 +52,7 @@ request left localhost.
 
 | id | what | shipped | left the folio |
 |---|---|---|---|
-| `2020` | Old site: the 2020 live page, rebuilt from screenshots (notes in `source/NOTES.md`) | 2020, date not on record | |
+| `2020` | Sqsp: the 2020 live page on the Squarespace site, rebuilt from screenshots (notes in `source/NOTES.md`) | 2020, date not on record | |
 | `2024-07-15` | Figma: the Figma "penfold _air" frame, built as one page | never | |
 | `2026-07-30` | Lite: the live page, as of 24 Sep 2026 | 30 Jul 2026 14:54 | live |
 

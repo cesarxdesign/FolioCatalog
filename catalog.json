@@ -165,7 +165,7 @@
   {
     "project": "penfold",
     "id": "2020",
-    "name": "Old site",
+    "name": "Sqsp",
     "page": "site/index.html",
     "width": 1100,
     "shipped": null,
@@ -177,7 +177,7 @@
       "screenshots": "source/screenshots (the old live site, captured 2024-07-07, 2x of a 2048px window)",
       "originals": "source/originals: Figma frames hero (121:5411), sketches (120:5372), craft (120:5379), exports and their raw images"
     },
-    "note": "The Penfold case study from the old live site (2020), rebuilt from screenshots with image2code. Text is live text; hero, sketches and montage are the original Figma frames; the 20 phone screens are cut from the screenshots and clipped to their measured boxes, ready to be swapped for originals.",
+    "note": "The Penfold case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text; hero, sketches and montage are the original Figma frames; the 20 phone screens are cut from the screenshots and clipped to their measured boxes, ready to be swapped for originals.",
     "path": "versions/penfold/2020/site/index.html?v=cec7f835"
   },
   {

@@ -39,9 +39,7 @@ main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
      white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .view{flex:1;min-height:0;position:relative;overflow:hidden;background:#fff}
 .view iframe{position:absolute;top:0;border:0;transform-origin:0 0;background:#fff}
-/* A pane is a picture of the page: nothing inside can be clicked, hovered or focused.
-   The shield takes every pointer event and passes only the wheel on, as scrolling. */
-.shield{position:absolute;inset:0;z-index:1}
+
 .empty{margin:auto;color:var(--muted);font-size:14px}
 </style>
 </head>
@@ -60,7 +58,7 @@ main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 </header>
 <main id="panes"></main>
 <script>
-const ALL = [{"project": "cable", "id": "2024-07-06", "name": "Figma", "path": "versions/cable/2024-07-06/site/index.html?v=21f38ce6", "width": 1920, "shipped": null, "until": null, "made": null}, {"project": "cable", "id": "2026-07-08", "name": "Lite", "path": "versions/cable/2026-07-08/site/cable/index.html?v=61964987", "width": 1440, "shipped": "2026-08-06T18:04:05+01:00", "until": "2026-09-21T21:23:51+01:00", "made": null}, {"project": "cable", "id": "2026-09-21", "name": "Rebuild", "path": "versions/cable/2026-09-21/site/cable/index.html?v=7c427803", "width": 1440, "shipped": "2026-09-21T21:23:51+01:00", "until": "2026-09-23T23:12:11+01:00", "made": null}, {"project": "cable", "id": "2026-09-22-noir", "name": "Noir", "path": "versions/cable/2026-09-22-noir/site/index.html?v=faaa80b2", "width": 1440, "shipped": null, "until": null, "made": "2026-09-22T09:31:27+01:00"}, {"project": "cable", "id": "2026-09-23-color", "name": "Color", "path": "versions/cable/2026-09-23-color/site/index.html?v=9afd33b4", "width": 1440, "shipped": null, "until": null, "made": "2026-09-23T17:30:12+01:00"}, {"project": "cable", "id": "2026-09-23-shipped", "name": "Shipped", "path": "versions/cable/2026-09-23-shipped/site/cable/index.html?v=ee731222", "width": 1440, "shipped": "2026-09-23T23:12:11+01:00", "until": null, "made": null}, {"project": "confirmo", "id": "2026-07-29", "name": "Lite", "path": "versions/confirmo/2026-07-29/site/confirmo/index.html?v=7095ee8a", "width": 1440, "shipped": "2026-07-29T01:51:15+01:00", "until": null, "made": null}, {"project": "done", "id": "2026-08-03", "name": "Lite", "path": "versions/done/2026-08-03/site/done/index.html?v=48772c2d", "width": 1440, "shipped": "2026-08-03T18:49:03+01:00", "until": "2026-09-21T14:47:48+01:00", "made": null}, {"project": "mara", "id": "2026-07-29", "name": "Lite", "path": "versions/mara/2026-07-29/site/mara/index.html?v=d3a2d546", "width": 1440, "shipped": "2026-07-29T01:51:15+01:00", "until": null, "made": null}, {"project": "penfold", "id": "2020", "name": "Old site", "path": "versions/penfold/2020/site/index.html?v=cec7f835", "width": 1100, "shipped": null, "until": null, "made": null}, {"project": "penfold", "id": "2024-07-15", "name": "Figma", "path": "versions/penfold/2024-07-15/site/index.html?v=1c57b13a", "width": 1920, "shipped": null, "until": null, "made": null}, {"project": "penfold", "id": "2026-07-30", "name": "Lite", "path": "versions/penfold/2026-07-30/site/penfold/index.html?v=b1805468", "width": 1440, "shipped": "2026-07-30T14:54:59+01:00", "until": null, "made": null}, {"project": "starcount", "id": "2026-07-29", "name": "Lite", "path": "versions/starcount/2026-07-29/site/starcount/index.html?v=4a9c4e17", "width": 1440, "shipped": "2026-07-29T01:51:15+01:00", "until": null, "made": null}];
+const ALL = [{"project": "cable", "id": "2024-07-06", "name": "Figma", "path": "versions/cable/2024-07-06/site/index.html?v=21f38ce6", "width": 1920, "shipped": null, "until": null, "made": null}, {"project": "cable", "id": "2026-07-08", "name": "Lite", "path": "versions/cable/2026-07-08/site/cable/index.html?v=61964987", "width": 1440, "shipped": "2026-08-06T18:04:05+01:00", "until": "2026-09-21T21:23:51+01:00", "made": null}, {"project": "cable", "id": "2026-09-21", "name": "Rebuild", "path": "versions/cable/2026-09-21/site/cable/index.html?v=7c427803", "width": 1440, "shipped": "2026-09-21T21:23:51+01:00", "until": "2026-09-23T23:12:11+01:00", "made": null}, {"project": "cable", "id": "2026-09-22-noir", "name": "Noir", "path": "versions/cable/2026-09-22-noir/site/index.html?v=faaa80b2", "width": 1440, "shipped": null, "until": null, "made": "2026-09-22T09:31:27+01:00"}, {"project": "cable", "id": "2026-09-23-color", "name": "Color", "path": "versions/cable/2026-09-23-color/site/index.html?v=9afd33b4", "width": 1440, "shipped": null, "until": null, "made": "2026-09-23T17:30:12+01:00"}, {"project": "cable", "id": "2026-09-23-shipped", "name": "Shipped", "path": "versions/cable/2026-09-23-shipped/site/cable/index.html?v=ee731222", "width": 1440, "shipped": "2026-09-23T23:12:11+01:00", "until": null, "made": null}, {"project": "confirmo", "id": "2026-07-29", "name": "Lite", "path": "versions/confirmo/2026-07-29/site/confirmo/index.html?v=7095ee8a", "width": 1440, "shipped": "2026-07-29T01:51:15+01:00", "until": null, "made": null}, {"project": "done", "id": "2026-08-03", "name": "Lite", "path": "versions/done/2026-08-03/site/done/index.html?v=48772c2d", "width": 1440, "shipped": "2026-08-03T18:49:03+01:00", "until": "2026-09-21T14:47:48+01:00", "made": null}, {"project": "mara", "id": "2026-07-29", "name": "Lite", "path": "versions/mara/2026-07-29/site/mara/index.html?v=d3a2d546", "width": 1440, "shipped": "2026-07-29T01:51:15+01:00", "until": null, "made": null}, {"project": "penfold", "id": "2020", "name": "Sqsp", "path": "versions/penfold/2020/site/index.html?v=cec7f835", "width": 1100, "shipped": null, "until": null, "made": null}, {"project": "penfold", "id": "2024-07-15", "name": "Figma", "path": "versions/penfold/2024-07-15/site/index.html?v=1c57b13a", "width": 1920, "shipped": null, "until": null, "made": null}, {"project": "penfold", "id": "2026-07-30", "name": "Lite", "path": "versions/penfold/2026-07-30/site/penfold/index.html?v=b1805468", "width": 1440, "shipped": "2026-07-30T14:54:59+01:00", "until": null, "made": null}, {"project": "starcount", "id": "2026-07-29", "name": "Lite", "path": "versions/starcount/2026-07-29/site/starcount/index.html?v=4a9c4e17", "width": 1440, "shipped": "2026-07-29T01:51:15+01:00", "until": null, "made": null}];
 const MIN_PANE = 360;               // narrower than this and a pane stops being readable
 const $ = id => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.createElement(tag), props); e.append(...kids); return e; };
@@ -79,6 +77,43 @@ const ICON = {light: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
 function themeFrame(f) {
   try { f.contentDocument.querySelectorAll('[data-theme]').forEach(e => e.setAttribute('data-theme', theme)); } catch (e) {}
 }
+// A pane shows a page, it does not run it: text selects and the page scrolls, but no link,
+// button or menu does anything. Done here, not in the stored pages, so a page taken out of
+// versions/ still works in full.
+const CLICKABLE = 'a,button,summary,select,label,input,textarea,[role=button],[role=link],[onclick],[tabindex]';
+function unlink(root) {
+  root.querySelectorAll('a[href]').forEach(a => { a.dataset.href = a.getAttribute('href'); a.removeAttribute('href'); });
+}
+function stillFrame(f) {
+  try {
+    const d = f.contentDocument;
+    if (!d || !d.documentElement) return;
+    unlink(d);
+    if (d.__still) return;          // listeners once per document; unlink runs every time
+    d.__still = true;
+    new MutationObserver(() => unlink(d)).observe(d.documentElement, {subtree: true, childList: true, attributes: true, attributeFilter: ['href']});
+    d.querySelectorAll('form').forEach(form => form.addEventListener('submit', e => e.preventDefault(), true));
+    const stop = e => { if (e.target.closest && e.target.closest(CLICKABLE)) { e.preventDefault(); e.stopImmediatePropagation(); } };
+    for (const t of ['click', 'auxclick', 'dblclick', 'pointerdown', 'mousedown', 'touchstart']) d.addEventListener(t, stop, true);
+    d.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest && e.target.closest(CLICKABLE)) { e.preventDefault(); e.stopImmediatePropagation(); } }, true);
+    const st = d.createElement('style');
+    st.textContent = `${CLICKABLE}{cursor:text !important}`;
+    (d.head || d.documentElement).append(st);
+  } catch (e) {}
+}
+
+// Links die while the page is still being read in: the watcher attaches as soon as the new
+// document exists, and from then on every link is stripped the moment it is parsed.
+function watchFrame(f) {
+  const t = setInterval(() => {
+    try {
+      const d = f.contentDocument;
+      if (d && d.documentElement && d.location.href !== 'about:blank') { stillFrame(f); clearInterval(t); }
+    } catch (e) { clearInterval(t); }
+  }, 10);
+  setTimeout(() => clearInterval(t), 20000);
+}
+
 function applyTheme() {
   document.documentElement.dataset.theme = theme;
   store.set('fc-theme', theme);
@@ -127,17 +162,12 @@ function render() {
   const have = [...$('panes').children].map(p => p.dataset.path).join('|');
   if (have !== shown.map(v => v.path).join('|')) {
     $('panes').replaceChildren(...shown.map(v => {
-      const frame = el('iframe', {src: v.path, title: label(v), loading: 'eager', tabIndex: -1, inert: true});
-      frame.addEventListener('load', () => themeFrame(frame));
-      const shield = el('div', {className: 'shield'});
-      shield.addEventListener('wheel', e => {
-        e.preventDefault();
-        const px = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? shield.clientHeight : 1;
-        try { frame.contentWindow.scrollBy(0, e.deltaY * px / +pane.dataset.scale); } catch (err) {}
-      }, {passive: false});
+      const frame = el('iframe', {src: v.path, title: label(v), loading: 'eager'});
+      frame.addEventListener('load', () => { themeFrame(frame); stillFrame(frame); });
+      watchFrame(frame);
       const pane = el('section', {className: 'pane'},
         el('div', {className: 'cap', textContent: label(v)}),
-        el('div', {className: 'view'}, frame, shield));
+        el('div', {className: 'view'}, frame));
       pane.dataset.path = v.path;
       pane.dataset.width = v.width || 1440;
       return pane;
@@ -157,7 +187,6 @@ function fitFrames() {
     f.style.height = view.clientHeight / s + 'px';
     f.style.left = Math.max(0, (pw - w * s) / 2) + 'px';
     f.style.transform = `scale(${s})`;
-    pane.dataset.scale = s;
   }
 }
 
