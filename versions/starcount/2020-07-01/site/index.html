@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1100">
+<meta name="robots" content="noindex">
+<title>Observatory · Cesar Garcia</title>
+<!-- The Observatory (Starcount) case study as it was live on the old Squarespace site, rebuilt from
+     four screenshots taken 2024-07-23 (Figma frame 87:72082). They are 2x captures of a 2048px window,
+     so every length here is measured in the old site's own CSS pixels (image px / 2).
+     Text is live text, transcribed as written. Pictures are cut from the screenshots at 2x, each in a
+     fixed box at its measured position, so an original can replace one without moving anything. -->
+<style>
+*{box-sizing:border-box}
+p,h1,h2,h3,ul,figure{margin:0}
+ul{padding:0;list-style:none}
+img{display:block}
+html{background:#FFFFFF}
+body{margin:0;background:#FFFFFF;color:#757575;
+     font:11px/17px "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.39px;
+     -webkit-font-smoothing:antialiased}
+
+/* the bottom 24px of the site header, where the capture starts */
+.head{height:24px;background:#FAFAFA}
+.page{width:980px;margin:0 auto;padding-top:11px}
+
+/* The Starcount / Observatory wordmark was baked into the hero picture; it is live text here, over the
+   picture with the lettering painted out. Bodoni Moda 500 (OFL, standing in for Bodoni 72, which cannot be redistributed) and IBM Plex Sans (variable) are local subsets. */
+@font-face{font-family:"WM Serif";src:url(fonts/bodoni-moda-500-starcount.woff2) format("woff2")}
+@font-face{font-family:"WM Sans";src:url(fonts/ibm-plex-sans-var-wordmark.woff2) format("woff2");font-weight:100 700}
+
+/* ---------- hero and intro ---------- */
+.hero{position:relative;height:551.5px}
+.wm span{position:absolute;white-space:nowrap;color:#F6F6F6;line-height:1;letter-spacing:0}
+.wm .a{left:52.5px;top:444.4px;font-family:"WM Serif";font-size:15.2px;letter-spacing:-1.8px}
+.wm .b{left:139.2px;top:439.3px;font-family:"WM Sans";font-weight:250;font-size:21.3px}
+.wm .c{left:151px;top:443.8px;font-family:"WM Sans";font-weight:575;font-size:15.7px;letter-spacing:-.07px}
+.hero img{width:980px;height:551.5px}
+.title{margin-top:48.6px;font-weight:700;font-size:60px;line-height:60px;letter-spacing:.6px;color:#000}
+.intro{display:grid;grid-template-columns:479px 479px;column-gap:22px;margin-top:24px}
+.role{font-weight:700;font-size:13.5px;letter-spacing:.05px;color:#333}
+.meta{margin-top:11px}
+
+/* ---------- text sections: a 578px column in the middle of the page ---------- */
+.text{width:578px;margin-left:201px}
+.text h2{font-weight:700;font-size:13.5px;letter-spacing:.05px;color:#333}
+.text p{margin-top:11px}
+
+/* ---------- figures ---------- */
+.panel{height:551px}
+.panel img{width:980px;height:551px}
+/* 2 x 2 grid of screens; each is its own fixed box */
+.grid{position:relative;height:559.1px}
+.grid .shot{position:absolute;width:482.2px;height:271.2px;overflow:hidden}
+.grid .shot img{width:100%;height:100%}
+.g1{left:0;top:0}.g2{left:497.8px;top:0}.g3{left:0;top:287.65px}.g4{left:497.8px;top:287.65px}
+.photo{height:551.5px}
+.photo img{width:980px;height:551.5px}
+
+/* ---------- end of page ---------- */
+.link{margin-top:23.3px;text-align:center}
+.link .u{color:#000;border-bottom:1px solid #CCCCCC}
+.divider{width:578.5px;height:1px;margin:74.5px 0 0 200.5px;background:#EEEEEE}
+.next{display:block;width:61px;height:27.5px;margin:82.5px auto 0;background:#262524;color:#FFFFFF;
+      font-weight:500;font-size:8.5px;line-height:27.5px;letter-spacing:1.2px;text-align:center}
+.foot{margin-top:68.5px;background:#F5F5F5;height:137.25px}
+.foot .in{width:980px;margin:0 auto;padding-top:25.4px;display:grid;grid-template-columns:55.5px 72px auto}
+.foot h3{margin:0;font-weight:700;font-size:10px;line-height:14px;letter-spacing:.15px;color:#333}
+.foot li{font-size:8px;line-height:15.5px;letter-spacing:.05px;color:#333}
+.foot ul{margin-top:6.4px}
+</style>
+</head>
+<body>
+<div class="head"></div>
+<main class="page">
+
+  <figure class="hero"><img src="img/hero.webp" width="980" height="552" alt="Observatory on a laptop, on a dark backdrop">
+    <p class="wm"><span class="a">STARCOUNT</span><span class="b">/</span><span class="c">OBSERVATORY</span></p></figure>
+
+  <h1 class="title">Observatory</h1>
+  <div class="intro">
+    <div>
+      <p class="role">Head of Product Design</p>
+      <p class="meta">Starcount</p>
+      <p class="meta">B2B Data Science</p>
+    </div>
+    <p>As a companion product to Audiences, it was very important to have a shared design language that made users of one platform feel at home on the other. With this (initial) goal in mind, we started by simply skinning the Observatory, with Audiences’ components and design system assets. This gave us a good idea of how much design work was ahead and quickly identified what areas would be good candidates to review first.</p>
+  </div>
+
+  <figure class="panel" style="margin-top:70px"><img src="img/usage-panel.webp" width="980" height="551" alt="Three overlapping Observatory screens on a grey panel"></figure>
+
+  <section class="text" style="margin-top:69.2px">
+    <h2>Usage analysis and feature editing</h2>
+    <p>As the product was fairly old, with a small user base, it was a good bet to challenge all prior assumptions and look into what we should keep, cut, or improve upon. The initial review process was a quick and simple usage analysis and if that didn’t give us enough certainty we’d flag it to clarify with users before committing to any significant work. This gave us a good first draft of a roadmap to follow. After updating old assets to new ones, cutting down unnecessary features, we set to revamp key areas and identify any opportunities to develop new features (or reuse from Audiences). The whole project was ready for re-launch in record time, and was able to “ride” on Audiences’ success and sales effort.</p>
+  </section>
+
+  <figure class="grid" style="margin-top:69.95px">
+    <div class="shot g1"><img src="img/screen-1.webp" alt="Observatory screen with a donut chart"></div>
+    <div class="shot g2"><img src="img/screen-2.webp" alt="Observatory screen with a colour bar chart"></div>
+    <div class="shot g3"><img src="img/screen-3.webp" alt="Observatory screen with a list and a detail card"></div>
+    <div class="shot g4"><img src="img/screen-4.webp" alt="Observatory screen with a profile detail"></div>
+  </figure>
+
+  <section class="text" style="margin-top:85.85px">
+    <h2>“Lite” mobile app</h2>
+    <p>After the initial success and adoption, there was a renewed interest in the product and scope for mobile development. As a product built for the big screen, there wasn't much that translated directly from the large landscape, to the small portrait. This made it very important to adequately plan, and set quick incremental steps and goals, in order to show stakeholders timely and visible progress. In the end, a full translation didn’t make much sense, so we developed a lite version that did not have full functionality or feature parity with the desktop counterpart, but was really good in “at a glance” scenarios where users might just want to check on a saved search, or do a quick bookmark to explore later on the bigger screen.</p>
+  </section>
+
+  <figure class="photo" style="margin-top:69.1px"><img src="img/lite-photo.webp" width="980" height="552" alt="Observatory on a laptop and the lite app on an iPhone, on a desk"></figure>
+
+  <p class="link"><span class="u">starcount.com/observatory</span></p>
+  <div class="divider"></div>
+  <span class="next">NEXT</span>
+</main>
+
+<footer class="foot">
+  <div class="in">
+    <div><h3>Apps</h3><ul><li>Mara</li><li>Penfold</li><li>Done</li><li>Orbis</li></ul></div>
+    <div><h3>Desktop</h3><ul><li>Audiences</li><li>Observatory</li></ul></div>
+    <div><h3>Agency</h3><ul><li>Savr</li><li>Pockted</li></ul></div>
+  </div>
+</footer>
+</body>
+</html>

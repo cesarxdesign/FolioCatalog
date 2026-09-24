@@ -212,7 +212,7 @@
       "originals": "source/originals: Figma frames hero (121:5411), sketches (120:5372), craft (120:5379), exports and their raw images"
     },
     "note": "The Penfold case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text; hero, sketches and montage are the original Figma frames; the 20 phone screens are cut from the screenshots and clipped to their measured boxes, ready to be swapped for originals.",
-    "path": "versions/penfold/2020/site/index.html?v=cec7f835"
+    "path": "versions/penfold/2020/site/index.html?v=25c0dce1"
   },
   {
     "project": "penfold",
@@ -246,6 +246,23 @@
     },
     "note": "The page as live on cesarxdesign.com/penfold on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-30 14:54 (commit time).",
     "path": "versions/penfold/2026-07-30/site/penfold/index.html?v=b1805468"
+  },
+  {
+    "project": "starcount",
+    "id": "2020-07-01",
+    "name": "Observatory",
+    "page": "site/index.html",
+    "width": 1100,
+    "shipped": null,
+    "until": null,
+    "made": null,
+    "source": {
+      "kind": "rebuilt-from-screenshots",
+      "figma": "https://www.figma.com/design/Z9p4dGIT13UAJSSESrOAd5/-cxd.com?node-id=87-72082",
+      "screenshots": "source/screenshots (the old live site, captured 2024-07-23, 2x of a 2048px window)"
+    },
+    "note": "The Starcount Observatory case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text, including the Starcount / Observatory wordmark taken out of the hero; the screens and photos are cut from the screenshots and clipped to their measured boxes.",
+    "path": "versions/starcount/2020-07-01/site/index.html?v=d92501be"
   },
   {
     "project": "starcount",

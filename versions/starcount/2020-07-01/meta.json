@@ -1,0 +1,16 @@
+{
+  "project": "starcount",
+  "id": "2020-07-01",
+  "name": "Observatory",
+  "page": "site/index.html",
+  "width": 1100,
+  "shipped": null,
+  "until": null,
+  "made": null,
+  "source": {
+    "kind": "rebuilt-from-screenshots",
+    "figma": "https://www.figma.com/design/Z9p4dGIT13UAJSSESrOAd5/-cxd.com?node-id=87-72082",
+    "screenshots": "source/screenshots (the old live site, captured 2024-07-23, 2x of a 2048px window)"
+  },
+  "note": "The Starcount Observatory case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text, including the Starcount / Observatory wordmark taken out of the hero; the screens and photos are cut from the screenshots and clipped to their measured boxes."
+}
