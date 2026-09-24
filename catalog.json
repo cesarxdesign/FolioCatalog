@@ -2,7 +2,7 @@
   {
     "project": "cable",
     "id": "2024-07-06",
-    "name": "",
+    "name": "Figma",
     "page": "site/index.html",
     "width": 1920,
     "shipped": null,
@@ -18,7 +18,7 @@
   {
     "project": "cable",
     "id": "2026-07-08",
-    "name": "",
+    "name": "Lite",
     "page": "site/cable/index.html",
     "width": 1440,
     "shipped": "2026-08-06T18:04:05+01:00",

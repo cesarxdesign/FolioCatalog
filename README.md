@@ -21,8 +21,8 @@ Serve it rather than opening the file: fonts do not load from `file://`.
 
 | id | what | shipped | left the folio |
 |---|---|---|---|
-| `2024-07-06` | the Figma "Cable _air" frame, built as one page | never | |
-| `2026-07-08` | the August page | 6 Aug 2026 18:04 | 21 Sep 2026 21:23 |
+| `2024-07-06` | Figma: the Figma "Cable _air" frame, built as one page | never | |
+| `2026-07-08` | Lite: the August page | 6 Aug 2026 18:04 | 21 Sep 2026 21:23 |
 | `2026-09-21` | Rebuild, the third column on the staging compare page | 21 Sep 2026 21:23 | 23 Sep 2026 23:12 |
 | `2026-09-22-noir` | Noir, text only (Claude Design); dark mode added here | never, made 22 Sep 09:31 | |
 | `2026-09-23-color` | Color, Noir with images (Claude Design) | never, made 23 Sep 17:30 | |
