@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1100">
+<meta name="robots" content="noindex">
+<title>Audiences · Cesar Garcia</title>
+<!-- The Audiences (Starcount) case study as it was live on the old Squarespace site, rebuilt from
+     screenshots of it (Figma frame "audiences", taken 2024-07-07). Every length is measured from
+     those screenshots in the old site's own CSS pixels (they were 2x captures of a 2048px window).
+     Text is live text, transcribed as written. Every picture is cut from the screenshots at 2x and
+     sits in its own fixed box, so an original can replace it without moving anything. -->
+<style>
+*{box-sizing:border-box}
+p,h1,h2,ul,figure{margin:0}
+ul{padding:0;list-style:none}
+img{display:block}
+html{background:#FFFFFF}
+body{margin:0;background:#FFFFFF;color:#757575;
+     font:11px/17px "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.385px;
+     -webkit-font-smoothing:antialiased}
+
+.page{width:980px;margin:0 auto;padding-top:35px}
+
+/* The Starcount / Audiences wordmark was baked into the hero picture; it is live text here, over the
+   picture with the lettering painted out. Bodoni Moda 500 (OFL, standing in for Bodoni 72, which cannot be redistributed) and IBM Plex Sans are local subsets. */
+@font-face{font-family:"WM Serif";src:url(fonts/bodoni-moda-500-starcount.woff2) format("woff2")}
+@font-face{font-family:"WM Sans";src:url(fonts/plexsans-500-wordmark.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"WM Slash";src:url(fonts/plexsans-var-slash.woff2) format("woff2");font-weight:100 700}
+
+/* ---------- hero and intro ---------- */
+.hero{position:relative;height:551.5px}
+.wm span{position:absolute;white-space:nowrap;color:#FEFEFE;line-height:1;letter-spacing:0}
+.wm .a{left:52.5px;top:444.3px;font-family:"WM Serif";font-size:15.2px;letter-spacing:-1.8px}
+.wm .b{left:138.5px;top:440px;font-family:"WM Slash";font-weight:300;font-size:21.5px}
+.wm .c{left:150.5px;top:444.5px;font-family:"WM Sans";font-weight:500;font-size:15.8px;letter-spacing:-.2px}
+.hero img{width:980px;height:551.5px}
+.title{margin-top:49.1px;font-weight:700;font-size:61px;line-height:60px;letter-spacing:.05px;color:#000}
+.intro{display:grid;grid-template-columns:479px 479px;column-gap:22px;margin-top:23.5px}
+.role{font-weight:700;font-size:13.5px;letter-spacing:.05px;color:#333}
+.meta{margin-top:11px}
+
+/* ---------- text sections: a 578px column in the middle of the page ---------- */
+.text{width:579px;margin-left:200.5px}
+.text h2{font-weight:700;font-size:13.5px;letter-spacing:.05px;color:#333}
+.text p{margin-top:11px}
+
+/* ---------- figures: each picture in a fixed box ---------- */
+.wide{height:551.5px}
+.wide img{width:980px;height:100%}
+.windows{height:551px}
+.flow{height:374.5px}
+.row3,.grid{position:relative}
+.row3{height:229.5px}
+.row3 img{position:absolute;top:0;height:229.5px}
+.w1{left:0;width:323.5px}.w2{left:328.5px;width:323.5px}.w3{left:657px;width:323px}
+.grid{height:556.5px}
+.grid img{position:absolute;width:484.5px;height:272.5px}
+.g1,.g3{left:0}.g2,.g4{left:495.5px}
+.g1,.g2{top:0}.g3,.g4{top:284px}
+
+/* ---------- end of page ---------- */
+.link{text-align:center}
+.link .u{color:#000;border-bottom:1px solid #CCCCCC}
+.divider{width:578.8px;height:.5px;margin:0 0 0 200.6px;background:#DDDDDD}
+.next{display:block;width:61px;height:27.5px;margin:0 auto;background:#262524;color:#FFFFFF;
+      font-weight:500;font-size:8.5px;line-height:27.5px;letter-spacing:1.2px;text-align:center}
+.foot{margin-top:68.5px;background:#F5F5F5;height:137px}
+.foot .in{width:980px;margin:0 auto;padding-top:25.4px;display:grid;grid-template-columns:55.5px 72px auto}
+.foot h3{margin:0;font-weight:700;font-size:10px;line-height:14px;letter-spacing:.15px;color:#333}
+.foot li{font-size:8px;line-height:15.3px;letter-spacing:.05px;color:#333}
+.foot ul{margin-top:6.6px}
+</style>
+</head>
+<body>
+<main class="page">
+
+  <figure class="hero"><img src="img/hero.webp" width="980" height="552" alt="Audiences on an iMac, on black">
+    <p class="wm"><span class="a">STARCOUNT</span><span class="b">/</span><span class="c">AUDIENCES</span></p></figure>
+
+  <h1 class="title">Audiences</h1>
+  <div class="intro">
+    <div>
+      <p class="role">Head of Product Design</p>
+      <p class="meta">Starcount</p>
+      <p class="meta">B2B Data Science</p>
+    </div>
+    <p>Audiences is a B2B platform that allows companies to define one or multiple target audiences based on “Passions” — which is how Starcount defines consumer buying interests — and create geo-fences relevant to those audiences. This allows the companies to advertise or adjust retail presence in these areas to maximise product fit. This was a project built from scratch, essentially trying to turn the available data, into a solution that would cater to our existing and potential clients.</p>
+  </div>
+
+  <figure class="wide windows" id="f-windows" style="margin-top:70px"><img src="img/windows.webp" width="980" height="551" alt="Three Audiences windows overlapping on a grey band: the map, the Passions filter and the Audience Insight panel"></figure>
+
+  <section class="text" id="t1" style="margin-top:69.2px">
+    <h2>From idea to product</h2>
+    <p>Most projects are born out of a need, to which a solution is built. Audiences was built on a belief that the data we had, could be turned into a viable product. This required a different approach to design and ideating. The initial focus was on understating how we could use our data, to surface insights that other companies wouldn’t be able to. With that, we then had to think how to turn those insights into actionable features, that our clients would use, and understand how to wrap it all up as a value proposition that we could take to market.</p>
+  </section>
+
+  <figure class="row3" id="f-row3" style="margin-top:76px">
+    <img class="w1" src="img/wireframes.webp" alt="Wireframe of the campaigns screen: title lists and a map placeholder">
+    <img class="w2" src="img/prototype.webp" alt="Early design: Motivations filters, sliders and a purple audience map">
+    <img class="w3" src="img/hifi.webp" alt="High-fidelity dark design: two audience cards over a purple and pink heat map of London">
+  </figure>
+
+  <section class="text" id="t2" style="margin-top:82.2px">
+    <h2>Internal workshops</h2>
+    <p>We did this by doing multiple workshops — first with key people in the company, who had either considerable knowledge regarding the data, or considerable knowledge about our clients (Sales/Support). This enabled the product team to flesh out a first draft of the offer, and what it could look like to share with actual clients, whose feedback further shaped the offer, and introduced new concepts that we could explore as product features to introduce later on.</p>
+    <p>Based on these sessions, we were able to get working on an MVP within a couple of weeks, and have it ready for another round of feedback within the month.</p>
+  </section>
+
+  <figure class="wide flow" id="f-flow" style="margin-top:69.5px"><img src="img/flow.webp" width="980" height="375" alt="The flow of Audiences screens mapped out on a dark board, connected by arrows"></figure>
+
+  <section class="text" id="t3" style="margin-top:69.7px">
+    <h2>Validating our findings</h2>
+    <p>After the initial feedback on our MVP, we ran a competitor analysis to identify key features we’d need to match, and more importantly, making sure clients adopting our offer wouldn’t have their workflows disrupted by a steep learning curve, or lack of functionality. We ran the internal workshops and client feedback sessions again to validate the new findings. Me and the team had to come up with clever ways to address all needs, with our limited time and resources, using our ingenuity to maximise the value of these initial releases, and start laying the foundation upon which we’d build iteratively.</p>
+  </section>
+
+  <figure class="grid" id="f-grid" style="margin-top:70px">
+    <img class="g1" src="img/grid-1.webp" alt="The 3D audience map over London, with the Audience Insight panel">
+    <img class="g2" src="img/grid-2.webp" alt="Audience map with an area selected and its details">
+    <img class="g3" src="img/grid-3.webp" alt="Audience map with the filters panel open">
+    <img class="g4" src="img/grid-4.webp" alt="Create your own audience: the passion picker over the map">
+  </figure>
+
+  <section class="text" id="t4" style="margin-top:79.7px">
+    <h2>Culture shift</h2>
+    <p>This project marked a change in product culture within the company, and set the tone for future development. The pace at which we showed new iterations, and presented in an informed manner the areas that needed attention next, allowed a more organised process, as well as more reassured leadership and stakeholders alike. In the months after launch, work kept at a steady pace, improving and iterating the product in line with both our continuous internal testing and auditing, as well as user feedback that came either voluntarily or in organised periodic sessions.</p>
+  </section>
+
+  <figure class="wide" id="f-mac" style="margin-top:69.5px"><img src="img/macbook.webp" width="980" height="552" alt="Audiences on a MacBook Pro, on black"></figure>
+
+  <p class="link" id="link" style="margin-top:22.9px"><span class="u">starcount.com/audiences</span></p>
+  <div class="divider" id="divider" style="margin-top:75.6px"></div>
+  <span class="next" id="next" style="margin-top:82.5px">NEXT</span>
+</main>
+
+<footer class="foot" id="foot">
+  <div class="in">
+    <div><h3>Apps</h3><ul><li>Mara</li><li>Penfold</li><li>Done</li><li>Orbis</li></ul></div>
+    <div><h3>Desktop</h3><ul><li>Audiences</li><li>Observatory</li></ul></div>
+    <div><h3>Agency</h3><ul><li>Savr</li><li>Pockted</li></ul></div>
+  </div>
+</footer>
+</body>
+</html>
