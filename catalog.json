@@ -198,23 +198,6 @@
   },
   {
     "project": "mara",
-    "id": "2020-07-20",
-    "name": "Figma",
-    "page": "site/index.html",
-    "width": 1920,
-    "shipped": null,
-    "until": null,
-    "made": null,
-    "source": {
-      "kind": "figma",
-      "figma": "https://www.figma.com/design/Z9p4dGIT13UAJSSESrOAd5/-cxd.com?node-id=98-75481",
-      "frame": "MARA _air (98:75481), 1920 x 32962"
-    },
-    "note": "The Figma frame MARA _air built as one page with figma2code. All text outside the phone screens is live, including callouts and labels taken out of renders; mockups, sketches and the hero are Figma renders. Never on the live folio.",
-    "path": "versions/mara/2020-07-20/site/index.html?v=31970695"
-  },
-  {
-    "project": "mara",
     "id": "2020-07-23",
     "name": "Sqsp",
     "page": "site/index.html",
@@ -229,6 +212,23 @@
     },
     "note": "The Mara case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text, including the badge, sketch-board, montage and caption text taken out of the pictures; phone screens are cut from the screenshots and clipped to their measured boxes.",
     "path": "versions/mara/2020-07-23/site/index.html?v=068b4ece"
+  },
+  {
+    "project": "mara",
+    "id": "2024-07-20",
+    "name": "Figma",
+    "page": "site/index.html",
+    "width": 1920,
+    "shipped": null,
+    "until": null,
+    "made": null,
+    "source": {
+      "kind": "figma",
+      "figma": "https://www.figma.com/design/Z9p4dGIT13UAJSSESrOAd5/-cxd.com?node-id=98-75481",
+      "frame": "MARA _air (98:75481), 1920 x 32962"
+    },
+    "note": "The Figma frame MARA _air built as one page with figma2code. All text outside the phone screens is live, including callouts and labels taken out of renders; mockups, sketches and the hero are Figma renders. Never on the live folio.",
+    "path": "versions/mara/2024-07-20/site/index.html?v=31970695"
   },
   {
     "project": "mara",
