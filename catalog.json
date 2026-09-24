@@ -164,6 +164,24 @@
   },
   {
     "project": "penfold",
+    "id": "2020",
+    "name": "Old site",
+    "page": "site/index.html",
+    "width": 1100,
+    "shipped": null,
+    "until": null,
+    "made": null,
+    "source": {
+      "kind": "rebuilt-from-screenshots",
+      "figma": "https://www.figma.com/design/zfcJ5OKKZjtizBcsNOygGW/Penfold-_new?node-id=120-5410",
+      "screenshots": "source/screenshots (the old live site, captured 2024-07-07, 2x of a 2048px window)",
+      "originals": "source/originals: Figma frames hero (121:5411), sketches (120:5372), craft (120:5379), exports and their raw images"
+    },
+    "note": "The Penfold case study from the old live site (2020), rebuilt from screenshots with image2code. Text is live text; hero, sketches and montage are the original Figma frames; the 20 phone screens are cut from the screenshots and clipped to their measured boxes, ready to be swapped for originals.",
+    "path": "versions/penfold/2020/site/index.html?v=cec7f835"
+  },
+  {
+    "project": "penfold",
     "id": "2024-07-15",
     "name": "Figma",
     "page": "site/index.html",

@@ -51,6 +51,7 @@ request left localhost.
 
 | id | what | shipped | left the folio |
 |---|---|---|---|
+| `2020` | Old site: the 2020 live page, rebuilt from screenshots (notes in `source/NOTES.md`) | 2020, date not on record | |
 | `2024-07-15` | Figma: the Figma "penfold _air" frame, built as one page | never | |
 | `2026-07-30` | Lite: the live page, as of 24 Sep 2026 | 30 Jul 2026 14:54 | live |
 

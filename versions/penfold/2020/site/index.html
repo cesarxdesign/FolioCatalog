@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1100">
+<meta name="robots" content="noindex">
+<title>Penfold · Cesar Garcia</title>
+<!-- The Penfold case study as it was live in 2020, rebuilt from screenshots of the old site
+     (Figma "Penfold _new" > Section 1 > 2020, taken 2024-07-07). Every length is measured from
+     those screenshots in the old site's own CSS pixels (they were 2x captures of a 2048px window).
+     Text is live text, transcribed as written. The hero, the sketches and the wireframe montage are
+     the original Figma frames (hero, sketches, craft). Phone screens are cut from the screenshots,
+     each clipped to its measured box, so an original can replace one without moving anything. -->
+<link rel="stylesheet" href="_vendor/67a20a0dc1-css2.css">
+<style>
+*{box-sizing:border-box}
+p,h1,h2,ul,figure,figcaption{margin:0}
+ul{padding:0;list-style:none}
+img{display:block}
+html{background:#FFFFFF}
+body{margin:0;background:#FFFFFF;color:#757575;
+     font:11px/17px "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.4px;
+     -webkit-font-smoothing:antialiased}
+
+.page{width:980px;margin:0 auto;padding-top:35px}
+
+/* ---------- hero and intro ---------- */
+.hero{height:551.36px}
+.hero img{width:980px;height:551.36px}
+.title{margin-top:48.6px;font-weight:700;font-size:60px;line-height:60px;letter-spacing:.6px;color:#000}
+.intro{display:grid;grid-template-columns:479px 479px;column-gap:22px;margin-top:24px}
+.role{font-weight:700;font-size:13.5px;letter-spacing:.05px;color:#333}
+.meta{margin-top:11px}
+
+/* ---------- text sections: a 578px column in the middle of the page ---------- */
+.text{width:578px;margin-left:201px}
+.text h2{font-weight:700;font-size:13.5px;letter-spacing:.05px;color:#333}
+.text p{margin-top:11px}
+.text ul{margin-top:11px}
+.text li{position:relative;padding-left:27px}
+.text li+li{margin-top:5.5px}
+.text li::before{content:"\2022";position:absolute;left:15.5px;top:0;color:#757575}
+
+/* ---------- figures ---------- */
+.sketches{margin-top:70px;height:298.5px}
+.sketches img{width:980px;height:298.5px}
+.craft{margin-top:23.6px;height:627.36px}
+.craft img{width:980px;height:627.36px}
+
+/* Grey bands of four screens. Each screen is its own box, clipped at the measured radius. */
+.band{position:relative;background:#EEEEEE;height:551.5px}
+.screen{position:absolute;width:191px;height:414px;border-radius:15px;overflow:hidden;
+        box-shadow:0 1px 8px rgba(0,0,0,.16);background:#F7F7F7}
+.screen img{width:191px;height:414px}
+.s1{left:52px}.s2{left:280.5px}.s3{left:508.5px}.s4{left:737px}
+.band.benef .screen{top:68.5px}
+.band.trans{height:552px}
+.band.trans .screen{top:41.5px}
+.band figcaption{position:absolute;top:470px;width:191px;padding-left:10px;
+     font:500 12px/16px "IBM Plex Mono",ui-monospace,Menlo,monospace;letter-spacing:.15px;color:#0E3153;white-space:pre}
+
+/* Twelve rendered phones. Each box holds the device and its shadow, on the panel's own fill. */
+.phones{position:relative;background:#FBFBFB;height:1225.5px}
+.phone{position:absolute;width:198.5px;height:346.5px}
+.phone img{width:198.5px;height:346.5px}
+.c1{left:36px}.c2{left:258px}.c3{left:480px}.c4{left:702px}
+.r1{top:37px}.r2{top:445.5px}.r3{top:854px}
+
+/* ---------- end of page ---------- */
+.stores{margin-top:22.9px;text-align:center}
+.stores .u{color:#000;border-bottom:1px solid #CCCCCC}
+.divider{width:578.5px;height:1px;margin:75.1px 0 0 200.5px;background:#EEEEEE}
+.next{display:block;width:61px;height:27.5px;margin:82.5px auto 0;background:#262524;color:#FFFFFF;
+      font-weight:500;font-size:8.5px;line-height:27.5px;letter-spacing:1.2px;text-align:center}
+.foot{margin-top:68.5px;background:#F5F5F5;height:137px}
+.foot .in{width:980px;margin:0 auto;padding-top:25.4px;display:grid;grid-template-columns:55.5px 72px auto}
+.foot h3{margin:0;font-weight:700;font-size:10px;line-height:14px;letter-spacing:.15px;color:#333}
+.foot li{font-size:8px;line-height:15.3px;letter-spacing:.05px;color:#333}
+.foot ul{margin-top:6.6px}
+</style>
+</head>
+<body>
+<main class="page">
+
+  <figure class="hero"><img src="img/hero.webp" width="980" height="551" alt="Penfold on an iPad and an iPhone: the website, and the app's yearly goal screen"></figure>
+
+  <h1 class="title">Penfold</h1>
+  <div class="intro">
+    <div>
+      <p class="role">Head of Design</p>
+      <p class="meta">Penfold Savings</p>
+      <p class="meta">B2C Fintech</p>
+    </div>
+    <p>First hire, tasked with building the product from scratch, creating and introducing new concepts to the leadership team, testing, iterating, documenting and working closely with developers. Met daily with Customer Support to ensure focus on the right problems, and worked closely with Marketing, maturing the brand and advertising.</p>
+  </div>
+
+  <figure class="sketches"><img src="img/sketches.webp" width="980" height="299" alt="Early sketches of the Penfold app: pots, the yearly goal donut, payments and the transaction view"></figure>
+
+  <section class="text" style="margin-top:69.2px">
+    <h2>Research</h2>
+    <p>Initial research, as well as bringing together all parts of the business was crucial in getting the first version off the ground. It allowed us to iterate fast, and expose the designs and ideas to users as quickly as possible, ensuring we moved quickly and swiftly with everyone aligned under the same vision and direction.</p>
+    <p>As a new product, we needed to make the right calls from the start to avoid spending development time on features that wouldn't impact our users and drive growth. Constantly reviewing bugs/crash logs as well as user sessions on FullStory was a great source of insight. Once the team grew, I extended that to weekly review sessions with Customer Service to make sure our pipeline was always aligned with real time user needs.</p>
+    <p>New opportunities would be prioritised against our sprint candidates as soon as we'd identify them, and urgent tweaks would be flagged and negotiated into the sprint.</p>
+  </section>
+
+  <figure class="craft"><img src="img/craft.webp" width="980" height="627" alt="Wireframes and designs of the Estimate screen, annotated: review copy, spacing, contrast, touch targets"></figure>
+
+  <section class="text" style="margin-top:22.8px">
+    <h2>User feedback</h2>
+    <p>One of the challenges of working with a small team is weighting features not only by user impact, but also by internal impact as they may generate added burden to ops/customer service. An example was a feature that would allow users to nominate a legal beneficiary. Although it never came up in user interviews, it became a hot request once users actually signed up for the live service. Not a blockbuster, but something we could build quickly, and it:</p>
+    <ul>
+      <li>Allowed us to ping back the users who had requested it saying "You asked for it, and here it is a week later" — always a nice touch</li>
+      <li>Added a level of trust to our service by making it more robust and "legal friendly"</li>
+      <li>Ultimately reduced the burden on CS requests for manual nominations, making the process fully automated, more reliable, and instant for the user.</li>
+    </ul>
+  </section>
+
+  <figure class="band benef" style="margin-top:75.6px">
+    <div class="screen s1"><img src="img/beneficiary-1.webp" alt="Nominate beneficiary: the empty form"></div>
+    <div class="screen s2"><img src="img/beneficiary-2.webp" alt="What is a beneficiary: the explainer sheet"></div>
+    <div class="screen s3"><img src="img/beneficiary-3.webp" alt="Nominate beneficiary: the filled form"></div>
+    <div class="screen s4"><img src="img/beneficiary-4.webp" alt="Beneficiary nominated: success"></div>
+  </figure>
+
+  <section class="text" style="margin-top:69.2px">
+    <h2>Iterate from drop-off analysis</h2>
+    <p>As the only product, growth was 100% dependent on how many users we could get through the funnel. We did drop-off analysis almost daily to ensure there was a clear focus on blockers — whatever caused most users leave without finishing onboarding had to be looked at. Because everything was built iteratively it was relatively easy to pick up on blockers and improve them. This allowed our development team to spend less than a day on most iterations and ship, without feeling overburdened or locked into a feature for days on end without being able to quickly focus on something else if needed. This allowed us to move make visible progress on all key areas of the product, essentially at the same time.</p>
+  </section>
+
+  <figure class="band trans" style="margin-top:69.6px">
+    <div class="screen s1"><img src="img/transactions-1.webp" alt="Transactions, first iteration"></div>
+    <div class="screen s2"><img src="img/transactions-2.webp" alt="Transactions with states and a bottom lip"></div>
+    <div class="screen s3"><img src="img/transactions-3.webp" alt="Transactions with types, filtering and flexible height"></div>
+    <div class="screen s4"><img src="img/transactions-4.webp" alt="Transactions with yearly and lifetime views, totals, line actions and notifications"></div>
+    <figcaption class="s1">first iteration</figcaption>
+    <figcaption class="s2">+state
++bottom lip</figcaption>
+    <figcaption class="s3">+types
++filtering
++flexible height</figcaption>
+    <figcaption class="s4">+yearly/lifetime view
++totals
++line actions
++notifcations</figcaption>
+  </figure>
+
+  <section class="text" style="margin-top:69.2px">
+    <h2>Milestones</h2>
+    <p>In a year, the platform went from single digit users to handling millions of pounds, and monthly double digit growth. We've also set up Trustpilot and Net Promoter Score to have a measure of customer happiness, and both have top scores with hundreds of independent reviews.</p>
+    <p>The platform has now been optimised for mobile and desktop web views, launched on the Play Store for Android, and soon available on the App Store as well.</p>
+  </section>
+
+  <figure class="phones" style="margin-top:70.1px">
+    <div class="phone c1 r1"><img src="img/milestone-01.webp" alt="Set up your pension"></div>
+    <div class="phone c2 r1"><img src="img/milestone-02.webp" alt="Welcome: getting started"></div>
+    <div class="phone c3 r1"><img src="img/milestone-03.webp" alt="Invest: fund and risk level"></div>
+    <div class="phone c4 r1"><img src="img/milestone-04.webp" alt="Welcome: final step"></div>
+    <div class="phone c1 r2"><img src="img/milestone-05.webp" alt="Yearly goal"></div>
+    <div class="phone c2 r2"><img src="img/milestone-06.webp" alt="Pause contributions"></div>
+    <div class="phone c3 r2"><img src="img/milestone-07.webp" alt="Yearly goal, contributions paused"></div>
+    <div class="phone c4 r2"><img src="img/milestone-08.webp" alt="Saving: resume contributions"></div>
+    <div class="phone c1 r3"><img src="img/milestone-09.webp" alt="Transactions and pension transfers"></div>
+    <div class="phone c2 r3"><img src="img/milestone-10.webp" alt="Estimate"></div>
+    <div class="phone c3 r3"><img src="img/milestone-11.webp" alt="Tax relief update from HMRC"></div>
+    <div class="phone c4 r3"><img src="img/milestone-12.webp" alt="Yearly goal, paused"></div>
+  </figure>
+
+  <p class="stores">Available on the <span class="u">App Store</span> and <span class="u">Play Store</span></p>
+  <div class="divider"></div>
+  <span class="next">NEXT</span>
+</main>
+
+<footer class="foot">
+  <div class="in">
+    <div><h3>Apps</h3><ul><li>Mara</li><li>Penfold</li><li>Done</li><li>Orbis</li></ul></div>
+    <div><h3>Desktop</h3><ul><li>Audiences</li><li>Observatory</li></ul></div>
+    <div><h3>Agency</h3><ul><li>Savr</li><li>Pockted</li></ul></div>
+  </div>
+</footer>
+</body>
+</html>
