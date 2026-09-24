@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16.6667" height="16.6667" viewBox="0 0 16.6667 16.6667" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon / Checkbox_fill">
+<g id="Ellipse 2">
+<circle cx="8.33333" cy="8.33333" r="5.83333" fill="#5DA700"/>
+<circle cx="8.33333" cy="8.33333" r="5.83333" fill="url(#paint0_linear_0_469)" style="mix-blend-mode:soft-light"/>
+</g>
+<path id="Vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M11.4346 5.96952C11.6662 6.17075 11.6908 6.52164 11.4896 6.75326L7.73284 10.7794C7.6192 10.9102 7.45104 10.9805 7.27812 10.9695C7.1052 10.9585 6.94733 10.8674 6.85121 10.7233L5.09336 8.66918C4.92317 8.41389 4.99215 8.06896 5.24745 7.89877C5.50274 7.72857 5.84767 7.79756 6.01786 8.05285L7.37173 9.50094L10.6508 6.02453C10.8521 5.79292 11.2029 5.76828 11.4346 5.96952Z" fill="white"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_469" x1="8.33333" y1="2.5" x2="8.33333" y2="14.1667" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

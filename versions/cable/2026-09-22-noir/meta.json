@@ -1,0 +1,19 @@
+{
+  "project": "cable",
+  "id": "2026-09-22-noir",
+  "name": "Noir",
+  "page": "site/index.html",
+  "width": 1440,
+  "shipped": null,
+  "made": "2026-09-22T09:31:27+01:00",
+  "edited": null,
+  "source": {
+    "kind": "claude-design",
+    "canvas": "https://claude.ai/artifact/H8yFR47CveYkA3kNoBGirr",
+    "boards": [
+      "Main.dc.html"
+    ],
+    "values": {}
+  },
+  "note": "Text only. Never shipped."
+}

@@ -1,0 +1,16 @@
+{
+  "project": "cable",
+  "id": "2026-07-08",
+  "name": "",
+  "page": "site/cable/index.html",
+  "width": 1440,
+  "shipped": "2026-08-06T18:04:05+01:00",
+  "until": "2026-09-21T21:23:51+01:00",
+  "source": {
+    "kind": "portfolio",
+    "ref": "cable-v1",
+    "commit": "7d2f27438eb2cad9c7e0aa405c55df2f7baad290",
+    "committed": "2026-09-21T14:55:16+01:00"
+  },
+  "note": "The page as it was when the 21 September rebuild replaced it. Shipped is the oldest production deploy Vercel still lists."
+}

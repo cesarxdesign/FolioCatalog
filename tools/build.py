@@ -1,0 +1,191 @@
+#!/usr/bin/env python3
+"""Rebuild catalog.json and index.html from versions/*/*/meta.json."""
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def when(m):
+    """Sort key: when the version first existed in public, or was made."""
+    return m.get("shipped") or m.get("made") or m["id"][:10]
+
+
+def main():
+    metas = [json.loads(p.read_text()) for p in sorted(ROOT.glob("versions/*/*/meta.json"))]
+    for m in metas:
+        m["path"] = f"versions/{m['project']}/{m['id']}/{m['page']}"
+    # Projects A-Z, versions oldest first, so side by side reads left to right in time.
+    metas.sort(key=lambda m: (m["project"], when(m), m["id"]))
+    (ROOT / "catalog.json").write_text(json.dumps(metas, indent=2, ensure_ascii=False) + "\n")
+    keep = ("project", "id", "name", "path", "width", "shipped", "until", "made")
+    data = json.dumps([{k: m.get(k) for k in keep} for m in metas], ensure_ascii=False)
+    (ROOT / "index.html").write_text(PAGE.replace("/*DATA*/[]", data))
+    print(f"index.html: {len(metas)} versions")
+
+
+PAGE = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>FolioCatalog</title>
+<style>
+:root{
+  --bg:#EDEFF2; --panel:#FFFFFF; --ink:#16202B; --muted:#5E6C7A; --line:#D3DAE2; --accent:#C9204E;
+  --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#2C2C2C; --panel:#1F1F1F; --ink:#E8EAED; --muted:#969CA4; --line:#3C3C3C; --accent:#FF5081;}}
+:root[data-theme="dark"]{
+  --bg:#2C2C2C; --panel:#1F1F1F; --ink:#E8EAED; --muted:#969CA4; --line:#3C3C3C; --accent:#FF5081;}
+*{box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);display:flex;flex-direction:column}
+header{flex:none;display:flex;align-items:center;gap:14px;padding:8px 16px;white-space:nowrap;overflow:hidden;
+       background:var(--panel);border-bottom:1px solid var(--line)}
+h1{font-size:14px;font-weight:600;margin:0 4px 0 0;letter-spacing:-.01em}
+label{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+select,button{font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;cursor:pointer}
+select{padding:4px 24px 4px 8px;appearance:none;max-width:260px;
+       background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+       background-position:calc(100% - 12px) 55%,calc(100% - 8px) 55%;background-size:4px 4px;background-repeat:no-repeat}
+.step{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.step[hidden]{display:none}
+.step button{width:28px;height:26px;padding:0;font-size:15px;line-height:1}
+.step button:disabled{opacity:.35;cursor:default}
+select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
+.pane{flex:1 1 0;min-width:0;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
+      border-bottom:0;border-radius:8px 8px 0 0;overflow:hidden}
+.cap{flex:none;display:flex;align-items:baseline;gap:8px;padding:7px 10px;border-bottom:1px solid var(--line);font-size:12px;
+     white-space:nowrap;overflow:hidden}
+.cap b{font-weight:600}
+.cap span{color:var(--muted);overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.cap a{color:var(--accent);text-decoration:none}
+.view{flex:1;min-height:0;position:relative;overflow:hidden;background:#fff}
+.view iframe{position:absolute;top:0;border:0;transform-origin:0 0;background:#fff}
+.empty{margin:auto;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <h1>FolioCatalog</h1>
+  <label>Project <select id="project"></select></label>
+  <label>Version <select id="version"></select></label>
+  <label>Compare <select id="count"></select></label>
+  <div class="step" id="step" hidden>
+    <button type="button" id="prev" aria-label="Show earlier">&lsaquo;</button>
+    <button type="button" id="next" aria-label="Show later">&rsaquo;</button>
+    <span id="range"></span>
+  </div>
+</header>
+<main id="panes"></main>
+<script>
+const ALL = /*DATA*/[];
+const MIN_PANE = 360;               // narrower than this and a pane stops being readable
+const $ = id => document.getElementById(id);
+const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.createElement(tag), props); e.append(...kids); return e; };
+const projects = [...new Set(ALL.map(v => v.project))];
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const state = {project: projects[0], id: null, n: 1, off: 0};
+
+const fmt = iso => {
+  if (!iso) return '';
+  if (iso.length <= 10) return new Date(iso + 'T12:00').toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'});
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'}) + ', ' +
+         d.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'});
+};
+const label = v => v.id.slice(0, 10) + (v.name ? ' · ' + v.name : '');
+const when = v => v.shipped ? `shipped ${fmt(v.shipped)}` + (v.until ? ` → ${fmt(v.until)}` : ' · live now')
+                            : 'never shipped' + (v.made ? ` · made ${fmt(v.made)}` : '');
+const list = () => ALL.filter(v => v.project === state.project);
+
+function readHash() {
+  const [p, id, n, off] = decodeURIComponent(location.hash.slice(1)).split('/');
+  state.project = projects.includes(p) ? p : projects[0];
+  const vs = list();
+  state.id = vs.some(v => v.id === id) ? id : vs[vs.length - 1].id;
+  state.n = Math.min(6, Math.max(1, +n || 1));
+  state.off = Math.max(0, +off || 0);
+}
+
+function window_() {
+  // The n versions being compared: the chosen one and those after it, pulled back at the end.
+  const vs = list(), i = vs.findIndex(v => v.id === state.id);
+  const n = Math.min(state.n, vs.length), start = Math.min(i, vs.length - n);
+  return vs.slice(start, start + n);
+}
+
+function render() {
+  const vs = list();
+  $('project').value = state.project;
+  $('version').replaceChildren(...vs.map(v => el('option', {value: v.id, textContent: label(v)})));
+  $('version').value = state.id;
+  $('count').value = state.n;
+
+  const set = window_();
+  const room = $('panes').clientWidth + 10;
+  const fit = Math.max(1, Math.min(set.length, Math.floor(room / (MIN_PANE + 10))));
+  state.off = Math.min(state.off, set.length - fit);
+  const shown = set.slice(state.off, state.off + fit);
+  $('step').hidden = fit >= set.length;
+  $('prev').disabled = state.off === 0;
+  $('next').disabled = state.off + fit >= set.length;
+  $('range').textContent = `${state.off + 1}–${state.off + fit} of ${set.length}`;
+
+  const have = [...$('panes').children].map(p => p.dataset.path).join('|');
+  if (have !== shown.map(v => v.path).join('|')) {
+    $('panes').replaceChildren(...shown.map(v => {
+      const frame = el('iframe', {src: v.path, title: label(v), loading: 'eager'});
+      const pane = el('section', {className: 'pane'},
+        el('div', {className: 'cap'}, el('b', {textContent: label(v)}), el('span', {textContent: when(v)}),
+           el('a', {href: v.path, target: '_blank', rel: 'noopener', textContent: 'Open ↗', title: 'The whole page, in a new tab'})),
+        el('div', {className: 'view'}, frame));
+      pane.dataset.path = v.path;
+      pane.dataset.width = v.width || 1440;
+      return pane;
+    }));
+  }
+  fitFrames();
+  const hash = `#${state.project}/${state.id}/${state.n}/${state.off}`;
+  if (location.hash !== hash) history.replaceState(null, '', hash);
+}
+
+function fitFrames() {
+  // Each page is drawn at the width it was designed for and scaled down to its pane.
+  for (const pane of $('panes').children) {
+    const view = pane.querySelector('.view'), f = view.querySelector('iframe');
+    const w = +pane.dataset.width, pw = view.clientWidth, s = Math.min(1, pw / w);
+    f.style.width = w + 'px';
+    f.style.height = view.clientHeight / s + 'px';
+    f.style.left = Math.max(0, (pw - w * s) / 2) + 'px';
+    f.style.transform = `scale(${s})`;
+  }
+}
+
+if (!ALL.length) {
+  $('panes').append(el('p', {className: 'empty', textContent: 'Nothing stored yet.'}));
+  document.querySelectorAll('header label').forEach(e => e.hidden = true);
+} else {
+  projects.forEach(p => $('project').append(el('option', {value: p, textContent: cap(p)})));
+  for (let i = 1; i <= 6; i++) $('count').append(el('option', {value: i, textContent: i === 1 ? '1 page' : `${i} side by side`}));
+  $('project').onchange = e => { state.project = e.target.value; const vs = list(); state.id = vs[vs.length - 1].id; state.off = 0; render(); };
+  $('version').onchange = e => { state.id = e.target.value; state.off = 0; render(); };
+  $('count').onchange = e => { state.n = +e.target.value; state.off = 0; render(); };
+  $('prev').onclick = () => { state.off--; render(); };
+  $('next').onclick = () => { state.off++; render(); };
+  window.onhashchange = () => { readHash(); render(); };
+  let t; window.onresize = () => { clearTimeout(t); t = setTimeout(render, 60); };
+  readHash();
+  render();
+}
+</script>
+</body>
+</html>
+"""
+
+if __name__ == "__main__":
+    main()

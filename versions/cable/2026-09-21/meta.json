@@ -1,0 +1,16 @@
+{
+  "project": "cable",
+  "id": "2026-09-21",
+  "name": "Rebuild",
+  "page": "site/cable/index.html",
+  "width": 1440,
+  "shipped": "2026-09-21T21:23:51+01:00",
+  "until": "2026-09-23T23:12:11+01:00",
+  "source": {
+    "kind": "portfolio",
+    "ref": "3f3565d",
+    "commit": "3f3565d4a872c200df90ca0a18a2cf4611c3c675",
+    "committed": "2026-09-21T19:57:45Z"
+  },
+  "note": "The third column on the staging compare page."
+}

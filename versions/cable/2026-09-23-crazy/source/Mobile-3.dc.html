@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cable Crazy, mobile part 3</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;family=Fraunces:ital,opsz,wght@1,9..144,400&amp;family=Playfair+Display:ital,wght@1,400&amp;family=Newsreader:ital,opsz,wght@1,6..72,400&amp;display=swap">
+<style>
+[data-theme="light"]{--s1:#F18303;--s2:#0062F5;--s3:#ECA10B;--s4:#57A300;--s5:#90DE00;--bg:#FFFFFF;--ink:#181818;--body:#606060;--mut:#696969;--line:#EBEBEB;--accent:#2C60C7;--accent2:#629AFA;--glow:rgba(44,96,199,.07);--band:#F8F8F8;--deep:#1F3B71;--tint:#D1E0FF;--halo:rgba(0,98,245,.12)}
+[data-theme="dark"]{--s1:#F18303;--s2:#629AFA;--s3:#ECA10B;--s4:#57A300;--s5:#90DE00;--bg:#0B111C;--ink:#F8F8F8;--body:#C0C0C0;--mut:#9A9A9A;--line:#1E2A40;--accent:#629AFA;--accent2:#D1E0FF;--glow:rgba(98,154,250,.10);--band:#111A2B;--deep:#1F3B71;--tint:#15233F;--halo:rgba(0,98,245,.30)}
+body{margin:0;background:#FFFFFF;font-family:'Geist',-apple-system,'Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased}
+body:has([data-theme="dark"]){background:#0B111C}
+a{color:var(--ink);text-decoration:none}a:hover{color:var(--accent)}
+.shot{border-radius:8px;box-shadow:var(--shot-sh)}
+div.shot{overflow:hidden}
+.acc{font-family:var(--acc-ff);font-style:var(--acc-fs);font-weight:var(--acc-fw);font-size:var(--acc-sz);letter-spacing:var(--acc-ls);background:linear-gradient(115deg,var(--accent2) 10%,var(--accent) 78%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--accent);padding-right:.08em}
+.shot.m{border-radius:6px}
+.shot.s{border-radius:6px}
+.badge{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#FFFFFF;font:600 12px/22px 'Geist',sans-serif;text-align:center;box-shadow:0 0 0 3px var(--bg)}
+.shot.cut-b{border-bottom-left-radius:0;border-bottom-right-radius:0}
+</style>
+</helmet>
+<div data-theme="{{theme}}" style="--acc-ff: {{accFf}}; --acc-fs: {{accFs}}; --acc-fw: {{accFw}}; --acc-sz: {{accSz}}; --acc-ls: {{accLs}}; --shot-sh: {{shotSh}}; width: 390px; height: 2070px; box-sizing: border-box; background: var(--bg); color: var(--ink); padding: 0 20px; display: flex; flex-direction: column;">
+<section style="display: flex; flex-direction: column; gap: 32px; padding: 72px 0; border-top: 1px solid var(--line);">
+<div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-size: 30px; line-height: 1; letter-spacing: -0.04em; font-weight: 600;">Outcome</span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent);">After 3.0</span></div>
+<h2 style="margin: 0; font-size: 36px; line-height: 1.06; letter-spacing: -0.04em; font-weight: 600;">Working isn&rsquo;t enough. <span class="acc">It has to be worth switching to.</span></h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--body);">The bag of features became a suite. Finished, solid, reliable, and the right amount of polish to be worth the price.</p>
+<div style="display: grid;"><img class="shot m" src="/_blob/a7314cdc0ba72aaa433e2b193dcb3fec" alt="Cable v3 Oversight: a fintech&rsquo;s Paper Trails board under the blue side navigation and a single floating tab bar" style="grid-area: 1 / 1; justify-self: start; align-self: start; display: block; width: 84%; height: auto; aspect-ratio: 1440 / 952;"><img class="shot m" src="/_blob/4070c5d86cb105b72feac850311f8dd9" alt="Cable Paper Trail 3.0: a PEP QA trail under review, the maker&rsquo;s accounts listed with their review states, one opened on its QA questions" style="grid-area: 1 / 1; justify-self: end; align-self: start; display: block; width: 84%; height: auto; aspect-ratio: 1440 / 928; margin-top: 20%;"></div>
+<blockquote style="margin: 0; padding: 4px 0 4px 20px; border-left: 2px solid var(--accent); display: flex; flex-direction: column; gap: 14px;"><p style="margin: 0; font-size: 32px; line-height: 1.1; letter-spacing: -0.035em; font-weight: 500;"><span class="acc">&ldquo;Compliance officers are conservative people.&rdquo;</span></p><p style="margin: 0; font-size: 15px; line-height: 1.5; color: var(--body);">Natasha Vernier, co-founder and CEO of Cable<br><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--mut);">The SPL podcast, 2023</span></p></blockquote>
+<div style="display: grid;"><img class="shot m" src="/_blob/c4b29b775e4b038c915a154f5b7d6b28" alt="Risks &amp; Controls: each risk scored as it is filled in, with the controls that mitigate it" style="grid-area: 1 / 1; justify-self: start; align-self: start; display: block; width: 84%; height: auto; aspect-ratio: 1440 / 1024;"><img class="shot m" src="/_blob/7c38016490e00b4daeb2962f20c3630e" alt="Risk Assessment for a fintech (Griffin): its own assessment beside the programs it oversees, each scored for inherent and residual risk" style="grid-area: 1 / 1; justify-self: end; align-self: start; display: block; width: 84%; height: auto; aspect-ratio: 1440 / 1024; margin-top: 20%;"></div>
+<div style="display: flex; flex-direction: column; gap: 16px;"><p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--body);">Banks buy slowly, on trust, and on a return that outweighs the disruption of changing how people work. After launching our third major version, we cleared that bar. Tide, our pilot partner, converted first. Quaint Oak Bank, Griffin and Ramp followed, and in the years after, more than 50 banks and fintechs.</p><p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--body);">Cable was acquired in 2026.</p></div>
+</section>
+<section style="padding: 88px 0 80px; border-top: 1px solid var(--line);">
+<p style="margin: 0; font-size: 44px; line-height: 1.02; letter-spacing: -0.05em; font-weight: 600;">Design unlocked the value.<br><span class="acc">Value made it sell.</span></p>
+</section>
+<footer style="margin-top: auto; padding: 32px 0 48px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 28px;">
+<div style="display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mut);">Next</div><a href="https://cesarxdesign.com/penfold" style="font-size: 34px; letter-spacing: -0.035em; font-weight: 600;">Penfold <span class="acc">&rarr;</span></a></div>
+<div style="display: flex; gap: 24px; font-size: 14px;"><a href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a></div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"dark","section":"Theme"},"accentType":{"editor":"enum","options":["serif italic","sans"],"default":"sans","section":"Theme"},"serifFace":{"editor":"enum","options":["Instrument Serif","Fraunces","Playfair Display","Newsreader"],"default":"Newsreader","section":"Theme"},"$preview":{"width":390,"height":2070}}'>
+class Component extends DCLogic {
+renderVals() {
+const serif = (this.props.accentType ?? 'serif italic') === 'serif italic';
+const faces = { 'Instrument Serif': ['1.1em', '-0.015em'], 'Fraunces': ['1em', '-0.02em'], 'Playfair Display': ['1em', '-0.02em'], 'Newsreader': ['1.04em', '-0.02em'] };
+const face = faces[this.props.serifFace] ? this.props.serifFace : 'Instrument Serif';
+return { theme: this.props.theme ?? 'dark', shotSh: '0 1px 3px rgba(14,27,51,.08), 0 12px 32px rgba(14,27,51,.18)',
+accFf: serif ? "'" + face + "', Georgia, serif" : 'inherit', accFs: serif ? 'italic' : 'normal', accFw: serif ? '400' : 'inherit', accSz: serif ? faces[face][0] : '1em', accLs: serif ? faces[face][1] : 'inherit' };
+}
+}
+</script>
+</body>
+</html>

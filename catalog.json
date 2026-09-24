@@ -1,0 +1,146 @@
+[
+  {
+    "project": "cable",
+    "id": "2024-07-06",
+    "name": "",
+    "page": "site/index.html",
+    "width": 1920,
+    "shipped": null,
+    "until": null,
+    "made": null,
+    "source": {
+      "kind": "file",
+      "from": "Portfolio/OlderVersions/cable.html (the full-quality original of compare/cable/v3.html on staging/compare-cable)"
+    },
+    "note": "The Figma Cable _air frame built as one page. Shown on the staging compare page, never on the live folio.",
+    "path": "versions/cable/2024-07-06/site/index.html"
+  },
+  {
+    "project": "cable",
+    "id": "2026-07-08",
+    "name": "",
+    "page": "site/cable/index.html",
+    "width": 1440,
+    "shipped": "2026-08-06T18:04:05+01:00",
+    "until": "2026-09-21T21:23:51+01:00",
+    "source": {
+      "kind": "portfolio",
+      "ref": "cable-v1",
+      "commit": "7d2f27438eb2cad9c7e0aa405c55df2f7baad290",
+      "committed": "2026-09-21T14:55:16+01:00"
+    },
+    "note": "The page as it was when the 21 September rebuild replaced it. Shipped is the oldest production deploy Vercel still lists.",
+    "path": "versions/cable/2026-07-08/site/cable/index.html"
+  },
+  {
+    "project": "cable",
+    "id": "2026-09-21",
+    "name": "Rebuild",
+    "page": "site/cable/index.html",
+    "width": 1440,
+    "shipped": "2026-09-21T21:23:51+01:00",
+    "until": "2026-09-23T23:12:11+01:00",
+    "source": {
+      "kind": "portfolio",
+      "ref": "3f3565d",
+      "commit": "3f3565d4a872c200df90ca0a18a2cf4611c3c675",
+      "committed": "2026-09-21T19:57:45Z"
+    },
+    "note": "The third column on the staging compare page.",
+    "path": "versions/cable/2026-09-21/site/cable/index.html"
+  },
+  {
+    "project": "cable",
+    "id": "2026-09-22-noir",
+    "name": "Noir",
+    "page": "site/index.html",
+    "width": 1440,
+    "shipped": null,
+    "made": "2026-09-22T09:31:27+01:00",
+    "edited": null,
+    "source": {
+      "kind": "claude-design",
+      "canvas": "https://claude.ai/artifact/H8yFR47CveYkA3kNoBGirr",
+      "boards": [
+        "Main.dc.html"
+      ],
+      "values": {}
+    },
+    "note": "Text only. Never shipped.",
+    "path": "versions/cable/2026-09-22-noir/site/index.html"
+  },
+  {
+    "project": "cable",
+    "id": "2026-09-23-color",
+    "name": "Color",
+    "page": "site/index.html",
+    "width": 1440,
+    "shipped": null,
+    "made": "2026-09-23T17:30:12+01:00",
+    "edited": null,
+    "source": {
+      "kind": "claude-design",
+      "canvas": "https://claude.ai/artifact/4m7nQ6C3mS9yjhuxjuYaay",
+      "boards": [
+        "Main.dc.html"
+      ],
+      "values": {
+        "theme": "light",
+        "shotR": "8px",
+        "shotOl": "var(--line)",
+        "shotSh": "0 1px 2px rgba(14,27,51,.06), 0 8px 24px rgba(14,27,51,.08)"
+      }
+    },
+    "note": "Noir with images. Never shipped.",
+    "path": "versions/cable/2026-09-23-color/site/index.html"
+  },
+  {
+    "project": "cable",
+    "id": "2026-09-23-crazy",
+    "name": "Crazy",
+    "page": "site/index.html",
+    "width": 1440,
+    "shipped": null,
+    "made": "2026-09-23T22:19:48+01:00",
+    "edited": "2026-09-23T23:07:31+01:00",
+    "source": {
+      "kind": "claude-design",
+      "canvas": "https://claude.ai/artifact/2xjjdZJBfFqQ3EUsddf3Nu",
+      "boards": [
+        "Main.dc.html",
+        "Main-2.dc.html",
+        "Main-3.dc.html",
+        "Mobile.dc.html",
+        "Mobile-2.dc.html",
+        "Mobile-3.dc.html"
+      ],
+      "values": {
+        "theme": "dark",
+        "accFf": "inherit",
+        "accFs": "normal",
+        "accFw": "inherit",
+        "accSz": "1em",
+        "accLs": "inherit"
+      }
+    },
+    "note": "Desktop, three artboards stacked. The mobile artboards are in site/mobile.html, not listed. Never shipped.",
+    "path": "versions/cable/2026-09-23-crazy/site/index.html"
+  },
+  {
+    "project": "cable",
+    "id": "2026-09-23-shipped",
+    "name": "Shipped",
+    "page": "site/cable/index.html",
+    "width": 1440,
+    "shipped": "2026-09-23T23:12:11+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "78b4426",
+      "commit": "78b4426f7c8a0aede5d4dbfeb3fb401924bd6e59",
+      "committed": "2026-09-23T23:12:08+01:00"
+    },
+    "note": "Live on cesarxdesign.com/cable.",
+    "path": "versions/cable/2026-09-23-shipped/site/cable/index.html"
+  }
+]

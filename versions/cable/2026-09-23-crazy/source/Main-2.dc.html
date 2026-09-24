@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cable Crazy, part 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;family=Fraunces:ital,opsz,wght@1,9..144,400&amp;family=Playfair+Display:ital,wght@1,400&amp;family=Newsreader:ital,opsz,wght@1,6..72,400&amp;display=swap">
+<style>
+[data-theme="light"]{--s1:#F18303;--s2:#0062F5;--s3:#ECA10B;--s4:#57A300;--s5:#90DE00;--bg:#FFFFFF;--ink:#181818;--body:#606060;--mut:#696969;--line:#EBEBEB;--accent:#2C60C7;--accent2:#629AFA;--glow:rgba(44,96,199,.07);--band:#F8F8F8;--deep:#1F3B71;--tint:#D1E0FF;--halo:rgba(0,98,245,.12)}
+[data-theme="dark"]{--s1:#F18303;--s2:#629AFA;--s3:#ECA10B;--s4:#57A300;--s5:#90DE00;--bg:#0B111C;--ink:#F8F8F8;--body:#C0C0C0;--mut:#9A9A9A;--line:#1E2A40;--accent:#629AFA;--accent2:#D1E0FF;--glow:rgba(98,154,250,.10);--band:#111A2B;--deep:#1F3B71;--tint:#15233F;--halo:rgba(0,98,245,.30)}
+body{margin:0;background:#FFFFFF;font-family:'Geist',-apple-system,'Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased}
+body:has([data-theme="dark"]){background:#0B111C}
+a{color:var(--ink);text-decoration:none}a:hover{color:var(--accent)}
+.shot{border-radius:12px;box-shadow:var(--shot-sh)}
+div.shot{overflow:hidden}
+.acc{font-family:var(--acc-ff);font-style:var(--acc-fs);font-weight:var(--acc-fw);font-size:var(--acc-sz);letter-spacing:var(--acc-ls);background:linear-gradient(115deg,var(--accent2) 10%,var(--accent) 78%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--accent);padding-right:.08em}
+.shot.m{border-radius:8px}
+.shot.s{border-radius:6px}
+.shot.cut-b{border-bottom-left-radius:0;border-bottom-right-radius:0}
+</style>
+</helmet>
+<div data-theme="{{theme}}" style="--acc-ff: {{accFf}}; --acc-fs: {{accFs}}; --acc-fw: {{accFw}}; --acc-sz: {{accSz}}; --acc-ls: {{accLs}}; --shot-sh: {{shotSh}}; width: 1440px; height: 4830px; box-sizing: border-box; background: var(--bg); color: var(--ink); padding: 0 120px; display: flex; flex-direction: column; align-items: center;">
+<div style="width: 100%; max-width: 1200px; flex-grow: 1; display: flex; flex-direction: column;">
+
+<section style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding: 140px 0; border-top: 1px solid var(--line);">
+<div style="grid-column: 1 / span 3; display: flex; flex-direction: column; gap: 10px;"><span style="font-size: 44px; line-height: 1; letter-spacing: -0.04em; font-weight: 600;">v2.0</span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent);">Growth</span></div>
+<div style="grid-column: 4 / span 9; display: flex; flex-direction: column; gap: 56px;">
+<h2 style="margin: 0; font-size: 68px; line-height: 1.02; letter-spacing: -0.045em; font-weight: 600;">Designed for outcomes, not steps. <span class="acc">The product blossomed.</span></h2>
+<p style="margin: 0; max-width: 820px; font-size: 19px; line-height: 1.6; color: var(--body);">I stopped asking users how they did the work, and started asking what outcome they needed, how they were getting there, and whether a better route existed. I kept the workshops frequent, and their insight gradually sharpened. Soon small tweaks to existing elements became full features.</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 48px; padding: 44px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+<div style="display: flex; flex-direction: column; gap: 10px;"><img class="shot s" src="/_blob/76c0fdf2bd28db5b2bbc7d2313e33978" alt="Assurance: every check against the bank&rsquo;s controls, passed, failed or without data" style="display: block; width: 100%; height: auto; aspect-ratio: 1440 / 1024; margin-bottom: 14px;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600;">Assurance</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--body);">Every account and every transaction tested against the bank&rsquo;s own controls, continuously. Compliance had been sampling a slice of it once a quarter.</p></div>
+<div style="display: flex; flex-direction: column; gap: 10px;"><img class="shot s" src="/_blob/b93201672da7475167b60012ec4b454c" alt="Reports: a PEP QA sample, reviewed account by account, with the QA score beside it" style="display: block; width: 100%; height: auto; aspect-ratio: 1440 / 1024; margin-bottom: 14px;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600;">Reports</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--body);">Teams have to review the quality of their own decisions. The product drew the sample, asked the questions and returned the score, ready to put in front of a regulator.</p></div>
+<div style="display: flex; flex-direction: column; gap: 10px;"><img class="shot s" src="/_blob/4bdea6d0fe9be7c1db0b328f29ef071c" alt="Risk Assessment: each typology risk scored for inherent and residual risk as it is filled in" style="display: block; width: 100%; height: auto; aspect-ratio: 1440 / 1024; margin-bottom: 14px;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600;">Risk Assessment</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--body);">The assessment every regulated firm has to produce each year, built in the product rather than a spreadsheet. Scored as you fill it in, locked once approved.</p></div>
+<div style="display: flex; flex-direction: column; gap: 10px;"><img class="shot s" src="/_blob/a6f4080653cbdc4abd92a7bfee40bf8d" alt="Actions hub: every finding with an owner, a due date and a state" style="display: block; width: 100%; height: auto; aspect-ratio: 1440 / 1024; margin-bottom: 14px;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600;">Actions</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--body);">Every finding, wherever it surfaced, carried an owner and a date. Remediation happened where the finding was, instead of in somebody&rsquo;s inbox.</p></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<p style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 500; color: var(--ink);">The first iteration of Oversight (then Programs) started to run into UI limitations.</p>
+<div style="display: grid;"><img class="shot m" src="/_blob/494ad8efc3f1f979ce6f78dc310909b0" alt="Program Dashboard: charts summarising a fintech program under the bank&rsquo;s oversight" style="grid-area: 1 / 1; justify-self: start; align-self: start; display: block; width: 68%; height: auto; aspect-ratio: 1440 / 1024;"><img class="shot m" src="/_blob/f0ba30f2bffd8290bbd1e843c5f552f0" alt="Programs Overview: the fintech programs a bank oversees, with the dashboard sheet sliding over the list" style="grid-area: 1 / 1; justify-self: end; align-self: start; display: block; width: 68%; height: auto; aspect-ratio: 1440 / 1024; margin-top: 18%;"></div>
+</div>
+<p style="margin: 0; max-width: 820px; font-size: 19px; line-height: 1.6; color: var(--body);">These were not technical people, so the start was slow. But the asks grew with the relationship. The roadmap took shape as we went, evolving along with their insights.</p>
+</div>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding: 140px 0; border-top: 1px solid var(--line);">
+<div style="grid-column: 1 / span 3; display: flex; flex-direction: column; gap: 10px;"><span style="font-size: 44px; line-height: 1; letter-spacing: -0.04em; font-weight: 600;">v3.0</span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent);">System</span></div>
+<div style="grid-column: 4 / span 9; display: flex; flex-direction: column; gap: 56px;">
+<h2 style="margin: 0; font-size: 68px; line-height: 1.02; letter-spacing: -0.045em; font-weight: 600;">A bag of features, <span class="acc">rebuilt as one system.</span></h2>
+<p style="margin: 0; max-width: 820px; font-size: 19px; line-height: 1.6; color: var(--body);">3.0 was design and engineering, end to end. By then I knew what the product had to be, so I could design all of it at once: find the patterns doing the same job in different ways, keep the strongest of each, and extend it to cover every case. Together we rebuilt the information architecture and the code beneath it.</p>
+<div style="position: relative; display: flex; flex-direction: column; gap: 56px;">
+<figure style="position: relative; margin: 0;"><img class="shot" src="/_blob/6c906ba4ad1f7c5978a501e2b4712a84" alt="Cable v2 Oversight: a fintech&rsquo;s Paper Trails board under the top bar, cards grouped into New, In Progress and Closed" style="display: block; width: 100%; height: auto; aspect-ratio: 1440 / 952;"><div style="position: absolute; left: 0; top: 0; width: 100%; height: 21.639%; box-sizing: border-box; border: 2px solid var(--accent); border-radius: 12px; box-shadow: 0 0 0 4px var(--glow); pointer-events: none;"></div></figure>
+<div style="display: flex; flex-direction: column; gap: 16px; padding: 32px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); max-width: 900px;">
+<p style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 500; color: var(--ink);">Oversight, a flagship on par with Paper Trails</p>
+<p style="margin: 0; max-width: 680px; font-size: 15px; line-height: 1.5; color: var(--mut);">The sponsor banks wanted Cable inside Cable: the same product pointed at the fintechs they oversee, so they could read those controls the way they read their own.</p>
+<figure style="position: relative; margin: 0;"><img class="shot" src="/_blob/a7314cdc0ba72aaa433e2b193dcb3fec" alt="Cable v3 Oversight: the same board with the blue side navigation and a single floating tab bar" style="display: block; width: 100%; height: auto; aspect-ratio: 1440 / 952;"><div style="position: absolute; left: 0; top: 0; width: 100%; height: 21.639%; box-sizing: border-box; border: 2px solid var(--accent); border-radius: 12px; box-shadow: 0 0 0 4px var(--glow); pointer-events: none;"></div></figure>
+</div>
+<div style="position: absolute; left: -40px; top: 63.95px; bottom: 560.09px; width: 40px; box-sizing: border-box; border: 1px solid var(--accent); border-right: none; border-radius: 12px 0 0 12px;"><div style="position: absolute; left: -4.5px; top: calc(50% - 4px); width: 8px; height: 8px; border-radius: 50%; background: var(--accent);"></div><figcaption style="position: absolute; right: 63px; top: 50%; transform: translateY(-50%); width: 242px; display: flex; flex-direction: column; gap: 10px;"><p style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 500; color: var(--ink);">Top navigation</p><p style="margin: 0; font-size: 15px; line-height: 1.5; color: var(--mut);">Oversight had stacked four headers on one screen. I folded them into a single bar that still told you which bank, which fintech and which feature you were in.</p></figcaption></div></div>
+<p style="margin: 0; max-width: 820px; font-size: 19px; line-height: 1.6; color: var(--body);">This was a big commitment in resources, and a hard sell. But Oversight, our newest and most popular feature, was bursting at the seams more than any other, and with the banks&rsquo; interest in it rising, it pushed the redesign through.</p>
+</div>
+</section>
+
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"dark","section":"Theme"},"accentType":{"editor":"enum","options":["serif italic","sans"],"default":"sans","section":"Theme"},"serifFace":{"editor":"enum","options":["Instrument Serif","Fraunces","Playfair Display","Newsreader"],"default":"Newsreader","section":"Theme"},"$preview":{"width":1440,"height":4830}}'>
+class Component extends DCLogic {
+renderVals() {
+const serif = (this.props.accentType ?? 'serif italic') === 'serif italic';
+const faces = { 'Instrument Serif': ['1.1em', '-0.015em'], 'Fraunces': ['1em', '-0.02em'], 'Playfair Display': ['1em', '-0.02em'], 'Newsreader': ['1.04em', '-0.02em'] };
+const face = faces[this.props.serifFace] ? this.props.serifFace : 'Instrument Serif';
+return { theme: this.props.theme ?? 'dark', shotSh: '0 2px 6px rgba(14,27,51,.08), 0 24px 56px rgba(14,27,51,.18)',
+accFf: serif ? "'" + face + "', Georgia, serif" : 'inherit', accFs: serif ? 'italic' : 'normal', accFw: serif ? '400' : 'inherit', accSz: serif ? faces[face][0] : '1em', accLs: serif ? faces[face][1] : 'inherit' };
+}
+}
+</script>
+</body>
+</html>

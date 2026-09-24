@@ -1,0 +1,15 @@
+{
+  "project": "cable",
+  "id": "2024-07-06",
+  "name": "",
+  "page": "site/index.html",
+  "width": 1920,
+  "shipped": null,
+  "until": null,
+  "made": null,
+  "source": {
+    "kind": "file",
+    "from": "Portfolio/OlderVersions/cable.html (the full-quality original of compare/cable/v3.html on staging/compare-cable)"
+  },
+  "note": "The Figma Cable _air frame built as one page. Shown on the staging compare page, never on the live folio."
+}
