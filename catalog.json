@@ -334,6 +334,23 @@
   },
   {
     "project": "starcount",
+    "id": "2024-07-09",
+    "name": "Figma",
+    "page": "site/index.html",
+    "width": 1920,
+    "shipped": null,
+    "until": null,
+    "made": null,
+    "source": {
+      "kind": "figma",
+      "figma": "https://www.figma.com/design/Z9p4dGIT13UAJSSESrOAd5/-cxd.com?node-id=94-129652",
+      "frame": "Audiences _air (94:129652), 14 sections"
+    },
+    "note": "The Figma frame Audiences _air built as one page with figma2code. All narrative text is live, including annotations and labels taken out of the renders; product screens, partner logos and the hero are Figma renders. Never on the live folio.",
+    "path": "versions/starcount/2024-07-09/site/index.html?v=d8b1a3ae"
+  },
+  {
+    "project": "starcount",
     "id": "2026-07-29",
     "name": "Lite",
     "page": "site/starcount/index.html",

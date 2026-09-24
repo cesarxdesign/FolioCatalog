@@ -1,0 +1,1 @@
+(() => { window.scrollTo(0, 3274+200); const y = 3274+315 - scrollY; const els = document.elementsFromPoint(900, y); return els.map(e => e.tagName + '.' + e.className + ' ' + (e.currentSrc||'').split('/').pop() + ' ' + JSON.stringify(e.getBoundingClientRect())).slice(0,4); })()

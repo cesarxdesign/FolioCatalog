@@ -66,6 +66,7 @@ request left localhost.
 | mara | `2026-07-29` | Lite: the live page, as of 24 Sep 2026 | 29 Jul 2026 01:51 | live |
 | starcount | `2020-07-01` | Observatory: the 2020 Observatory case study on the Squarespace site, rebuilt from screenshots (notes in `source/NOTES.md`) | 2020, date not on record | |
 | starcount | `2020-07-02` | Audiences: the 2020 Audiences case study on the Squarespace site, rebuilt from screenshots (notes in `source/NOTES.md`) | 2020, date not on record | |
+| starcount | `2024-07-09` | Figma: the Figma "Audiences _air" frame, built as one page | never | |
 | starcount | `2026-07-29` | Lite: the live page, as of 24 Sep 2026 | 29 Jul 2026 01:51 | live |
 
 ## DONE

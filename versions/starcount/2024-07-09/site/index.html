@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>Starcount · Audiences</title>
+<meta name="description" content="Starcount Audiences: head of product design case study, a map-based audience targeting tool built with Twitter and Royal Mail data.">
+<link rel="preload" href="fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/RobotoMono.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Built from Figma "-cxd.com" > Audiences _air (94:129652), 1920 x 25263, 14 sections.
+   Every coordinate, size, colour and type value is read from the Figma file (get_metadata,
+   get_design_context and a read-only plugin dump of the text segments). All narrative text is
+   live. Images are Figma renders of the product screens: @1x is Figma's 1x render, the plain
+   file the 2x export of the same box; where a live string sits inside a rendered region it was
+   painted out of the render with the backdrop that is under it in Figma. */
+@font-face{font-family:'Roboto';src:url(fonts/Roboto.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Roboto';src:url(fonts/Roboto-Italic.woff2) format('woff2');font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Roboto Mono';src:url(fonts/RobotoMono.woff2) format('woff2');font-weight:100 700;font-style:normal;font-display:swap}
+@font-face{font-family:'Roboto Mono';src:url(fonts/RobotoMono-Italic.woff2) format('woff2');font-weight:100 700;font-style:italic;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url(fonts/IBMPlexMono-Medium.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#FFFFFF;-webkit-text-size-adjust:100%}
+body{background:#FFFFFF;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img{display:block}
+ul{list-style:none}
+
+.page{position:relative;width:1920px;margin:0 auto;background:#FFFFFF;overflow:hidden}
+.s{position:relative;width:1920px;overflow:hidden;background:#FFFFFF}
+.a{position:absolute}
+.nw{white-space:nowrap}
+.col8{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.i{font-style:italic}
+.b{font-weight:700}
+.bl1{translate:0 1px}
+/* STRIKETHROUGH: Figma draws Roboto's own strikeout (1.1px = yStrikeoutSize 102/2048 x 22); Chrome's
+   line-through snaps to 2px and sits 2px higher, so the line is painted at Figma's position instead */
+.strike{background:linear-gradient(#424747,#424747) 0 14.3px/100% 1.1px no-repeat}
+/* Roboto has superscript glyphs for digits only; Figma synthesises 'st'. Size, weight and raise measured off Figma's render. */
+.sups{font-size:19.1px;position:relative;top:-11px;font-weight:400}
+/* centred text: CSS counts the tracking after the last glyph, Figma does not */
+.c138{translate:-.69px 0}
+.c084{translate:-.42px 0}
+
+/* ---------- type (one class per Figma style) ---------- */
+/* Baseline: Chrome rounds the font's ascent/descent and floors the half-leading, Figma does neither;
+   where Figma's baseline lands >= .5px below Chrome's (Roboto 22/26, 22/32; Roboto Mono 22/36) the text moves down 1px. */
+/* Roboto Bold 69, auto (box 81), -2%, #2D3648 */
+.t-h1{font-family:'Roboto',sans-serif;font-weight:700;font-size:69px;line-height:81px;letter-spacing:-1.38px;color:#2D3648}
+/* Roboto Light 32, auto (38/line), 1%, #606060 */
+.t-lead{font-family:'Roboto',sans-serif;font-weight:300;font-size:32px;line-height:38px;letter-spacing:.32px;color:#606060}
+/* IBM Plex Mono Medium 32, auto (box 42), #2C333A */
+.t-lab{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:32px;line-height:42px;color:#2C333A;white-space:nowrap}
+/* Roboto ExtraBold 24, auto (box 28), -1.4%, #424747 */
+.t-h3{font-family:'Roboto',sans-serif;font-weight:800;font-size:24px;line-height:28px;letter-spacing:-.336px;color:#424747}
+/* Roboto Regular 24 / 32, #979797 */
+.t-body{font-family:'Roboto',sans-serif;font-weight:400;font-size:24px;line-height:32px;color:#979797}
+/* Roboto Mono Medium 42, auto (box 55), -2%, small caps, #242424 */
+.t-path{font-family:'Roboto Mono',monospace;font-weight:500;font-size:42px;line-height:55px;letter-spacing:-.84px;font-variant-caps:small-caps;color:#242424;white-space:nowrap}
+/* Roboto ExtraBold 22, auto (box 26), -1.4%, #424747 */
+.t-cap{font-family:'Roboto',sans-serif;font-weight:800;font-size:22px;line-height:26px;letter-spacing:-.308px;color:#424747;translate:0 1px}
+/* Roboto Regular 22 / 32, -1%, #979797 */
+.t-small{font-family:'Roboto',sans-serif;font-weight:400;font-size:22px;line-height:32px;letter-spacing:-.22px;color:#979797;translate:0 1px}
+/* Roboto Mono Light 24 / 40, -1%, #444444 */
+.t-mono{font-family:'Roboto Mono',monospace;font-weight:300;font-size:24px;line-height:40px;letter-spacing:-.24px;color:#444444}
+/* Roboto Mono Regular 21 / 36, #233447 */
+.t-mono21{font-family:'Roboto Mono',monospace;font-weight:400;font-size:21px;line-height:36px;color:#233447}
+/* Roboto Regular 20 / 30, -1.4%, #868F97 */
+.t-note{font-family:'Roboto',sans-serif;font-weight:400;font-size:20px;line-height:30px;letter-spacing:-.28px;color:#868F97}
+.sf{display:inline-block;vertical-align:top}
+
+/* ---------- 02 desc (auto layout, mirrored as flex) ---------- */
+.desc{display:flex;flex-direction:column;gap:40px;align-items:flex-start;padding:96px 104px;height:714px}
+.ttl{display:flex;gap:16px;align-items:center;justify-content:center;padding:0 24px}
+.kicker{font-family:'Roboto Mono',monospace;font-size:18px;line-height:42px;letter-spacing:4.32px;text-transform:uppercase;color:#000000;white-space:nowrap}
+.kicker-a{box-shadow:inset 0 1px 0 #000000} /* 1px top stroke, inside; hugs the text without CSS's trailing tracking */
+.kicker-b{font-weight:300}
+.cards{display:flex;gap:8px;align-items:flex-start}
+.card{background:#F7F7F7;border-radius:24px;padding:64px;width:1024px}
+.card-text{font-family:'Roboto Mono',monospace;font-weight:400;font-size:18px;line-height:24px;letter-spacing:1.44px;color:#555555}
+.details{display:flex;flex-direction:column;gap:24px;padding:8px 56px;color:#151515}
+.rolebox{display:flex;flex-direction:column;padding:8px 0}
+.role{font-family:'Roboto Mono',monospace;font-weight:400;font-size:24px;line-height:40px;letter-spacing:1.92px;text-transform:uppercase}
+.dates{font-family:'Roboto Mono',monospace;font-weight:300;font-size:18px;line-height:32px;letter-spacing:.54px}
+.drow{display:flex;align-items:flex-start}
+.dcol{display:flex;flex-direction:column;gap:38px}
+.dl{font-family:'Roboto Mono',monospace;font-weight:500;font-size:16px;line-height:38px;letter-spacing:1.92px;text-transform:uppercase}
+.dd{font-family:'Roboto Mono',monospace;font-weight:300;font-size:18px;line-height:38px;letter-spacing:.54px}
+
+/* ---------- 03 ---------- */
+.stack88{display:flex;flex-direction:column;gap:88px;align-items:center;width:1240px;text-align:center}
+
+/* ---------- 06 list (Figma UNORDERED list; marker/indent offsets measured off Figma's render) ---------- */
+.ul06 li{position:relative;padding-left:36px}
+.ul06 li::before{content:'\2022';position:absolute;left:13.5px;top:0}
+
+/* ---------- 07 wishlist ---------- */
+.wl{background:#FFFFFF}
+.wl-bg{background:#F6D1FF;opacity:.4}                      /* Rectangle 70 */
+.rule{background:#2D3648}                                   /* Lines 9-13, 1px (stroke sits on the row/column before the coordinate) */
+.wl-title{font-family:'Roboto Mono',monospace;font-weight:500;font-size:42px;line-height:42px;letter-spacing:-1.68px;color:#2D3648}
+.wl-list{font-family:'Roboto Mono',monospace;font-weight:400;font-size:22px;line-height:36px;letter-spacing:.22px;color:#2D3648}
+/* Figma sets Roboto Mono 22/36 1px lower than Chrome */
+.wl-list li{position:relative;padding-left:26.7px;white-space:nowrap;translate:0 1px}
+.wl-list li::before{content:'\2022';position:absolute;left:6.7px;top:0}
+/* Roboto Mono advance compensation: measured across 02, 07, 09 and 11, Chrome sets each Roboto Mono
+   glyph ~0.0095px narrower than Figma at every size (0.3-0.5px short by the end of a line), so the
+   Figma tracking values above get +0.0095px here. */
+.kicker{letter-spacing:4.3295px}
+.card-text{letter-spacing:1.4495px}
+.role,.dl{letter-spacing:1.9295px}
+.dates,.dd{letter-spacing:.5495px}
+.t-path{letter-spacing:-.8239px}
+.t-mono{letter-spacing:-.2305px}
+.t-mono21{letter-spacing:.0095px}
+.wl-title{letter-spacing:-1.6705px}
+.wl-list{letter-spacing:.2295px}
+/* same effect, smaller, in Roboto: measured drift 0.4px per 1000px of Light 32, 0.13 of Bold 69 */
+.t-lead{letter-spacing:.3264px}
+.t-h1{letter-spacing:-1.3754px}
+/* Figma keeps Roboto's standard ligatures (fi, fl) with tracking on; Chrome drops them unless asked */
+.t-lead,.t-h1,.t-note,.t-cap,.t-small,.t-h3{font-feature-settings:'liga' 1}
+</style>
+</head>
+<body>
+
+<main class="page">
+
+<!-- 01 hero (94:129653) -->
+<section class="s" style="height:960px" aria-label="Starcount / Audiences">
+  <picture><source type="image/avif" srcset="img/hero@1x.avif 1x, img/hero.avif 2x"><img class="a" src="img/hero.webp" srcset="img/hero@1x.webp 1x, img/hero.webp 2x" alt="Starcount / Audiences: the Audiences app on an iMac Pro" width="1920" height="960" style="left:0px;top:0px" fetchpriority="high"></picture>
+</section>
+
+<!-- 02 desc (94:129654) -->
+<section class="s" style="height:714px" aria-label="Summary">
+  <div class="desc">
+    <div class="ttl"><div class="kicker-a"><div class="kicker lt" style="font-weight:400;margin-right:-4.32px">starcount</div></div><div class="kicker kicker-b lt">advertising</div></div>
+    <div class="cards">
+      <div class="card"><p class="card-text lt">A social listening company with a twist on twitter data.<br><br>The designer role was poorly defined when I joined, effectively reporting to the engineering team. However my experience as a software developer of years past, worked to my advantage and helped me navigate that structure and find opportunities to make design a meaningful contributor.<br><br>After a few months working on the (then only) main product line, I was able to turn my role into a department, then into a small design team. Our earlier work and results placed Design as the driving force for Product and I was fortunate to design and launch 3 new product lines, including a groundbreaking product developed in tandem with Twitter and Royal Mail.</p></div>
+      <div class="details">
+        <div class="rolebox"><h2 class="role lt">Head of Product Design</h2><p class="dates lt">May 2017 - May 2019</p></div>
+        <dl class="drow">
+          <div class="dcol" style="width:304px">
+            <div><dt class="dl lt">Market</dt><dd class="dd lt">/B2B<br>Advertising</dd></div>
+            <div><dt class="dl lt">platform</dt><dd class="dd lt">Desktop web</dd></div>
+          </div>
+          <div class="dcol" style="width:264px">
+            <div><dt class="dl lt">location</dt><dd class="dd lt">London, UK</dd></div>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 partnership (94:129655) -->
+<section class="s" style="height:1600px" aria-label="Unexpected partnership">
+  <div class="a stack88" style="left:340px;top:344px">
+    <h2 class="t-h1 lt c138" style="width:100%">Unexpected partnership</h2>
+    <p class="t-lead lt" style="width:100%">I had been in the company for about 8 months, and had completely redesigned their only product at the time — then launched a brand new one. At this point we secured a deal with Twitter (the first ever; using tweets to train data) and Royal Mail (UK post).<br>Toyota was a big fan of our two other products and was keen to spearhead this too.</p>
+    <picture><source type="image/avif" srcset="img/partners@1x.avif 1x, img/partners.avif 2x"><img src="img/partners.webp" srcset="img/partners@1x.webp 1x, img/partners.webp 2x" alt="Twitter, Royal Mail and Toyota" width="824" height="167"></picture>
+    <p class="t-lead lt" style="width:100%">This came with a deadline.<br><br>Twitter had never been in such a deal, and I sorta stuck out my neck on a meeting saying we could make it work and I’d have something to show “before the ink was dry”. Toyota, which had had great results with our Observatory product, was looking to validade the early investment <span class="i">asap</span>.</p>
+  </div>
+</section>
+
+<!-- 04 product inspo (94:129664) -->
+<section class="s" style="height:2000px" aria-label="Dynamics and Observatory">
+  <picture><source type="image/avif" srcset="img/products@1x.avif 1x, img/products.avif 2x"><img class="a" src="img/products.webp" srcset="img/products@1x.webp 1x, img/products.webp 2x" alt="Dynamics and Observatory, the two earlier Starcount products" width="1843" height="1635" style="left:38px;top:310px" loading="lazy" decoding="async"></picture>
+  <p class="a t-lab lt" style="left:40px;top:1365px">Dynamics</p>
+  <p class="a t-lab lt" style="left:1668px;top:849px;width:212px;text-align:right">Observatory</p>
+</section>
+
+<!-- 05 big intro (94:130763) -->
+<section class="s" style="height:1327px" aria-label="Observatory and Dynamics">
+  <div class="a col8" style="left:200px;top:165px;width:696px">
+    <h3 class="t-h3 lt" style="width:100%">Observatory x Twitter</h3>
+    <p class="t-body lt" style="width:100%">Our Passion (interest) predicting tool, was doing very well in the UK market amongst brands with a strong online presence (specially, on Twitter). It started as a simple social listening tool like many others, but the clever folks in the data team figured a novelty way to cluster the info and go a level deeper.<br><br>Essentially, most tools will give you an Audience to target (with advertising) based on followed accounts — so if they follow Toyota, they probably like cars. That’s fairly basic, and often wrong. What Starcount did was to infer users’ interests based on “follows of follows”: say you follow David Beckham, that would mean to most tools that you’re into football. But we’d look at all your follows as a cluster, fork Beckham, then see what else you follow — if you also follow Wayne Rooney, you’re probably into football then, but if you follow Kim Kardashian instead, then you likely follow Becks for the fashion side of his life.<br><br>The insight that got Toyota hooked, was regarding their Prius car. The agreed assumption then, was that most people bought Prius because they were eco-conscious, and so millions were spent on ads with leaves and trees as background for the drive. According to our data however, the majority of people purchasing electric cards did so for the tech — these cars were considered more tech-y (in 2017 anyways). That insight made Toyota switch gears from leaves to fiber optics and blue florescent lines on their ads.</p>
+  </div>
+  <div class="a col8" style="left:1024px;top:165px;width:696px">
+    <h3 class="t-h3 lt" style="width:100%">Dynamics x Royal Mail</h3>
+    <p class="t-body lt" style="width:100%">After our success with Observatory, the next step was to put Passions on a map. Whilst our tool was giving great insights into online targeting, a lot of brands still relied heavily on direct mail, billboards (and other more traditional mediums) to reach their customers. And for that, the post-code is king.<br><br>Our data and engineering team did their best to extrapolate the location, based on small percentage of tweets that had location enabled — but the error margin was unsatisfactory. Somehow, management got around to landing a deal with Royal Mail, for post-code level data, on “type” of delivery — this was also on the height of GDPR launching, and yet, this data we received was all GDPR compliant. This meant we knew where “sports shoes” were delivered, or “cosmetics”, or “health food”, etc.<br><br>With this new data, we overlayed what we already had from social, and got a pretty good picture (for the UK) of where the people who engaged with Sports brands, lived and ordered for Sports shoes and clothing. Because we had data for the whole of the UK (from Royal Mail) we also started consuming more data from Twitter — which got noticed, at Twitter.<br><br>After a lengthy back and forth, we managed to agree to terms on a landmark deal with Twitter, that allowed us to scrape all new daily tweets, every day.</p>
+  </div>
+</section>
+
+<!-- 06 v1 (94:130771) -->
+<section class="s" style="height:1938px" aria-label="Proof of concept">
+  <picture><source type="image/avif" srcset="img/v0@1x.avif 1x, img/v0.avif 2x"><img class="a" src="img/v0.webp" srcset="img/v0@1x.webp 1x, img/v0.webp 2x" alt="Audiences v0: heatmap with Passion filter and persona card" width="1314" height="1188" style="left:0px;top:410px" loading="lazy" decoding="async"></picture>
+  <h2 class="a t-path lt c084" style="left:200px;top:336px;width:391px;text-align:center">Proof of concept</h2>
+  <div class="a col8" style="left:1280px;top:520px;width:560px">
+    <h3 class="t-h3 lt" style="width:100%">Audiences v0</h3>
+    <div class="t-body" style="width:100%">
+      <p class="lt">Since I was very familiar with both our other products, I was able to quickly patch up a v0 proof of concept to get the conversation started with Data and Engineering.</p>
+      <p><br></p>
+      <ul class="ul06"><li class="lt">We had a heatmap, that would show population density for the selected Passion (Interests).</li></ul>
+      <p><br></p>
+      <ul class="ul06"><li class="lt">Drill down on sub-Passion for the displayed area.</li></ul>
+      <p><br></p>
+      <ul class="ul06"><li class="lt">Persona card with key indicators of what audience and Group you could market to.</li></ul>
+      <p><br></p>
+      <ul class="ul06"><li class="lt">Export .csv with all this data.</li></ul>
+    </div>
+  </div>
+  <div class="a col8" style="left:1280px;top:1293px;width:560px"><h3 class="t-h3 lt" style="width:100%">Tremendous potential</h3><p class="t-body lt" style="width:100%">I was not impressed with what we had put together but everybody else was. The consequences were two-fold, we sorta proved the concept, and were not rushing against the clock anymore, but the company got greedy and set some very aggressive sales goal.</p></div>
+</section>
+
+<!-- 07 MVP (94:131019) -->
+<section class="s" style="height:1555px" aria-label="Maximum Viable Product">
+  <h2 class="a t-h1 lt c138" style="left:340px;top:348px;width:1240px;text-align:center">Maximum Viable Product</h2>
+  <p class="a t-lead lt" style="left:340px;top:533px;width:1240px;text-align:center">Since our weakest attempt produced such enthusiasm, I wanted to see what we could do if we’d really try. So I had 3 rounds of meetings; I spoke to data &amp; engineering to really understand how far we could push what we had; I asked Sales what have customers always asked and we were never able to deliver, and finally I spoke directly to our closest clients, and asked the same: <span class="i">constraints aside, what’s your wishlist?</span></p>
+  <!-- Frame 76: 288,867 632x333 -->
+  <div class="a wl" style="left:288px;top:867px;width:632px;height:333px"></div>
+  <div class="a wl-bg" style="left:316px;top:888px;width:576px;height:284px"></div>
+  <div class="a rule" style="left:288px;top:892px;width:64px;height:1px"></div>
+  <div class="a rule" style="left:659px;top:892px;width:261px;height:1px"></div>
+  <div class="a rule" style="left:320px;top:867px;width:1px;height:333px"></div>
+  <div class="a rule" style="left:887px;top:867px;width:1px;height:333px"></div>
+  <div class="a rule" style="left:288px;top:1167px;width:632px;height:1px"></div>
+  <h3 class="a wl-title lt" style="left:363px;top:843px;width:285px">Wishlist x capacity</h3>
+  <ul class="a wl-list" style="left:368px;top:960px;width:472px">
+    <li class="lt">Upload own data (CRM)</li>
+    <li class="lt">Upload catchment area (geofence)</li>
+    <li class="lt">Create bespoke geofence</li>
+    <li class="lt">Target high-density areas</li>
+    <li class="lt">Infer new markets, from current.</li>
+  </ul>
+  <p class="a t-note lt" style="left:1048px;top:867px;width:584px">There was more, but objectively, these were the high hitters.<br><br>All clients wanted to upload their own data. Most had catchment data (location of their physical stores and surrounding areas from which they drew customers). Being able to just drop a pin on the map and set a radius (geofence). And see this all expressed in population density.<br><br>Finally, something we had been working on called Lookalikes, where given a market, we’d infer what kinda of audience was there — and then suggest other areas with likeminded people.</p>
+</section>
+
+<!-- 08 v2 (94:131035) -->
+<section class="s" style="height:2262px" aria-label="Audiences v2">
+  <picture><source type="image/avif" srcset="img/v2@1x.avif 1x, img/v2.avif 2x"><img class="a" src="img/v2.webp" srcset="img/v2@1x.webp 1x, img/v2.webp 2x" alt="Audiences v2 with CRM upload, Audience filter and Audience summary" width="1920" height="2262" style="left:0px;top:0px" loading="lazy" decoding="async"></picture>
+  <div class="a col8" style="left:220px;top:344px;width:360px"><h3 class="t-cap lt" style="width:100%">CRM <span class="strike">upload</span></h3><p class="t-small lt" style="width:100%">In this version, we were uploading both the CRM and Catchment files manually, for each tester client.</p></div>
+  <div class="a col8" style="left:865px;top:344px;width:360px"><h3 class="t-cap lt" style="width:100%">Audience filter</h3><p class="t-small lt" style="width:100%">The population density was based on the Audience filter. Users could select multiple criteria.</p></div>
+  <div class="a col8" style="left:1468px;top:344px;width:360px"><h3 class="t-cap lt" style="width:100%">Audience summary</h3><p class="t-small lt" style="width:100%">Overview of the target audience. The metrics shown (Passions/Industries) would match the Audience filter.</p></div>
+  <div class="a col8" style="left:302px;top:1772px;width:360px"><h3 class="t-cap lt" style="width:100%">Heatfilter v1</h3><p class="t-small lt" style="width:100%">The first heatfilter implemented was actually manipulating the date range on the data. This would later change.</p></div>
+  <div class="a col8" style="left:1076px;top:1772px;width:360px"><h3 class="t-cap lt" style="width:100%">Search</h3><p class="t-small lt" style="width:100%">Searching for a valid postcode would trigger a pop up where the user could pin the location and set a radius.</p></div>
+</section>
+
+<!-- 09 toggles (94:131361) -->
+<section class="s" style="height:1584px" aria-label="Analyse and iterate">
+  <picture><source type="image/avif" srcset="img/toggles@1x.avif 1x, img/toggles.avif 2x"><img class="a" src="img/toggles.webp" srcset="img/toggles@1x.webp 1x, img/toggles.webp 2x" alt="Four catchment toggle states: disabled, uploading, on, off" width="378" height="971" style="left:768px;top:307px" loading="lazy" decoding="async"></picture>
+  <h2 class="a t-path lt" style="left:104px;top:344px;width:512px">Analyse and iterate</h2>
+  <p class="a t-mono lt" style="left:104px;top:487px;width:512px">With a list of features to gradually add on, every iteration was an opportunity to fine-tune the good, cut the bad, and make room for new.</p>
+  <p class="a t-mono lt" style="left:104px;top:735px;width:512px">Something I really liked was the effect produced on the map, when toggling the CRM and Catchment switches. There was something engaging there — seeing the colors change and the shift in population density. I felt this was a great visual indication of “people flow”, and upon checking, it turned out our testers loved that too plus the simplicity of “turning it on and off”.</p>
+  <p class="a t-mono21 lt" style="left:1250px;top:490px;width:536px">After many iterations I came to a version of the toggle that went being just ON/OFF, and accounted for all the use cases.<br><br>First state is “empty” and prompts the user to upload a file (either by trying to toggle ON, or tapping <picture><source type="image/avif" srcset="img/sfglyph@1x.avif 1x, img/sfglyph.avif 2x"><img class="sf" src="img/sfglyph.webp" srcset="img/sfglyph@1x.webp 1x, img/sfglyph.webp 2x" alt="(+)" width="25" height="36"></picture>).<br><br>Second state indicates the upload is processing, and allows the user to cancel the action (with confirmation prompt).<br><br>Third and fourth are ON/OFF and they allow the user to discard the file to upload a new one (something common — they’d have a lot of catchments which we’d later help manage with a filter style picker).</p>
+</section>
+
+<!-- 10 v3 (94:131377) -->
+<section class="s" style="height:2263px" aria-label="Audiences v3">
+  <picture><source type="image/avif" srcset="img/v3@1x.avif 1x, img/v3.avif 2x"><img class="a" src="img/v3.webp" srcset="img/v3@1x.webp 1x, img/v3.webp 2x" alt="Audiences v3 with the new toggle bar and Insight pane" width="1724" height="1314" style="left:98px;top:478px" loading="lazy" decoding="async"></picture>
+  <div class="a col8" style="left:220px;top:342px;width:360px"><h3 class="t-cap lt" style="width:100%">New toggle bar</h3><p class="t-small lt" style="width:100%">One stop shop to upload files, remove files, toggle said files on and off (without removing). And more.</p></div>
+  <div class="a col8" style="left:1204px;top:342px;width:360px"><h3 class="t-cap lt" style="width:100%">Audience filter</h3><p class="t-small lt" style="width:100%">Increased functionality, allowing for a wider mix of Passions, Motivations, and Segments.</p></div>
+  <div class="a col8" style="left:483px;top:1770px;width:360px"><h3 class="t-cap lt" style="width:100%">Heatfilter v2</h3><p class="t-small lt" style="width:100%">Better than seeing highest density, was removing lowest. So, I added the ability to filter from behind.</p></div>
+  <div class="a col8" style="left:1300px;top:1770px;width:360px"><h3 class="t-cap lt" style="width:100%">Audience summary v2</h3><p class="t-small lt" style="width:100%">Revamped Summary pane, with added Export feature (metrics reflect rows and overall size of export).</p></div>
+</section>
+
+<!-- 11 heat (94:131645) -->
+<section class="s" style="height:3283px" aria-label="The heat problem">
+  <picture><source type="image/avif" srcset="img/heat@1x.avif 1x, img/heat.avif 2x"><img class="a" src="img/heat.webp" srcset="img/heat@1x.webp 1x, img/heat.webp 2x" alt="Original and re-balanced heatmaps at 100%, 75%, 50% and 10% range" width="842" height="2290" style="left:887px;top:499px" loading="lazy" decoding="async"></picture>
+  <h2 class="a t-path lt" style="left:104px;top:344px;width:512px">The heat problem</h2>
+  <p class="a t-mono lt" style="left:104px;top:487px;width:512px">As the UI and UX evolved, I was able to hone in on more specific details and behaviors, that needed a bit more attention and tailoring.<br><br>One such detail was how the heatmap responded to the heatfilter input. There was actually nothing wrong with it, but due to the nature of our data, and how people in general aggregate in populated areas, the results were not <span class="i">helpful</span>.<br><br>Accurate, but not helpful. So I wanted to display <span class="i">incorrect</span> results, that were helpful. This took some doing, and many discussions with Data.<br><br>It’s not often somebody says that out loud, so they were intrigued at least, and I had their attention.</p>
+  <!-- text box 104,1839 512x960, aligned to the bottom -->
+  <div class="a" style="left:104px;top:1839px;width:512px;height:960px;display:flex;flex-direction:column;justify-content:flex-end">
+    <p class="t-mono lt">The main argument was that if London is in fact more dense than everywhere else in the map (which it is, by <span class="i">a lot</span>), then it should be represented like that.<br><br>But we have to evaluate the context in which this tool is used, and what sort of insight is expected from our users — and who those users are.<br><br>As market-targeting tool, it doesn’t help much if 12 pixels shut down 90% of the country — users already know London is dense, and they want to evaluate where else can they find new audiences. So if we turn off the whole map, it stops being helpful.<br><br>(The same would happen at a higher zoom, if we’d take London as the base — Oxford Circus would be crazy dense, and it would look like nobody ever lived in Victoria.)</p>
+  </div>
+  <h3 class="a t-cap lt nw" style="left:1050px;top:402px">Original</h3>
+  <h3 class="a t-cap lt nw" style="left:1467px;top:402px">Re-balanced</h3>
+  <p class="a t-small lt" style="left:904px;top:956px;width:808px">At 100% range both sides show exactly the same data.</p>
+  <p class="a t-small lt" style="left:904px;top:1508px;width:808px">The way we live in society, tends to produce higher density population near capitals or other such convergence areas. So turning off the bottom 25% density, essentially shuts down 90% of the map. Whereas on the re-balanced map, it (visually) shuts down closer to what’s expected.</p>
+  <p class="a t-small lt" style="left:904px;top:2156px;width:808px">At 50% there’s barely any change from 75%, which again, represents correct information, but doesn’t tie in with the user’s input which was producing a poor experience. On the re-balanced map, it doesn’t show 50% of the population (nor should it) but the behavior is much more in line with user expectation.</p>
+  <p class="a t-small lt" style="left:904px;top:2804px;width:808px">Top 10% — unusable in the original map.</p>
+</section>
+
+<!-- 12 vTiny (94:131946) -->
+<section class="s" style="height:2073px" aria-label="Final tune ups">
+  <picture><source type="image/avif" srcset="img/tiny@1x.avif 1x, img/tiny.avif 2x"><img class="a" src="img/tiny.webp" srcset="img/tiny@1x.webp 1x, img/tiny.webp 2x" alt="Audiences at 1280 wide with tiny filter and menubar" width="1444" height="1438" style="left:238px;top:620px" loading="lazy" decoding="async"></picture>
+  <h2 class="a t-h1 lt c138" style="left:340px;top:340px;width:1240px;text-align:center">Final tune ups</h2>
+  <div class="a col8" style="left:450px;top:581px;width:424px"><h3 class="t-h3 lt" style="width:100%">Passions filter</h3><p class="t-body lt" style="width:100%">It made it into the SwitchBar and no longer needed dedicated space.</p></div>
+  <div class="a col8" style="left:1355px;top:581px;width:424px"><h3 class="t-h3 lt" style="width:100%">Tiny filter</h3><p class="t-body lt" style="width:100%">At the smaller sizes the full filter would not fit so a tiny proxy one kept its place.</p></div>
+  <div class="a col8" style="left:1355px;top:1517px;width:424px"><h3 class="t-h3 lt" style="width:100%">More useful Menubar</h3><p class="t-body lt" style="width:100%">I moved the stats &amp; Export from the side bar, reclaiming Metrics space.</p></div>
+  <div class="a col8" style="left:1355px;top:1937px;width:424px"><h3 class="t-h3 lt" style="width:100%">Big display (full screen on 27”)</h3><p class="t-body lt" style="width:100%">Floating windows, and the ability to sort metrics manually on the Insight pane.</p></div>
+  <p class="a t-lead lt" style="left:120px;top:1677px;width:872px">Something I always had to pay attention, was how everything behaved in small screens. This was a “big screen” project, as most users would be at their desk with one or two large monitors, analyzing data. But it was also an important use case to cater to sales reps that would visit clients, and use our tool on the road, in very small screens.</p>
+</section>
+
+<!-- 13 vBIG (94:132140): a product screen, rendered whole -->
+<section class="s" style="height:1080px" aria-label="Big display">
+  <picture><source type="image/avif" srcset="img/big@1x.avif 1x, img/big.avif 2x"><img class="a" src="img/big.webp" srcset="img/big@1x.webp 1x, img/big.webp 2x" alt="Audiences full screen on a 27 inch display" width="1920" height="1080" style="left:0px;top:0px" loading="lazy" decoding="async"></picture>
+</section>
+
+<!-- 14 closer (94:132709) -->
+<section class="s" style="height:2624px" aria-label="3D and ship">
+  <picture><source type="image/avif" srcset="img/final@1x.avif 1x, img/final.avif 2x"><img class="a" src="img/final.webp" srcset="img/final@1x.webp 1x, img/final.webp 2x" alt="Audiences with the 3D heatmap over London" width="1920" height="1189" style="left:0px;top:659px" loading="lazy" decoding="async"></picture>
+  <h2 class="a t-h1 lt nw" style="left:80px;top:504px">3D and ship.</h2>
+  <p class="a t-lead lt" style="left:120px;top:1850px;width:1384px">I was incredibly happy and proud of the work we all had been able to produce in such a short time, but it always felt like something was missing. The heatmap was nice, but as much as I played with the shading and colors, it lacked impact when it came to <span class="i">really</span> dense areas.<br><br>Being able to integrate the 3D element to the product was the final piece, and really took it to another level.<br><br>And clients agreed! Our product suite beat 1<span class="sups">st</span> year target of <span class="b">£1M</span> in revenue, in 91 days.</p>
+</section>
+
+</main>
+
+<script>
+/* Fixed 1920px design shown as a centred column: it renders COLUMN px wide at most, and
+   shrinks to fit narrower windows instead of reflowing. #1x shows it at its native 1920px. */
+(function(){
+  if (location.hash === '#1x') return;
+  var COLUMN = 1280;
+  var r=document.documentElement;
+  function fit(){ r.style.zoom = 1; r.style.zoom = Math.min(COLUMN, r.clientWidth) / 1920; }
+  fit(); addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
