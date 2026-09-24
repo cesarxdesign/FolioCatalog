@@ -39,3 +39,18 @@ Rebuilt 2026-09-24 with the image2code skill from the Figma section
   on its left, over a different crop. The original hero frame is the plain device photo,
   and that is what is used.
 - Copy is verbatim, typos included ("notifcations", "helpfull" in the montage).
+
+## Montage notes as live text (2026-09-24)
+
+The six handwritten notes on the craft montage ("Review copy. Tighten, more clear.", "More
+contrast check WCAG", "Check touch targets", "Not helpfull for small values", "Allows
+unconsistent state", "Spacing": Figma text nodes 120:5392-5397) are now live HTML text, placed at
+their Figma x/y in the 2212 x 1416 frame scaled by 980/2212, 44/1.05 black. `img/craft.webp` is
+`originals/craft/export.png` with only those six text areas painted out: the frame's #FAFAFA, and
+where a note overlaps Frame 3 (120:5380, "Spacing" and "Tighten") that frame's own 3x export;
+no coloured pixel was touched. The crop was also corrected: the export's shadow margin is 80 left
+and right but 76 top / 84 bottom (shadow offset y 4), so the old crop sat 4 units high and ended in
+a 2 px black strip. Figma's font is Journal (Fontourist), which is not in google/fonts, so it is
+not shipped; Loved by the King (OFL, `site/fonts/`) stands in, with size-adjust 75% to match
+Journal's line widths and ascent/descent overrides that put the baseline where Journal's was.
+The unedited frame stays in `originals/craft/export.png`.

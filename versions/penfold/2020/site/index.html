@@ -47,6 +47,18 @@ body{margin:0;background:#FFFFFF;color:#757575;
 .craft{margin-top:23.6px;height:627.36px}
 .craft img{width:980px;height:627.36px}
 
+/* The montage's six handwritten notes are live text, placed at their Figma positions in the
+   2212 x 1416 "craft" frame (120:5379), scaled by 980/2212. Figma sets them in Journal Regular,
+   44/1.05, black. Journal is not a Google font and could not be shipped, so Loved by the King
+   (OFL, google/fonts) stands in (Journal itself is not named, so every machine draws the same): size-adjust makes its line widths match Journal's and the
+   ascent/descent overrides put its baseline where Journal's was (32.7 of the 46.2 line). */
+@font-face{font-family:"Journal fallback";src:url(fonts/LovedbytheKing.woff2) format("woff2");
+     size-adjust:75%;ascent-override:99.1%;descent-override:40.9%;line-gap-override:0%}
+.craft{position:relative;--k:calc(980 / 2212)}
+.craft .note{position:absolute;white-space:nowrap;color:#000;letter-spacing:0;
+     font:400 calc(44px * var(--k))/calc(46.2px * var(--k)) "Journal fallback",cursive;
+     left:calc(var(--x) * 1px * var(--k));top:calc(var(--y) * 1px * var(--k))}
+
 /* Grey bands of four screens. Each screen is its own box, clipped at the measured radius. */
 .band{position:relative;background:#EEEEEE;height:551.5px}
 .screen{position:absolute;width:191px;height:414px;border-radius:15px;overflow:hidden;
@@ -103,7 +115,14 @@ body{margin:0;background:#FFFFFF;color:#757575;
     <p>New opportunities would be prioritised against our sprint candidates as soon as we'd identify them, and urgent tweaks would be flagged and negotiated into the sprint.</p>
   </section>
 
-  <figure class="craft"><img src="img/craft.webp" width="980" height="627" alt="Wireframes and designs of the Estimate screen, annotated: review copy, spacing, contrast, touch targets"></figure>
+  <figure class="craft"><img src="img/craft.webp" width="980" height="627" alt="Wireframes and designs of the Estimate screen, linked by flow lines, with problem areas highlighted">
+    <p class="note" style="--x:33;--y:327">Review copy.<br>Tighten, more clear.</p>
+    <p class="note" style="--x:1938;--y:505">More contrast<br>check WCAG</p>
+    <p class="note" style="--x:1934;--y:866">Check touch targets</p>
+    <p class="note" style="--x:627;--y:1260">Not helpfull for small values</p>
+    <p class="note" style="--x:1218;--y:1273">Allows unconsistent state</p>
+    <p class="note" style="--x:871;--y:92">Spacing</p>
+  </figure>
 
   <section class="text" style="margin-top:22.8px">
     <h2>User feedback</h2>
