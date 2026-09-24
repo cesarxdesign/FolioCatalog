@@ -127,7 +127,10 @@ Changed on the way in, and nothing else:
 
 Edits by request: Noir got a dark mode (its light look is unchanged), 2026-09-24. Role dates on
 the Figma pages were corrected to match the CV: Cable to Jul 2020 - Oct 2022 (2026-09-24), Mara
-to Nov 2022 - Feb 2024 and Starcount to Dec 2015 - May 2019 (2026-09-25).
+to Nov 2022 - Feb 2024 and Starcount to Dec 2015 - May 2019 (2026-09-25). Role titles were
+brought in line with the CV and live folio (2026-09-25): Cable Figma and both older Penfold
+pages to Founding Designer, both older Mara pages to Head of Design and Product Owner, Done2 to
+Co-founder.
 
 `catalog.json` and `index.html` are built by `tools/build.py` from the meta files. Never
 hand-edit them.

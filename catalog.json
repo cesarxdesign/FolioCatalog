@@ -13,7 +13,7 @@
       "from": "Portfolio/OlderVersions/cable.html (the full-quality original of compare/cable/v3.html on staging/compare-cable)"
     },
     "note": "The Figma Cable _air frame built as one page. Shown on the staging compare page, never on the live folio. Role dates corrected here on 2026-09-24 to Jul 2020 - Oct 2022, as in the CV (the Figma frame said Jul 2021).",
-    "path": "versions/cable/2024-07-06/site/index.html?v=21f38ce6"
+    "path": "versions/cable/2024-07-06/site/index.html?v=a35bd80a"
   },
   {
     "project": "cable",
@@ -177,7 +177,7 @@
       "frame": "06 Done2 _air (15:3578), 1920 x 20434"
     },
     "note": "The Figma frame 06 Done2 _air built as one page with figma2code. Narrative text is live; phone rows, the hero and patterned backgrounds are Figma renders. Never on the live folio.",
-    "path": "versions/done/2024-07-23/site/index.html?v=948ca9b4"
+    "path": "versions/done/2024-07-23/site/index.html?v=075ca69c"
   },
   {
     "project": "done",
@@ -211,7 +211,7 @@
       "screenshots": "source/screenshots (the old live site, captured 2024-07-07, 2x of a 2048px window)"
     },
     "note": "The Mara case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text, including the badge, sketch-board, montage and caption text taken out of the pictures; phone screens are cut from the screenshots and clipped to their measured boxes.",
-    "path": "versions/mara/2020-07-23/site/index.html?v=068b4ece"
+    "path": "versions/mara/2020-07-23/site/index.html?v=04fff80c"
   },
   {
     "project": "mara",
@@ -228,7 +228,7 @@
       "frame": "MARA _air (98:75481), 1920 x 32962"
     },
     "note": "The Figma frame MARA _air built as one page with figma2code. All text outside the phone screens is live, including callouts and labels taken out of renders; mockups, sketches and the hero are Figma renders. Never on the live folio.",
-    "path": "versions/mara/2024-07-20/site/index.html?v=fd54e27c"
+    "path": "versions/mara/2024-07-20/site/index.html?v=4afb6ff5"
   },
   {
     "project": "mara",
@@ -263,7 +263,7 @@
       "originals": "source/originals: Figma frames hero (121:5411), sketches (120:5372), craft (120:5379), exports and their raw images"
     },
     "note": "The Penfold case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text; hero, sketches and montage are the original Figma frames; the 20 phone screens are cut from the screenshots and clipped to their measured boxes, ready to be swapped for originals.",
-    "path": "versions/penfold/2020/site/index.html?v=25c0dce1"
+    "path": "versions/penfold/2020/site/index.html?v=1d0555ff"
   },
   {
     "project": "penfold",
@@ -279,7 +279,7 @@
       "from": "Portfolio/OlderVersions/penfold.html, the Figma penfold _air frame (1:21649) built as one page"
     },
     "note": "The Figma penfold _air frame built as one page. Never on the live folio.",
-    "path": "versions/penfold/2024-07-15/site/index.html?v=1c57b13a"
+    "path": "versions/penfold/2024-07-15/site/index.html?v=bef62db0"
   },
   {
     "project": "penfold",
