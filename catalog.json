@@ -112,6 +112,57 @@
     "path": "versions/cable/2026-09-23-shipped/site/cable/index.html?v=ee731222"
   },
   {
+    "project": "confirmo",
+    "id": "2026-07-29",
+    "name": "Lite",
+    "page": "site/confirmo/index.html",
+    "width": 1440,
+    "shipped": "2026-07-29T01:51:15+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "352313a",
+      "commit": "352313a7671d40c0bcac72fd6cabce5a8b2427cc",
+      "committed": "2026-09-24T00:39:42+01:00"
+    },
+    "note": "The page as live on cesarxdesign.com/confirmo on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time).",
+    "path": "versions/confirmo/2026-07-29/site/confirmo/index.html?v=7095ee8a"
+  },
+  {
+    "project": "done",
+    "id": "2026-08-03",
+    "name": "Lite",
+    "page": "site/done/index.html",
+    "width": 1440,
+    "shipped": "2026-08-03T18:49:03+01:00",
+    "until": "2026-09-21T14:47:48+01:00",
+    "source": {
+      "kind": "portfolio",
+      "ref": "ee14a43",
+      "commit": "ee14a43fe19d55a0b54642a32bb7b002c59de27b",
+      "committed": "2026-09-16T20:16:09+01:00"
+    },
+    "note": "The DONE page as it was when taken off the live site. First published 2026-08-03 18:49 (commit time); removed by the push of 2026-09-21 14:47.",
+    "path": "versions/done/2026-08-03/site/done/index.html?v=48772c2d"
+  },
+  {
+    "project": "mara",
+    "id": "2026-07-29",
+    "name": "Lite",
+    "page": "site/mara/index.html",
+    "width": 1440,
+    "shipped": "2026-07-29T01:51:15+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "352313a",
+      "commit": "352313a7671d40c0bcac72fd6cabce5a8b2427cc",
+      "committed": "2026-09-24T00:39:42+01:00"
+    },
+    "note": "The page as live on cesarxdesign.com/mara on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time).",
+    "path": "versions/mara/2026-07-29/site/mara/index.html?v=d3a2d546"
+  },
+  {
     "project": "penfold",
     "id": "2024-07-15",
     "name": "Figma",
@@ -126,5 +177,39 @@
     },
     "note": "The Figma penfold _air frame built as one page. Never on the live folio.",
     "path": "versions/penfold/2024-07-15/site/index.html?v=1c57b13a"
+  },
+  {
+    "project": "penfold",
+    "id": "2026-07-30",
+    "name": "Lite",
+    "page": "site/penfold/index.html",
+    "width": 1440,
+    "shipped": "2026-07-30T14:54:59+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "352313a",
+      "commit": "352313a7671d40c0bcac72fd6cabce5a8b2427cc",
+      "committed": "2026-09-24T00:39:42+01:00"
+    },
+    "note": "The page as live on cesarxdesign.com/penfold on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-30 14:54 (commit time).",
+    "path": "versions/penfold/2026-07-30/site/penfold/index.html?v=b1805468"
+  },
+  {
+    "project": "starcount",
+    "id": "2026-07-29",
+    "name": "Lite",
+    "page": "site/starcount/index.html",
+    "width": 1440,
+    "shipped": "2026-07-29T01:51:15+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "352313a",
+      "commit": "352313a7671d40c0bcac72fd6cabce5a8b2427cc",
+      "committed": "2026-09-24T00:39:42+01:00"
+    },
+    "note": "The page as live on cesarxdesign.com/starcount on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time).",
+    "path": "versions/starcount/2026-07-29/site/starcount/index.html?v=4a9c4e17"
   }
 ]

@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="156.676" height="134.172" viewBox="0 0 156.676 134.172" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Rectangle 4 Copy">
+<mask id="mask0_0_28" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="157" height="135">
+<path id="Mask" fill-rule="evenodd" clip-rule="evenodd" d="M156.676 134.172V0H0V58.581L102.572 105.976L98.7929 102.197L99.5 101.49L105.201 107.191L102.991 90.4139L102.572 91.3217L107.249 109.239L132.182 134.172H156.676Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_0_28)">
+<rect id="Rectangle 4 Copy_2" x="-148" y="9.69727" width="296" height="126" rx="63" stroke="#2CE5E8" stroke-width="4" stroke-linecap="round"/>
+</g>
+</g>
+</svg>

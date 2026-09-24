@@ -1,0 +1,16 @@
+{
+  "project": "done",
+  "id": "2026-08-03",
+  "name": "Lite",
+  "page": "site/done/index.html",
+  "width": 1440,
+  "shipped": "2026-08-03T18:49:03+01:00",
+  "until": "2026-09-21T14:47:48+01:00",
+  "source": {
+    "kind": "portfolio",
+    "ref": "ee14a43",
+    "commit": "ee14a43fe19d55a0b54642a32bb7b002c59de27b",
+    "committed": "2026-09-16T20:16:09+01:00"
+  },
+  "note": "The DONE page as it was when taken off the live site. First published 2026-08-03 18:49 (commit time); removed by the push of 2026-09-21 14:47."
+}

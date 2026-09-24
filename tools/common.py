@@ -12,9 +12,22 @@ LOADS = [
     re.compile(r'''(<link\b[^>]*?\brel=["']?(?:stylesheet|preload|icon|modulepreload)["']?[^>]*?\bhref=["'])(https?://[^"']+)'''),
     re.compile(r'''(<link\b[^>]*?\bhref=["'])(https?://[^"']+)(?=["'][^>]*?\brel=["']?(?:stylesheet|preload|icon|modulepreload))'''),
     re.compile(r'''(<(?:script|img|source|video|audio|iframe)\b[^>]*?\bsrc=["'])(https?://[^"']+)'''),
-    re.compile(r'''(url\(\s*["']?)(https?://[^"')\s]+)'''),
+    re.compile(r'''(url\(\s*(?:&quot;|["'])?)(https?://[^"')\s&]+(?:&(?!quot;)[^"')\s&]*)*)'''),
     re.compile(r'''(@import\s+["'])(https?://[^"']+)'''),
 ]
+# url("data:...") holds a whole embedded file (an SVG with its own url(#x) inside): never look in it.
+DATA_URL = re.compile(r'''url\(\s*(?:"data:[^"]*"|'data:[^']*'|&quot;data:.*?&quot;)\s*\)''', re.S)
+
+
+def outside_data(text, fn):
+    """Apply fn to the parts of text that are not embedded data: URLs; keep those as they are."""
+    out, last = [], 0
+    for m in DATA_URL.finditer(text):
+        out += [fn(text[last:m.start()]), m.group(0)]
+        last = m.end()
+    return "".join(out + [fn(text[last:])])
+
+
 PRECONNECT = re.compile(r'''<link\b[^>]*\brel=["']?(?:preconnect|dns-prefetch)["']?[^>]*>\s*''')
 
 
@@ -51,9 +64,11 @@ def vendor(site: Path):
         return cache[url]
 
     def rewrite(text, rel_to):
-        for rx in LOADS:
-            text = rx.sub(lambda m: m.group(1) + posixpath.relpath(get(m.group(2)), posixpath.dirname(rel_to) or "."), text)
-        return PRECONNECT.sub("", text)
+        def swap(part):
+            for rx in LOADS:
+                part = rx.sub(lambda m: m.group(1) + posixpath.relpath(get(m.group(2)), posixpath.dirname(rel_to) or "."), part)
+            return part
+        return PRECONNECT.sub("", outside_data(text, swap))
 
     for f in sorted(site.rglob("*")):
         if f.suffix in (".html", ".css") and "_vendor" not in f.parts:

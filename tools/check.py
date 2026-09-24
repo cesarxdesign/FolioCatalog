@@ -22,7 +22,7 @@ LOADS = [
     re.compile(r"""<link\b[^>]*?\shref=["']([^"']+)["'][^>]*>""", re.I),
     re.compile(r"""\s(?:poster|data|xlink:href)=["']([^"']+)""", re.I),
     re.compile(r"""<(?:image|use|feImage)\b[^>]*?\shref=["']([^"'#][^"']*)""", re.I),
-    re.compile(r"""url\(\s*["']?([^"')\s]+)""", re.I),
+    re.compile(r"""url\(\s*(?:&quot;|["'])?([^"')\s&]+(?:&(?!quot;)[^"')\s&]*)*)""", re.I),
     re.compile(r"""@import\s+["']([^"']+)""", re.I),
 ]
 SRCSET = re.compile(r"""\s(?:srcset|imagesrcset)=["']([^"']+)""", re.I)
@@ -34,7 +34,11 @@ SCRIPT = re.compile(r"<script\b[^>]*>(.*?)</script>", re.S | re.I)
 IGNORE_LINK_RELS = {"preconnect", "dns-prefetch", "canonical", "alternate", "author", "license", "me"}
 
 
+DATA_URL = re.compile(r'''url\(\s*(?:"data:[^"]*"|'data:[^']*'|&quot;data:.*?&quot;)\s*\)''', re.S)
+
+
 def urls(text, is_css):
+    text = DATA_URL.sub("", text)   # an embedded file is part of the page already
     out = []
     for rx in LOADS:
         for m in rx.finditer(text):
@@ -83,7 +87,7 @@ def main():
                 if EXTERNAL.match(u):
                     problems.append(f"loads from outside: {rel} -> {u}")
                     continue
-                if SCHEME.match(u) or u.startswith("#") or u.startswith("{{"):
+                if SCHEME.match(u) or u.startswith(("#", "%23", "{{")):
                     continue
                 path = unquote(u.split("#")[0].split("?")[0])
                 if not path:

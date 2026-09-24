@@ -12,11 +12,12 @@ never from the working tree: what is committed is what Vercel served. Then:
   - analytics scripts are removed and the page is marked noindex
 """
 import argparse, posixpath, re, subprocess, sys
-from common import ROOT, LIVE, vendor, write_meta, new_dest
+from common import ROOT, LIVE, DATA_URL, outside_data, vendor, write_meta, new_dest
 
 PORTFOLIO = ROOT.parent / "Portfolio"
 TEXT = (".html", ".css")
-REF_RE = re.compile(r'''((?:href|src)=["']|url\(\s*["']?)([^"')\s>]+)''')
+# url(...) inside an HTML attribute writes its quotes as &quot;
+REF_RE = re.compile(r'''((?:href|src)=["']|url\(\s*(?:&quot;|["'])?)([^"')\s>&]+(?:&(?!quot;)[^"')\s>&]*)*)''')
 ANALYTICS = re.compile(r"<script\b[^>]*>(?:(?!</script>).)*?posthog(?:(?!</script>).)*?</script>", re.S | re.I)
 
 
@@ -26,7 +27,8 @@ def git(*args, binary=False):
 
 
 def is_local(url):
-    return not re.match(r"^(?:[a-z][a-z0-9+.-]*:|//|#)", url, re.I) and url != ""
+    # "%23x" is "#x" encoded: a reference inside the page (an SVG gradient), not a file
+    return not re.match(r"^(?:[a-z][a-z0-9+.-]*:|//|#|%23)", url, re.I) and url != ""
 
 
 def resolve(from_file, url):
@@ -61,7 +63,7 @@ def main():
     queue = [f for f in take if f.endswith(TEXT)]
     while queue:
         f = queue.pop()
-        for _, url in REF_RE.findall(git("show", f"{commit}:{f}")):
+        for _, url in REF_RE.findall(DATA_URL.sub("", git("show", f"{commit}:{f}"))):
             if not is_local(url):
                 continue
             p = resolve(f, url)
@@ -84,9 +86,11 @@ def main():
                 p += "/index.html"
             if p in take:
                 return lead + posixpath.relpath(p, posixpath.dirname(from_file) or ".") + suffix
+            if not lead.startswith("href"):
+                return m.group(0)   # a file that was missing on the live site too: leave it as it was
             live = re.sub(r"(^|/)index\.html$", "", "" if p == "." else p).rstrip("/")
             return lead + LIVE + "/" + live + suffix
-        return REF_RE.sub(sub, text)
+        return outside_data(text, lambda part: REF_RE.sub(sub, part))
 
     for f in sorted(take):
         out = dest / "site" / f

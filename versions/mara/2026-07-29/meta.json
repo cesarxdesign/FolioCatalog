@@ -1,0 +1,16 @@
+{
+  "project": "mara",
+  "id": "2026-07-29",
+  "name": "Lite",
+  "page": "site/mara/index.html",
+  "width": 1440,
+  "shipped": "2026-07-29T01:51:15+01:00",
+  "until": null,
+  "source": {
+    "kind": "portfolio",
+    "ref": "352313a",
+    "commit": "352313a7671d40c0bcac72fd6cabce5a8b2427cc",
+    "committed": "2026-09-24T00:39:42+01:00"
+  },
+  "note": "The page as live on cesarxdesign.com/mara on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time)."
+}
