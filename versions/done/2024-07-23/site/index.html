@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>Done ][ · Fitness and workouts</title>
+<meta name="description" content="DONE ][: a five-day exploration of a wearables-first fitness app.">
+<link rel="preload" href="fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/RobotoMono.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Built from Figma "CG-Folio-WIP" > 06 Done2 _air (15:3578), 1920 x 20434.
+   Every coordinate, size, colour and type value below is read from the Figma file (get_metadata,
+   get_design_context and a read-only plugin dump of fills/effects/text segments).
+   Images are Figma's own renders: @1x is Figma's 1x render, the plain file the 2x export of the
+   same box. Figma's exports come flattened onto the canvas behind the node, so mockups that sit on
+   a non-white backdrop (06 grid, 07 gradient, 11 grid) are cut from the section render at the
+   node's render bounds instead of exported alone. */
+@font-face{font-family:'Roboto';src:url(fonts/Roboto.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Roboto';src:url(fonts/Roboto-Italic.woff2) format('woff2');font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Roboto Mono';src:url(fonts/RobotoMono.woff2) format('woff2');font-weight:100 700;font-style:normal;font-display:swap}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#FFFFFF;-webkit-text-size-adjust:100%}
+body{background:#FFFFFF;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img{display:block}
+ol{list-style:none}
+
+.page{position:relative;width:1920px;margin:0 auto;background:#FFFFFF;overflow:hidden}
+.s{position:relative;width:1920px;overflow:hidden;background:#FFFFFF}
+.a{position:absolute}
+.nw{white-space:nowrap}
+.col{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.b{font-weight:700}
+/* centred tracked text: cancel the tracking CSS adds after the last glyph (Figma does not) */
+.trk32{margin-right:-.32px}
+
+/* ---------- type (one class per Figma style) ---------- */
+/* Roboto Mono Medium 42, auto (box 55), -2%, small caps, #696969 multiply */
+.t-path{font-family:'Roboto Mono',monospace;font-weight:500;font-size:42px;line-height:55px;letter-spacing:-.84px;font-variant-caps:small-caps;color:#696969;mix-blend-mode:multiply;white-space:nowrap}
+/* Roboto Mono Regular 24 / 36, -1%, #5B5B5B multiply */
+.t-mono{font-family:'Roboto Mono',monospace;font-weight:400;font-size:24px;line-height:36px;letter-spacing:-.24px;color:#5B5B5B;mix-blend-mode:multiply}
+/* Roboto Mono Regular 20 / 36, #555555 multiply */
+.t-monocap{font-family:'Roboto Mono',monospace;font-weight:400;font-size:20px;line-height:36px;color:#555555;mix-blend-mode:multiply;white-space:nowrap}
+/* Roboto Mono Regular 24 / 36, #001818 at 60% layer opacity, centred */
+.t-note{font-family:'Roboto Mono',monospace;font-weight:400;font-size:24px;line-height:36px;color:#001818;opacity:.6;text-align:center;white-space:nowrap}
+/* Roboto Light 32 / 40, 1% */
+.t-lead{font-family:'Roboto',sans-serif;font-weight:300;font-size:32px;line-height:40px;letter-spacing:.32px}
+/* Roboto Regular 32, auto (box 38), 1%, #696969, centred */
+.t-intro{font-family:'Roboto',sans-serif;font-weight:400;font-size:32px;line-height:38px;letter-spacing:.32px;color:#696969;text-align:center}
+/* Roboto Bold 69, auto (box 81), -2%, #2D3648 */
+.t-h1{font-family:'Roboto',sans-serif;font-weight:700;font-size:69px;line-height:81px;letter-spacing:-1.38px;color:#2D3648;white-space:nowrap}
+/* Roboto ExtraBold 24, auto (box 28), -1.4% */
+.t-h3{font-family:'Roboto',sans-serif;font-weight:800;font-size:24px;line-height:28px;letter-spacing:-.336px}
+/* Roboto Regular 24 / 32, #888888 */
+.t-body{font-family:'Roboto',sans-serif;font-weight:400;font-size:24px;line-height:32px;color:#888888}
+
+/* ---------- 02 desc ---------- */
+.kicker{font-family:'Roboto Mono',monospace;font-size:18px;line-height:42px;letter-spacing:4.32px;text-transform:uppercase;color:#000000;white-space:nowrap}
+.kicker-a{font-weight:400;box-shadow:inset 0 1px 0 #000000} /* Frame 32: 1px top stroke, inside */
+.kicker-b{font-weight:300}
+.card{background:#F7F7F7;border-radius:24px}
+.card-text{font-family:'Roboto Mono',monospace;font-weight:400;font-size:18px;line-height:24px;letter-spacing:1.44px;color:#555555}
+.role{font-family:'Roboto Mono',monospace;font-weight:400;font-size:24px;line-height:40px;letter-spacing:1.92px;text-transform:uppercase;color:#151515;white-space:nowrap}
+.dates{font-family:'Roboto Mono',monospace;font-weight:300;font-size:18px;line-height:32px;letter-spacing:.54px;color:#151515;white-space:nowrap}
+.dl{font-family:'Roboto Mono',monospace;font-weight:500;font-size:16px;line-height:38px;letter-spacing:1.92px;text-transform:uppercase;color:#151515;white-space:nowrap}
+.dd{font-family:'Roboto Mono',monospace;font-weight:300;font-size:18px;line-height:38px;letter-spacing:.54px;color:#151515;white-space:nowrap}
+
+/* ---------- 03 5 days ---------- */
+.sched-bg{background:rgba(254,215,173,.24)}                 /* Rectangle 70 */
+.rule{background:#2D3648}                                    /* Lines 9-13, 1px */
+.sched-title{font-family:'Roboto Mono',monospace;font-weight:500;font-size:42px;line-height:42px;letter-spacing:-1.68px;color:#2D3648;white-space:nowrap}
+.sched{counter-reset:s;font-family:'Roboto Mono',monospace;font-weight:400;font-size:22px;line-height:40px;letter-spacing:.22px;color:#2D3648}
+/* Figma ORDERED list: the API gives no marker geometry, so the text indent (26.7px) and the
+   marker's start (-5.75px) are measured off Figma's render of 15:3597.
+   Baseline: Figma puts 22/40 Roboto Mono .54px lower than Chrome, which floors the half-leading,
+   so the rows move down 1px. */
+.sched li{position:relative;padding-left:26.7px;counter-increment:s;white-space:nowrap;translate:0 1px}
+.sched li::before{content:counter(s) ".";position:absolute;left:-5.75px;top:0}
+
+/* ---------- 06 / 07 backgrounds ---------- */
+.fade-top{background:linear-gradient(180deg,#FFFFFF 0%,rgba(255,255,255,0) 100%)} /* Rectangle 171 */
+.fade-bottom{background:linear-gradient(0deg,#FFFFFF 0%,rgba(255,255,255,0) 100%)} /* Rectangle 172, flipped: y 2680..3040 */
+.details{background:linear-gradient(180deg,#FFFFFF 0%,#DADADA 100%)}             /* 07 frame fill */
+.beam{mix-blend-mode:color-dodge}                                                  /* Rectangle 173 */
+</style>
+</head>
+<body>
+<main class="page">
+
+<!-- 01 hero -->
+<section class="s" style="height:960px" aria-label="Done ][">
+  <picture><source type="image/avif" srcset="img/hero@1x.avif 1x, img/hero.avif 2x"><img class="a" src="img/hero.webp" srcset="img/hero@1x.webp 1x, img/hero.webp 2x" alt="DONE ][: three iPhone screens of the fitness app over a dark planet" width="1920" height="960" style="left:0;top:0" fetchpriority="high"></picture>
+</section>
+
+<!-- 02 desc -->
+<section class="s" style="height:738px" aria-label="Summary">
+  <div class="a kicker kicker-a" style="left:128px;top:96px;width:102px;height:42px">done ][</div>
+  <div class="a kicker kicker-b" style="left:246px;top:96px">fitness and workouts</div>
+
+  <div class="a card" style="left:104px;top:178px;width:1024px;height:464px"></div>
+  <p class="a card-text" style="left:168px;top:242px;width:896px">DONE ][ is based on my previous fitness app venture ”DONE WORKOUTS”.<br><br>The health &amp; fitness space has evolved quite a bit since my work on DONE, with an extraordinary assortment of fitness trackers, as well as amazing technological advancements from AR to AI. The amount of data we can get from our fingers and wrists has tremendous potential — dramatically changing the possibilities of what a workout app can, and should do.<br><br>Having added a few extra trackers to my workouts and daily life in recent times, I was curious on how Done could have looked should it focus more on wearables, and on-device smarts. So I gave myself a 5-day deadline and decided to do a bit of exploratory work. There was no client, and no devs so the only constraint is that the version be “complete” and could ship to users (which forced me to work out an onboarding and similar details).</p>
+
+  <h2 class="a role" style="left:1192px;top:194px">Product Designer</h2>
+  <p class="a dates" style="left:1192px;top:234px">Q2 2024</p>
+  <dl>
+    <dt class="a dl" style="left:1192px;top:298px">Market</dt>
+    <dd class="a dd" style="left:1192px;top:336px">/B2C<br>Health &amp; Fitness</dd>
+    <dt class="a dl" style="left:1192px;top:450px">platform</dt>
+    <dd class="a dd" style="left:1192px;top:488px">Native iOS</dd>
+    <dt class="a dl" style="left:1496px;top:298px">location</dt>
+    <dd class="a dd" style="left:1496px;top:336px">Lisbon, Portugal</dd>
+  </dl>
+</section>
+
+<!-- 03 5days -->
+<section class="s" style="height:960px" aria-label="Five days">
+  <picture><source type="image/avif" srcset="img/emoji@1x.avif"><img class="a" src="img/emoji@1x.webp" alt="" width="32" height="40" style="left:869px;top:565px"></picture>
+  <p class="a t-lead" style="left:304px;top:368px;width:576px;color:#424747">Naturally there was plenty of insight and knowledge that I had from Done. And being a dry run, I was happy to embrace the freedom, shifting my focus into the areas I’m often less likely to explore. Like, UI that’d be too expensive to code.</p>
+  <!-- Frame 76: 984,329 664x318 (white on white) -->
+  <div class="a sched-bg" style="left:1012px;top:350px;width:608px;height:269px"></div>
+  <img class="a" src="img/schedule-hexagons.svg" alt="" width="608" height="269" style="left:1012px;top:350px">
+  <!-- 1px strokes land on the row/column before the line's coordinate, as in Figma's render -->
+  <div class="a rule" style="left:984px;top:354px;width:64px;height:1px"></div>
+  <div class="a rule" style="left:1402px;top:354px;width:246px;height:1px"></div>
+  <div class="a rule" style="left:1016px;top:329px;width:1px;height:318px"></div>
+  <div class="a rule" style="left:1615px;top:329px;width:1px;height:318px"></div>
+  <div class="a rule" style="left:984px;top:614px;width:664px;height:1px"></div>
+  <h2 class="a sched-title" style="left:1059px;top:318px">5 day schedule</h2>
+  <ol class="a sched" style="left:1064px;top:388px;width:504px">
+    <li>Ideas dump</li>
+    <li>Idea selection</li>
+    <li>Define the UX (all flows)</li>
+    <li>Develop the UI (based on the UX)</li>
+    <li>Finalize screens and make proto</li>
+  </ol>
+</section>
+
+<!-- 04 hexagon -->
+<section class="s" style="height:1440px" aria-label="The hexagon">
+  <picture><source type="image/avif" srcset="img/hexagon-glyph@1x.avif 1x, img/hexagon-glyph.avif 2x"><img class="a" src="img/hexagon-glyph.webp" srcset="img/hexagon-glyph@1x.webp 1x, img/hexagon-glyph.webp 2x" alt="hexagon" width="53" height="55" style="left:168px;top:432px"></picture>
+  <h2 class="a t-path" style="left:144px;top:432px">/</h2>
+  <p class="a t-mono" style="left:144px;top:567px;width:560px">I had this initial insight for a home or dashboard, that would display the most important metrics — and could be customized by the user, which meant it needed to be flexible to the number of metrics it’d display.<br><br>This took me to the flexibility champ: <span class="b">The Hexagon</span>.</p>
+  <picture><source type="image/avif" srcset="img/hexagon-cards@1x.avif 1x, img/hexagon-cards.avif 2x"><img class="a" src="img/hexagon-cards.webp" srcset="img/hexagon-cards@1x.webp 1x, img/hexagon-cards.webp 2x" alt="Twelve home layouts, one to twelve hexagon metrics" width="944" height="576" style="left:840px;top:408px" loading="lazy" decoding="async"></picture>
+  <p class="a t-monocap" style="left:848px;top:1008px">Big fan of the hexagon.</p>
+</section>
+
+<!-- 05 hood -->
+<section class="s" style="height:1720px" aria-label="The hood">
+  <h2 class="a t-path" style="left:144px;top:452px">/the hood</h2>
+  <p class="a t-mono" style="left:144px;top:587px;width:400px">I wanted home/dashboard to stand as a defining feature. As I was developing the UI, I had this idea of “looking under the hood” to see the inner workings of the car.<br><br>This led me to the “hood” metaphor, turning the view into a full screen drawer that the user could “flip open”, revealing the apps’ inner workings underneath.</p>
+  <picture><source type="image/avif" srcset="img/hood@1x.avif 1x, img/hood.avif 2x"><img class="a" src="img/hood.webp" srcset="img/hood@1x.webp 1x, img/hood.webp 2x" alt="Home with the hood closed, the hood opening, and the hood open" width="1227" height="852" style="left:645px;top:428px" loading="lazy" decoding="async"></picture>
+</section>
+
+<!-- 06 main -->
+<section class="s" style="height:3040px" aria-label="Main screens">
+  <picture><source type="image/avif" srcset="img/main-grid@1x.avif 1x, img/main-grid.avif 2x"><img class="a" src="img/main-grid.webp" srcset="img/main-grid@1x.webp 1x, img/main-grid.webp 2x" alt="" width="1920" height="3040" style="left:0;top:0" loading="lazy" decoding="async"></picture>
+  <div class="a fade-top" style="left:0;top:0;width:1920px;height:360px"></div>
+  <picture><source type="image/avif" srcset="img/main-row1@1x.avif 1x, img/main-row1.avif 2x"><img class="a" src="img/main-row1.webp" srcset="img/main-row1@1x.webp 1x, img/main-row1.webp 2x" alt="Vitals, Devices, Workout plan and Goals screens" width="1804" height="1012" style="left:58px;top:584px" loading="lazy" decoding="async"></picture>
+  <p class="a t-intro" style="left:280px;top:415px;width:1360px"><span class="trk32">Once “the hood” set the tone in terms of UI, the remainder screens were fairly straightforward.</span></p>
+  <picture><source type="image/avif" srcset="img/main-row2@1x.avif 1x, img/main-row2.avif 2x"><img class="a" src="img/main-row2.webp" srcset="img/main-row2@1x.webp 1x, img/main-row2.webp 2x" alt="Add device (searching and found), and two workout exercise screens" width="1804" height="1012" style="left:58px;top:1628px" loading="lazy" decoding="async"></picture>
+  <div class="a fade-bottom" style="left:0;top:2680px;width:1920px;height:360px"></div>
+</section>
+
+<!-- 07 details -->
+<section class="s details" style="height:2232px" aria-label="Details">
+  <picture><source type="image/avif" srcset="img/details@1x.avif 1x, img/details.avif 2x"><img class="a" src="img/details.webp" srcset="img/details@1x.webp 1x, img/details.webp 2x" alt="Two Metrics screens with callouts: the visible tip of the hood, hood metrics, a metric card with its source, and an offline device" width="1520" height="1100" style="left:400px;top:600px" loading="lazy" decoding="async"></picture>
+  <p class="a t-note" style="left:845px;top:348px;width:231px">Details are fun.</p>
+  <p class="a t-body" style="left:80px;top:852px;width:400px">As a lot of these metrics came from devices that had their own apps and interfaces — I wanted to balance the app’s own design language that I was developing, but keep familiar cues from the device maker’s app as well.<br><br>This ensured the user would feel right at home consuming the information, either here or in the native app.</p>
+  <div class="a col" style="left:80px;top:1449px;width:400px">
+    <h3 class="t-h3" style="width:400px;color:#424747">Source</h3>
+    <p class="t-body" style="width:400px">As many devices can read the same metrics, it’s important to show which one is the primary source.</p>
+  </div>
+  <p class="a t-body" style="left:1508px;top:935px;width:176px">Hood metrics</p>
+  <div class="a col" style="left:1426px;top:619px;width:400px">
+    <h3 class="t-h3" style="width:400px;color:#424747">Visible tip</h3>
+    <p class="t-body" style="width:400px">The lip of the hood can be pulled from the top. Due to ergonomics, it can also be triggered from the center button on the navbar.</p>
+  </div>
+  <p class="a t-body" style="left:1458px;top:1650px;width:176px">Device offline</p>
+  <p class="a t-body" style="left:1592px;top:1406px;width:176px;text-align:right">Metric’s source</p>
+  <!-- Rectangle 173 (24%, color dodge) paints over "Hood metrics"; the plate carries it everywhere
+       except in that text's hole, so the vector is repeated inside the hole only -->
+  <div class="a" style="left:1504px;top:933px;width:153px;height:36px;overflow:hidden"><img class="a beam" src="img/beam.svg" alt="" width="643" height="390" style="left:-365px;top:-49px"></div>
+</section>
+
+<!-- 08 secondary -->
+<section class="s" style="height:2296px" aria-label="Secondary flows">
+  <picture><source type="image/avif" srcset="img/secondary-bg@1x.avif 1x, img/secondary-bg.avif 2x"><img class="a" src="img/secondary-bg.webp" srcset="img/secondary-bg@1x.webp 1x, img/secondary-bg.webp 2x" alt="" width="1920" height="1842" style="left:0;top:207px" loading="lazy" decoding="async"></picture>
+  <p class="a t-intro" style="left:280px;top:448px;width:1360px"><span class="trk32">With the foundation set, I started on the secondary flows.</span></p>
+  <div class="a col" style="left:162px;top:1668px;width:1596px">
+    <h3 class="t-h3" style="width:1596px;color:#696969">Full body scan and the reason to have friends (or a tripod)</h3>
+    <p class="t-body" style="width:1596px">This is a flow that would had given a lot of trouble, if I was trying to actually make it work flawlessly, and handover to engineering. There’s naturally a lto of things to consider with such interaction — the fact that the camera “floats” in front of the user as they keep their arms wide and in frame. But this is happy path all day every day, so the scan was successful, with a perfect bicep and forearm perimeter reading.</p>
+  </div>
+  <picture><source type="image/avif" srcset="img/secondary-row@1x.avif 1x, img/secondary-row.avif 2x"><img class="a" src="img/secondary-row.webp" srcset="img/secondary-row@1x.webp 1x, img/secondary-row.webp 2x" alt="Biometric scan: framing, scanning the arm, measuring, scan complete" width="1804" height="1012" style="left:58px;top:620px" loading="lazy" decoding="async"></picture>
+</section>
+
+<!-- 09 onboarding -->
+<section class="s" style="height:2432px" aria-label="Onboarding">
+  <h2 class="a t-h1" style="left:128px;top:460px">Onboarding and done.</h2>
+  <p class="a t-lead" style="left:126px;top:597px;width:760px;color:#696969">As the 5 day deadline approached, I was making good progress, and figured I could still have a go at onboarding — part of my goal was a “complete” app, and it wouldn’t be done without the front door.</p>
+  <picture><source type="image/avif" srcset="img/onboarding-row@1x.avif 1x, img/onboarding-row.avif 2x"><img class="a" src="img/onboarding-row.webp" srcset="img/onboarding-row@1x.webp 1x, img/onboarding-row.webp 2x" alt="Onboarding home: add a device, biometrics and goals, completed one by one" width="1780" height="986" style="left:70px;top:876px" loading="lazy" decoding="async"></picture>
+  <div class="a col" style="left:162px;top:1912px;width:1596px">
+    <h3 class="t-h3" style="width:1596px;color:#696969">On brand onboarding</h3>
+    <p class="t-body" style="width:1596px">From the very start, I went all in on hexagon. And to have it work as well as it did on the last thing I worked on, was really satisfying. There was really only one constraint I set myself with on onboarding, and it’s that it could be modular and be done in any order the user decided — there were 3 main pillars for the app to be useful, and that would be a minimum of data coming in (which requires at least one device paired), a loose sense of the user’s fitness level, and one or multiple goals so it could generate an initial workout.</p>
+  </div>
+</section>
+
+<!-- 10 assessment -->
+<section class="s" style="height:2080px" aria-label="Strength assessment">
+  <picture><source type="image/avif" srcset="img/assessment-row@1x.avif 1x, img/assessment-row.avif 2x"><img class="a" src="img/assessment-row.webp" srcset="img/assessment-row@1x.webp 1x, img/assessment-row.webp 2x" alt="Strength assessment: pushups, situps and squat" width="1474" height="986" style="left:223px;top:281px" loading="lazy" decoding="async"></picture>
+  <div class="a col" style="left:315px;top:1316px;width:1291px">
+    <h3 class="t-h3" style="width:1291px;color:#696969">Strength assessment</h3>
+    <p class="t-body" style="width:1291px">A pet peeve I had with the original DONE (the one that had to actually ship) was that we didn’t solve the strength assessment — we simply asked the user to pick a level from a dropdown. The problem with the user self-assessing is that your fitness “level” is outrageously subjective. <br><br>It’s super interesting (and quite crazy) but the higher level of fitness a person has, the lower they tend to rate themselves, because as their level rises, so does their awareness (and sometimes their ambitions as well). So an average non-athlete, that simply isn’t sick or injured, might feel like that’s an indicator of good fitness. Whilst a an actual athlete will be much more attuned with their fitness, but have the potential to measure themselves against...elite level athletes, and rate their our fitness as “average”.<br><br>With these 3 very simple and easy to do exercises, we can get a much closer feel for the user’s real level. In 3 minutes, the difference in push up total, by a non-athlete and someone in real good physical shape, is staggering. Same for crunches. And the max. squat time, will really widen the gap.</p>
+  </div>
+</section>
+
+<!-- 11 hero grid -->
+<section class="s" style="height:2536px" aria-label="Six days">
+  <picture><source type="image/avif" srcset="img/hero-grid@1x.avif 1x, img/hero-grid.avif 2x"><img class="a" src="img/hero-grid.webp" srcset="img/hero-grid@1x.webp 1x, img/hero-grid.webp 2x" alt="Ten screens of DONE ][ over the hexagon grid" width="1888" height="1744" style="left:16px;top:305px" loading="lazy" decoding="async"></picture>
+  <p class="a t-note" style="left:751px;top:2100px;width:419px">It actually took me six days.</p>
+</section>
+
+</main>
+<script>
+/* Fixed 1920px design shown as a centred column: it renders COLUMN px wide at most, and
+   shrinks to fit narrower windows instead of reflowing. #1x shows it at its native 1920px. */
+(function(){
+  if (location.hash === '#1x') return;
+  var COLUMN = 1280;
+  var r=document.documentElement;
+  function fit(){ r.style.zoom = 1; r.style.zoom = Math.min(COLUMN, r.clientWidth) / 1920; }
+  fit(); addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>

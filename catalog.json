@@ -130,6 +130,23 @@
   },
   {
     "project": "done",
+    "id": "2024-07-23",
+    "name": "Done2",
+    "page": "site/index.html",
+    "width": 1920,
+    "shipped": null,
+    "until": null,
+    "made": null,
+    "source": {
+      "kind": "figma",
+      "figma": "https://www.figma.com/design/M4IujdecP3N9GoOswgzDNl/CG-Folio-WIP?node-id=15-3578",
+      "frame": "06 Done2 _air (15:3578), 1920 x 20434"
+    },
+    "note": "The Figma frame 06 Done2 _air built as one page with figma2code. Narrative text is live; phone rows, the hero and patterned backgrounds are Figma renders. Never on the live folio.",
+    "path": "versions/done/2024-07-23/site/index.html?v=948ca9b4"
+  },
+  {
+    "project": "done",
     "id": "2026-08-03",
     "name": "Lite",
     "page": "site/done/index.html",

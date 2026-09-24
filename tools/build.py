@@ -190,7 +190,8 @@ function render() {
   const have = [...$('panes').children].map(p => p.dataset.path).join('|');
   if (have !== shown.map(v => v.path).join('|')) {
     $('panes').replaceChildren(...shown.map(v => {
-      const frame = el('iframe', {src: v.path, title: label(v), loading: 'eager'});
+      // #1x: the Figma-built pages shrink themselves to a 1280 column unless told otherwise.
+      const frame = el('iframe', {src: v.path + '#1x', title: label(v), loading: 'eager'});
       frame.addEventListener('load', () => { themeFrame(frame); stillFrame(frame); });
       watchFrame(frame);
       const pane = el('section', {className: 'pane'},
