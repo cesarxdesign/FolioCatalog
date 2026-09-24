@@ -125,8 +125,9 @@ Changed on the way in, and nothing else:
 - the PostHog script is removed, and every page is `noindex`
 - Claude Design artboards are flattened to plain HTML with their settings applied
 
-Two edits, by request, both 2026-09-24: Noir got a dark mode (its light look is unchanged),
-and the Figma page's Cable dates were corrected to Jul 2020 - Oct 2022, as in the CV.
+Edits by request: Noir got a dark mode (its light look is unchanged), 2026-09-24. Role dates on
+the Figma pages were corrected to match the CV: Cable to Jul 2020 - Oct 2022 (2026-09-24), Mara
+to Nov 2022 - Feb 2024 and Starcount to Dec 2015 - May 2019 (2026-09-25).
 
 `catalog.json` and `index.html` are built by `tools/build.py` from the meta files. Never
 hand-edit them.
