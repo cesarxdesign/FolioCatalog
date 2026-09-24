@@ -14,7 +14,9 @@ pages side by side) and, when the screen is too narrow for all of them, **â€¹ â€
 through, and a light/dark switch that sets every page shown that has both themes (the
 Figma page has one look). Panes are never narrower than 360px; the page never
 scrolls sideways. Each page is drawn at the width it was designed for and scaled into its
-pane. Compare shows the chosen version and the ones after it. A view can be linked:
+pane. Compare shows the chosen version and the ones after it. Each pane is display only, like
+an image: scroll works, nothing inside can be clicked, hovered or focused. The stored pages
+themselves are untouched, so a version taken out of `versions/` works in full. A view can be linked:
 `index.html#cable/2026-09-21/3/0` (project / version / how many / first one shown).
 
     python3 -m http.server 4174 --directory ~/Claude/FolioCatalog      to run it locally
@@ -91,7 +93,8 @@ Changed on the way in, and nothing else:
 - the PostHog script is removed, and every page is `noindex`
 - Claude Design artboards are flattened to plain HTML with their settings applied
 
-One addition, by request: Noir got a dark mode on 2026-09-24. Its light look is unchanged.
+Two edits, by request, both 2026-09-24: Noir got a dark mode (its light look is unchanged),
+and the Figma page's Cable dates were corrected to Jul 2020 - Oct 2022, as in the CV.
 
 `catalog.json` and `index.html` are built by `tools/build.py` from the meta files. Never
 hand-edit them.

@@ -12,8 +12,8 @@
       "kind": "file",
       "from": "Portfolio/OlderVersions/cable.html (the full-quality original of compare/cable/v3.html on staging/compare-cable)"
     },
-    "note": "The Figma Cable _air frame built as one page. Shown on the staging compare page, never on the live folio.",
-    "path": "versions/cable/2024-07-06/site/index.html?v=aa633066"
+    "note": "The Figma Cable _air frame built as one page. Shown on the staging compare page, never on the live folio. Role dates corrected here on 2026-09-24 to Jul 2020 - Oct 2022, as in the CV (the Figma frame said Jul 2021).",
+    "path": "versions/cable/2024-07-06/site/index.html?v=21f38ce6"
   },
   {
     "project": "cable",

@@ -63,13 +63,13 @@ select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(
 main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 .pane{flex:1 1 0;min-width:0;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
       border-bottom:0;border-radius:8px 8px 0 0;overflow:hidden}
-.cap{flex:none;display:flex;align-items:baseline;gap:8px;padding:7px 10px;border-bottom:1px solid var(--line);font-size:12px;
-     white-space:nowrap;overflow:hidden}
-.cap b{font-weight:600}
-.cap span{color:var(--muted);overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
-.cap a{color:var(--accent);text-decoration:none}
+.cap{flex:none;padding:7px 10px;border-bottom:1px solid var(--line);font-size:12px;font-weight:600;
+     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .view{flex:1;min-height:0;position:relative;overflow:hidden;background:#fff}
 .view iframe{position:absolute;top:0;border:0;transform-origin:0 0;background:#fff}
+/* A pane is a picture of the page: nothing inside can be clicked, hovered or focused.
+   The shield takes every pointer event and passes only the wheel on, as scrolling. */
+.shield{position:absolute;inset:0;z-index:1}
 .empty{margin:auto;color:var(--muted);font-size:14px}
 </style>
 </head>
@@ -116,16 +116,7 @@ function applyTheme() {
   document.querySelectorAll('.view iframe').forEach(themeFrame);
 }
 
-const fmt = iso => {
-  if (!iso) return '';
-  if (iso.length <= 10) return new Date(iso + 'T12:00').toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'});
-  const d = new Date(iso);
-  return d.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'}) + ', ' +
-         d.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'});
-};
 const label = v => v.id.slice(0, 10) + (v.name ? ' · ' + v.name : '');
-const when = v => v.shipped ? `shipped ${fmt(v.shipped)}` + (v.until ? ` → ${fmt(v.until)}` : ' · live now')
-                            : 'never shipped' + (v.made ? ` · made ${fmt(v.made)}` : '');
 const list = () => ALL.filter(v => v.project === state.project);
 
 function readHash() {
@@ -164,12 +155,17 @@ function render() {
   const have = [...$('panes').children].map(p => p.dataset.path).join('|');
   if (have !== shown.map(v => v.path).join('|')) {
     $('panes').replaceChildren(...shown.map(v => {
-      const frame = el('iframe', {src: v.path, title: label(v), loading: 'eager'});
+      const frame = el('iframe', {src: v.path, title: label(v), loading: 'eager', tabIndex: -1, inert: true});
       frame.addEventListener('load', () => themeFrame(frame));
+      const shield = el('div', {className: 'shield'});
+      shield.addEventListener('wheel', e => {
+        e.preventDefault();
+        const px = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? shield.clientHeight : 1;
+        try { frame.contentWindow.scrollBy(0, e.deltaY * px / +pane.dataset.scale); } catch (err) {}
+      }, {passive: false});
       const pane = el('section', {className: 'pane'},
-        el('div', {className: 'cap'}, el('b', {textContent: label(v)}), el('span', {textContent: when(v)}),
-           el('a', {href: v.path, target: '_blank', rel: 'noopener', textContent: 'Open ↗', title: 'The whole page, in a new tab'})),
-        el('div', {className: 'view'}, frame));
+        el('div', {className: 'cap', textContent: label(v)}),
+        el('div', {className: 'view'}, frame, shield));
       pane.dataset.path = v.path;
       pane.dataset.width = v.width || 1440;
       return pane;
@@ -189,6 +185,7 @@ function fitFrames() {
     f.style.height = view.clientHeight / s + 'px';
     f.style.left = Math.max(0, (pw - w * s) / 2) + 'px';
     f.style.transform = `scale(${s})`;
+    pane.dataset.scale = s;
   }
 }
 
