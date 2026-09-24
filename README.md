@@ -70,6 +70,7 @@ request left localhost.
 
 | id | what | shipped | left the folio |
 |---|---|---|---|
+| `2020-07-20` | Sqsp: the 2020 live page on the Squarespace site, rebuilt from screenshots (notes in `source/NOTES.md`) | 2020, date not on record | |
 | `2024-06-28` | Figma: the Figma frame "06 Done _folio", built as one page | never | |
 | `2024-07-23` | Done2: the Figma frame "06 Done2 _air", built as one page | never | |
 | `2026-08-03` | Lite: the page as it was when taken off | 3 Aug 2026 18:49 | 21 Sep 2026 14:47 |

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1100">
+<meta name="robots" content="noindex">
+<title>Done Workouts · Cesar Garcia</title>
+<!-- The Done Workouts case study as it was live on the old Squarespace site, rebuilt from six
+     screenshots of it (Figma frame "done", taken 2024-07-07). Every length is measured from those
+     screenshots in the old site's own CSS pixels (they were 2x captures of a 2048px window).
+     All text outside app screens is live text, transcribed as written - including the captions of
+     the two grey bands and the App Store rating in the hero, which were baked into pictures.
+     Pictures are cut from the screenshots at 2x, each in a fixed box at its measured position.
+     Phone screens are clipped to their measured box, so an original can replace one without moving
+     anything; the eight rendered devices sit in slots that include their shadow on the panel fill. -->
+<style>
+@font-face{font-family:"IBM Plex Mono";font-weight:500;src:url(fonts/IBMPlexMono-500.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:600;src:url(fonts/IBMPlexMono-600.woff2) format("woff2")}
+*{box-sizing:border-box}
+p,h1,h2,h3,ul,figure,figcaption{margin:0}
+ul{padding:0;list-style:none}
+img{display:block}
+html{background:#FFFFFF}
+body{margin:0;background:#FFFFFF;color:#757575;
+     font:11px/17px "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:0.39px;
+     -webkit-font-smoothing:antialiased}
+
+.page{width:980px;margin:0 auto;padding-top:35px}
+
+/* ---------- hero, with the App Store rating as live text over the picture ---------- */
+.hero{position:relative;height:551.5px}
+.hero img{width:980px;height:551.5px}
+.rating span{position:absolute;white-space:pre;letter-spacing:0}
+.r-score{left:70.5px;top:119px;font-size:17.5px;line-height:17.5px;font-weight:500;color:#FEFEFE}
+.r-of{left:73px;top:138px;font-size:5.6px;line-height:5.6px;color:#6E6E6E}
+.r-stars{right:862px;font-size:2.9px;line-height:2.9px;letter-spacing:0px!important;color:#8C8C8E;text-align:right}
+.r-count{right:834px;font-size:4.2px;line-height:4.2px;color:#606060;text-align:right}
+
+.title{margin-top:49.2px;font-weight:700;font-size:61.3px;line-height:60px;letter-spacing:-0.1px;color:#000}
+.intro{display:grid;grid-template-columns:479px 479px;column-gap:22px;margin-top:23.5px}
+.role{font-weight:700;font-size:13.5px;letter-spacing:.05px;color:#333}
+.meta{margin-top:11px}
+
+/* ---------- text sections: a 578px column in the middle of the page ---------- */
+.text{width:579px;margin-left:200.5px}
+.text h2{font-weight:700;font-size:13.5px;letter-spacing:.05px;color:#333}
+.text p{margin-top:11px}
+.text.inc p{margin-top:11.35px}
+
+/* ---------- pictures ---------- */
+.pic img{width:980px}
+.sketches{height:298.5px}.sketches img{height:298.5px}
+.photos{height:262px}.photos img{height:262px}
+.watch{height:552px}.watch img{height:552px}
+
+/* Grey bands. Each screen is its own box, clipped at the measured radius; captions are live text. */
+.band{position:relative;background:#E8E8E8}
+.band .screen{position:absolute;overflow:hidden;box-shadow:0 1.5px 3.5px rgba(0,0,0,.2);background:#E8E8E8}
+.band .screen img{width:100%;height:100%}
+.band figcaption{position:absolute;text-align:center;white-space:pre;
+     font:500 8.2px/8.2px "IBM Plex Mono",ui-monospace,Menlo,monospace;letter-spacing:0px;color:#424747}
+.touch{height:551px}
+.touch .swatch{position:absolute;left:30.25px;top:40.5px;width:63.5px;height:22.75px;border-radius:3px;background:#D4BDDC}
+.touch .label{position:absolute;left:32.5px;top:73px;
+     font:600 8.15px/8.15px "IBM Plex Mono",ui-monospace,Menlo,monospace;letter-spacing:0px;color:#424747}
+.touch .screen{top:122px;width:161px;height:348.5px;border-radius:17px}
+.t1{left:30px}.t2{left:219.5px}.t3{left:409px}.t4{left:598.5px}.t5{left:788px}
+.touch figcaption{top:484.5px;width:161px;padding-left:2px}
+.sizes{height:551.5px}
+.sizes .screen.notch{border-radius:17px}
+.sizes figcaption{top:476.25px}
+
+/* Dark panel of eight rendered devices. Each slot holds the device and its shadow, on the panel's own fill. */
+.devices{position:relative;background:#424747;height:817px}
+.device{position:absolute;width:210px;height:351px}
+.device img{width:210px;height:351px}
+.c1{left:40px}.c2{left:257.5px}.c3{left:474.5px}.c4{left:692px}
+.r1{top:36px}.r2{top:444.5px}
+
+/* ---------- end of page ---------- */
+.stores{margin-top:22.6px;text-align:center}
+.stores .u{color:#000;border-bottom:1px solid #B4B4B4}
+.divider{width:579px;height:1px;margin:75.35px 0 0 200.5px;background:#E5E5E5}
+.next{display:block;width:61px;height:27.5px;margin:82.5px auto 0;background:#262524;color:#FFFFFF;
+      font-weight:500;font-size:8.5px;line-height:27.5px;letter-spacing:1.2px;text-align:center}
+.foot{margin-top:68.15px;background:#F5F5F5;height:137px}
+.foot .in{width:980px;margin:0 auto;padding-top:25.4px;display:grid;grid-template-columns:55.5px 72px auto}
+.foot h3{margin:0;font-weight:700;font-size:10px;line-height:14px;letter-spacing:.15px;color:#333}
+.foot li{font-size:8px;line-height:15.3px;letter-spacing:.05px;color:#333}
+.foot ul{margin-top:6.6px}
+</style>
+</head>
+<body>
+<main class="page">
+
+  <figure class="hero">
+    <img src="img/hero.webp" width="980" height="552" alt="Done Workouts on three iPhones and an Apple Watch, with the App Store badge and the Done Workouts logo">
+    <div class="rating">
+      <span class="r-score">5.0</span>
+      <span class="r-of">out of 5</span>
+      <span class="r-stars" style="top:120.75px">★★★★★</span>
+      <span class="r-stars" style="top:125px">★★★★</span>
+      <span class="r-stars" style="top:129.25px">★★★</span>
+      <span class="r-stars" style="top:133.5px">★★</span>
+      <span class="r-stars" style="top:137.75px">★</span>
+      <span class="r-count" style="top:120.5px">50</span>
+      <span class="r-count" style="top:124.75px">0</span>
+      <span class="r-count" style="top:129px">0</span>
+      <span class="r-count" style="top:133.25px">0</span>
+      <span class="r-count" style="top:137.5px">0</span>
+    </div>
+  </figure>
+
+  <h1 class="title">Done Workouts</h1>
+  <div class="intro">
+    <div>
+      <p class="role">Co-Founder</p>
+      <p class="meta">Better Fitness</p>
+      <p class="meta">B2C Fitness</p>
+    </div>
+    <p>Done Workouts is a side project I tend to in my free time. Co-founded with a friend from a previous company, we share all roles but my focus is mostly on creative and design, as well as Marketing, product fit, growth and making sure we keep improving the app to make our growing user base happy.</p>
+  </div>
+
+  <figure class="pic sketches" style="margin-top:70px"><img src="img/sketches.webp" width="980" height="299" alt="Early sketches of the Done Workouts app on grid paper, some screens highlighted in colour"></figure>
+
+  <section class="text" style="margin-top:68.95px">
+    <h2>Research and general considerations</h2>
+    <p>As a gym companion app, there's a significant number of challenges to be considered — mostly the environment and conditions it'll be used in: a gym, potentially crowded, loud music, and account for actual physical fatigue which can impact dexterity and accuracy in trying to hit a touch target on a small device, with a slick surface.</p>
+    <p>These considerations guided, constrained, and informed all design decisions from the beginning. From the amount of elements we can sensibly serve in one view, and the size of each tappable area. The stand out UI element, the DONE button was a direct result of touch accuracy study we conducted very early on, where users had to do 3 sets of bicep curls (with adequate load for each case) and then tap a confirmation button on the lower half of the screen. Combining the data for all inputs we came up with the current size and positioning of the DONE button, as well as the touch target area which overshoots the actual button.</p>
+  </section>
+
+  <figure class="band touch" style="margin-top:69.85px">
+    <div class="swatch"></div>
+    <span class="label">touch target</span>
+    <div class="screen t1"><img src="img/touch-1.webp" alt="Roman Chair: the first exercise screen, touch target highlighted"></div>
+    <div class="screen t2"><img src="img/touch-2.webp" alt="Set, weight and reps on a diagonal layout, touch target highlighted"></div>
+    <div class="screen t3"><img src="img/touch-3.webp" alt="Weighted Crunch with a full-width DONE bar"></div>
+    <div class="screen t4"><img src="img/touch-4.webp" alt="Weighted Crunch with a round DONE button over its touch target"></div>
+    <div class="screen t5"><img src="img/touch-5.webp" alt="Barbell Bench Press with the round DONE button and its touch target"></div>
+    <figcaption class="t1">264 x 110</figcaption>
+    <figcaption class="t2">208 x 98</figcaption>
+    <figcaption class="t3">375 x 126</figcaption>
+    <figcaption class="t4">375 x 136</figcaption>
+    <figcaption class="t5">375 x 190</figcaption>
+  </figure>
+
+  <section class="text inc" style="margin-top:69.7px">
+    <h2>Incremental iteration</h2>
+    <p>Another area of constant tweaking was the height of our Load and Rep pickers, as well as the distance between them. With data from a similar study where we register touch inputs and map those to actual touch targets, we were able to understand what was the sweet spot distance between these two elements, as well as the optimal height. This creates a constant tension between the elements that take extra screen real estate and the elements that lose it which requires careful consideration before implementing and sometimes further testing, specially when trying to cater to as many iPhone screen sizes as possible (supported by the latest versions of iOS).</p>
+  </section>
+
+  <figure class="band sizes" style="margin-top:69.6px">
+    <div class="screen" style="left:28px;top:220.5px;width:134.5px;height:238px"><img src="img/size-1.webp" alt="Select workout on iPhone SE"></div>
+    <div class="screen" style="left:194px;top:179px;width:157.5px;height:279.5px"><img src="img/size-2.webp" alt="Select workout on iPhone 8"></div>
+    <div class="screen" style="left:383.5px;top:150px;width:173.5px;height:308.5px"><img src="img/size-3.webp" alt="Select workout on iPhone 8 Plus"></div>
+    <div class="screen notch" style="left:589px;top:118.5px;width:157px;height:340.5px"><img src="img/size-4.webp" alt="Select workout on iPhone X"></div>
+    <div class="screen notch" style="left:778.5px;top:83px;width:173.5px;height:375.5px"><img src="img/size-5.webp" alt="Select workout on iPhone XS Max"></div>
+    <figcaption style="left:28px;width:134.5px">iPhone SE</figcaption>
+    <figcaption style="left:194px;width:157.5px">iPhone 8</figcaption>
+    <figcaption style="left:383.5px;width:173.5px">iPhone 8 Plus</figcaption>
+    <figcaption style="left:589px;width:157px">iPhone X</figcaption>
+    <figcaption style="left:778.5px;width:173.5px">iPhone X Max</figcaption>
+  </figure>
+
+  <section class="text" style="margin-top:69.2px">
+    <h2>User sessions</h2>
+    <p>The unique constraints in designing for such use cases and environment required unique testing and validating as well, including actual gym sessions with our beta testers and lead users. Interestingly, because I was working out alongside them, the quality and quantity of the feedback was above and beyond my expectations. Users were much more keen to share a pain point or feature suggestion as they saw me sometimes struggle with the same issues whilst doing an exercise next to them. I'm still not sure how I can replicate this for every user session for other projects, but it's something that I keep in the back of my mind since.</p>
+  </section>
+
+  <figure class="pic photos" style="margin-top:69.5px"><img src="img/photos.webp" width="980" height="262" alt="Five photos from user sessions in the gym, the app in use between sets"></figure>
+  <figure class="pic watch" style="margin-top:23px"><img src="img/watch.webp" width="980" height="552" alt="Done Workouts on an Apple Watch: the DONE screen"></figure>
+
+  <section class="text" style="margin-top:69.4px">
+    <h2>Just a side project</h2>
+    <p>In the beginning of the year we launched Done Workouts on the App Store as a fully native app. Many features had to be cut in order to focus on key functionality as we all contribute to this project as and where possible. The challenges of working with a fully remote team, working exclusively in their spare time (myself included) has definitely forced us to adopt best practices in all facets of the development and design process, as well as explore the available tools as best we can do maximise what we can do and get from them.</p>
+  </section>
+
+  <figure class="devices" style="margin-top:69.8px">
+    <div class="device c1 r1"><img src="img/device-1.webp" alt="Sign in with Apple"></div>
+    <div class="device c2 r1"><img src="img/device-2.webp" alt="Welcome to Done Workouts: your details"></div>
+    <div class="device c3 r1"><img src="img/device-3.webp" alt="Select next plan"></div>
+    <div class="device c4 r1"><img src="img/device-4.webp" alt="Stars to go and START"></div>
+    <div class="device c1 r2"><img src="img/device-5.webp" alt="Select workout"></div>
+    <div class="device c2 r2"><img src="img/device-6.webp" alt="Barbell Bench Press with the DONE button"></div>
+    <div class="device c3 r2"><img src="img/device-7.webp" alt="Barbell Bench Press and Seated Chest Fly, DONE disabled"></div>
+    <div class="device c4 r2"><img src="img/device-8.webp" alt="Workout complete"></div>
+  </figure>
+
+  <p class="stores">Available on the <span class="u">App Store</span></p>
+  <div class="divider"></div>
+  <span class="next">NEXT</span>
+</main>
+
+<footer class="foot">
+  <div class="in">
+    <div><h3>Apps</h3><ul><li>Mara</li><li>Penfold</li><li>Done</li><li>Orbis</li></ul></div>
+    <div><h3>Desktop</h3><ul><li>Audiences</li><li>Observatory</li></ul></div>
+    <div><h3>Agency</h3><ul><li>Savr</li><li>Pockted</li></ul></div>
+  </div>
+</footer>
+</body>
+</html>
