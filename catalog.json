@@ -110,5 +110,21 @@
     },
     "note": "Live on cesarxdesign.com/cable.",
     "path": "versions/cable/2026-09-23-shipped/site/cable/index.html?v=ee731222"
+  },
+  {
+    "project": "penfold",
+    "id": "2024-07-15",
+    "name": "Figma",
+    "page": "site/index.html",
+    "width": 1920,
+    "shipped": null,
+    "until": null,
+    "made": null,
+    "source": {
+      "kind": "file",
+      "from": "Portfolio/OlderVersions/penfold.html, the Figma penfold _air frame (1:21649) built as one page"
+    },
+    "note": "The Figma penfold _air frame built as one page. Never on the live folio.",
+    "path": "versions/penfold/2024-07-15/site/index.html?v=1c57b13a"
   }
 ]

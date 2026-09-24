@@ -47,6 +47,12 @@ request left localhost.
 | `2026-09-23-color` | Color, Noir with images (Claude Design) | never, made 23 Sep 17:30 | |
 | `2026-09-23-shipped` | Shipped: the Crazy canvas (made 23 Sep 22:19) built into the site | 23 Sep 2026 23:12 | live |
 
+## Penfold
+
+| id | what | shipped | left the folio |
+|---|---|---|---|
+| `2024-07-15` | Figma: the Figma "penfold _air" frame, built as one page | never | |
+
 Times are UK time. Shipped times are the git push to `main` (Vercel deploys within
 seconds); the August page's is the oldest production deploy Vercel still lists. Made times
 are the canvas's creation time on claude.ai.
