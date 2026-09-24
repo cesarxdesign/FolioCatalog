@@ -130,6 +130,23 @@
   },
   {
     "project": "done",
+    "id": "2024-06-28",
+    "name": "Figma",
+    "page": "site/index.html",
+    "width": 1920,
+    "shipped": null,
+    "until": null,
+    "made": null,
+    "source": {
+      "kind": "figma",
+      "figma": "https://www.figma.com/design/9Hmml1HBkNn8rMcn3KlK2R/06-Done-_folio?node-id=88-4103",
+      "frame": "06 Done _folio, node 88:4103, 1920 x 19325"
+    },
+    "note": "The Figma DONE folio frame built as one page with figma2code. Narrative text is live; phone mockups, photos and the hero are Figma renders. Never on the live folio.",
+    "path": "versions/done/2024-06-28/site/index.html?v=10180f91"
+  },
+  {
+    "project": "done",
     "id": "2024-07-23",
     "name": "Done2",
     "page": "site/index.html",

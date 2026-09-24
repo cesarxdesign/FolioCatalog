@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>Done · Fitness and workouts</title>
+<meta name="description" content="Done Workouts: co-founder case study. An app that takes DONE as input, and NEXT as output.">
+<link rel="preload" href="fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/RobotoMono.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Built from Figma "06 Done _folio" > done _air (88:4103), 1920 x 19325.
+   Every coordinate, size, colour and type value below is read from the Figma file
+   (get_metadata / get_design_context). The frame is not scaled: all values are integers at 1920.
+   Roboto, Roboto Italic, Roboto Mono: the precedent build's subsets (cable-air/fonts).
+   Roboto Slab and Roboto Mono Italic: google/fonts on GitHub (variable TTF), Latin subset, all
+   layout features kept.
+   Mockups, photos, the hero and the two illustration-only sections are Figma renders of their
+   nodes: the plain file is the 2x export, @1x is Figma's own 1x export of the same node. */
+@font-face{font-family:'Roboto';src:url(fonts/Roboto.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Roboto';src:url(fonts/Roboto-Italic.woff2) format('woff2');font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Roboto Mono';src:url(fonts/RobotoMono.woff2) format('woff2');font-weight:100 700;font-style:normal;font-display:swap}
+@font-face{font-family:'Roboto Mono';src:url(fonts/RobotoMono-Italic.woff2) format('woff2');font-weight:100 700;font-style:italic;font-display:swap}
+@font-face{font-family:'Roboto Slab';src:url(fonts/RobotoSlab.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#FFFFFF;-webkit-text-size-adjust:100%}
+body{background:#FFFFFF;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img{display:block}
+ul{list-style:none}
+
+.page{position:relative;width:1920px;margin:0 auto;background:#FFFFFF;overflow:hidden}
+.s{position:relative;width:1920px;overflow:hidden}
+.a{position:absolute}
+.nw{white-space:nowrap}
+.col{display:flex;flex-direction:column;align-items:flex-start}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;font-family:'Roboto',sans-serif}
+.b{font-weight:700}
+.i{font-style:italic}
+
+/* ---------- type ---------- */
+/* Roboto Bold 69, auto (box 81), -2% */
+.t-h1{font-family:'Roboto',sans-serif;font-weight:700;font-size:69px;line-height:81px;letter-spacing:-1.38px;color:#2D3648;white-space:nowrap}
+/* Roboto Light 32, auto (box 38 per line), 1% */
+.t-lead{font-family:'Roboto',sans-serif;font-weight:300;font-size:32px;line-height:38px;letter-spacing:.32px}
+/* Roboto ExtraBold 24, auto (box 28), -1.4% */
+.t-h3{font-family:'Roboto',sans-serif;font-weight:800;font-size:24px;line-height:28px;letter-spacing:-.336px}
+/* Roboto Regular 24 / 32 */
+.t-body{font-family:'Roboto',sans-serif;font-weight:400;font-size:24px;line-height:32px}
+/* Roboto Mono Medium 42 / 42, -4% */
+.t-mono-h{font-family:'Roboto Mono',monospace;font-weight:500;font-size:42px;line-height:42px;letter-spacing:-1.68px;color:#2D3648;white-space:nowrap}
+/* Roboto Mono Medium 42, auto (box 55), -2%, small caps (all letters) */
+.t-mono-sc{font-family:'Roboto Mono',monospace;font-weight:500;font-size:42px;line-height:55px;letter-spacing:-.84px;color:#AFB6B6;white-space:nowrap;text-transform:lowercase;font-variant-caps:small-caps}
+/* Roboto Mono Regular 24 / 36 */
+.t-mono{font-family:'Roboto Mono',monospace;font-weight:400;font-size:24px;line-height:36px}
+
+/* ---------- 01 hero ---------- */
+.hero{height:960px}
+
+/* ---------- 02 desc (auto-layout, mirrored as flex) ---------- */
+.desc{height:738px;background:#FFFFFF;display:flex;flex-direction:column;gap:40px;align-items:flex-start;padding:96px 104px}
+.kick-row{display:flex;gap:16px;align-items:center;justify-content:center;padding:0 24px}
+.kicker{font-family:'Roboto Mono',monospace;font-size:18px;line-height:42px;letter-spacing:4.32px;text-transform:uppercase;color:#000000;white-space:nowrap}
+.kicker-a{font-weight:400;box-shadow:inset 0 1px 0 #000000} /* 1px top stroke, inside */
+.kicker-b{font-weight:300}
+.trk-k{margin-right:-4.32px} /* Figma's text box excludes the trailing 4.32px tracking; the stroked box and the 16px gap follow it */
+.cards{display:flex;gap:8px;align-items:flex-start}
+.card{background:#F7F7F7;border-radius:24px;width:1024px;padding:64px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.card-text{width:100%;font-family:'Roboto Mono',monospace;font-weight:400;font-size:18px;line-height:24px;letter-spacing:1.44px;color:#555555}
+.details{display:flex;flex-direction:column;gap:24px;align-items:flex-start;padding:8px 56px;color:#151515}
+.role-blk{display:flex;flex-direction:column;align-items:flex-start;padding:8px 0}
+.role{font-family:'Roboto Mono',monospace;font-weight:400;font-size:24px;line-height:40px;letter-spacing:1.92px;text-transform:uppercase}
+.dates{font-family:'Roboto Mono',monospace;font-weight:300;font-size:18px;line-height:32px;letter-spacing:.54px}
+.det-row{display:flex;align-items:flex-start}
+.det-col{display:flex;flex-direction:column;gap:38px;align-items:flex-start}
+.pair{display:flex;flex-direction:column;align-items:flex-start;width:100%}
+.dl{font-family:'Roboto Mono',monospace;font-weight:500;font-size:16px;line-height:38px;letter-spacing:1.92px;text-transform:uppercase}
+.dd{font-family:'Roboto Mono',monospace;font-weight:300;font-size:18px;line-height:38px;letter-spacing:.54px}
+
+/* ---------- 03 essentials ---------- */
+.corner{width:80px;height:80px}
+.corner-img{display:block;width:81px;height:81px;overflow:visible}
+.corner-in{position:absolute;left:0;top:0;width:81px;height:81px}
+.quote{font-family:'Roboto Slab',serif;font-weight:400;font-size:40px;line-height:48px;letter-spacing:-.4px;color:#2D3648;text-align:center;white-space:nowrap;text-transform:lowercase;font-variant-caps:small-caps} /* Figma: small caps on every letter */
+.trk-q{margin-right:.4px} /* cancels the trailing -0.4px tracking CSS adds and Figma's box does not */
+.ess{background:#FFFFFF}
+.ess-title{display:flex;gap:11px;align-items:baseline;justify-content:center}
+.ess-rule{height:0;position:relative}
+.ess-rule::after{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:#2D3648}
+.hair{background:#2D3648}
+.ess-list{font-family:'Roboto Mono',monospace;font-weight:400;font-size:22px;line-height:40px;letter-spacing:.22px;color:#2D3648}
+.ess-li{position:relative;padding-left:26.7px;translate:0 1px}
+.ess-li::before{content:"\2022";position:absolute;left:0;top:0;width:26.7px;text-align:center;letter-spacing:0}
+
+/* ---------- 04 starting blocks ---------- */
+.frame-r75{border-radius:24px;box-shadow:inset 0 0 0 4px #E5E5E5}
+.zone-label{font-family:'Roboto Mono',monospace;font-weight:700;font-size:24px;line-height:32px;letter-spacing:-.48px;white-space:nowrap;text-transform:lowercase;font-variant-caps:small-caps}
+
+/* ---------- 05 inputs ---------- */
+.inputs{background:linear-gradient(180deg,#FFFFFF 40%,#E8E8E8 88%)}
+.bar{width:8px;border-radius:8px;background:#EDEDED}
+.cap-h{font-family:'Roboto',sans-serif;font-weight:700;font-size:20px;line-height:30px;color:#2D3648}
+.cap-p{font-family:'Roboto',sans-serif;font-weight:400;font-size:22px;line-height:30px;letter-spacing:-.308px;color:#868F97;translate:0 1px}
+.mult{mix-blend-mode:multiply}
+
+/* ---------- 09 testing ---------- */
+.photo-frame{background:#FFFFFF;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px 0 rgba(255,255,255,.24)}
+.photo-frame::after{content:"";position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 0 0 2px #A0BBBB} /* frame stroke paints over its children */
+
+/* ---------- 12 done ---------- */
+.leader{width:128px;height:61px}
+.leader-s{width:128px;height:4px}
+.ld-img{display:block;position:absolute;left:0;top:0;width:129px;height:62px}
+.lds-img{display:block;position:absolute;left:0;top:0;width:129px;height:4px}
+.sf{display:inline-block;vertical-align:top}
+</style>
+</head>
+<body>
+<main class="page">
+
+<!-- 01 hero -->
+<section class="s hero" aria-label="Done Workouts">
+  <img class="a" src="img/hero.webp" srcset="img/hero@1x.webp 1x, img/hero.webp 2x" alt="Done Workouts: the app on three iPhones and an Apple Watch" width="1920" height="960" style="left:0px;top:0px" fetchpriority="high">
+</section>
+
+<!-- 02 desc -->
+<section class="s desc" aria-label="Summary">
+  <div class="kick-row">
+    <div class="kicker kicker-a"><span class="trk-k">done</span></div>
+    <div class="kicker kicker-b"><span class="trk-k">fitness and workouts</span></div>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <p class="card-text">This was my garage moment — me and 3 friends actually started this project by meeting in the ground floor of my then employer’s offices.<br><br>The team was comprised of a Fitness Coach, Frontend and Backend developers, and myself, juggling multiple roles between the four. I was the acting PO, trying to set the vision and keep everyone on the same page whilst we worked on this in our spare time, trying to meet at least once a week to sync. Most of the initial work was cooked up between me and the Fitness Coach, balancing what would be a great user experience, but also make sense for more seasoned users (although we had a clear bias towards the more beginner type).<br><br>We launched on the App Store March 18th, 2020 — the following month all the gyms on the planet were closed under lockdown mandates. Ouch.</p>
+    </div>
+    <div class="details">
+      <div class="role-blk">
+        <h2 class="role">co-founder</h2>
+        <p class="dates">March 2018 - April 2020</p>
+      </div>
+      <dl class="det-row">
+        <div class="det-col" style="width:304px">
+          <div class="pair"><dt class="dl">Market</dt><dd class="dd">/B2C<br>Health &amp; Fitness</dd></div>
+          <div class="pair"><dt class="dl">platform</dt><dd class="dd">Native iOS</dd></div>
+        </div>
+        <div class="det-col" style="width:264px">
+          <div class="pair"><dt class="dl">location</dt><dd class="dd">London, UK</dd></div>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 03 essentials -->
+<section class="s" style="height:1440px;background:#FFFFFF" aria-label="Agreed essentials">
+  <div class="a corner" style="left:248px;top:340px"><div class="corner-in"><svg class="corner-img" width="81" height="81" viewBox="0.5 0.5 81 81" fill="none" aria-hidden="true" preserveAspectRatio="none"><path d="M80.5 0.5H0.5V80.5" stroke="black"/></svg></div></div>
+  <div class="a corner" style="left:1592px;top:340px;transform:scaleX(-1)"><div class="corner-in"><svg class="corner-img" width="81" height="81" viewBox="0.5 0.5 81 81" fill="none" aria-hidden="true" preserveAspectRatio="none"><path d="M80.5 0.5H0.5V80.5" stroke="black"/></svg></div></div>
+  <div class="a corner" style="left:248px;top:540px;transform:scaleY(-1)"><div class="corner-in"><svg class="corner-img" width="81" height="81" viewBox="0.5 0.5 81 81" fill="none" aria-hidden="true" preserveAspectRatio="none"><path d="M80.5 0.5H0.5V80.5" stroke="black"/></svg></div></div>
+  <div class="a corner" style="left:1592px;top:540px;transform:rotate(180deg)"><div class="corner-in"><svg class="corner-img" width="81" height="81" viewBox="0.5 0.5 81 81" fill="none" aria-hidden="true" preserveAspectRatio="none"><path d="M80.5 0.5H0.5V80.5" stroke="black"/></svg></div></div>
+  <svg class="a" style="left:360px;top:415px;overflow:visible" width="1200" height="130" viewBox="0 -0.8 1200 130" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><path opacity="0.12" d="M56.8364 128.4H0.0363635V67.2C-0.230303 58.4 0.969697 50.1333 3.63636 42.4C6.5697 34.6667 10.5697 27.8667 15.6364 22C20.703 16.1333 26.703 11.3333 33.6364 7.6C40.8364 3.6 48.5697 1.06667 56.8364 0V26.4C46.703 29.8667 39.7697 35.0667 36.0364 42C32.303 48.6667 30.4364 56.9333 30.4364 66.8H56.8364V128.4ZM142.036 128.4H85.2364V67.2C84.9697 58.4 86.1697 50.1333 88.8364 42.4C91.7697 34.6667 95.7697 27.8667 100.836 22C105.903 16.1333 111.903 11.3333 118.836 7.6C126.036 3.6 133.77 1.06667 142.036 0V26.4C131.903 29.8667 124.97 35.0667 121.236 42C117.503 48.6667 115.636 56.9333 115.636 66.8H142.036V128.4Z" fill="#2D3648"/><path opacity="0.12" d="M1057.97 0H1114.77V61.2C1115.03 70 1113.7 78.2667 1110.77 86C1108.1 93.7333 1104.23 100.533 1099.17 106.4C1094.1 112.267 1087.97 117.2 1080.77 121.2C1073.83 124.933 1066.23 127.333 1057.97 128.4V102C1068.1 98.5333 1075.03 93.4667 1078.77 86.8C1082.5 79.8667 1084.37 71.4667 1084.37 61.6H1057.97V0ZM1143.17 0H1199.97V61.2C1200.23 70 1198.9 78.2667 1195.97 86C1193.3 93.7333 1189.43 100.533 1184.37 106.4C1179.3 112.267 1173.17 117.2 1165.97 121.2C1159.03 124.933 1151.43 127.333 1143.17 128.4V102C1153.3 98.5333 1160.23 93.4667 1163.97 86.8C1167.7 79.8667 1169.57 71.4667 1169.57 61.6H1143.17V0Z" fill="#2D3648"/></g></svg>
+  <h2 class="a quote" style="left:440px;top:456px;width:1039px;translate:0 1px"><span class="trk-q">an app that takes <b>DONE</b> as input, and <b>NEXT</b> as output</span></h2>
+
+  <p class="a t-lead" style="left:304px;top:759px;width:576px;line-height:40px;color:#424747">Our first big insight was that we all wanted a no-nonsense app, that just told us “what to do” in the gym, and then fade away until we’re done with the current thing and need to know what’s next. That became “an app that takes DONE as input, and NEXT as output”.</p>
+
+  <div class="a ess" style="left:984px;top:740px;width:664px;height:318px">
+    <div class="a" style="left:28px;top:21px;width:608px;height:269px;background:#E5F8F8"></div>
+    <div class="a" style="left:366px;top:59px;width:354px;height:333.18px;mix-blend-mode:hard-light"><svg class="a" style="left:8px;top:0;overflow:visible" width="337" height="302" viewBox="-0.673 0 337 302" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M168.337 249.882L64.299 301.361L84.1685 192.328L-2.64813e-08 115.11L116.318 99.2019L168.337 0L220.356 99.2019L336.674 115.11L252.506 192.328L272.375 301.361L168.337 249.882Z" fill="#E5F8F8"/></g></svg></div>
+    <div class="a ess-title" style="left:0;right:0;top:-11px">
+      <div class="ess-rule" style="width:64px"></div>
+      <h3 class="t-mono-h">Agreed essentials</h3>
+      <div class="ess-rule" style="flex:1 0 0;min-width:1px"></div>
+    </div>
+    <div class="a hair" style="left:32px;top:0;width:1px;height:318px"></div>
+    <div class="a hair" style="left:631px;top:0;width:1px;height:318px"></div>
+    <div class="a hair" style="left:0;top:285px;width:664px;height:1px"></div>
+    <ul class="a ess-list" style="left:80px;top:59px;width:504px">
+      <li class="ess-li">Name of exercise</li>
+      <li class="ess-li">Image/Video of exercise</li>
+      <li class="ess-li">Load x Reps</li>
+      <li class="ess-li">Set count</li>
+      <li class="ess-li">Workout overview</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 starting blocks -->
+<section class="s" style="height:1748px;background:#FFFFFF" aria-label="Starting blocks">
+  <h2 class="a t-h1" style="left:192px;top:392px">Starting blocks</h2>
+  <img class="a" src="img/s04-phone.webp" srcset="img/s04-phone@1x.webp 1x, img/s04-phone.webp 2x" alt="First draft of the exercise view: Roman Chair, with image, set, weight picker and a DONE button" width="375" height="812" style="left:773px;top:568px" loading="lazy" decoding="async">
+  <div class="a col" style="left:256px;top:689px;width:360px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#2D3648">Exercise view</h3>
+    <p class="t-body" style="width:100%;color:#868F97">My first big focus was the exercise view — this would be the make or break screen for the app. It was also the fundamental building block for our two engineers to get started on our underlying architecture.<br><br>Top section would be visual information, and closer to the bottom where the thumb reaches, we’d have our inputs.<br><br><span class="b">Set / Reps / Load</span> left to right by likelihood of user interaction.<br><br>The “<span class="i">DONE as input</span>” insight was present from the very first draft.</p>
+  </div>
+  <div class="a frame-r75" style="left:1280px;top:628px;width:472px;height:720px"></div>
+  <div class="a" style="left:1312px;top:660px;width:408px;height:365px;background:#B0DCFF"></div>
+  <img class="a" src="img/dash-blue.svg" alt="" style="left:1200px;top:658px;width:520px;height:2px">
+  <img class="a" src="img/dash-blue.svg" alt="" style="left:1200px;top:1023px;width:520px;height:2px">
+  <p class="a zone-label" style="left:1344px;top:684px;color:#34AFF7">Visual info</p>
+  <div class="a" style="left:1312px;top:1048px;width:408px;height:140px;background:#D1FFD9"></div>
+  <img class="a" src="img/dash-green.svg" alt="" style="left:1200px;top:1046px;width:520px;height:2px">
+  <img class="a" src="img/dash-green.svg" alt="" style="left:1200px;top:1186px;width:520px;height:2px">
+  <p class="a zone-label" style="left:1344px;top:1072px;color:#2EDB4B">Primary input</p>
+  <div class="a" style="left:1312px;top:1209px;width:408px;height:89px;background:#FED7AD"></div>
+  <img class="a" src="img/dash-orange.svg" alt="" style="left:1200px;top:1207px;width:520px;height:2px">
+  <img class="a" src="img/dash-orange.svg" alt="" style="left:1200px;top:1296px;width:520px;height:2px">
+  <p class="a zone-label" style="left:1344px;top:1233px;color:#FE9D35">Secondary input</p>
+</section>
+
+<!-- 05 inputs -->
+<section class="s inputs" style="height:2310px" aria-label="Focus on inputs">
+  <div class="a" style="left:16px;top:1058px;width:1888px;height:1169px">
+<div class="a bar" style="left:0px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:40px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:80px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:120px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:160px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:200px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:240px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:280px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:320px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:360px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:400px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:440px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:480px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:520px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:560px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:600px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:640px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:680px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:720px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:760px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:800px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:840px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:880px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:920px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:960px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1000px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1040px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:1080px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1120px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1160px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1200px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1240px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:1280px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1320px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1360px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1400px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1440px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:1480px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1520px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1560px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1600px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1640px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:1680px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1720px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1760px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1800px;top:104px;height:1065px"></div>
+    <div class="a bar" style="left:1840px;top:0px;height:1169px"></div>
+    <div class="a bar" style="left:1880px;top:104px;height:1065px"></div>
+  </div>
+  <h2 class="a t-mono-h" style="left:783px;top:347px;width:355px;text-align:center"><span style="margin-right:1.68px">Focus on inputs</span></h2>
+  <p class="a t-mono" style="left:282px;top:557px;width:1356px;text-align:center;color:#001818;opacity:.6">On the first iteration I tried to assign input methods lightly based on the logic that <span class="i">Sets</span> changed the least, <span class="i">Reps</span> a bit more but still not much, and <span class="i">Load</span> had the biggest potential for change range and frequency. Following this, I used a stepper for Sets, a Picker for Reps, and Numpad input for Load. That was not the right approach — but it gave me a starting point.</p>
+  <img class="a" src="img/s05-phones.webp" srcset="img/s05-phones@1x.webp 1x, img/s05-phones.webp 2x" alt="Three input explorations: numpad and stepper, a horizontal ruler picker, and side by side pickers" width="1269" height="860" style="left:338px;top:813px" loading="lazy" decoding="async">
+  <div class="a col mult" style="left:340px;top:1737px;width:592px">
+    <h3 class="cap-h" style="width:100%">Numpad to picker</h3>
+    <p class="cap-p" style="width:100%">Using the numpad had the potential to disrupt the on-screen elements, pushing stuff away from where it was, forcing the user to adjust once, and then again when dismissed. This led me to trying the picker for Load as well (which was working great on Reps) since it was “just one more digit”. So I took a page out of Samsonite, and went full suitcase lock.</p>
+  </div>
+  <div class="a col mult" style="left:988px;top:1737px;width:592px">
+    <h3 class="cap-h" style="width:100%">Vertical to horizonal</h3>
+    <p class="cap-p" style="width:100%">The stepper/picker/picker combo didn’t work either as it covered the content, and had debatable reachability. But I liked the rolling/scrolling aspect of it, which led to trying a “horizontal picker” where the user would tap (and hold) the input, and a ruler would show behind it. This was *fun* to use and whimsical, but not practical outside of a pomodoro timer.</p>
+  </div>
+  <!-- Group 19: text rotated -8deg inside its 228.623 x 86.491 box; arrow rotated 103.95deg -->
+  <div class="a" style="left:1616px;top:1496.62px;width:228.623px;height:86.491px;display:flex;align-items:center;justify-content:center">
+    <p style="flex:none;width:223px;transform:rotate(-8deg);font-family:'Roboto',sans-serif;font-weight:700;font-size:24px;line-height:28px;letter-spacing:.24px;color:#28B9B9">Side by side pickers was the way to go.</p>
+  </div>
+  <!-- Vector 1: 117.849 x 72.23 box rotated 103.95deg, centred in its 98.505 x 131.784 slot at (1568,1379); one matrix, so nothing is pixel-snapped -->
+  <svg class="a" style="left:0;top:0;overflow:visible;transform-origin:0 0;transform:matrix(-0.241075,0.970506,-0.970506,-0.241075,1669.3575,1391.1692)" width="126" height="76" viewBox="0 0 126 76" fill="none" aria-hidden="true"><path d="M123.619 3C124.447 3 125.119 2.32843 125.119 1.5C125.119 0.671573 124.447 0 123.619 0V1.5V3ZM4.34646 74.2045C4.60843 74.9904 5.45791 75.4151 6.24382 75.1532L19.051 70.8841C19.837 70.6221 20.2617 69.7726 19.9997 68.9867C19.7378 68.2008 18.8883 67.7761 18.1024 68.038L6.71816 71.8328L2.92343 60.4486C2.66146 59.6626 1.81198 59.2379 1.02607 59.4999C0.24015 59.7618 -0.18459 60.6113 0.0773821 61.3972L4.34646 74.2045ZM123.619 1.5V0C102.056 0 80.3286 0.770458 60.2217 10.8239L60.8925 12.1656L61.5633 13.5072C80.9719 3.80292 102.045 3 123.619 3V1.5ZM60.8925 12.1656L60.2217 10.8239C35.3979 23.2358 16.5053 48.9044 4.42784 73.0593L5.76948 73.7301L7.11112 74.4009C19.0697 50.4839 37.5885 25.4946 61.5633 13.5072L60.8925 12.1656Z" fill="#28B9B9"/></svg>
+</section>
+
+<!-- 06 sketches: illustration only, no text -->
+<section class="s" style="height:1098px;background:#424747" aria-label="Sketches">
+  <img class="a" src="img/s06-sketches.webp" srcset="img/s06-sketches@1x.webp 1x, img/s06-sketches.webp 2x" alt="Paper sketches on a grid notebook, early screens highlighted in colour" width="1920" height="1098" style="left:0px;top:0px" loading="lazy" decoding="async">
+</section>
+
+<!-- 07 exploration -->
+<section class="s" style="height:1406px;background:#424747" aria-label="Exploration done">
+  <h2 class="a t-h1" style="left:192px;top:147px;letter-spacing:-2.898px;color:#FAFAFA">Exploration done</h2>
+  <p class="a t-lead" style="left:192px;top:372px;width:576px;color:#AFB6B6">Once I felt confident with the basic structure of the main elements, it was time to map out all the fundamental secondary actions and flows (deleting sets, navigation between exercises, etc).<br><br>It also allowed us to start prototyping and do some light testing with family and friends.<br><br>This gave our second big insight: <span class="b" style="color:#FFFFFF">Swap</span>.</p>
+  <img class="a" src="img/s07-phone.webp" srcset="img/s07-phone@1x.webp 1x, img/s07-phone.webp 2x" alt="Workout view: Decline Dumbbell Bench Press with pickers, a delete set button and navigation dots" width="375" height="812" style="left:952px;top:303px" loading="lazy" decoding="async">
+  <div class="a col" style="left:1424px;top:772px;width:384px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#FAFAFA">Delete set</h3>
+    <p class="t-body" style="width:100%;color:#E8E8E8">Instead of a dedicated button or action, “delete” replaces zero in the Reps picker since it’s the same as a “zero reps set”.</p>
+  </div>
+  <div class="a col" style="left:1424px;top:1067px;width:384px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#FAFAFA">In-workout navigation cue</h3>
+    <p class="t-body" style="width:100%;color:#E8E8E8">Our use cases did not really anticipate anyone jumping multiple exercises ahead, and rather just go back and forth upon completion. This was however an important visual cue that you could side swipe to navigate.</p>
+  </div>
+  <svg class="a" style="left:1177px;top:1083px;overflow:visible" width="216" height="5" viewBox="0 0 216 5" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><g><path d="M5 2.5C5 3.88071 3.88071 5 2.5 5C1.11929 5 0 3.88071 0 2.5C0 1.11929 1.11929 0 2.5 0C3.88071 0 5 1.11929 5 2.5Z" fill="url(#paint0_linear_0_33_8)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4 2.5C4 2.22386 4.22177 2 4.49533 2H215.505C215.778 2 216 2.22386 216 2.5C216 2.77614 215.778 3 215.505 3H4.49533C4.22177 3 4 2.77614 4 2.5Z" fill="url(#paint1_linear_0_33_8)"/></g></g><defs><linearGradient id="paint0_linear_0_33_8" x1="4.49533" y1="2.49999" x2="215.505" y2="2.13209" gradientUnits="userSpaceOnUse"><stop offset="0.526272" stop-color="#777777"/><stop offset="0.81743" stop-color="white"/></linearGradient><linearGradient id="paint1_linear_0_33_8" x1="4.49533" y1="2.49999" x2="215.505" y2="2.13209" gradientUnits="userSpaceOnUse"><stop offset="0.526272" stop-color="#777777"/><stop offset="0.81743" stop-color="white"/></linearGradient></defs></svg>
+  <svg class="a" style="left:1228px;top:788px;overflow:visible" width="165" height="5" viewBox="0 0 165 5" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><g><path d="M5 2.5C5 3.88071 3.88071 5 2.5 5C1.11929 5 0 3.88071 0 2.5C0 1.11929 1.11929 0 2.5 0C3.88071 0 5 1.11929 5 2.5Z" fill="url(#paint0_linear_0_4_9)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4 2.5C4 2.22386 4.22177 2 4.49533 2H164.505C164.778 2 165 2.22386 165 2.5C165 2.77614 164.778 3 164.505 3H4.49533C4.22177 3 4 2.77614 4 2.5Z" fill="url(#paint1_linear_0_4_9)"/></g></g><defs><linearGradient id="paint0_linear_0_4_9" x1="4.49533" y1="2.49999" x2="165" y2="3.10048" gradientUnits="userSpaceOnUse"><stop offset="0.360952" stop-color="#777777"/><stop offset="0.796026" stop-color="white"/></linearGradient><linearGradient id="paint1_linear_0_4_9" x1="4.49533" y1="2.49999" x2="165" y2="3.10048" gradientUnits="userSpaceOnUse"><stop offset="0.360952" stop-color="#777777"/><stop offset="0.796026" stop-color="white"/></linearGradient></defs></svg>
+</section>
+
+<!-- 08 swap -->
+<section class="s" style="height:1492px;background:#424747" aria-label="Swapping exercises">
+  <img class="a" src="img/s08-phone.webp" srcset="img/s08-phone@1x.webp 1x, img/s08-phone.webp 2x" alt="Swap view: alternative exercises offered as cards" width="375" height="812" style="left:293px;top:149px" loading="lazy" decoding="async">
+  <div class="a col" style="left:713px;top:653px;width:880px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#FAFAFA">Swapping exercises</h3>
+    <p class="t-body" style="width:100%;color:#E8E8E8">When the next exercise requires a machine that’s taken, the user is faced with generally two options: skip the exercise and go to the one after that (returning to this one later with no guarantee that’d be free), or politely ask the other member to share the machine and alternate (which usually takes a lot more time).<br><br><span class="b">Swap</span> offers the user similar exercises, that target the same muscle groups, such as a push up in exchange for a bench press, allowing the user to avoid longer breaks and still workout all the muscle groups planned for that session.</p>
+  </div>
+</section>
+
+<!-- 09 testing -->
+<section class="s" style="height:1636px;background:#141414" aria-label="Live testing">
+  <h2 class="a t-mono-sc" style="left:809px;top:376px;width:303px;line-height:42px;letter-spacing:0;color:#FAFAFA;text-align:center">live testing</h2>
+  <div class="a photo-frame" style="left:48px;top:562px;width:1824px;height:560px">
+    <img class="a" src="img/s09-photos.webp" srcset="img/s09-photos@1x.webp 1x, img/s09-photos.webp 2x" alt="Testing sessions at the gym: testers using the app between sets" width="1824" height="560" style="left:0px;top:0px" loading="lazy" decoding="async">
+  </div>
+  <p class="a t-lead" style="left:280px;top:1266px;width:1360px;text-align:center;color:#AFB6B6">Once we had all screens and a full workout flow, we opened up testing outside of friends and family, and leveraged our Fitness Coach’s gym residency, to do full workout sessions side by side with the testers, gather live feedback, and discuss their inputs.<br><br>It was a great opportunity to dissect some suggestions and really see the impact they had in the workout as they were going through it.</p>
+</section>
+
+<!-- 10 onboarding -->
+<section class="s" style="height:1252px;background:#141414" aria-label="Onboarding">
+  <h2 class="a t-mono-sc" style="left:144px;top:284px">Onboarding</h2>
+  <p class="a t-mono" style="left:144px;top:379px;width:296px;color:#888888">We had a simple algorithm in place that picked from a set of manually made workouts, and calculated initial weight loads according to the user’s fitness metrics, and goal selection.</p>
+  <img class="a" src="img/s10-phones.webp" srcset="img/s10-phones@1x.webp 1x, img/s10-phones.webp 2x" alt="Onboarding: sign in with Apple, personal details, and goal selection" width="1205" height="812" style="left:571px;top:268px" loading="lazy" decoding="async">
+</section>
+
+<!-- 11 home -->
+<section class="s" style="height:1356px;background:#141414" aria-label="Home">
+  <h2 class="a t-mono-sc" style="left:144px;top:184px">Home</h2>
+  <p class="a t-mono" style="left:144px;top:279px;width:296px;color:#888888">Home presented the user’s average star score (which was based on completion% of each workout) and overall session history, which the user could pull up to see more details.<br><br>The history drawer would display specific info according to the selected workout, on the carrousel view.</p>
+  <img class="a" src="img/s11-phones.webp" srcset="img/s11-phones@1x.webp 1x, img/s11-phones.webp 2x" alt="Home: star score and history drawer, workout selection carousel, and the expanded history" width="1205" height="812" style="left:571px;top:168px" loading="lazy" decoding="async">
+</section>
+
+<!-- 12 done -->
+<section class="s" style="height:1989px;background:#FFFFFF" aria-label="Workout done">
+  <h2 class="a t-h1" style="left:128px;top:444px">Workout done.</h2>
+  <img class="a" src="img/s12-phone.webp" srcset="img/s12-phone@1x.webp 1x, img/s12-phone.webp 2x" alt="Workout view: Bicep Curls with previous record, rest timer, pickers and the DONE button" width="375" height="812" style="left:773px;top:669px" loading="lazy" decoding="async">
+  <div class="a col" style="left:141px;top:731px;width:544px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#424747">Exercise info</h3>
+    <p class="t-body" style="width:100%;color:#979797">Exercise name, and record of the previous completed session, with date.</p>
+  </div>
+  <div class="a col" style="left:141px;top:939px;width:544px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#424747">Exercise video</h3>
+    <p class="t-body" style="width:100%;color:#979797">Auto-plays in loop. The user can tap to pause and it’ll resume on tap or swipe.</p>
+  </div>
+  <div class="a col" style="left:141px;top:1147px;width:544px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#424747">Call back</h3>
+    <p class="t-body" style="width:100%;color:#979797">Helps the user quickly set the picker with the previous, or default value (derived from the last complete workout session).</p>
+  </div>
+  <div class="a col" style="left:141px;top:1328px;width:544px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#424747">DONE</h3>
+    <p class="t-body" style="width:100%;color:#979797">Tapping saves the set values and marks the set complete, moving to the next set (or next exercise if no sets remain). The progress loop represents completion of the exercise based on complete Reps vs remaining.</p>
+  </div>
+  <div class="a col" style="left:1308px;top:704px;width:472px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#424747">Workout overview</h3>
+    <p class="t-body" style="width:100%;color:#979797">One cell per exercise. Has 4 possible states: Incomplete, Current, Complete, Deleted.</p>
+  </div>
+  <div class="a col" style="left:1308px;top:864px;width:472px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#424747">Swap</h3>
+    <p class="t-body" style="width:100%;color:#979797">If the current exercise is already a swapped instance, it’ll change color.</p>
+  </div>
+  <div class="a col" style="left:1308px;top:1004px;width:472px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#424747">Complete set</h3>
+    <p class="t-body" style="width:100%;color:#979797">When a user taps DONE, the current picker values are saved to a set, and the picker moves down one row, pushing the complete set above it.</p>
+  </div>
+  <div class="a col" style="left:1308px;top:1201px;width:472px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#424747">Active set</h3>
+    <!-- The SF Symbol xmark.circle (SF Pro, not shippable) is a crop of Figma's render of this text node,
+         placed at its rendered position; the inline spacer holds its advance in the line. -->
+    <p class="t-body" style="width:100%;color:#979797">The active set is represented by the picker-pair. Load allows for 1 decimal [.0 or .5], and Reps do not have decimals (nor zero, which instead shows an <span class="sf" style="width:28px" role="img" aria-label="delete icon"></span> which triggers the delete prompt).</p>
+  </div>
+  <img class="a" src="img/sf-xmark-circle.webp" srcset="img/sf-xmark-circle@1x.webp 1x, img/sf-xmark-circle.webp 2x" alt="" width="32" height="32" style="left:1500px;top:1335px">
+  <div class="a col" style="left:1308px;top:1429px;width:472px;gap:8px">
+    <h3 class="t-h3" style="width:100%;color:#424747">Navigation (only visual)</h3>
+    <p class="t-body" style="width:100%;color:#979797">Visual cue for side swipe navigation.</p>
+  </div>
+  <!-- leader lines: box from get_design_context, transform from the node (flip/rotate) -->
+  <div class="a leader" style="left:1156px;top:720px;transform:scaleY(-1)"><svg class="ld-img" style="overflow:visible" width="129" height="62" viewBox="0 0 129 62" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><circle cx="2" cy="2" r="2" fill="#4B4B4B"/><path d="M128 61H63.5019C59.0383 61 54.7776 59.1354 51.7489 55.8566L2 2" stroke="url(#paint0_linear_0_232_10)" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_232_10" x1="5.93341" y1="31.5001" x2="128" y2="31.4944" gradientUnits="userSpaceOnUse"><stop offset="0.24" stop-color="#4A4A4A"/><stop offset="0.997231" stop-color="#CACACA"/></linearGradient></defs></svg></div>
+  <div class="a leader" style="left:1156px;top:819px"><svg class="ld-img" style="overflow:visible" width="129" height="62" viewBox="0 0 129 62" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><circle cx="2" cy="2" r="2" fill="#4B4B4B"/><path d="M128 61H63.5019C59.0383 61 54.7776 59.1354 51.7489 55.8566L2 2" stroke="url(#paint0_linear_0_232_11)" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_232_11" x1="5.93341" y1="31.5001" x2="128" y2="31.4944" gradientUnits="userSpaceOnUse"><stop offset="0.24" stop-color="#4A4A4A"/><stop offset="0.997231" stop-color="#CACACA"/></linearGradient></defs></svg></div>
+  <div class="a leader" style="left:637px;top:747px;transform:rotate(180deg)"><svg class="ld-img" style="overflow:visible" width="129" height="62" viewBox="0 0 129 62" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><circle cx="2" cy="2" r="2" fill="#4B4B4B"/><path d="M128 61H63.5019C59.0383 61 54.7776 59.1354 51.7489 55.8566L2 2" stroke="url(#paint0_linear_0_232_12)" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_232_12" x1="5.93341" y1="31.5001" x2="128" y2="31.4944" gradientUnits="userSpaceOnUse"><stop offset="0.24" stop-color="#4A4A4A"/><stop offset="0.997231" stop-color="#CACACA"/></linearGradient></defs></svg></div>
+  <div class="a leader" style="left:1156px;top:1020px;transform:scaleY(-1)"><svg class="ld-img" style="overflow:visible" width="129" height="62" viewBox="0 0 129 62" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><circle cx="2" cy="2" r="2" fill="#4B4B4B"/><path d="M128 61H63.5019C59.0383 61 54.7776 59.1354 51.7489 55.8566L2 2" stroke="url(#paint0_linear_0_232_13)" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_232_13" x1="5.93341" y1="31.5001" x2="128" y2="31.4944" gradientUnits="userSpaceOnUse"><stop offset="0.24" stop-color="#4A4A4A"/><stop offset="0.997231" stop-color="#CACACA"/></linearGradient></defs></svg></div>
+  <div class="a leader" style="left:637px;top:1101px;transform:scaleX(-1)"><svg class="ld-img" style="overflow:visible" width="129" height="62" viewBox="0 0 129 62" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><circle cx="2" cy="2" r="2" fill="#4B4B4B"/><path d="M128 61H63.5019C59.0383 61 54.7776 59.1354 51.7489 55.8566L2 2" stroke="url(#paint0_linear_0_232_14)" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_232_14" x1="5.93341" y1="31.5001" x2="128" y2="31.4944" gradientUnits="userSpaceOnUse"><stop offset="0.24" stop-color="#4A4A4A"/><stop offset="0.997231" stop-color="#CACACA"/></linearGradient></defs></svg></div>
+  <div class="a leader" style="left:1156px;top:1156px"><svg class="ld-img" style="overflow:visible" width="129" height="62" viewBox="0 0 129 62" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><circle cx="2" cy="2" r="2" fill="#4B4B4B"/><path d="M128 61H63.5019C59.0383 61 54.7776 59.1354 51.7489 55.8566L2 2" stroke="url(#paint0_linear_0_232_15)" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_232_15" x1="5.93341" y1="31.5001" x2="128" y2="31.4944" gradientUnits="userSpaceOnUse"><stop offset="0.24" stop-color="#4A4A4A"/><stop offset="0.997231" stop-color="#CACACA"/></linearGradient></defs></svg></div>
+  <div class="a leader-s" style="left:1156px;top:1443px"><svg class="lds-img" style="overflow:visible" width="129" height="4" viewBox="0 0 129 4" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><circle cx="2" cy="2" r="2" fill="#4B4B4B"/><path d="M128 2H56.5H2" stroke="url(#paint0_linear_0_253_16)" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_253_16" x1="5.93341" y1="1.5" x2="127.999" y2="1.16568" gradientUnits="userSpaceOnUse"><stop offset="0.24" stop-color="#4A4A4A"/><stop offset="0.997231" stop-color="#CACACA"/></linearGradient></defs></svg></div>
+  <div class="a leader-s" style="left:637px;top:955px;transform:scaleX(-1)"><svg class="lds-img" style="overflow:visible" width="129" height="4" viewBox="0 0 129 4" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><circle cx="2" cy="2" r="2" fill="#4B4B4B"/><path d="M128 2H56.5H2" stroke="url(#paint0_linear_0_253_17)" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_253_17" x1="5.93341" y1="1.5" x2="127.999" y2="1.16568" gradientUnits="userSpaceOnUse"><stop offset="0.24" stop-color="#4A4A4A"/><stop offset="0.997231" stop-color="#CACACA"/></linearGradient></defs></svg></div>
+  <div class="a leader-s" style="left:637px;top:1344px;transform:scaleX(-1)"><svg class="lds-img" style="overflow:visible" width="129" height="4" viewBox="0 0 129 4" fill="none" aria-hidden="true" preserveAspectRatio="none"><g><circle cx="2" cy="2" r="2" fill="#4B4B4B"/><path d="M128 2H56.5H2" stroke="url(#paint0_linear_0_253_18)" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_253_18" x1="5.93341" y1="1.5" x2="127.999" y2="1.16568" gradientUnits="userSpaceOnUse"><stop offset="0.24" stop-color="#4A4A4A"/><stop offset="0.997231" stop-color="#CACACA"/></linearGradient></defs></svg></div>
+</section>
+
+<!-- 13 closer: illustration only, no text -->
+<section class="s" style="height:1900px;background:#FFFFFF" aria-label="Done">
+  <img class="a" src="img/s13-closer.webp" srcset="img/s13-closer@1x.webp 1x, img/s13-closer.webp 2x" alt="Four screens of the finished app: home, workout, swap and workout summary" width="1920" height="1900" style="left:0px;top:0px" loading="lazy" decoding="async">
+</section>
+
+</main>
+<script>
+/* Fixed 1920px design shown as a centred column: it renders COLUMN px wide at most, and
+   shrinks to fit narrower windows instead of reflowing. Open with #1x for the page at 1:1. */
+(function(){
+  if (location.hash === '#1x') return;
+  var COLUMN = 1280;
+  var r=document.documentElement;
+  function fit(){ r.style.zoom = 1; r.style.zoom = Math.min(COLUMN, r.clientWidth) / 1920; }
+  fit(); addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
