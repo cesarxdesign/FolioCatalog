@@ -331,6 +331,22 @@
     "path": "versions/penfold/2026-09-25-linear/site/index.html?v=a5b5683c"
   },
   {
+    "project": "penfold",
+    "id": "2026-09-25-saver",
+    "name": "Saver",
+    "page": "site/index.html",
+    "width": 1440,
+    "shipped": null,
+    "until": null,
+    "made": "2026-09-25",
+    "source": {
+      "kind": "written",
+      "from": "the same sources as Linear (2026-09-25-linear/source), told through one saver"
+    },
+    "note": "Text only, in the Cable Noir system. The story told as one saver's path through the product: finds us, signs up, owns a pension, brings old pots, watches them land, asks what happens when they die. Week one is the setting. Never shipped.",
+    "path": "versions/penfold/2026-09-25-saver/site/index.html?v=af1a6b26"
+  },
+  {
     "project": "starcount",
     "id": "2020-07-01",
     "name": "Observatory",
