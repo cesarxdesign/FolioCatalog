@@ -5,9 +5,12 @@ left Claude. Each version is the complete page as code in this repo (HTML, CSS, 
 images), with no link out to where it came from. Open any `site/…/index.html` and it
 works, offline, forever.
 
-Live at **https://cesar-foliocatalog.vercel.app**: its own Vercel project, separate from the
+Live at **https://cesarxdesign.github.io/FolioCatalog/** on GitHub Pages, separate from the
 folio and its staging, open to anyone with the link, no sign-in. Every push to `main`
-redeploys it within a minute, and the URL stays the same if the repo goes private.
+redeploys it within a minute. The old address, https://cesar-foliocatalog.vercel.app, only
+redirects there (links with `#…` views keep working): Vercel deploys `vercel.json` alone (see
+`.vercelignore`), since each full deploy counts against its free storage. Pages stops if the
+repo goes private.
 
 `index.html` is the viewer. One header line: **Project** (one project, or **All projects** to
 compare across them), **Version** (a name more than one page shares, such as Lite: shows every Lite
