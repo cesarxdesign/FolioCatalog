@@ -299,6 +299,22 @@
     "path": "versions/penfold/2026-07-30/site/penfold/index.html?v=b1805468"
   },
   {
+    "project": "penfold",
+    "id": "2026-09-25-noir",
+    "name": "Noir",
+    "page": "site/index.html",
+    "width": 1440,
+    "shipped": null,
+    "until": null,
+    "made": "2026-09-25",
+    "source": {
+      "kind": "written",
+      "from": "source/NOTES.md: the Penfold Lite, Figma and Sqsp pages, the CV, LinkedIn, and the Penfold story spine v21 (Portfolio/penfold-new/story.md)"
+    },
+    "note": "Text only, in the Cable Noir system (same type scale, light and dark tokens). Never shipped.",
+    "path": "versions/penfold/2026-09-25-noir/site/index.html?v=ed4662e0"
+  },
+  {
     "project": "starcount",
     "id": "2020-07-01",
     "name": "Observatory",

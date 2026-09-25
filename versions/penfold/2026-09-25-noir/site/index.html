@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<meta name="robots" content="noindex">
+<title>Penfold Noir</title>
+<link rel="stylesheet" href="_vendor/25028d0170-css2.css">
+<style>
+/* Penfold in the Cable Noir system: text only, same type scale, same light and dark tokens. */
+[data-theme="light"]{--bg:#FBFBFA;--ink:#111113;--soft:#86868B;--mut:#6E6E73;--body:#3A3A3C;--line:#E5E5E2}
+[data-theme="dark"]{--bg:#0C0C0D;--ink:#F2F2F0;--soft:#7E7E84;--mut:#9A9AA0;--body:#C6C6C9;--line:#262628}
+body:has([data-theme="dark"]){background:#0C0C0D}
+body{margin:0;background:#FBFBFA;font-family:'Geist',-apple-system,'Helvetica Neue',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration:none}a:hover{color:var(--mut)}
+p,h1,h2,h3,blockquote{margin:0}
+
+.page{color:var(--ink);width:1440px;box-sizing:border-box;background:var(--bg);padding:0 120px;display:flex;flex-direction:column;align-items:center}
+.col{width:100%;max-width:1200px;display:flex;flex-direction:column}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--mut)}
+.soft{color:var(--soft)}
+
+nav{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+nav .me{font-size:15px;font-weight:600;letter-spacing:-.01em}
+nav .links{display:flex;gap:36px;font-size:14px}
+
+header{padding:168px 0 120px;display:flex;flex-direction:column;gap:48px}
+header .mono{font-size:13px}
+h1{font-size:136px;line-height:.96;letter-spacing:-.05em;font-weight:600}
+.lede{max-width:860px;font-size:30px;line-height:1.35;letter-spacing:-.02em}
+.stats{display:flex;flex-wrap:wrap;gap:32px 80px;padding-top:48px;border-top:1px solid var(--line)}
+.stat{display:flex;flex-direction:column;gap:10px}
+.stat b{font-size:52px;line-height:1;letter-spacing:-.045em;font-weight:600}
+.meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 40px;padding-top:32px;border-top:1px solid var(--line);font-size:16px;line-height:1.5}
+
+section.ch{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:140px 0;border-top:1px solid var(--line)}
+section.ch.first{padding-top:120px;border-top-color:var(--ink)}
+.tag{grid-column:1/span 3;display:flex;flex-direction:column;gap:10px}
+.tag b{font-size:44px;line-height:1;letter-spacing:-.04em;font-weight:600}
+.tag .mono{font-size:13px}
+.body{grid-column:4/span 9;display:flex;flex-direction:column;gap:56px}
+h2{font-size:68px;line-height:1.02;letter-spacing:-.045em;font-weight:600}
+.txt{max-width:820px;font-size:19px;line-height:1.6;color:var(--body)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
+.two .txt{max-width:none}
+.stack{display:flex;flex-direction:column;gap:24px}
+
+/* a big line that carries the section for skimmers */
+.pull{padding-top:40px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.pull .big{font-size:40px;line-height:1.15;letter-spacing:-.03em;font-weight:500}
+.pull .small{max-width:820px;font-size:16px;line-height:1.5;color:var(--mut)}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 48px;padding-top:44px;border-top:1px solid var(--line)}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.item{display:flex;flex-direction:column;gap:10px}
+.item .mono{margin-bottom:2px}
+h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
+.item p{font-size:17px;line-height:1.55;color:var(--body)}
+
+.box{display:flex;flex-direction:column;gap:16px;padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:900px}
+.box p{font-size:22px;line-height:1.45;letter-spacing:-.01em;color:var(--ink)}
+
+/* the interlude: a break in the page's flow */
+.interlude{padding:160px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;text-align:center;gap:32px}
+.interlude .big{max-width:980px;font-size:56px;line-height:1.08;letter-spacing:-.04em;font-weight:600}
+.interlude .txt{max-width:720px}
+
+blockquote{display:flex;flex-direction:column;gap:16px}
+blockquote .big{font-size:40px;line-height:1.15;letter-spacing:-.03em;font-weight:500}
+blockquote .by{font-size:16px;line-height:1.5;color:var(--body)}
+
+.closer{padding:200px 0 120px;border-top:1px solid var(--ink);display:flex;flex-direction:column;gap:48px}
+.closer .big{font-size:104px;line-height:1;letter-spacing:-.05em;font-weight:600}
+.closer .txt{font-size:22px;max-width:860px}
+
+footer{margin-top:auto;padding:48px 0 64px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end}
+footer .next{display:flex;flex-direction:column;gap:8px}
+footer .next a{font-size:40px;letter-spacing:-.03em;font-weight:600}
+footer .links{display:flex;gap:36px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="page" data-theme="light">
+<div class="col">
+
+<nav>
+<a class="me" href="https://cesarxdesign.com">Cesar Garcia</a>
+<div class="links">
+<a href="https://cesarxdesign.com">Work</a>
+<a href="https://cesarxdesign.com/cv.pdf">CV</a>
+<a href="mailto:cesarxdesign@gmail.com">Contact</a>
+</div>
+</nav>
+
+<header>
+<div class="mono">Penfold &middot; Pensions &middot; B2C fintech, mobile and web</div>
+<h1>Impossible.<br><span class="soft">I&rsquo;m in.</span></h1>
+<p class="lede">Penfold&rsquo;s co-founders pitched it as &ldquo;We want to make pensions sexy.&rdquo; I became their first hire. I took the proof of concept live in a week, made a pension exist the moment onboarding ended, and when growth still stalled, changed who we were selling to. Signups went up six times.</p>
+<div class="stats">
+<div class="stat"><b>7 days</b><span class="mono">Proof of concept to live</span></div>
+<div class="stat"><b>Instant</b><span class="mono">A pension, down from 5 days</span></div>
+<div class="stat"><b>6x</b><span class="mono">Signups, on refocus</span></div>
+<div class="stat"><b>&pound;4M</b><span class="mono">Under management, year one</span></div>
+</div>
+<div class="meta">
+<div><span class="mono">Role</span>&nbsp;&nbsp;Founding Designer, first hire</div>
+<div><span class="mono">Timeline</span>&nbsp;&nbsp;Jun 2019 to May 2020</div>
+<div><span class="mono">Team</span>&nbsp;&nbsp;Two co-founders, one developer, then growing</div>
+<div><span class="mono">Users</span>&nbsp;&nbsp;UK savers</div>
+</div>
+</header>
+
+
+<section class="ch first">
+<div class="tag"><b>Week 1</b><span class="mono">Ship</span></div>
+<div class="body">
+<h2>Live in seven days. <span class="soft">Fast, and ugly on purpose.</span></h2>
+<div class="two">
+<p class="txt">I knew nothing about pensions. There was no mould to copy either: even the old banks had no standard way of doing it online. So I spent the first days with the co-founders learning everything they could teach me, and sketched my own version before looking at their proof of concept, to keep the first attempt unbiased.</p>
+<p class="txt">Their proof of concept had nearly all the right pieces. The job was to turn it into something the public could sign up to, end to end, from an email address to owning a pension, in time to matter for the funding round. The week allowed one shape: a single linear flow, 33 steps long.</p>
+</div>
+<div class="pull">
+<p class="big">&ldquo;If I had more time, I would have written a shorter letter.&rdquo;</p>
+<p class="small">After Blaise Pascal. 33 steps was the length the week could afford.</p>
+</div>
+<p class="txt">It worked. A dozen real people became customers in the first week, and the round closed on a product that was live and onboarding. The focus turned to growth, and to paying down the shortcuts.</p>
+</div>
+</section>
+
+<section class="ch">
+<div class="tag"><b>01</b><span class="mono">Onboarding</span></div>
+<div class="body">
+<h2>People came back, <span class="soft">and landed on step one.</span></h2>
+<p class="txt">The CTO ran the funnel every day and brought the drops to stand-up. Every step lost a few people. I watched those sessions in FullStory, rage clicks included, and session IDs showed something the funnel alone couldn&rsquo;t: people who quit did come back. They just started from the beginning.</p>
+<div class="pull">
+<p class="big">The account was the pension. Leave halfway, and you came back to nothing.</p>
+<p class="small">Nothing was saved until the very end, because creating the account and creating the pension were the same event.</p>
+</div>
+<p class="txt">Using only the pieces that already existed, so nothing in the code broke, I cut, regrouped and reordered the 33 steps. Three changes did the work:</p>
+<div class="grid three">
+<div class="item"><h3>Account first</h3><p>An email and a password opened an account and saved progress. The pension came after, created new or imported, whenever the user was ready.</p></div>
+<div class="item"><h3>Five modules</h3><p>The 33 steps became five independent modules users could leave and resume in any session, and the team could iterate on one without touching the others.</p></div>
+<div class="item"><h3>One component set</h3><p>The product was desktop only. Designing mobile, I found the components nearly identical, so mobile became the single source feeding desktop. Built once instead of twice, engineering load halved, and we shipped daily.</p></div>
+</div>
+<p class="txt">That last one was a trade I made knowingly. A few desktop screens ended up below my own bar, because shipping mattered more than polish at that stage, and the team agreed. People who quit could now come back and finish, and a progress card showed them exactly where they&rsquo;d left off.</p>
+</div>
+</section>
+
+<section class="ch">
+<div class="tag"><b>02</b><span class="mono">The click</span></div>
+<div class="body">
+<h2>It got better. <span class="soft">A pension still took five days to exist.</span></h2>
+<p class="txt">Our partners, Gaudi and Seccl, worked by hand. Each step waited up to 24, 48 or 72 hours on an ID from the step before it, and legally the pension only existed once the last one came back. Users finished onboarding and were told to hold on while we ran some checks. For days.</p>
+<p class="txt">The constraints were technical, and I felt they could be worked around. My first try was language: call it a pot until the pension existed. That broke on the first top-up, because the money had nowhere legal to go. The partners couldn&rsquo;t be sped up either.</p>
+<div class="box">
+<div class="mono">What I noticed</div>
+<p>The IDs always came back, with zero failures, and engineering confirmed a wrong reference would be flagged and replaced on the same record. So we stopped waiting for them. As soon as the information module was done, we sent provisional references, with the user&rsquo;s real details, to every partner at once, and a ledger swapped each one for the real reference as it arrived.</p>
+</div>
+<p class="txt">A pension now existed the moment onboarding ended. Every reference was reconciled within the week, with zero failures. I came to design from software engineering, and this is the kind of problem that background is for: designing in the material, rather than around it.</p>
+</div>
+</section>
+
+<section class="interlude">
+<div class="mono">And yet</div>
+<p class="big">Onboarding worked. The app did the job. Pensions were instant. <span class="soft">Still, 100 signups a month.</span></p>
+<p class="txt">So we went looking, closer to the people using it.</p>
+</section>
+
+<section class="ch">
+<div class="tag"><b>03</b><span class="mono">Listening</span></div>
+<div class="body">
+<h2>Customer Support <span class="soft">was the gold mine.</span></h2>
+<p class="txt">I built a loop around the people already using Penfold, and it ran every week:</p>
+<div class="grid">
+<div class="item"><span class="mono">Every morning</span><h3>Session replays</h3><p>I started each day in FullStory, noting the users worth talking to, and reached out when a session raised a question only they could answer.</p></div>
+<div class="item"><span class="mono">Every Friday</span><h3>Top tickets</h3><p>Customer Support and I went through the week&rsquo;s top tickets together: the pulse on complaints, requests and feedback, straight from the source.</p></div>
+<div class="item"><span class="mono">Every week</span><h3>A beta user in the room</h3><p>I started a beta programme, recruited from those sessions and tickets, and invited one beta user to join the Friday chat, in person.</p></div>
+<div class="item"><span class="mono">Every fix</span><h3>A message back</h3><p>We logged who had raised what. When it was fixed, I messaged them myself: that thing that bugged you, we fixed it, thanks for telling us.</p></div>
+</div>
+<div class="pull">
+<p class="big">Watching someone go from annoyed to genuinely pleased, because a person had actually listened.</p>
+<p class="small">That loop is the thing I&rsquo;m proudest of building at Penfold. It gave the company a human feel, users talked about it on social media, and it shaped how the whole team worked, not just design.</p>
+</div>
+<div class="box">
+<div class="mono">&ldquo;What if I die?&rdquo;</div>
+<p>Joe T. asked it as a joke on a Friday chat. None of my flows had ever considered death. Behind the scenes it was an email to a third party carrying four data points. So I sketched one screen, three inputs plus the name we already had, and wrote a one-line spec. It was Tech-Debt-Friday, the developers wanted an excuse to dodge it, and every component already existed. It shipped that afternoon, in time for me to call Joe back: thanks to your suggestion, everyone can now nominate a beneficiary.</p>
+</div>
+<p class="txt">Trust went up, Customer Support stopped doing nominations by hand, and a feature went from a joke to production in a day, which says more about the system and the team than about the screen. Joe T. was happy. We weren&rsquo;t. Signups hadn&rsquo;t moved.</p>
+</div>
+</section>
+
+<section class="ch">
+<div class="tag"><b>04</b><span class="mono">The flip</span></div>
+<div class="body">
+<h2>We were selling to the wrong people. <span class="soft">So I changed who it was for.</span></h2>
+<div class="two">
+<p class="txt">Penfold sold pensions to people who didn&rsquo;t have one. A huge market, and a slow one: people without a pension didn&rsquo;t feel they needed one, so every signup had to be educated first.</p>
+<p class="txt">In a meeting, I argued for the opposite: sell to people who already have pensions, the pots scattered across every past employer. They needed no convincing that pensions matter. They just needed a better one.</p>
+</div>
+<div class="pull">
+<p class="big">The battleground moved from educating people to winning them on product. And we were fast at product.</p>
+<p class="small">We changed the message, then the Facebook targeting and spend, over November and December 2019.</p>
+</div>
+<p class="txt">I did a quick pass on the website and the ads as well, outside my discipline. In October the site led with &ldquo;The bad news: you may already be losing up to &pound;228.95 daily.&rdquo; By 9 December it led with &ldquo;Find and combine.&rdquo;</p>
+<p class="txt">The product was ready for it, because importing a pension had been there since the MVP, as one of three main actions on the dashboard, with &ldquo;Find my other pensions&rdquo; added from the beta. Combine became the flagship, and I made it the priority:</p>
+<div class="grid">
+<div class="item"><h3>Combine, iterated in public</h3><p>I hated the first two versions of the form, because I knew they weren&rsquo;t the right experience. But each beat what we had, the first one literally beat nothing, and together they carried hundreds of Combine requests. Bad versions still add value. Doing it right came later: we compiled every provider&rsquo;s address ourselves, stopped asking users for one nobody knows, and swapped a free text field for a dropdown.</p></div>
+<div class="item"><h3>Complexity, added on purpose</h3><p>I usually take things away. Here the better experience needed one more field: the employer each pot came from. The API didn&rsquo;t require it, but it let people keep track of several Combine requests at once.</p></div>
+<div class="item"><h3>Transaction history, designed backwards</h3><p>It was missing for the longest time, because without the features that create transactions there would be none to show. When its turn came, I designed it as far into the future as I could, then dialled it back to an MVP with three properties.</p></div>
+<div class="item"><h3>Built up like Lego</h3><p>Each iteration shipped on its own and set up the next: types before filters, filters before totals, notifications for Combine events last, until a combined pot landed in the list. Engineering always had room for other priorities in between.</p></div>
+</div>
+<p class="txt">Every iteration was weighed against what we had and what it would cost. I&rsquo;m good at estimating engineering effort, from my years as a developer, and I always checked with the developers anyway.</p>
+</div>
+</section>
+
+<section class="ch">
+<div class="tag"><b>Outcome</b><span class="mono">Year one</span></div>
+<div class="body">
+<h2>Signups went from 100 to 600 a month, <span class="soft">each arriving with a pot.</span></h2>
+<div class="two">
+<p class="txt">Signup value rose with volume, since every new user brought an existing pension to combine, and acquisition costs fell. Combine turned out to be the growth engine, sitting in the product since the MVP.</p>
+<p class="txt">A dozen users in the first week grew to around 3,000 savers and &pound;4M under management by the end of year one, on plan. Trustpilot and Net Promoter Score both scored at the top, with hundreds of independent reviews.</p>
+</div>
+<div class="grid three">
+<div class="item"><span class="mono">Speed</span><h3>Shipping daily</h3><p>One component set for every platform, and modules that could change on their own.</p></div>
+<div class="item"><span class="mono">Craft</span><h3>Instant pensions</h3><p>From five days of waiting on partners to a pension the moment onboarding ended.</p></div>
+<div class="item"><span class="mono">Strategy</span><h3>The right market</h3><p>Existing pension holders, won on product instead of educated from scratch.</p></div>
+</div>
+</div>
+</section>
+
+<section class="closer">
+<p class="big">Ship it ugly.<br>Make it instant.<br><span class="soft">Sell it to the right people.</span></p>
+<p class="txt">The foundation held. Penfold now manages over &pound;1B and was voted Best Pension 2026.</p>
+</section>
+
+<footer>
+<div class="next">
+<div class="mono">Next</div>
+<a href="https://cesarxdesign.com/cable">Cable &rarr;</a>
+</div>
+<div class="links">
+<a href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a>
+<a href="https://cesarxdesign.com/cv.pdf">CV</a>
+</div>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
