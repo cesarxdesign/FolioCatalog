@@ -363,6 +363,22 @@
     "path": "versions/penfold/2026-09-25-saver/site/index.html?v=af1a6b26"
   },
   {
+    "project": "penfold",
+    "id": "2026-09-25-texas",
+    "name": "Texas",
+    "page": "site/index.html",
+    "width": 880,
+    "shipped": null,
+    "until": null,
+    "made": "2026-09-25",
+    "source": {
+      "kind": "file",
+      "from": "wire page Claude built from Cesar's four handwritten notebook pages, 25 Sep 2026"
+    },
+    "note": "Wireframe: grey boxes and Helvetica, the Penfold story as written in his notebook. Never shipped.",
+    "path": "versions/penfold/2026-09-25-texas/site/index.html?v=e6f670e0"
+  },
+  {
     "project": "starcount",
     "id": "2020-07-01",
     "name": "Observatory",

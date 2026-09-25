@@ -1,0 +1,15 @@
+{
+  "project": "penfold",
+  "id": "2026-09-25-texas",
+  "name": "Texas",
+  "page": "site/index.html",
+  "width": 880,
+  "shipped": null,
+  "until": null,
+  "made": "2026-09-25",
+  "source": {
+    "kind": "file",
+    "from": "wire page Claude built from Cesar's four handwritten notebook pages, 25 Sep 2026"
+  },
+  "note": "Wireframe: grey boxes and Helvetica, the Penfold story as written in his notebook. Never shipped."
+}

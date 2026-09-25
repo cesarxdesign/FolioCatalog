@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penfold Texas</title>
+<style>
+:root{
+  --bg:#ffffff; --ink:#111111; --muted:#777777; --line:#111111; --fill:#f2f2f2; --note:#d33;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#111;--ink:#eee;--muted:#999;--line:#ddd;--fill:#1d1d1d;--note:#ff6b6b;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#111;--ink:#eee;--muted:#999;--line:#ddd;--fill:#1d1d1d;--note:#ff6b6b;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:17px;line-height:1.5;padding-inline:16px;padding-block:48px 96px}
+.wrap{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+section{display:flex;flex-direction:column;gap:20px}
+p{margin:0;max-width:640px}
+h1{font-size:40px;line-height:1.1;margin:0;font-weight:700;text-wrap:balance}
+.big{font-size:26px;line-height:1.25;font-weight:700;max-width:680px;text-wrap:balance}
+.tag{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cap{font-size:13px;color:var(--muted)}
+.note{font-size:13px;color:var(--note);border:1px dashed var(--note);padding:4px 8px;align-self:flex-start}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.row.nowrap{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+.box{border:1.5px solid var(--line);background:var(--fill);display:flex;align-items:center;justify-content:center;font-size:13px;text-align:center;flex:none;position:relative}
+.ph{width:64px;height:128px}
+.ph.sm{width:48px;height:96px}
+.ph.tall{width:90px;height:260px;align-items:flex-start;padding-top:8px}
+.desk{width:240px;height:150px}
+.x{width:48px;height:96px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:20px;flex:none}
+.arrow{color:var(--muted);font-size:20px;flex:none}
+.group{display:flex;flex-direction:column;gap:6px}
+.group .bar{height:0;border-top:1.5px solid var(--line)}
+.progress{border:1.5px solid var(--line);height:28px;width:100%;max-width:640px;position:relative}
+.progress span{position:absolute;right:8px;top:3px;font-size:13px}
+.callout{border:1.5px solid var(--line);padding:16px;max-width:420px;font-weight:700}
+.chain{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chain .t{font-size:12px;border:1px solid var(--line);padding:2px 6px}
+.chain .p{border:1.5px solid var(--line);background:var(--fill);padding:10px 14px;font-size:14px}
+.card{width:120px;height:90px;font-size:18px;font-weight:700}
+.bill{width:320px;height:170px;font-size:20px;font-weight:700}
+.inner{position:absolute;border:1.5px solid var(--line);background:var(--bg);width:50px;height:30px;left:18px}
+.crossed::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom right,transparent calc(50% - 1px),var(--line) 50%,transparent calc(50% + 1px))}
+.stats{display:flex;gap:40px;flex-wrap:wrap}
+.stat b{display:block;font-size:44px;line-height:1}
+.stat span{font-size:13px;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--line);opacity:.2;margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section>
+  <div class="tag">Penfold</div>
+  <h1>This made £4M in its first year.</h1>
+  <div class="row nowrap">
+    <div class="group"><div class="row nowrap">
+      <div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div>
+    </div><div class="bar"></div><div class="cap">Onboarding</div></div>
+    <div class="group"><div class="row nowrap"><div class="box ph sm"></div><div class="box ph sm"></div></div><div class="bar"></div><div class="cap">Feature</div></div>
+    <div class="group"><div class="row nowrap"><div class="box ph sm"></div><div class="box ph sm"></div></div><div class="bar"></div><div class="cap">Feature</div></div>
+    <div class="group"><div class="row nowrap"><div class="box ph sm"></div></div><div class="bar"></div><div class="cap">Feature</div></div>
+  </div>
+  <p class="cap">Onboarding and 3 features.</p>
+</section>
+
+<hr>
+
+<section>
+  <p class="big">How did I do it.</p>
+  <p>First, a kick-ass onboarding. If you can't make it quick, make it manageable at least. And we couldn't make it quick.</p>
+  <div class="tag">V1</div>
+  <div class="progress"><span>33</span></div>
+  <p>33 steps. Like old Blaise Pascal, very long as I didn't have the time to make a short one.</p>
+  <div class="callout">When I joined I had 7 days to turn a POC into a live product to get funding, so I did.</div>
+</section>
+
+<section>
+  <p>But as soon as we delivered, I went straight back into it. Adding what I already knew the users wanted: mobile, and modular so you can finish later.</p>
+  <div class="row">
+    <div class="box desk">Desktop</div><span class="arrow">&amp;</span><div class="box ph">Mobile</div>
+  </div>
+  <p>Mobile doubled eng effort. But we couldn't afford 2x devs.</p>
+  <p>So I devised a DS that fed both with the same comps.</p>
+  <div class="row">
+    <div class="box" style="width:90px;height:90px">DS</div>
+    <span class="arrow">→</span>
+    <div class="box" style="width:150px;height:80px">Desktop</div>
+    <span class="arrow">+</span>
+    <div class="box ph sm">Mobile</div>
+  </div>
+  <div class="note">Not the norm in '18</div>
+</section>
+
+<hr>
+
+<section>
+  <p class="big">Also, modularity hit a technical snag.</p>
+  <p>The pension was the account, so unfinished onboarding meant no pension, which meant no account.</p>
+  <p>No account meant we couldn't save progress on onboarding so you could finish later.</p>
+  <div class="row" style="align-items:stretch;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="row nowrap"><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><span class="x">×</span><span class="x">×</span><span class="x">×</span></div>
+      <div class="row nowrap"><div class="box ph sm"></div><span class="x">×</span><span class="x">×</span><span class="x">×</span><span class="x">×</span><span class="x">×</span></div>
+      <div class="row nowrap"><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><span class="x">×</span><span class="x">×</span></div>
+    </div>
+    <div style="border-left:1.5px solid var(--line);padding-left:16px;display:flex;flex-direction:column;justify-content:center;font-weight:700">No pension.<br>No account.</div>
+  </div>
+</section>
+
+<section>
+  <p>So we solved it and made an empty pension. Easy enough. But there was a bigger problem.</p>
+  <p>Seccl and Gaudi were not in the business of making things faster as we were. And they were two of the essential parts to making a pension.</p>
+  <div class="chain">
+    <span class="t">24–48h</span><span class="p">Seccl</span>
+    <span class="t">48–72h</span><span class="p">Gaudi</span>
+    <span class="t">91s</span><span class="p">HSBC</span>
+    <span class="arrow">=</span><span class="p" style="border-radius:50%">£</span>
+  </div>
+  <p>And whilst HSBC was sensible enough to automate account creation, Seccl and Gaudi did it the way their forefathers did: slowly and carefully, by hand. The true craftsmen that they were.</p>
+  <p>So again, I had to figure a way to crack the stalemate. And crack I did.</p>
+  <p>Upon studying and probing their process, it was made clear to me that Gaudi really did need an ID, after Seccl got their ID. And HSBC really did need an ID, after Gaudi. And we sure needed the HSBC one to make the pension, as they were the crucial link in holding the money.</p>
+  <p class="big">So we set out to help them by advancing IDs.</p>
+  <div class="row nowrap">
+    <div class="group"><div class="box ph"></div><div class="cap">Gaudi</div></div><span class="arrow">⇄</span>
+    <div class="group"><div class="box ph"></div><div class="cap">Seccl</div></div><span class="arrow">⇄</span>
+    <div class="group"><div class="box ph"></div><div class="cap">HSBC</div></div><span class="arrow">⇄</span>
+    <div class="group"><div class="box ph"></div><div class="cap">Penfold</div></div>
+  </div>
+</section>
+
+<section>
+  <p>By doing that, we turned a five-day process into a couple of minutes. A cuppa tea's worth.</p>
+  <div class="row nowrap">
+    <div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div>
+    <span class="arrow">———→</span><div class="box" style="width:56px;height:48px">Tea</div><span class="arrow">→</span>
+    <div class="box ph">£</div>
+  </div>
+  <p class="big">A near-instant pension we now offered.</p>
+</section>
+
+<hr>
+
+<section>
+  <p class="big">And yet, very few wanted it.</p>
+  <p>So I looked into every nook and cranny to figure out what our product was missing.</p>
+  <p>We iterated relentlessly, based on data and good old designer intuition.</p>
+  <div class="row">
+    <div class="row nowrap"><div class="box ph sm"></div><span class="arrow">→</span><div class="box ph sm"></div></div>
+    <div class="row nowrap"><div class="box ph sm"></div><span class="arrow">→</span><div class="box ph sm"></div></div>
+    <div class="row nowrap"><div class="box ph sm"></div><span class="arrow">→</span><div class="box ph sm"></div><span class="arrow">+</span><div class="box crossed" style="width:96px;height:72px">£</div></div>
+  </div>
+  <p>I kept a close ear to our customers, meeting CS weekly, interviewing users often and even thanking them when we updated with something they asked or complained about.</p>
+  <div class="row">
+    <div class="box" style="width:120px;height:100px">Email</div><span class="arrow">→</span>
+    <div class="row nowrap"><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div></div>
+    <span class="arrow">→</span><div class="box" style="width:120px;height:100px">Thanks!<br>Done!</div>
+  </div>
+  <p>And we even tried some pretty out there marketing.</p>
+  <div class="box bill">Pineapple<br>Fold</div>
+  <p>And it was in fact marketing that held the key. Targeting, to be sure.</p>
+  <p>From the start we wanted to educate.</p>
+  <div class="row"><div class="box card">Save</div><div class="box card">25%</div><div class="box card">Pensions</div></div>
+</section>
+
+<section>
+  <p>But in order to educate, we needed critical mass. And that we needed to take rather than gain.</p>
+  <p class="big">I suggested we go for the pensioned market, and beat it on a better product, rather than trying to be everyone's first pension.</p>
+  <p>So we beefed up Combine.</p>
+  <div class="row" style="align-items:flex-start;gap:28px">
+    <div class="row nowrap" style="align-items:flex-start">
+      <div class="box ph tall">Homepage<div class="inner" style="bottom:20px"></div></div>
+      <span class="arrow" style="align-self:center">→</span>
+      <div class="box ph tall">Homepage<div class="inner" style="top:50px"></div></div>
+    </div>
+    <div class="row nowrap"><div class="box ph"></div><span class="arrow">›››</span><div class="box ph" style="align-items:flex-start;padding-top:8px">Combine iterations</div></div>
+    <div class="box ph" style="height:180px;width:90px;align-items:flex-start;padding-top:8px">Notifications (Combine)</div>
+  </div>
+  <p class="big">And that's what cracked it.</p>
+  <p>We had already built a better experience, so we were ready for the influx.</p>
+  <p>And all the niceties we built in search of a harder market paid off on a flood coming from the competition.</p>
+  <div class="row nowrap">
+    <div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div><div class="box ph sm"></div>
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <p>That year we finished with:</p>
+  <div class="stats">
+    <div class="stat"><b>3,000</b><span>users</span></div>
+    <div class="stat"><b>£4M</b><span>first year</span></div>
+  </div>
+  <p class="big">Penfold is now a Best Pension winner, and holds £1B.</p>
+</section>
+
+</div>
+</body>
+</html>
