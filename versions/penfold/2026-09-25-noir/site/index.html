@@ -27,7 +27,8 @@ nav .links{display:flex;gap:36px;font-size:14px}
 header{padding:168px 0 120px;display:flex;flex-direction:column;gap:48px}
 header .mono{font-size:13px}
 h1{font-size:136px;line-height:.96;letter-spacing:-.05em;font-weight:600}
-.lede{max-width:860px;font-size:30px;line-height:1.35;letter-spacing:-.02em}
+.lede{max-width:900px;font-size:32px;line-height:1.34;letter-spacing:-.022em}
+.lede span{color:var(--soft)}
 .stats{display:flex;flex-wrap:wrap;gap:32px 80px;padding-top:48px;border-top:1px solid var(--line)}
 .stat{display:flex;flex-direction:column;gap:10px}
 .stat b{font-size:52px;line-height:1;letter-spacing:-.045em;font-weight:600}
@@ -60,22 +61,22 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 .box{display:flex;flex-direction:column;gap:16px;padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:900px}
 .box p{font-size:22px;line-height:1.45;letter-spacing:-.01em;color:var(--ink)}
 .box + .pull{border-top:0;padding-top:0}
+.sub{font-size:22px;line-height:1.25;letter-spacing:-.02em;font-weight:500;color:var(--ink)}
 
-/* the interlude: a break in the page's flow */
-.interlude{padding:160px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;text-align:center;gap:32px}
-.interlude .big{max-width:980px;font-size:56px;line-height:1.08;letter-spacing:-.04em;font-weight:600}
-.interlude .txt{max-width:720px}
+/* what users said: the big quote leads, the rest follow in a row. Verbatim, dated */
+.voices{display:flex;flex-direction:column;gap:40px;padding:44px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote{padding:8px 0 8px 36px;border-left:2px solid var(--ink);display:flex;flex-direction:column;gap:20px}
+.quote .q{font-size:56px;line-height:1.08;letter-spacing:-.035em;font-weight:500}
+.quote .who{font-size:16px;line-height:1.5;color:var(--body)}
+.voices .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.voices .row blockquote{display:flex;flex-direction:column;gap:12px}
+.voices .row p{font-size:19px;line-height:1.4;letter-spacing:-.01em;font-weight:500}
+.voices .by{font-size:14px;line-height:1.4;color:var(--mut)}
 
-.closer{padding:200px 0 120px;border-top:1px solid var(--ink);display:flex;flex-direction:column;gap:48px}
+
+.closer{padding:200px 0 120px;border-top:1px solid var(--line)}
 .closer .big{font-size:104px;line-height:1;letter-spacing:-.05em;font-weight:600}
-.closer .txt{font-size:22px;max-width:860px}
 
-/* the ribbon: what users said, verbatim, dated */
-.ribbon{padding:72px 0 88px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:40px}
-.ribbon .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px}
-.ribbon blockquote{display:flex;flex-direction:column;gap:16px}
-.ribbon blockquote p{font-size:22px;line-height:1.35;letter-spacing:-.015em;font-weight:500}
-.ribbon .by{font-size:14px;line-height:1.4;color:var(--mut)}
 
 footer{margin-top:auto;padding:48px 0 64px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end}
 footer .next{display:flex;flex-direction:column;gap:8px}
@@ -99,8 +100,8 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <header>
 <div class="mono">Penfold &middot; Pensions &middot; B2C fintech, mobile and web</div>
 <h1>Pensions took days.<br><span class="soft">Ours took minutes.</span></h1>
+<p class="lede">Seven days to go live, 33 steps to sign up, a week to get a pension, 100 signups a month. <span>Once the wait went from a week to minutes, and we sold to people who already had a pension, signups rose six times and year one closed at &pound;4M under management.</span></p>
 <div class="stats">
-<div class="stat"><b>7 days</b><span class="mono">Proof of concept to live</span></div>
 <div class="stat"><b>Minutes</b><span class="mono">A pension, down from a week</span></div>
 <div class="stat"><b>6x</b><span class="mono">Signups, on refocus</span></div>
 <div class="stat"><b>&pound;4M</b><span class="mono">Under management, year one</span></div>
@@ -108,7 +109,6 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <div class="meta">
 <div><span class="mono">Role</span>&nbsp;&nbsp;Founding Designer, first hire</div>
 <div><span class="mono">Timeline</span>&nbsp;&nbsp;Jun 2019 to May 2020</div>
-<div><span class="mono">Team</span>&nbsp;&nbsp;Two co-founders, one developer</div>
 <div><span class="mono">Users</span>&nbsp;&nbsp;UK savers</div>
 </div>
 </header>
@@ -118,14 +118,12 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <div class="tag"><b>Week 1</b><span class="mono">Ship</span></div>
 <div class="body">
 <h2>Seven days to go live. <span class="soft">Knowing nothing about pensions.</span></h2>
-<div class="two">
-<p class="txt">I joined as the first hire. The co-founders had a proof of concept and a funding round, and the round needed a live product in a week.</p>
-<p class="txt">If you can&rsquo;t make onboarding quick, make it manageable at least. We couldn&rsquo;t make it quick. It shipped as one flow, 33 steps long.</p>
-</div>
+<p class="txt">I joined as the first hire. The co-founders had a proof of concept and a funding round, and the round needed a live product in a week. If you can&rsquo;t make onboarding quick, make it manageable at least. We couldn&rsquo;t make it quick. It shipped as one flow, 33 steps long.</p>
 <div class="pull">
 <p class="big">&ldquo;If I had more time, I would have written a shorter letter.&rdquo;</p>
-<p class="small">After Blaise Pascal. A dozen people became customers that week, and the round closed.</p>
+<p class="small">After Blaise Pascal.</p>
 </div>
+<p class="txt">A dozen people became customers that week, and the round closed.</p>
 </div>
 </section>
 
@@ -133,15 +131,11 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <div class="tag"><b>01</b><span class="mono">Onboarding</span></div>
 <div class="body">
 <h2>People came back. <span class="soft">To step one.</span></h2>
-<p class="txt">In FullStory, session IDs showed what the funnel couldn&rsquo;t: people who quit did come back. And started again from the beginning.</p>
+<p class="txt">In FullStory, session IDs showed what the funnel couldn&rsquo;t: people who quit did come back. And started again from the beginning. Creating the account and creating the pension were one event, so nothing was saved until the very end.</p>
 <div class="pull">
 <p class="big">The account was the pension. Quit halfway, and there was nothing to come back to.</p>
-<p class="small">Creating the account and creating the pension were one event, so nothing was saved until the very end.</p>
 </div>
-<div class="two">
-<p class="txt">So we made an empty pension. It&rsquo;s created with the account and holds your progress, and the 33 steps became five modules you can leave and pick up again.</p>
-<p class="txt">While I was in there, I made mobile the single source for desktop: one component set, half the engineering, and we shipped daily. Not the norm then.</p>
-</div>
+<p class="txt">So we made an empty pension. It&rsquo;s created with the account and holds your progress, and the 33 steps became five modules you can leave and pick up again. While I was in there, I made mobile the single source for desktop: one component set, half the engineering, and we shipped daily. Not the norm then.</p>
 </div>
 </section>
 
@@ -157,34 +151,23 @@ footer .links{display:flex;gap:36px;font-size:14px}
 </div>
 <p class="txt">My first try was words: call it a pot until the pension existed. It broke on the first top-up. The money had nowhere legal to go.</p>
 <div class="box">
-<div class="mono">What I noticed</div>
-<p>The IDs always came back. Not one had ever failed, and a wrong reference could be replaced on the same record. So we stopped waiting. Provisional references went to all three partners at once, and a ledger swapped in each real one as it arrived.</p>
+<p class="sub">The IDs always came back.</p>
+<p>Not one had ever failed, and a wrong reference could be replaced on the same record. So we stopped waiting. Provisional references went to all three partners at once, and a ledger swapped in each real one as it arrived.</p>
 </div>
-<div class="pull">
-<p class="big">A week became a couple of minutes. A cuppa tea&rsquo;s worth.</p>
-<p class="small">I came to design from software engineering. This is what that&rsquo;s for: designing in the material, not around it.</p>
+<p class="txt">A week became a couple of minutes, a cuppa tea&rsquo;s worth. I came to design from software engineering. This is what that&rsquo;s for: designing in the material, not around it.</p>
 </div>
-</div>
-</section>
-
-<section class="interlude">
-<div class="mono">And yet</div>
-<p class="big">A pension in minutes. <span class="soft">100 signups a month.</span></p>
-<p class="txt">The product worked. Nobody new was coming.</p>
 </section>
 
 <section class="ch">
 <div class="tag"><b>03</b><span class="mono">Listening</span></div>
 <div class="body">
-<h2>Customer Support <span class="soft">was the gold mine.</span></h2>
-<p class="txt">Every Friday, Customer Support and I went through the week&rsquo;s top tickets, with one beta user in the room.</p>
+<h2>A pension in minutes. <span class="soft">Still 100 signups a month.</span></h2>
+<p class="txt">The product worked. Nobody new was coming. So we got closer to the people who had: every Friday, Customer Support and I went through the week&rsquo;s top tickets, with one beta user in the room. Support was the gold mine.</p>
 <div class="box">
-<div class="mono">&ldquo;What if I die?&rdquo;</div>
+<p class="sub">&ldquo;What if I die?&rdquo;</p>
 <p>Joe T. asked it as a joke. None of my flows had ever considered death. I sketched one screen and wrote a one-line spec; every component already existed. It shipped that afternoon, in time for me to call Joe back.</p>
 </div>
-<div class="pull">
-<p class="big">Joe was happy. We weren&rsquo;t. Signups hadn&rsquo;t moved.</p>
-</div>
+<p class="txt">Joe was happy. We weren&rsquo;t. Signups hadn&rsquo;t moved.</p>
 </div>
 </section>
 
@@ -192,17 +175,10 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <div class="tag"><b>04</b><span class="mono">The flip</span></div>
 <div class="body">
 <h2>We were selling to the wrong people. <span class="soft">So I changed who it was for.</span></h2>
-<div class="two">
-<p class="txt">Penfold sold pensions to people who didn&rsquo;t have one. Before they could sign up, they had to be convinced they needed one. A huge market, and a slow one.</p>
-<p class="txt">I argued for the opposite: people who already had pensions, scattered across old employers. They needed no convincing, just a better pension. That&rsquo;s a product fight, and we were fast at product.</p>
-</div>
+<p class="txt">Penfold sold pensions to people who didn&rsquo;t have one. Before they could sign up, they had to be convinced they needed one. A huge market, and a slow one. I argued for the opposite: people who already had pensions, scattered across old employers. They needed no convincing, just a better pension. That&rsquo;s a product fight, and we were fast at product.</p>
 <div class="pull">
 <p class="big">What they needed had been on the dashboard since the MVP.</p>
-<p class="small">Combine: bring your old pensions into one. I made it the flagship, and redid the website and the ads myself.</p>
-</div>
-<div class="box">
-<div class="mono">The ads, before and after</div>
-<p>&ldquo;You may already be losing up to &pound;228.95 daily&rdquo; became &ldquo;Find and combine.&rdquo;</p>
+<p class="small">Combine: bring your old pensions into one. I made it the flagship, and redid the website and the ads myself. &ldquo;You may already be losing up to &pound;228.95 daily&rdquo; became &ldquo;Find and combine.&rdquo;</p>
 </div>
 <div class="grid">
 <div class="item"><h3>Bad versions still count</h3><p>I hated the first two versions of the Combine form. I shipped them anyway: each beat what we had, and together they carried hundreds of requests.</p></div>
@@ -214,27 +190,24 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <section class="ch">
 <div class="tag"><b>Outcome</b><span class="mono">Year one</span></div>
 <div class="body">
-<h2>100 signups a month became 600. <span class="soft">Each one brought a pension.</span></h2>
-<div class="two">
-<p class="txt">When the flood came from the competition, we were ready: the pension in minutes, the onboarding you could finish later, the Friday loop. All of it built while nobody was coming.</p>
-<p class="txt">Signup value rose with volume, and acquisition costs fell. A dozen customers in week one became 3,000 savers and &pound;4M under management by the end of year one.</p>
-</div>
-</div>
-</section>
-
-<section class="ribbon">
+<h2>The flood came. <span class="soft">We were ready for it.</span></h2>
+<p class="txt">Everything built while nobody was coming, the pension in minutes, the onboarding you could finish later, the Friday loop, met the people coming over from the competition. Signups went from 100 to 600 a month, each arriving with a pension to combine. Signup value rose with volume, and acquisition costs fell.</p>
+<div class="voices">
 <div class="mono">App Store, April to June 2020 &middot; 12 reviews, all five stars</div>
+<blockquote class="quote"><p class="q">&ldquo;Setting up my pension with Penfold took me 5mins.&rdquo;</p><p class="who">BobbyDesignGuru, 14 May 2020</p></blockquote>
 <div class="row">
-<blockquote><p>&ldquo;Setting up my pension with Penfold took me 5mins.&rdquo;</p><span class="by">BobbyDesignGuru, 14 May 2020</span></blockquote>
 <blockquote><p>&ldquo;I&rsquo;ve put off sorting out my pension for AGES as I always assumed it would be annoying and complicated.&rdquo;</p><span class="by">KimCook91, 13 May 2020</span></blockquote>
 <blockquote><p>&ldquo;I&rsquo;m a self-employed wedding photographer so I didn&rsquo;t feel like I fit in properly with other providers.&rdquo;</p><span class="by">carafrew60, 14 May 2020</span></blockquote>
 <blockquote><p>&ldquo;&hellip;customer service was not patronising just helpful&rdquo;</p><span class="by">michellesusanairey, 18 May 2020</span></blockquote>
+</div>
+</div>
+<p class="txt">A dozen customers in week one became 3,000 savers and &pound;4M under management by the end of year one.</p>
+<p class="txt">Penfold now manages over &pound;1B, and was voted Best Pension 2026.</p>
 </div>
 </section>
 
 <section class="closer">
 <p class="big">Ship it ugly.<br>Kill the wait.<br><span class="soft">Sell it to the right people.</span></p>
-<p class="txt">Penfold now manages over &pound;1B, and was voted Best Pension 2026.</p>
 </section>
 
 <footer>

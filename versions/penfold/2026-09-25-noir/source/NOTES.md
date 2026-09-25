@@ -83,3 +83,14 @@ copy, so no 2020 review could be dated. Google Play shows no reviews from the wi
 - 2020-05-19, 5 stars, Ed123456780, "Great easy to use app": Great easy to use app, fantastic service
 - 2020-06-04, 5 stars, BPHollins, "So simple": Well done. Would appreciate two factor authentication in the future to keep everything secure
 - 2020-06-25, 5 stars, TamIyn, "So easy!": I’ve never set up a pension before, and this made it a breeze I had my account set up in 5 mins. The handy Calculator helped me figure out how much I could save with my monthly investments amazing.
+
+## On Cable's live layout, 2026-09-25
+
+Copied from the live Cable page (Portfolio/cable/index.html, 352313a), layout and cadence only:
+- Hero: the problems as fragments, then a muted sentence resolving them; three metrics, three facts
+  (7 days and Team dropped; "seven days to go live" leads the lede instead).
+- One device per section, single-column body. The "And yet" interlude became 03's heading.
+- Outcome like Cable's: a heading that lands, the result, the mega quote (the review ribbon
+  lives here, led by "took me 5mins"), then year one, then the "now" line, like "Cable was
+  acquired in 2026."
+- Closer stands alone, as Cable's does.
