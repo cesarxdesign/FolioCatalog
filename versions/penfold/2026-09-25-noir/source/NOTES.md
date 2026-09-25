@@ -94,3 +94,15 @@ Copied from the live Cable page (Portfolio/cable/index.html, 352313a), layout an
   lives here, led by "took me 5mins"), then year one, then the "now" line, like "Cable was
   acquired in 2026."
 - Closer stands alone, as Cable's does.
+
+## Rewrite for a first-time reader, 2026-09-25
+
+Every line has to make sense with only what came before it. Fixed from Cesar's read:
+- Lede states the problems plainly (live in seven days; then a week to open a pension and 100
+  signups a month) instead of fragments that contradicted each other.
+- Stats: "Minutes" said nothing on its own; back to 7 days, 6x, £4M.
+- Week 1: the NEXT funding round needed the live product.
+- "If you can't make it quick, make it manageable" belongs to the modular onboarding (01), not
+  to the 33-step launch.
+- 02's heading sets up the problem: "Sign up today. Get your pension next week."
+- Outcome heading states the result: "Six times the signups. Each one brought a pension."
