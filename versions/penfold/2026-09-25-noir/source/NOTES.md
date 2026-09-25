@@ -36,3 +36,9 @@ existing pension holders → Combine → outcome.
   "instant", the user never saw the wait.
 - Partner hours in Texas (24/48/72h, 91s) were illustrative. Real: HSBC seconds, Seccl days
   (tolerable), Gaudi days (the one we dreaded); a pension took about a week. Written as that.
+
+## Cut for interest, 2026-09-25
+
+- The lede ("We want to make pensions sexy." / "Impossible. I'm in."): kept for the interview, not the page.
+- The four-card listening grid, folded into one sentence; Joe T. carries the section.
+- "The loop is what I'm proudest of", and Combine's "Complexity, on purpose".
