@@ -29,10 +29,11 @@ select{padding:4px 24px 4px 8px;appearance:none;max-width:260px;
 .step[hidden]{display:none}
 .step button{width:28px;height:26px;padding:0;font-size:15px;line-height:1}
 .step button:disabled{opacity:.35;cursor:default}
-#lock,#theme{display:flex;align-items:center;gap:6px;padding:4px 10px;font-size:12px}
-#lock{margin-left:auto}
+#sort,#lock,#theme{display:flex;align-items:center;gap:6px;padding:4px 10px;font-size:12px}
+#sort{margin-left:auto}
+#sort:disabled{opacity:.35;cursor:default}
 #lock[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
-#lock svg,#theme svg{width:14px;height:14px}
+#sort svg,#lock svg,#theme svg{width:14px;height:14px}
 select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 .pane{flex:1 1 0;min-width:0;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
@@ -58,7 +59,8 @@ main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
     <button type="button" id="next" aria-label="Show later">&rsaquo;</button>
     <span id="range"></span>
   </div>
-  <button type="button" id="lock" aria-pressed="false" title="Scroll every pane together"></button>
+  <button type="button" id="sort" title="Put the pages shown in order, earliest on the left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h14M13 4l4 4-4 4M21 16H7M11 12l-4 4 4 4"/></svg>Resort</button>
+  <button type="button" id="lock" aria-pressed="true" title="Scroll every pane together"></button>
   <button type="button" id="theme" aria-label="Dark mode" aria-pressed="false" title="Light or dark, for every page shown that has both"></button>
 </header>
 <main id="panes"></main>
@@ -126,7 +128,8 @@ function watchFrame(f) {
 // Scroll lock. Panes move by the same distance on screen, whatever each page's scale. So every
 // page can travel as far as the longest one, shorter pages get a blank "ghost" space after
 // their last line while the lock is on. Like the link-killing, this lives in the viewer only.
-let locked = store.get('fc-lock') === '1';
+// On unless this browser turned it off. (A new key: the old one stored "off" on every visit.)
+let locked = store.get('fc-scroll-lock') !== '0';
 const LOCK = {on: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
               off: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>'};
 const frames = () => [...document.querySelectorAll('.view iframe')];
@@ -201,7 +204,7 @@ function joinIn(f) {
 }
 
 function applyLock() {
-  store.set('fc-lock', locked ? '1' : '0');
+  store.set('fc-scroll-lock', locked ? '1' : '0');
   $('lock').innerHTML = LOCK[locked ? 'on' : 'off'] + 'Scroll lock';
   $('lock').setAttribute('aria-pressed', locked);
   equalize();
@@ -225,6 +228,9 @@ const byKey = Object.fromEntries(ALL.map(v => [key(v), v]));
 const label = v => (state.project === 'all' ? cap(v.project) + ' · ' : '') + v.id.slice(0, 10) + (v.name ? ' · ' + v.name : '');
 const pool = () => ALL.filter(v => (state.project === 'all' || v.project === state.project) && (!state.version || v.name === state.version));
 const when = v => v.shipped || v.made || v.id.slice(0, 10);
+// Earliest to latest across projects too; ALL's own order (project, then time) breaks ties.
+const byTime = (a, b) => { const x = when(byKey[a]), y = when(byKey[b]);
+                           return x < y ? -1 : x > y ? 1 : ALL.indexOf(byKey[a]) - ALL.indexOf(byKey[b]); };
 
 function fillVersions() {
   // The caption names that more than one page shares (Sqsp, Figma, Lite), oldest first. Each
@@ -329,6 +335,7 @@ function render() {
   $('prev').disabled = state.off === 0;
   $('next').disabled = state.off + fit >= set.length;
   $('range').textContent = `${state.off + 1}–${state.off + fit} of ${set.length}`;
+  $('sort').disabled = set.every((k, j) => !j || byTime(set[j - 1], k) <= 0);
 
   // Reuse a pane whose page is unchanged, so picking in one pane doesn't reload the others.
   const old = {};
@@ -390,6 +397,8 @@ if (!ALL.length) {
   let t; window.onresize = () => { clearTimeout(t); t = setTimeout(render, 60); };
   $('theme').onclick = () => { theme = theme === 'dark' ? 'light' : 'dark'; applyTheme(); };
   $('lock').onclick = () => { locked = !locked; applyLock(); };
+  // Every page in the view, not just the ones on screen, earliest to latest, left to right.
+  $('sort').onclick = () => { state.picks.sort(byTime); render(); };
   applyTheme();
   applyLock();
   readHash();
