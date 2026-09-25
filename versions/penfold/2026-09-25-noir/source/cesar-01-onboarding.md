@@ -12,3 +12,13 @@ this plugged two huge holes in our funnel [check if this is technically correct,
 
 - "those who quit did come back later, only to start again from step one": giving up completely was far more common than starting over.
 - "an empty pension inside it, opened first": the account opened on email and password; checks decided when to trigger the pension.
+
+## Cesar's clarifications, same day
+
+- Two platforms first meant twice the components to maintain; he then made one set serve both.
+  01 must end on that fix (02 is the IDs).
+- Before the ID fix, the account was created empty and waited ~5 days for its pension to come in.
+  The empty pension, opened in minutes so people could top up at once, came with the ID fix (02).
+- Return data only shows people who came back; most never did. Don't claim the data "showed"
+  people giving up.
+- Tech-debt line cut, to keep 01 short.
