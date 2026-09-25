@@ -35,8 +35,8 @@ select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(
 main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 .pane{flex:1 1 0;min-width:0;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
       border-bottom:0;border-radius:8px 8px 0 0;overflow:hidden}
-.cap{flex:none;padding:7px 10px;border-bottom:1px solid var(--line);font-size:12px;font-weight:600;
-     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cap{flex:none;padding:5px 6px;border-bottom:1px solid var(--line)}
+.cap select{width:100%;max-width:none;font-size:12px;font-weight:600;text-overflow:ellipsis}
 .view{flex:1;min-height:0;position:relative;overflow:hidden;background:#fff}
 .view iframe{position:absolute;top:0;border:0;transform-origin:0 0;background:#fff}
 
@@ -47,8 +47,7 @@ main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 <header>
   <h1>FolioCatalog</h1>
   <label>Project <select id="project"></select></label>
-  <label>Version <select id="version"></select></label>
-  <label>Compare <select id="count"></select></label>
+  <label>Show <select id="count"></select></label>
   <div class="step" id="step" hidden>
     <button type="button" id="prev" aria-label="Show earlier">&lsaquo;</button>
     <button type="button" id="next" aria-label="Show later">&rsaquo;</button>
@@ -64,7 +63,8 @@ const $ = id => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.createElement(tag), props); e.append(...kids); return e; };
 const projects = [...new Set(ALL.map(v => v.project))];
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
-const state = {project: projects[0], id: null, n: 1, off: 0};
+// project is one project or 'all'. picks holds what each pane shows, as "project:id", left to right.
+const state = {project: projects[0], n: 1, off: 0, picks: []};
 
 // One switch for the viewer and every page shown. Folio pages keep their theme on <html>
 // (and read localStorage "folio0" when they load); Claude Design pages on their root element.
@@ -123,59 +123,102 @@ function applyTheme() {
   document.querySelectorAll('.view iframe').forEach(themeFrame);
 }
 
-const label = v => v.id.slice(0, 10) + (v.name ? ' · ' + v.name : '');
-const list = () => ALL.filter(v => v.project === state.project);
+const key = v => v.project + ':' + v.id;
+const byKey = Object.fromEntries(ALL.map(v => [key(v), v]));
+const label = v => (state.project === 'all' ? cap(v.project) + ' · ' : '') + v.id.slice(0, 10) + (v.name ? ' · ' + v.name : '');
+const pool = () => state.project === 'all' ? ALL : ALL.filter(v => v.project === state.project);
 
-function readHash() {
-  const [p, id, n, off] = decodeURIComponent(location.hash.slice(1)).split('/');
-  state.project = projects.includes(p) ? p : projects[0];
-  const vs = list();
-  state.id = vs.some(v => v.id === id) ? id : vs[vs.length - 1].id;
-  state.n = Math.min(6, Math.max(1, +n || 1));
-  state.off = Math.max(0, +off || 0);
+function defaults() {
+  // One project: its latest n versions, oldest on the left. All: each project's live page, A-Z.
+  const vs = pool();
+  if (state.project !== 'all') return vs.slice(-state.n).map(key);
+  // A project's face is the page live on the folio now, or its newest if none is.
+  return projects.map(p => { const vs = ALL.filter(v => v.project === p), live = vs.filter(v => v.shipped && !v.until);
+                             return key((live.length ? live : vs).pop()); });
 }
 
-function window_() {
-  // The n versions being compared: the chosen one and those after it, pulled back at the end.
-  const vs = list(), i = vs.findIndex(v => v.id === state.id);
-  const n = Math.min(state.n, vs.length), start = Math.min(i, vs.length - n);
-  return vs.slice(start, start + n);
+function fill() {
+  // Keep what each pane shows; drop what no longer belongs; add the next unused version to new panes.
+  const vs = pool(), n = Math.min(state.n, vs.length);
+  let picks = state.picks.filter(k => byKey[k] && vs.includes(byKey[k]));
+  if (!picks.length) picks = defaults();
+  picks = picks.slice(0, n);
+  // New panes take the defaults not yet shown first (under All: the next project's latest).
+  for (const k of defaults()) if (picks.length < n && !picks.includes(k)) picks.push(k);
+  let i = vs.indexOf(byKey[picks[picks.length - 1]]);
+  for (let tries = 0; picks.length < n && tries < vs.length; tries++) {
+    i = (i + 1) % vs.length;
+    if (!picks.includes(key(vs[i]))) picks.push(key(vs[i]));
+  }
+  state.picks = picks;
+}
+
+function readHash() {
+  // #project/n/off/project:id,project:id,...   (older links, #project/id/n/off, still open)
+  const [p, a, b, c] = decodeURIComponent(location.hash.slice(1)).split('/');
+  state.project = p === 'all' || projects.includes(p) ? p : projects[0];
+  if (a && isNaN(+a)) {
+    state.n = Math.min(6, Math.max(1, +b || 1));
+    const vs = pool(), i = Math.max(0, vs.findIndex(v => v.id === a)), start = Math.max(0, Math.min(i, vs.length - state.n));
+    state.picks = vs.slice(start, start + state.n).map(key);
+    state.off = Math.max(0, +c || 0);
+  } else {
+    state.n = Math.min(6, Math.max(1, +a || 1));
+    state.off = Math.max(0, +b || 0);
+    state.picks = (c || '').split(',').filter(k => byKey[k]);
+  }
+  fill();
+}
+
+function pickerFor(i) {
+  // The pane's caption: choose what this pane shows. Under All, grouped by project.
+  const s = el('select', {'aria-label': `Pane ${i + 1}`});
+  const opt = v => el('option', {value: key(v), textContent: label(v)});
+  if (state.project === 'all') {
+    for (const p of projects) s.append(el('optgroup', {label: cap(p)}, ...ALL.filter(v => v.project === p).map(opt)));
+  } else s.append(...pool().map(opt));
+  s.value = state.picks[i];
+  s.onchange = () => { state.picks[i] = s.value; render(); };
+  return s;
 }
 
 function render() {
-  const vs = list();
   $('project').value = state.project;
-  $('version').replaceChildren(...vs.map(v => el('option', {value: v.id, textContent: label(v)})));
-  $('version').value = state.id;
+  fill();
   $('count').value = state.n;
 
-  const set = window_();
+  const set = state.picks;
   const room = $('panes').clientWidth + 10;
   const fit = Math.max(1, Math.min(set.length, Math.floor(room / (MIN_PANE + 10))));
-  state.off = Math.min(state.off, set.length - fit);
-  const shown = set.slice(state.off, state.off + fit);
+  state.off = Math.max(0, Math.min(state.off, set.length - fit));
+  const idx = [...Array(fit).keys()].map(j => state.off + j);
   $('step').hidden = fit >= set.length;
   $('prev').disabled = state.off === 0;
   $('next').disabled = state.off + fit >= set.length;
   $('range').textContent = `${state.off + 1}–${state.off + fit} of ${set.length}`;
 
-  const have = [...$('panes').children].map(p => p.dataset.path).join('|');
-  if (have !== shown.map(v => v.path).join('|')) {
-    $('panes').replaceChildren(...shown.map(v => {
+  // Reuse a pane whose page is unchanged, so picking in one pane doesn't reload the others.
+  const old = {};
+  for (const p of $('panes').children) (old[p.dataset.path] = old[p.dataset.path] || []).push(p);
+  const panes = idx.map(i => {
+    const v = byKey[set[i]];
+    let pane = (old[v.path] || []).shift();
+    if (!pane) {
       // #1x: the Figma-built pages shrink themselves to a 1280 column unless told otherwise.
-      const frame = el('iframe', {src: v.path + '#1x', title: label(v), loading: 'eager'});
+      const frame = el('iframe', {src: v.path + '#1x', title: v.project + ' ' + v.id, loading: 'eager'});
       frame.addEventListener('load', () => { themeFrame(frame); stillFrame(frame); });
       watchFrame(frame);
-      const pane = el('section', {className: 'pane'},
-        el('div', {className: 'cap', textContent: label(v)}),
-        el('div', {className: 'view'}, frame));
+      pane = el('section', {className: 'pane'}, el('div', {className: 'cap'}), el('div', {className: 'view'}, frame));
       pane.dataset.path = v.path;
       pane.dataset.width = v.width || 1440;
-      return pane;
-    }));
-  }
+    }
+    pane.querySelector('.cap').replaceChildren(pickerFor(i));
+    return pane;
+  });
+  const same = panes.length === $('panes').children.length && panes.every((p, j) => $('panes').children[j] === p);
+  if (!same) $('panes').replaceChildren(...panes);
   fitFrames();
-  const hash = `#${state.project}/${state.id}/${state.n}/${state.off}`;
+  const hash = `#${state.project}/${state.n}/${state.off}/${set.join(',')}`;
   if (location.hash !== hash) history.replaceState(null, '', hash);
 }
 
@@ -195,11 +238,11 @@ if (!ALL.length) {
   $('panes').append(el('p', {className: 'empty', textContent: 'Nothing stored yet.'}));
   document.querySelectorAll('header label').forEach(e => e.hidden = true);
 } else {
+  $('project').append(el('option', {value: 'all', textContent: 'All projects'}));
   projects.forEach(p => $('project').append(el('option', {value: p, textContent: cap(p)})));
   for (let i = 1; i <= 6; i++) $('count').append(el('option', {value: i, textContent: i === 1 ? '1 page' : `${i} side by side`}));
-  $('project').onchange = e => { state.project = e.target.value; const vs = list(); state.id = vs[vs.length - 1].id; state.off = 0; render(); };
-  $('version').onchange = e => { state.id = e.target.value; state.off = 0; render(); };
-  $('count').onchange = e => { state.n = +e.target.value; state.off = 0; render(); };
+  $('project').onchange = e => { state.project = e.target.value; state.picks = []; state.off = 0; render(); };
+  $('count').onchange = e => { state.n = +e.target.value; render(); };
   $('prev').onclick = () => { state.off--; render(); };
   $('next').onclick = () => { state.off++; render(); };
   window.onhashchange = () => { readHash(); render(); };

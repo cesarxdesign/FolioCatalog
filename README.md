@@ -9,16 +9,19 @@ Live at **https://cesar-foliocatalog.vercel.app**: its own Vercel project, separ
 folio and its staging, open to anyone with the link, no sign-in. Every push to `main`
 redeploys it within a minute, and the URL stays the same if the repo goes private.
 
-`index.html` is the viewer. One header line: **Project**, **Version**, **Compare** (1 to 6
-pages side by side) and, when the screen is too narrow for all of them, **‹ ›** to step
-through, and a light/dark switch that sets every page shown that has both themes (the
-Figma page has one look). Panes are never narrower than 360px; the page never
+`index.html` is the viewer. One header line: **Project** (one project, or **All projects** to
+compare across them), **Show** (1 to 6 pages side by side) and, when the screen is too narrow
+for all of them, **‹ ›** to step through, and a light/dark switch that sets every page shown
+that has both themes. Each pane's caption is a dropdown: pick what that pane shows (under All,
+grouped by project). A new pane starts on the next unshown page: a project's latest versions,
+or under All each project's live page. Panes are never narrower than 360px; the page never
 scrolls sideways. Each page is drawn at the width it was designed for and scaled into its
-pane. Compare shows the chosen version and the ones after it. In a pane, text selects and the
-page scrolls, but nothing navigates: the viewer takes the address off every link and swallows
-clicks on anything clickable. The stored pages themselves are untouched, so a version taken
-out of `versions/` works in full. A view can be linked:
-`index.html#cable/2026-09-21/3/0` (project / version / how many / first one shown).
+pane. In a pane, text selects and the page scrolls, but nothing navigates: the viewer takes the
+address off every link and swallows clicks on anything clickable. The stored pages themselves
+are untouched, so a version taken out of `versions/` works in full. A view can be linked:
+`index.html#penfold/3/0/penfold:2026-09-25-impact,penfold:2026-09-25-linear,penfold:2026-09-25-saver`
+(project or `all` / how many / first one shown / what each pane shows). Older links
+(`#cable/2026-09-21/3/0`) still open.
 
     python3 -m http.server 4174 --directory ~/Claude/FolioCatalog      to run it locally
 
