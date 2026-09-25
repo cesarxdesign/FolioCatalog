@@ -59,3 +59,12 @@ screens trade-off, the beta programme detail, transaction history.
 "Instant pension. Nobody wanted it." repeated Cable's beat ("It worked. Nobody used it."). Penfold
 leads on time instead: "Pensions took days. Ours took minutes." A pension took minutes, not no
 time, so "instant" is gone from the page (stat, interlude, outcome, closer: "Kill the wait").
+
+## Review ribbon, 2026-09-25
+
+Verbatim, from the App Store review feed (itunes.apple.com/gb/rss/customerreviews/id=1503716125).
+Window: Jun 2019 to Sep 2020 (tenure plus four months). The feed holds 12 reviews in it, 22 Apr to
+25 Jun 2020, all five stars; the four on the page were picked for the story (five minutes, put off
+for ages, didn't fit other providers, support not patronising).
+Trustpilot not used: pages past the newest ten need a login, and the Wayback Machine has no 2020
+copy, so no 2020 review could be dated. Google Play shows no reviews from the window.
