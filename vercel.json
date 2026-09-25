@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/(.*)", "destination": "https://cesarxdesign.github.io/FolioCatalog/$1", "permanent": false }
+  ]
+}
