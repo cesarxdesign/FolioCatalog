@@ -7,10 +7,9 @@ works, offline, forever.
 
 Live at **https://cesarxdesign.github.io/FolioCatalog/** on GitHub Pages, separate from the
 folio and its staging, open to anyone with the link, no sign-in. Every push to `main`
-redeploys it within a minute. The old address, https://cesar-foliocatalog.vercel.app, only
-redirects there (links with `#…` views keep working): Vercel deploys `vercel.json` alone (see
-`.vercelignore`), since each full deploy counts against its free storage. Pages stops if the
-repo goes private.
+redeploys it within a minute. Pages stops if the repo goes private. (It was on Vercel until
+2026-09-25; that project is deleted, since every push stored a full copy against Vercel's free
+storage.)
 
 `index.html` is the viewer. One header line: **Project** (one project, or **All projects** to
 compare across them), **Version** (a name more than one page shares, such as Lite: shows every Lite
