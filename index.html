@@ -29,8 +29,10 @@ select{padding:4px 24px 4px 8px;appearance:none;max-width:260px;
 .step[hidden]{display:none}
 .step button{width:28px;height:26px;padding:0;font-size:15px;line-height:1}
 .step button:disabled{opacity:.35;cursor:default}
-#theme{margin-left:auto;display:flex;align-items:center;gap:6px;padding:4px 10px;font-size:12px}
-#theme svg{width:14px;height:14px}
+#lock,#theme{display:flex;align-items:center;gap:6px;padding:4px 10px;font-size:12px}
+#lock{margin-left:auto}
+#lock[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+#lock svg,#theme svg{width:14px;height:14px}
 select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 .pane{flex:1 1 0;min-width:0;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
@@ -53,6 +55,7 @@ main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
     <button type="button" id="next" aria-label="Show later">&rsaquo;</button>
     <span id="range"></span>
   </div>
+  <button type="button" id="lock" aria-pressed="false" title="Scroll every pane together"></button>
   <button type="button" id="theme" aria-label="Dark mode" aria-pressed="false" title="Light or dark, for every page shown that has both"></button>
 </header>
 <main id="panes"></main>
@@ -97,7 +100,9 @@ function stillFrame(f) {
     for (const t of ['click', 'auxclick', 'dblclick', 'pointerdown', 'mousedown', 'touchstart']) d.addEventListener(t, stop, true);
     d.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest && e.target.closest(CLICKABLE)) { e.preventDefault(); e.stopImmediatePropagation(); } }, true);
     const st = d.createElement('style');
-    st.textContent = `${CLICKABLE}{cursor:text !important}`;
+    // The viewer draws each page at its design width and scales it itself, so a page's own
+    // shrink-to-fit zoom (the Cable and Penfold Figma pages) is switched off here.
+    st.textContent = `${CLICKABLE}{cursor:text !important} html{zoom:1 !important}`;
     (d.head || d.documentElement).append(st);
   } catch (e) {}
 }
@@ -113,6 +118,94 @@ function watchFrame(f) {
   }, 10);
   setTimeout(() => clearInterval(t), 20000);
 }
+
+// Scroll lock. Panes move by the same distance on screen, whatever each page's scale. So every
+// page can travel as far as the longest one, shorter pages get a blank "ghost" space after
+// their last line while the lock is on. Like the link-killing, this lives in the viewer only.
+let locked = store.get('fc-lock') === '1';
+const LOCK = {on: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
+              off: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>'};
+const frames = () => [...document.querySelectorAll('.view iframe')];
+const scaleOf = f => Math.min(1, f.parentElement.clientWidth / +f.closest('.pane').dataset.width);
+const docOf = f => { try { const d = f.contentDocument; return d && d.body && d.location.href !== 'about:blank' ? d : null; } catch (e) { return null; } };
+
+function ghostOf(d, make) {
+  let g = d.getElementById('fc-ghost');
+  if (!g && make) {
+    g = d.createElement('div');
+    g.id = 'fc-ghost';
+    g.setAttribute('aria-hidden', 'true');
+    d.documentElement.append(g);
+  }
+  return g;
+}
+
+function equalize() {
+  // Page heights on screen (design px times scale), without any ghost already added.
+  frames().forEach(hookScroll);
+  const fs = frames().map(f => ({f, d: docOf(f), s: scaleOf(f)})).filter(x => x.d);
+  for (const x of fs) { const g = ghostOf(x.d); x.h = x.d.documentElement.scrollHeight - (g ? g.offsetHeight : 0); }
+  const top = Math.max(0, ...fs.map(x => x.h * x.s));
+  for (const x of fs) {
+    const need = locked ? (top - x.h * x.s) / x.s : 0;
+    const g = ghostOf(x.d, need >= 1);
+    if (!g) continue;
+    if (need < 1) { g.remove(); continue; }
+    // Placed at the page's own end in document coordinates, so absolutely positioned layouts
+    // (the Figma builds) and in-flow ones end at the same place.
+    g.style.cssText = `position:absolute;left:0;right:0;top:${x.h}px;height:${need}px;margin:0;padding:${24 / x.s}px 0 0;box-sizing:border-box;` +
+      `text-align:center;font:${11 / x.s}px/1.4 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;` +
+      `color:#9AA3AD;background:repeating-linear-gradient(135deg,rgba(128,128,128,.07) 0 ${8 / x.s}px,transparent 0 ${16 / x.s}px);pointer-events:none`;
+    g.textContent = 'End of page';
+  }
+}
+
+function follow(from) {
+  // Move every other pane to the same on-screen distance as the one being scrolled.
+  const px = from.contentWindow.scrollY * scaleOf(from);
+  for (const f of frames()) {
+    if (f === from) continue;
+    try {
+      const w = f.contentWindow, y = px / scaleOf(f);
+      if (Math.abs(w.scrollY - y) < 1) continue;
+      w.__fcQuiet = performance.now() + 120;   // its own scroll event is ours, not the user's
+      w.scrollTo({top: y, behavior: 'instant'});
+    } catch (e) {}
+  }
+}
+
+function hookScroll(f) {
+  // On the loaded document, never the blank one an iframe starts with (the browser can keep
+  // that window object for the real page, and a flag on it would claim a listener that is gone).
+  const d = docOf(f);
+  if (!d || d.__fcHooked) return;
+  d.__fcHooked = true;
+  d.addEventListener('scroll', () => {
+    const w = d.defaultView;
+    if (!locked || !w || performance.now() < (w.__fcQuiet || 0)) return;
+    follow(f);
+  }, {passive: true});
+}
+
+function joinIn(f) {
+  // A pane that (re)loads while locked starts where the others are.
+  hookScroll(f);
+  if (!locked) return;
+  equalize();
+  const other = frames().find(g => g !== f && docOf(g));
+  if (other) follow(other);
+}
+
+function applyLock() {
+  store.set('fc-lock', locked ? '1' : '0');
+  $('lock').innerHTML = LOCK[locked ? 'on' : 'off'] + 'Scroll lock';
+  $('lock').setAttribute('aria-pressed', locked);
+  equalize();
+  const first = frames().find(docOf);
+  if (locked && first) follow(first);
+}
+// Pages settle as images and fonts load; keep the ghosts right while locked.
+setInterval(() => { if (locked) equalize(); }, 1500);
 
 function applyTheme() {
   document.documentElement.dataset.theme = theme;
@@ -206,7 +299,7 @@ function render() {
     if (!pane) {
       // #1x: the Figma-built pages shrink themselves to a 1280 column unless told otherwise.
       const frame = el('iframe', {src: v.path + '#1x', title: v.project + ' ' + v.id, loading: 'eager'});
-      frame.addEventListener('load', () => { themeFrame(frame); stillFrame(frame); });
+      frame.addEventListener('load', () => { themeFrame(frame); stillFrame(frame); joinIn(frame); });
       watchFrame(frame);
       pane = el('section', {className: 'pane'}, el('div', {className: 'cap'}), el('div', {className: 'view'}, frame));
       pane.dataset.path = v.path;
@@ -218,6 +311,7 @@ function render() {
   const same = panes.length === $('panes').children.length && panes.every((p, j) => $('panes').children[j] === p);
   if (!same) $('panes').replaceChildren(...panes);
   fitFrames();
+  if (locked) equalize();
   const hash = `#${state.project}/${state.n}/${state.off}/${set.join(',')}`;
   if (location.hash !== hash) history.replaceState(null, '', hash);
 }
@@ -248,7 +342,9 @@ if (!ALL.length) {
   window.onhashchange = () => { readHash(); render(); };
   let t; window.onresize = () => { clearTimeout(t); t = setTimeout(render, 60); };
   $('theme').onclick = () => { theme = theme === 'dark' ? 'light' : 'dark'; applyTheme(); };
+  $('lock').onclick = () => { locked = !locked; applyLock(); };
   applyTheme();
+  applyLock();
   readHash();
   render();
 }

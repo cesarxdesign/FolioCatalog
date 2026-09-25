@@ -12,7 +12,9 @@ redeploys it within a minute, and the URL stays the same if the repo goes privat
 `index.html` is the viewer. One header line: **Project** (one project, or **All projects** to
 compare across them), **Show** (1 to 6 pages side by side) and, when the screen is too narrow
 for all of them, **‹ ›** to step through, and a light/dark switch that sets every page shown
-that has both themes. Each pane's caption is a dropdown: pick what that pane shows (under All,
+that has both themes. **Scroll lock**, next to it, moves every pane by the same distance on
+screen; shorter pages get a striped "End of page" space (viewer only) so all of them reach the
+bottom together. Each pane's caption is a dropdown: pick what that pane shows (under All,
 grouped by project). A new pane starts on the next unshown page: a project's latest versions,
 or under All each project's live page. Panes are never narrower than 360px; the page never
 scrolls sideways. Each page is drawn at the width it was designed for and scaled into its
