@@ -1,4 +1,4 @@
-# Penfold, Noir: text only, in the Cable Noir system
+# Penfold, Linear: text only, the story in order, in the Cable Noir system
 
 Written 2026-09-25. Same layout, type scale and light/dark tokens as Cable Noir (Geist and
 Geist Mono vendored in `site/_vendor`). No images.

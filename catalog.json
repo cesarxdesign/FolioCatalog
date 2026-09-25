@@ -300,8 +300,24 @@
   },
   {
     "project": "penfold",
-    "id": "2026-09-25-noir",
-    "name": "Noir",
+    "id": "2026-09-25-impact",
+    "name": "Impact",
+    "page": "site/index.html",
+    "width": 1440,
+    "shipped": null,
+    "until": null,
+    "made": "2026-09-25",
+    "source": {
+      "kind": "written",
+      "from": "the same sources as Linear (2026-09-25-linear/source), reordered by impact"
+    },
+    "note": "Text only, in the Cable Noir system. The Linear story reordered biggest win first: 6x signups, 7 days to live, instant pensions, half the engineering load, the feedback loop. Each win carries the context it needs in a line. Never shipped.",
+    "path": "versions/penfold/2026-09-25-impact/site/index.html?v=fefdae2f"
+  },
+  {
+    "project": "penfold",
+    "id": "2026-09-25-linear",
+    "name": "Linear",
     "page": "site/index.html",
     "width": 1440,
     "shipped": null,
@@ -311,8 +327,8 @@
       "kind": "written",
       "from": "source/NOTES.md: the Penfold Lite, Figma and Sqsp pages, the CV, LinkedIn, and the Penfold story spine v21 (Portfolio/penfold-new/story.md)"
     },
-    "note": "Text only, in the Cable Noir system (same type scale, light and dark tokens). Never shipped.",
-    "path": "versions/penfold/2026-09-25-noir/site/index.html?v=ed4662e0"
+    "note": "Text only, the story told in order, in the Cable Noir system (same type scale, light and dark tokens). Never shipped.",
+    "path": "versions/penfold/2026-09-25-linear/site/index.html?v=a5b5683c"
   },
   {
     "project": "starcount",

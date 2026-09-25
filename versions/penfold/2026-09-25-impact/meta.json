@@ -1,0 +1,15 @@
+{
+  "project": "penfold",
+  "id": "2026-09-25-impact",
+  "name": "Impact",
+  "page": "site/index.html",
+  "width": 1440,
+  "shipped": null,
+  "until": null,
+  "made": "2026-09-25",
+  "source": {
+    "kind": "written",
+    "from": "the same sources as Linear (2026-09-25-linear/source), reordered by impact"
+  },
+  "note": "Text only, in the Cable Noir system. The Linear story reordered biggest win first: 6x signups, 7 days to live, instant pensions, half the engineering load, the feedback loop. Each win carries the context it needs in a line. Never shipped."
+}
