@@ -113,6 +113,20 @@ const ICON = {light: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
               dark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>'};
 function themeFrame(f) {
   try { f.contentDocument.querySelectorAll('[data-theme]').forEach(e => e.setAttribute('data-theme', theme)); } catch (e) {}
+  edgeFrame(f);
+}
+// A pane wider than its page shows, either side, what a wide browser window would: the page's
+// own body (or html) background, so a dark page gets dark edges rather than white ones.
+function edgeFrame(f) {
+  let c = '#fff';
+  try {
+    const d = f.contentDocument, clear = v => !v || v === 'transparent' || v === 'rgba(0, 0, 0, 0)';
+    // Pages that fade between themes are read again once the fade ends.
+    if (!d.fcEdge) { d.fcEdge = true; d.addEventListener('transitionend', () => edgeFrame(f)); }
+    const b = getComputedStyle(d.body).backgroundColor, h = getComputedStyle(d.documentElement).backgroundColor;
+    c = !clear(b) ? b : !clear(h) ? h : c;
+  } catch (e) {}
+  f.parentElement.style.background = c;
 }
 // A pane shows a page, it does not run it: text selects and the page scrolls, but no link,
 // button or menu does anything. Done here, not in the stored pages, so a page taken out of

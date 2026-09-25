@@ -1,0 +1,5 @@
+# The viewer only loads versions/*/*/site/ and the built index.html. Everything else stays in
+# git but is not uploaded, so each deploy is about 75 MB instead of about 170 MB.
+versions/*/*/source
+tools
+*.md
