@@ -60,6 +60,7 @@ request left localhost.
 | `2020` | Sqsp: the 2020 live page on the Squarespace site, rebuilt from screenshots (notes in `source/NOTES.md`) | 2020, date not on record | |
 | `2024-07-15` | Figma: the Figma "penfold _air" frame, built as one page | never | |
 | `2026-09-25-linear` | Linear: text only, the story in order, in the Cable Noir system, written from every Penfold source (notes in `source/NOTES.md`) | never, made 25 Sep | |
+| `2026-09-25-myself` | Myself: Linear tightened, my calls marked red and trade-offs green (notes in `source/NOTES.md`) | never, made 25 Sep | |
 | `2026-09-25-impact` | Impact: Linear reordered biggest win first, same system (notes in `source/NOTES.md`) | never, made 25 Sep | |
 | `2026-09-25-saver` | Saver: the story as one saver's path through the product, same system (notes in `source/NOTES.md`) | never, made 25 Sep | |
 | `2026-07-30` | Lite: the live page, as of 24 Sep 2026 | 30 Jul 2026 14:54 | live |
