@@ -42,3 +42,14 @@ existing pension holders → Combine → outcome.
 - The lede ("We want to make pensions sexy." / "Impossible. I'm in."): kept for the interview, not the page.
 - The four-card listening grid, folded into one sentence; Joe T. carries the section.
 - "The loop is what I'm proudest of", and Combine's "Complexity, on purpose".
+
+## Rewrite for tension, 2026-09-25
+
+Redone from scratch: every beat must move the plot, build tension, reveal, or impress.
+Arc: hook ("Instant pensions. Nobody wanted one.") → week one → people came back to step one →
+a pension took a week → the reveal (provisional IDs) → false win (100 a month) → false lead
+(Joe T.) → the flip, and the reveal that Combine was there since the MVP → payoff (600 a month,
+everything built while nobody came was ready for the flood). About 820 words.
+
+Cut: "Onboarding and three features" (I don't know which three), Trustpilot/NPS, the desktop
+screens trade-off, the beta programme detail, transaction history.

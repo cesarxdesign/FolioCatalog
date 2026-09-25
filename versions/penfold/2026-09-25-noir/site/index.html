@@ -7,7 +7,7 @@
 <title>Penfold Noir</title>
 <link rel="stylesheet" href="_vendor/25028d0170-css2.css">
 <style>
-/* Penfold in the Cable Noir system: Texas as the spine, with what Myself had and Texas didn't. Text only, light and dark. */
+/* Penfold in the Cable Noir system: Texas as the spine, rewritten for tension. Text only, light and dark. */
 [data-theme="light"]{--bg:#FBFBFA;--ink:#111113;--soft:#86868B;--mut:#6E6E73;--body:#3A3A3C;--line:#E5E5E2}
 [data-theme="dark"]{--bg:#0C0C0D;--ink:#F2F2F0;--soft:#7E7E84;--mut:#9A9AA0;--body:#C6C6C9;--line:#262628}
 body:has([data-theme="dark"]){background:#0C0C0D}
@@ -91,7 +91,7 @@ footer .links{display:flex;gap:36px;font-size:14px}
 
 <header>
 <div class="mono">Penfold &middot; Pensions &middot; B2C fintech, mobile and web</div>
-<h1>&pound;4M in year one.<br><span class="soft">Onboarding and three features.</span></h1>
+<h1>Instant pensions.<br><span class="soft">Nobody wanted one.</span></h1>
 <div class="stats">
 <div class="stat"><b>7 days</b><span class="mono">Proof of concept to live</span></div>
 <div class="stat"><b>Instant</b><span class="mono">A pension, down from a week</span></div>
@@ -110,84 +110,70 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <section class="ch first">
 <div class="tag"><b>Week 1</b><span class="mono">Ship</span></div>
 <div class="body">
-<h2>Seven days to go live. <span class="soft">So I did.</span></h2>
+<h2>Seven days to go live. <span class="soft">Knowing nothing about pensions.</span></h2>
 <div class="two">
-<p class="txt">When I joined, the co-founders had a proof of concept and a funding round coming. I had seven days to turn one into a live product for the other, knowing nothing about pensions.</p>
-<p class="txt">If you can&rsquo;t make onboarding quick, make it manageable at least. And we couldn&rsquo;t make it quick: it shipped as one flow, 33 steps long, because shorter would have taken longer than we had.</p>
+<p class="txt">I joined as the first hire. The co-founders had a proof of concept and a funding round, and the round needed a live product in a week.</p>
+<p class="txt">If you can&rsquo;t make onboarding quick, make it manageable at least. We couldn&rsquo;t make it quick. It shipped as one flow, 33 steps long.</p>
 </div>
 <div class="pull">
 <p class="big">&ldquo;If I had more time, I would have written a shorter letter.&rdquo;</p>
-<p class="small">After Blaise Pascal. A dozen real people became customers that week, and the round closed on a product that was live and onboarding.</p>
+<p class="small">After Blaise Pascal. A dozen people became customers that week, and the round closed.</p>
 </div>
 </div>
 </section>
 
 <section class="ch">
-<div class="tag"><b>01</b><span class="mono">One set</span></div>
+<div class="tag"><b>01</b><span class="mono">Onboarding</span></div>
 <div class="body">
-<h2>Then straight back in. <span class="soft">Mobile, and finish later.</span></h2>
-<p class="txt">As soon as we delivered, I went back in for what users already wanted: mobile, and an onboarding you could finish later. Penfold was desktop only. Mobile would double the engineering, and we couldn&rsquo;t afford twice the developers.</p>
+<h2>People came back. <span class="soft">To step one.</span></h2>
+<p class="txt">In FullStory, session IDs showed what the funnel couldn&rsquo;t: people who quit did come back. And started again from the beginning.</p>
 <div class="pull">
-<p class="big">So I designed one component set that fed both. Built once, shipped on both.</p>
-<p class="small">Mobile became the single source for desktop. Not the norm then. Half the engineering load, and we shipped daily.</p>
+<p class="big">The account was the pension. Quit halfway, and there was nothing to come back to.</p>
+<p class="small">Creating the account and creating the pension were one event, so nothing was saved until the very end.</p>
 </div>
-<p class="txt">The price: a few desktop screens fell below my own bar. Shipping daily mattered more.</p>
+<div class="two">
+<p class="txt">So we made an empty pension. It&rsquo;s created with the account and holds your progress, and the 33 steps became five modules you can leave and pick up again.</p>
+<p class="txt">While I was in there, I made mobile the single source for desktop: one component set, half the engineering, and we shipped daily. Not the norm then.</p>
 </div>
-</section>
-
-<section class="ch">
-<div class="tag"><b>02</b><span class="mono">The snag</span></div>
-<div class="body">
-<h2>Finish later hit a snag. <span class="soft">The account was the pension.</span></h2>
-<p class="txt">The CTO ran the funnel daily. In FullStory, session IDs showed what the funnel couldn&rsquo;t: people who quit did come back. They just landed on step one.</p>
-<div class="pull">
-<p class="big">No pension meant no account. No account meant nothing saved.</p>
-<p class="small">Creating the account and creating the pension were the same event, so an unfinished onboarding left nothing to come back to.</p>
-</div>
-<div class="grid">
-<div class="item"><h3>An empty pension</h3><p>So we made one. An email and a password create the account and an empty pension behind it, progress saves, and the rest is filled in whenever the user is ready.</p></div>
-<div class="item"><h3>Five modules</h3><p>The 33 steps, regrouped into five modules users can leave and resume, from pieces that already existed, so nothing in the code broke.</p></div>
-</div>
-<p class="txt">People who quit could now come back and finish. Easy enough. But there was a bigger problem.</p>
 </div>
 </section>
 
 <section class="ch">
-<div class="tag"><b>03</b><span class="mono">The click</span></div>
+<div class="tag"><b>02</b><span class="mono">The wait</span></div>
 <div class="body">
-<h2>A pension took a week to exist. <span class="soft">We made it instant.</span></h2>
-<p class="txt">Three partners had to issue an ID, in order, before a pension legally existed, each one waiting on the one before. Users finished onboarding and were told to hold on while we ran some checks. For days.</p>
+<h2>A pension took a week. <span class="soft">We told people to hold on.</span></h2>
+<p class="txt">Three partners had to issue an ID, in order, each waiting on the one before. Only then did the pension legally exist. Users finished onboarding and were told to hold on while we ran some checks. For days.</p>
 <div class="grid three">
-<div class="item"><span class="mono">Days</span><h3>Seccl</h3><p>By hand. Tolerable.</p></div>
-<div class="item"><span class="mono">Days more</span><h3>Gaudi</h3><p>By hand, after Seccl. The one we dreaded.</p></div>
-<div class="item"><span class="mono">Seconds</span><h3>HSBC</h3><p>Automated, after Gaudi. Holds the money.</p></div>
+<div class="item"><span class="mono">Days</span><h3>Seccl</h3><p>Tolerable.</p></div>
+<div class="item"><span class="mono">Days more</span><h3>Gaudi</h3><p>The one we dreaded.</p></div>
+<div class="item"><span class="mono">Seconds</span><h3>HSBC</h3><p>Holds the money. Needs Gaudi&rsquo;s ID first.</p></div>
 </div>
-<p class="txt">My first try was language: call it a pot until the pension existed. It broke on the first top-up, because the money had nowhere legal to go. The partners couldn&rsquo;t be sped up either.</p>
+<p class="txt">My first try was words: call it a pot until the pension existed. It broke on the first top-up. The money had nowhere legal to go.</p>
 <div class="box">
-<div class="mono">So we advanced the IDs</div>
-<p>The IDs always came back, and a wrong reference would be flagged and replaced on the same record. So we stopped waiting: provisional references went to every partner at once, and a ledger swapped each for the real ID as it arrived.</p>
+<div class="mono">What I noticed</div>
+<p>The IDs always came back. Not one had ever failed, and a wrong reference could be replaced on the same record. So we stopped waiting. Provisional references went to all three partners at once, and a ledger swapped in each real one as it arrived.</p>
 </div>
 <div class="pull">
-<p class="big">A week became a cuppa tea&rsquo;s worth. And the user never saw the wait.</p>
-<p class="small">The pension appeared the moment onboarding ended, and the paperwork caught up behind it. Zero failures. I came to design from software engineering, and this is what that background is for: designing in the material, not around it.</p>
+<p class="big">A week became a cuppa. The user never saw the wait.</p>
+<p class="small">I came to design from software engineering. This is what that&rsquo;s for: designing in the material, not around it.</p>
 </div>
 </div>
 </section>
 
 <section class="interlude">
 <div class="mono">And yet</div>
-<p class="big">An instant pension. <span class="soft">And very few wanted it. 100 signups a month.</span></p>
-<p class="txt">So I looked into every nook and cranny for what the product was missing.</p>
+<p class="big">Instant pensions. <span class="soft">100 signups a month.</span></p>
+<p class="txt">The product worked. Nobody new was coming.</p>
 </section>
 
 <section class="ch">
-<div class="tag"><b>04</b><span class="mono">Listening</span></div>
+<div class="tag"><b>03</b><span class="mono">Listening</span></div>
 <div class="body">
 <h2>Customer Support <span class="soft">was the gold mine.</span></h2>
-<p class="txt">I built a loop around the people already using Penfold: session replays every morning, the week&rsquo;s top tickets with Customer Support every Friday, a beta user in the room, and a thank-you for every fix.</p>
+<p class="txt">Every Friday, Customer Support and I went through the week&rsquo;s top tickets, with one beta user in the room.</p>
 <div class="box">
 <div class="mono">&ldquo;What if I die?&rdquo;</div>
-<p>Joe T. asked it as a joke on a Friday chat. None of my flows had considered death. One screen, a one-line spec, existing components: it shipped that afternoon, in time for me to call Joe back.</p>
+<p>Joe T. asked it as a joke. None of my flows had ever considered death. I sketched one screen and wrote a one-line spec; every component already existed. It shipped that afternoon, in time for me to call Joe back.</p>
 </div>
 <div class="pull">
 <p class="big">Joe was happy. We weren&rsquo;t. Signups hadn&rsquo;t moved.</p>
@@ -196,21 +182,24 @@ footer .links{display:flex;gap:36px;font-size:14px}
 </section>
 
 <section class="ch">
-<div class="tag"><b>05</b><span class="mono">The flip</span></div>
+<div class="tag"><b>04</b><span class="mono">The flip</span></div>
 <div class="body">
 <h2>We were selling to the wrong people. <span class="soft">So I changed who it was for.</span></h2>
 <div class="two">
-<p class="txt">From the start we wanted to educate people without a pension. A huge market, and a slow one. To educate, we needed critical mass, and that we had to take rather than gain.</p>
-<p class="txt">I argued for the opposite: go for people who already had pensions, scattered across past employers, and beat their providers on product. They needed no convincing. And we were fast at product.</p>
+<p class="txt">Penfold sold pensions to people who didn&rsquo;t have one. Before they could sign up, they had to be convinced they needed one. A huge market, and a slow one.</p>
+<p class="txt">I argued for the opposite: people who already had pensions, scattered across old employers. They needed no convincing, just a better pension. That&rsquo;s a product fight, and we were fast at product.</p>
 </div>
 <div class="pull">
-<p class="big">The battleground moved from educating people to winning them on product.</p>
-<p class="small">Message, targeting and spend changed by December 2019. I redid the website and ads myself, outside my discipline: &ldquo;You may already be losing up to &pound;228.95 daily&rdquo; became &ldquo;Find and combine&rdquo;.</p>
+<p class="big">What they needed had been on the dashboard since the MVP.</p>
+<p class="small">Combine: bring your old pensions into one. I made it the flagship, and redid the website and the ads myself.</p>
 </div>
-<p class="txt">Importing a pension had been on the dashboard since the MVP. I made Combine the flagship:</p>
+<div class="box">
+<div class="mono">The ads, before and after</div>
+<p>&ldquo;You may already be losing up to &pound;228.95 daily&rdquo; became &ldquo;Find and combine.&rdquo;</p>
+</div>
 <div class="grid">
-<div class="item"><h3>Bad versions still count</h3><p>I hated the first two versions of the form, and shipped them anyway: each beat what we had. They carried hundreds of requests.</p></div>
-<div class="item"><h3>Then doing it right</h3><p>The form asked for the provider&rsquo;s address, which nobody knows. We compiled them all ourselves and dropped the question.</p></div>
+<div class="item"><h3>Bad versions still count</h3><p>I hated the first two versions of the Combine form. I shipped them anyway: each beat what we had, and together they carried hundreds of requests.</p></div>
+<div class="item"><h3>Then doing it right</h3><p>The form asked for your old provider&rsquo;s address. Nobody knows that. We compiled every provider&rsquo;s address ourselves and dropped the question.</p></div>
 </div>
 </div>
 </section>
@@ -218,17 +207,17 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <section class="ch">
 <div class="tag"><b>Outcome</b><span class="mono">Year one</span></div>
 <div class="body">
-<h2>That&rsquo;s what cracked it. <span class="soft">100 signups a month became 600.</span></h2>
+<h2>100 signups a month became 600. <span class="soft">Each one brought a pension.</span></h2>
 <div class="two">
-<p class="txt">We had already built the better experience, so we were ready for the influx. Everything we made chasing the harder market paid off on the flood from the competition. Every new user arrived with a pot, so signup value rose with volume and acquisition costs fell.</p>
-<p class="txt">A dozen users in week one became around 3,000 savers and &pound;4M under management by the end of year one, on plan, with Trustpilot and Net Promoter Score at the top.</p>
+<p class="txt">When the flood came from the competition, we were ready: the instant pension, the onboarding you could finish later, the Friday loop. All of it built while nobody was coming.</p>
+<p class="txt">Signup value rose with volume, and acquisition costs fell. A dozen customers in week one became 3,000 savers and &pound;4M under management by the end of year one.</p>
 </div>
 </div>
 </section>
 
 <section class="closer">
 <p class="big">Ship it ugly.<br>Make it instant.<br><span class="soft">Sell it to the right people.</span></p>
-<p class="txt">The foundation held. Penfold now manages over &pound;1B and was voted Best Pension 2026.</p>
+<p class="txt">Penfold now manages over &pound;1B, and was voted Best Pension 2026.</p>
 </section>
 
 <footer>
