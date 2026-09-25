@@ -68,3 +68,18 @@ Window: Jun 2019 to Sep 2020 (tenure plus four months). The feed holds 12 review
 for ages, didn't fit other providers, support not patronising).
 Trustpilot not used: pages past the newest ten need a login, and the Wayback Machine has no 2020
 copy, so no 2020 review could be dated. Google Play shows no reviews from the window.
+
+### All 12, verbatim
+
+- 2020-04-22, 5 stars, Bennew05, "Great Service": Having been trying to set up a pension for ages. This was really easy!
+- 2020-04-22, 5 stars, Caroline132, "Great app": Super simple and easy to set up
+- 2020-04-24, 5 stars, Daniela_Santos123, "5 stars - recommend": Great App!
+- 2020-04-24, 5 stars, LMKeys, "Easy to use, great app": Great app, simple, clean and no jargon, easy to understand and says what it does on the tin! If you’re wanting somewhere to hold your money for retirement I’d recommend Penfold!
+- 2020-05-01, 5 stars, kp2029, "Kanisha": Easy to use and able to make changes easily. Super helpful with deciding the right amount to submit monthly
+- 2020-05-13, 5 stars, KimCook91, "Thank you for making it easy!": I’ve put off sorting out my pension for AGES as I always assumed it would be annoying and complicated. A friend referred me to Penfold, it was super easy and straightforward to set up. Thank you for making this small part of being a freelancer straight forward and easy.
+- 2020-05-14, 5 stars, BobbyDesignGuru, "Makes the easy pension even easier": Setting up my pension with Penfold took me 5mins. With the addition of the app, I can check in, top up and adjust it on the move and with total ease. It’s a fantastic addition to an already brilliant service.
+- 2020-05-14, 5 stars, carafrew60, "A simple, confident way to save!": I’d been looking into pensions for a while feeling confused and stuck before I came across Penfold. I’m a self-employed wedding photographer so I didn’t feel like I fit in properly with other providers. The saving process with Penfold so far has been amazing! It’s so quick and easy to set up, and I love how they allow flexibility with payments. If you’re self-employed in particular, I would highly recommend using Penfold!
+- 2020-05-18, 5 stars, michellesusanairey, "Very helpful with limited company": Been meaning to setup for me and my husband for months but never could be bothered and never understood!! Penfold made it so easy quick and customer service was not patronising just helpful with husbands limited company. Great so far
+- 2020-05-19, 5 stars, Ed123456780, "Great easy to use app": Great easy to use app, fantastic service
+- 2020-06-04, 5 stars, BPHollins, "So simple": Well done. Would appreciate two factor authentication in the future to keep everything secure
+- 2020-06-25, 5 stars, TamIyn, "So easy!": I’ve never set up a pension before, and this made it a breeze I had my account set up in 5 mins. The handy Calculator helped me figure out how much I could save with my monthly investments amazing.
