@@ -67,6 +67,7 @@ request left localhost.
 | `2026-09-25-impact` | Impact: Linear reordered biggest win first, same system (notes in `source/NOTES.md`) | never, made 25 Sep | |
 | `2026-09-25-saver` | Saver: the story as one saver's path through the product, same system (notes in `source/NOTES.md`) | never, made 25 Sep | |
 | `2026-09-25-texas` | Texas: wireframe, grey boxes and Helvetica, built from the four handwritten notebook pages | never, made 25 Sep | |
+| `2026-09-25-noir` | Noir: Texas as the spine with Myself's evidence, text only, in the Cable Noir system (notes in `source/NOTES.md`) | never, made 25 Sep | |
 | `2026-07-30` | Lite: the live page, as of 24 Sep 2026 | 30 Jul 2026 14:54 | live |
 
 ## Confirmo, Mara, Starcount
