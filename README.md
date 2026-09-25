@@ -10,19 +10,21 @@ folio and its staging, open to anyone with the link, no sign-in. Every push to `
 redeploys it within a minute, and the URL stays the same if the repo goes private.
 
 `index.html` is the viewer. One header line: **Project** (one project, or **All projects** to
-compare across them), **Show** (1 to 6 pages side by side) and, when the screen is too narrow
+compare across them), **Version** (a name more than one page shares, such as Lite: shows every Lite
+page, across all projects), **Show** (1 to 6 pages side by side) and, when the screen is too narrow
 for all of them, **‹ ›** to step through, and a light/dark switch that sets every page shown
 that has both themes. **Scroll lock**, next to it, moves every pane by the same distance on
 screen; shorter pages get a striped "End of page" space (viewer only) so all of them reach the
 bottom together. Each pane's caption is a dropdown: pick what that pane shows (under All,
-grouped by project). A new pane starts on the next unshown page: a project's latest versions,
-or under All each project's live page. Panes are never narrower than 360px; the page never
+grouped by project); the × beside it takes that pane out of the view. A new pane starts on the next unshown page: a project's latest versions,
+or under All each project's live page. Panes the viewer fills itself run oldest to newest, left to right;
+a page picked in a caption stays where it was put. Panes are never narrower than 360px; the page never
 scrolls sideways. Each page is drawn at the width it was designed for and scaled into its
 pane. In a pane, text selects and the page scrolls, but nothing navigates: the viewer takes the
 address off every link and swallows clicks on anything clickable. The stored pages themselves
 are untouched, so a version taken out of `versions/` works in full. A view can be linked:
 `index.html#penfold/3/0/penfold:2026-09-25-impact,penfold:2026-09-25-linear,penfold:2026-09-25-saver`
-(project or `all` / how many / first one shown / what each pane shows). Older links
+(project or `all` / how many / first one shown / what each pane shows / version, when one is chosen). Older links
 (`#cable/2026-09-21/3/0`) still open.
 
     python3 -m http.server 4174 --directory ~/Claude/FolioCatalog      to run it locally

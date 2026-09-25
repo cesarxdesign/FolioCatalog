@@ -37,8 +37,10 @@ select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(
 main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 .pane{flex:1 1 0;min-width:0;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
       border-bottom:0;border-radius:8px 8px 0 0;overflow:hidden}
-.cap{flex:none;padding:5px 6px;border-bottom:1px solid var(--line)}
-.cap select{width:100%;max-width:none;font-size:12px;font-weight:600;text-overflow:ellipsis}
+.cap{flex:none;display:flex;gap:4px;padding:5px 6px;border-bottom:1px solid var(--line)}
+.cap select{flex:1;min-width:0;max-width:none;font-size:12px;font-weight:600;text-overflow:ellipsis}
+.cap .x{flex:none;width:26px;padding:0;font-size:16px;line-height:1;color:var(--muted)}
+.cap .x:hover{color:var(--accent);border-color:var(--accent)}
 .view{flex:1;min-height:0;position:relative;overflow:hidden;background:#fff}
 .view iframe{position:absolute;top:0;border:0;transform-origin:0 0;background:#fff}
 
@@ -49,6 +51,7 @@ main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 <header>
   <h1>FolioCatalog</h1>
   <label>Project <select id="project"></select></label>
+  <label>Version <select id="version"></select></label>
   <label>Show <select id="count"></select></label>
   <div class="step" id="step" hidden>
     <button type="button" id="prev" aria-label="Show earlier">&lsaquo;</button>
@@ -66,8 +69,9 @@ const $ = id => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.createElement(tag), props); e.append(...kids); return e; };
 const projects = [...new Set(ALL.map(v => v.project))];
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
-// project is one project or 'all'. picks holds what each pane shows, as "project:id", left to right.
-const state = {project: projects[0], n: 1, off: 0, picks: []};
+// project is one project or 'all'; version is one name (Lite, Noir...) or '' for every one.
+// picks holds what each pane shows, as "project:id", left to right.
+const state = {project: projects[0], version: '', n: 1, off: 0, picks: []};
 
 // One switch for the viewer and every page shown. Folio pages keep their theme on <html>
 // (and read localStorage "folio0" when they load); Claude Design pages on their root element.
@@ -219,12 +223,29 @@ function applyTheme() {
 const key = v => v.project + ':' + v.id;
 const byKey = Object.fromEntries(ALL.map(v => [key(v), v]));
 const label = v => (state.project === 'all' ? cap(v.project) + ' · ' : '') + v.id.slice(0, 10) + (v.name ? ' · ' + v.name : '');
-const pool = () => state.project === 'all' ? ALL : ALL.filter(v => v.project === state.project);
+const pool = () => ALL.filter(v => (state.project === 'all' || v.project === state.project) && (!state.version || v.name === state.version));
+const when = v => v.shipped || v.made || v.id.slice(0, 10);
+
+function fillVersions() {
+  // The caption names that more than one page shares (Sqsp, Figma, Lite), oldest first. Each
+  // shows every page of that name across all projects.
+  const first = {}, count = {};
+  for (const v of ALL.filter(v => v.name)) {
+    if (!(v.name in first) || when(v) < first[v.name]) first[v.name] = when(v);
+    count[v.name] = (count[v.name] || 0) + 1;
+  }
+  const names = Object.keys(first).filter(n => count[n] > 1)
+    .sort((a, b) => first[a] < first[b] ? -1 : first[a] > first[b] ? 1 : 0);
+  if (!names.includes(state.version) || state.project !== 'all') state.version = '';
+  $('version').replaceChildren(el('option', {value: '', textContent: 'All versions'}),
+    ...names.map(n => el('option', {value: n, textContent: `${n} (${count[n]})`})));
+  $('version').value = state.version;
+}
 
 function defaults() {
-  // One project: its latest n versions, oldest on the left. All: each project's live page, A-Z.
+  // One project, or one version name: the latest n, oldest on the left. All: each project's live page, A-Z.
   const vs = pool();
-  if (state.project !== 'all') return vs.slice(-state.n).map(key);
+  if (state.project !== 'all' || state.version) return vs.slice(-state.n).map(key);
   // A project's face is the page live on the folio now, or its newest if none is.
   return projects.map(p => { const vs = ALL.filter(v => v.project === p), live = vs.filter(v => v.shipped && !v.until);
                              return key((live.length ? live : vs).pop()); });
@@ -234,6 +255,7 @@ function fill() {
   // Keep what each pane shows; drop what no longer belongs; add the next unused version to new panes.
   const vs = pool(), n = Math.min(state.n, vs.length);
   let picks = state.picks.filter(k => byKey[k] && vs.includes(byKey[k]));
+  const had = picks.length;
   if (!picks.length) picks = defaults();
   picks = picks.slice(0, n);
   // New panes take the defaults not yet shown first (under All: the next project's latest).
@@ -243,13 +265,18 @@ function fill() {
     i = (i + 1) % vs.length;
     if (!picks.includes(key(vs[i]))) picks.push(key(vs[i]));
   }
+  // Whenever the viewer fills panes itself, they run oldest to newest, left to right (ALL is
+  // in that order). A page picked in a pane's caption stays where it was put.
+  if (picks.length > had) picks.sort((a, b) => ALL.indexOf(byKey[a]) - ALL.indexOf(byKey[b]));
   state.picks = picks;
 }
 
 function readHash() {
   // #project/n/off/project:id,project:id,...   (older links, #project/id/n/off, still open)
-  const [p, a, b, c] = decodeURIComponent(location.hash.slice(1)).split('/');
+  // #project/n/off/project:id,.../version   (the version part only when one is chosen)
+  const [p, a, b, c, d] = decodeURIComponent(location.hash.slice(1)).split('/');
   state.project = p === 'all' || projects.includes(p) ? p : projects[0];
+  state.version = p === 'all' && ALL.some(v => v.name === d) ? d : '';
   if (a && isNaN(+a)) {
     state.n = Math.min(6, Math.max(1, +b || 1));
     const vs = pool(), i = Math.max(0, vs.findIndex(v => v.id === a)), start = Math.max(0, Math.min(i, vs.length - state.n));
@@ -268,15 +295,28 @@ function pickerFor(i) {
   const s = el('select', {'aria-label': `Pane ${i + 1}`});
   const opt = v => el('option', {value: key(v), textContent: label(v)});
   if (state.project === 'all') {
-    for (const p of projects) s.append(el('optgroup', {label: cap(p)}, ...ALL.filter(v => v.project === p).map(opt)));
+    for (const p of projects) {
+      const vs = pool().filter(v => v.project === p);
+      if (vs.length) s.append(el('optgroup', {label: cap(p)}, ...vs.map(opt)));
+    }
   } else s.append(...pool().map(opt));
   s.value = state.picks[i];
   s.onchange = () => { state.picks[i] = s.value; render(); };
   return s;
 }
 
+function closerFor(i) {
+  // Takes this pane out of the view; the others keep their pages and their order.
+  const b = el('button', {type: 'button', className: 'x', textContent: '×', title: 'Remove this page from the view'});
+  b.setAttribute('aria-label', `Remove pane ${i + 1}`);
+  b.hidden = state.picks.length < 2;
+  b.onclick = () => { state.picks.splice(i, 1); state.n = state.picks.length; render(); };
+  return b;
+}
+
 function render() {
   $('project').value = state.project;
+  fillVersions();
   fill();
   $('count').value = state.n;
 
@@ -305,14 +345,14 @@ function render() {
       pane.dataset.path = v.path;
       pane.dataset.width = v.width || 1440;
     }
-    pane.querySelector('.cap').replaceChildren(pickerFor(i));
+    pane.querySelector('.cap').replaceChildren(pickerFor(i), closerFor(i));
     return pane;
   });
   const same = panes.length === $('panes').children.length && panes.every((p, j) => $('panes').children[j] === p);
   if (!same) $('panes').replaceChildren(...panes);
   fitFrames();
   if (locked) equalize();
-  const hash = `#${state.project}/${state.n}/${state.off}/${set.join(',')}`;
+  const hash = `#${state.project}/${state.n}/${state.off}/${set.join(',')}` + (state.version ? '/' + state.version : '');
   if (location.hash !== hash) history.replaceState(null, '', hash);
 }
 
@@ -336,6 +376,13 @@ if (!ALL.length) {
   projects.forEach(p => $('project').append(el('option', {value: p, textContent: cap(p)})));
   for (let i = 1; i <= 6; i++) $('count').append(el('option', {value: i, textContent: i === 1 ? '1 page' : `${i} side by side`}));
   $('project').onchange = e => { state.project = e.target.value; state.picks = []; state.off = 0; render(); };
+  $('version').onchange = e => {
+    // Picking a version shows every page of it across all projects, up to six.
+    state.version = e.target.value; state.picks = []; state.off = 0;
+    if (state.version) state.project = 'all';
+    if (state.version) state.n = Math.min(6, pool().length);
+    render();
+  };
   $('count').onchange = e => { state.n = +e.target.value; render(); };
   $('prev').onclick = () => { state.off--; render(); };
   $('next').onclick = () => { state.off++; render(); };
