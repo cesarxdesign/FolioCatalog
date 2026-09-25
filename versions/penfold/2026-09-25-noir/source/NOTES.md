@@ -46,7 +46,7 @@ existing pension holders → Combine → outcome.
 ## Rewrite for tension, 2026-09-25
 
 Redone from scratch: every beat must move the plot, build tension, reveal, or impress.
-Arc: hook ("Instant pensions. Nobody wanted one.") → week one → people came back to step one →
+Arc: hook ("Instant pension. Nobody wanted it.") → week one → people came back to step one →
 a pension took a week → the reveal (provisional IDs) → false win (100 a month) → false lead
 (Joe T.) → the flip, and the reveal that Combine was there since the MVP → payoff (600 a month,
 everything built while nobody came was ready for the flood). About 820 words.
