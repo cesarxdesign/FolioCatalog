@@ -5,8 +5,8 @@ Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.h
 longest, most complete state, shown whole: nothing is cropped or scrolled. The strip has five columns,
 laid out by hand (see screens()). All columns are the height of the tallest one: a column's
 spare height is shared between its frames, as room at the bottom of each.
-A numbered dot at the top right of each frame counts the pages, 01 to 10, in the order the
-strip is read (down each column, left to right). Which steps a screen covers and its module
+A dot at the top right of each frame counts the pages, 1 to 9, in the order the strip is read
+(down each column, left to right); the last page carries a tick instead of a 10. Which steps a screen covers and its module
 colour are kept in its data-steps and data-module attributes. Nothing is clickable; each tile is one fixed state
 in its own shadow root.
 
@@ -178,14 +178,18 @@ def annotations(cols, tw, height):
     return '\n'.join(inside), '\n'.join(gutter)
 
 
-def tile(s, tw, n):
+CHECK = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 5.4 4 7.8 8.5 2.4"/></svg>'
+
+
+def tile(s, tw, n, last):
+    mark = CHECK if last else str(n)      # the last page gets a tick, not a 10
     # the screens are fixed 2640 frames that clip; here the frame is the tile, so let them run
     css = (":host{display:block;width:%dpx;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}\n" % s.width
            + s.css + '\n.page{overflow:visible}\n')
     return ('<div class="step" style="--fw:%d;--fb:%d;flex-grow:%d" data-screen="penfold/desktop/%s" data-steps="%s" data-module="%s" data-state="%s">'
             '<div class="win"><div class="pg"><template shadowrootmode="open"><style>\n%s\n</style>\n%s\n</template></div>'
-            '<b class="num" aria-label="Page %d">%02d</b></div></div>'
-            % (s.width, round(need(s) * tw / 1182), s.grow, s.sid, ' '.join('%02d' % x for x in s.steps), s.colour, s.note, css, s.body, n, n))
+            '<b class="num" aria-label="Page %d">%s</b></div></div>'
+            % (s.width, round(need(s) * tw / 1182), s.grow, s.sid, ' '.join('%02d' % x for x in s.steps), s.colour, s.note, css, s.body, n, mark))
 
 
 def main():
@@ -199,7 +203,7 @@ def main():
     row = ('<!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->\n'
            '<figure class="ann"><div class="sw">\n'
            '<div class="flow" style="--n:%d;--tw:%.3f;--h:%d" role="group" aria-label="The first onboarding, screen by screen">\n' % (len(cols), tw, height)
-           + '\n'.join('<div class="stack">\n' + '\n'.join(tile(s, tw, all_screens.index(s) + 1) for s in c) + '\n</div>' for c in cols)
+           + '\n'.join('<div class="stack">\n' + '\n'.join(tile(s, tw, all_screens.index(s) + 1, s is all_screens[-1]) for s in c) + '\n</div>' for c in cols)
            + '\n</div>\n' + rings + '\n</div>\n' + caps + '\n</figure>\n<!-- FLOW33 end -->')
     page = open(SITE, encoding='utf-8').read()
     assert page.count('<!-- FLOW33 start') == 1, 'markers missing in site/index.html'

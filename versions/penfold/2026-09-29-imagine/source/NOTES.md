@@ -23,8 +23,8 @@ added to the sign-up upper half, before the password. All columns are the height
 (sign-up form + docs); a column's spare height is shared between its frames, as room at the bottom of each. Built by `source/flow33.py`.
 
 No bars or step numbers under the screens (removed by request).
-A numbered dot at the top right of each frame counts the pages, 01 to 10, in reading order (down each column,
-left to right). Step counts and colour dots were removed by request. The steps each screen covers, 01 to 33,
+A dot at the top right of each frame counts the pages, 1 to 9, in reading order (down each column, left to
+right); the last page carries a tick instead of a 10. Step counts and colour dots were removed by request. The steps each screen covers, 01 to 33,
 are kept in its `data-steps` attribute; the docs screen is four steps, one per doc.
 
 Left out by request: the assumptions dialog and the "Hold on while we run some checks" screen.
