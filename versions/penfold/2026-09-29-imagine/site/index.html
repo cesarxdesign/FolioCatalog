@@ -89,6 +89,7 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 [data-theme="light"] .win{box-shadow:0 1px 2px rgba(14,27,51,.06),0 8px 24px rgba(14,27,51,.08)}
 .win::after{content:"";position:absolute;inset:0;border-radius:5px;box-shadow:inset 0 0 0 1px var(--line)}
 .pg{width:calc(var(--fw)*1px);transform-origin:0 0;transform:scale(calc(var(--tw)/var(--fw)))}
+.num{position:absolute;right:6px;top:6px;z-index:1;min-width:22px;height:22px;box-sizing:border-box;padding:0 5px;border-radius:11px;background:var(--chip);color:#FFFFFF;display:grid;place-items:center;font:500 11px/1 'Geist Mono',ui-monospace,monospace}
 /* annotations, as on the live Cable page: a ring on the screen, a line out to a caption in the left gutter */
 .ann{position:relative;margin:0}
 .sw{position:relative}
@@ -316,7 +317,7 @@ h1{font:700 49px/57px 'Montserrat';letter-spacing:-.9px}
 <button class="cta">Get started</button>
 <p class="foot">With pensions, as with all investments, your capital is at risk and the value of your pension with Penfold may go up as well as down. You may get back less than you put in.</p>
 </main>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 1">01</b></div></div>
 <div class="step" style="--fw:1182;--fb:169;flex-grow:1" data-screen="penfold/desktop/sign-up-upper" data-steps="07 08" data-module="#F76B15" data-state="name, phone, email and password"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 /* Variant of screen.html: the Enter your email screen folded in as a field, before the password.
@@ -418,7 +419,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="btn go" disabled>Set up your account</button>
   </div>
 </div>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 2">02</b></div></div>
 </div>
 <div class="stack">
 <div class="step" style="--fw:1182;--fb:126;flex-grow:0" data-screen="penfold/desktop/savings-path" data-steps="09" data-module="#D6409F" data-state="know the amount, or get help"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
@@ -470,7 +471,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     </div>
   </div>
 </div>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 3">03</b></div></div>
 <div class="step" style="--fw:1182;--fb:375;flex-grow:1" data-screen="penfold/desktop/savings-calculator" data-steps="10 11 12 13 14 15 16" data-module="#00A2C7" data-state="the whole plan"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -636,7 +637,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="foot">Calculations are based on a set of <a href="#">widely used assumptions</a>.</p>
   </div>
 </div>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 4">04</b></div></div>
 </div>
 <div class="stack">
 <div class="step" style="--fw:1182;--fb:517;flex-grow:1" data-screen="penfold/desktop/plan-selection" data-steps="19 20 21 22 23" data-module="#8E4EC6" data-state="plan, risk level and risks accepted"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
@@ -982,7 +983,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <p class="note">*Your investments are covered by the government&rsquo;s <a href="#">Financial Services Compensation Scheme</a> up to a limit of &pound;85,000. Please be aware that this does not cover a fall in the value of your investment.</p>
 </div>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 5">05</b></div></div>
 </div>
 <div class="stack">
 <div class="step" style="--fw:1182;--fb:333;flex-grow:1" data-screen="penfold/desktop/sign-up-form" data-steps="28 29 30 31" data-module="#3E63DD" data-state="the whole form, filled"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
@@ -1182,7 +1183,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="submit">Set up your account</button>
   </div>
 </div>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 6">06</b></div></div>
 <div class="step" style="--fw:1182;--fb:189;flex-grow:1" data-screen="penfold/desktop/document-consent" data-steps="24 25 26 27" data-module="#3E63DD" data-state="first doc open"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -1273,7 +1274,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="all" disabled>Accept all terms</button>
   </div>
 </div>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 7">07</b></div></div>
 </div>
 <div class="stack">
 <div class="step" style="--fw:1182;--fb:126;flex-grow:1" data-screen="penfold/desktop/monthly-payment" data-steps="17 18" data-module="#46A758" data-state="amount and day"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
@@ -1358,7 +1359,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <button class="next">Next</button>
 </div>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 8">08</b></div></div>
 <div class="step" style="--fw:1182;--fb:186;flex-grow:1" data-screen="penfold/desktop/standing-order" data-steps="32" data-module="#46A758" data-state="standing order details"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -1429,7 +1430,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="btn go">I&rsquo;ve set up the standing order</button>
   </div>
 </div>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 9">09</b></div></div>
 <div class="step" style="--fw:1182;--fb:167;flex-grow:1" data-screen="penfold/desktop/confirmation" data-steps="33" data-module="#46A758" data-state="done"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -1471,7 +1472,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="p m2">Please get in touch via <a href="#">Live Chat</a> and join our <a href="#">Community</a> to let us know what would make the perfect pension for you.</p>
   </div>
 </div>
-</template></div></div></div>
+</template></div><b class="num" aria-label="Page 10">10</b></div></div>
 </div>
 </div>
 <div class="ring" style="left:0.000%;top:66.760%;width:18.568%;height:33.240%"></div>
