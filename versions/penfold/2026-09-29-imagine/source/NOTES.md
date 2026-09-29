@@ -33,8 +33,19 @@ Montserrat and Roboto Mono are in `site/_vendor/` for these screens.
 
 ## Background
 
-The light page background is a light blue tint, #F5F8FD, the same as the live Cable page (Color's is #f2f5f7).
-Dark is unchanged. The sketches image is blended with multiply in light, so its white paper takes the page colour.
+The page colours are the live Penfold page's, read from `Portfolio/penfold/index.html` on 2026-09-29:
+
+| | Light | Dark |
+|---|---|---|
+| Background | #f2f5f7 | #101519 |
+| Ink | #151515 | #eef0f2 |
+| Body | #5b6470 | #b3b7bd |
+| Muted | #98a0a8 | #7c8188 |
+| Label ink | #6b737b | #8b9198 |
+| Line | #e7e8ea | #2a2d33 |
+| Accent | #6076DD | #6076DD |
+| Accent, light end | #98a6e9 | #b7c1f0 |
+ The sketches image is blended with multiply in light, so its white paper takes the page colour.
 
 ## Frame sizes in the strip
 
