@@ -3,8 +3,8 @@
 
 Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.html) in its
 longest, most complete state, shown whole: nothing is cropped or scrolled. The strip has five columns,
-laid out by hand (see screens()). Frames are not stretched: each is as tall as its screen
-needs, so the columns end at different heights.
+laid out by hand (see screens()). All columns are the height of the tallest one: a column's
+spare height is shared between its frames, as room at the bottom of each.
 A dot at the bottom right of each frame gives the running total of steps up to and including
 that screen, in two digits (06, 07 ... 33); which steps a screen covers is kept in data-steps. Nothing is clickable; each tile is one fixed state
 in its own shadow root.

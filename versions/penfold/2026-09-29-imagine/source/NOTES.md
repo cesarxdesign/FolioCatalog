@@ -19,8 +19,8 @@ with all three sections open, the calculator with the whole plan, plans through 
 sign-up form filled). The strip has five columns, 166px each, laid out by hand from Cesar's own arrangement of the exported PNGs:
 3 things, sign-up upper | savings path, calculator | plan selection | sign-up form, docs |
 monthly payment, standing order, confirmation. Enter your email is not a screen of its own: its field is
-added to the sign-up upper half, before the password. Frames are not stretched: each is at its least
-height, so the columns end at different heights. Built by `source/flow33.py`.
+added to the sign-up upper half, before the password. All columns are the height of the tallest
+(sign-up form + docs); a column's spare height is shared between its frames, as room at the bottom of each. Built by `source/flow33.py`.
 
 No bars or step numbers under the screens (removed by request). A dot at the bottom right of each frame gives the
 running total of steps up to and including that screen, in two digits: 06, 07, 08, 09, 16, 18, 23, 27, 31, 32, 33. The steps each screen covers, 01 to 33,
