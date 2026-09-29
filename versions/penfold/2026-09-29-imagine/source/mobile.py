@@ -53,9 +53,8 @@ block = ('<!-- MOBILE start: built by source/mobile.py from CodeCatalog screens,
          % (PW, D, M, H, DROP, '\n'.join(pairs)))
 page = open(SITE, encoding='utf-8').read()
 if '<!-- MOBILE start' not in page:
-    anchor = '<div class="item"><span class="mono">Mobile</span>'
-    assert page.count(anchor) == 1, 'Mobile item not found'
-    page = page.replace(anchor, '<!-- MOBILE start -->\n<!-- MOBILE end -->\n' + anchor)
+    lab = '<div class="item"><span class="mono">Mobile + Desktop</span>'   # eyebrow, then the screens, then title and body (2026-09-29)
+    page = page.replace(lab, lab + '\n<!-- MOBILE start -->\n<!-- MOBILE end -->\n')
 page = re.sub(r'<!-- MOBILE start[\s\S]*?<!-- MOBILE end -->', lambda m: block, page)
 open(SITE, 'w', encoding='utf-8').write(page)
 print('pair %.1f wide: desktop %.1f x %.1f, phone %.1f x %.1f, dropped %d, overhang %.1f' % (PW, D, H, M, H, DROP, PW - D))

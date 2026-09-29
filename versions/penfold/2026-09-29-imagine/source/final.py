@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The final onboarding, mobile, as one strip of live screens above "Growth finally caught up" (moved from above "Now we were fast!", 2026-09-29), in the same style
+"""The final onboarding, mobile, as one strip of live screens under "Growth finally caught up" (was above "Now we were fast!", then above that line; 2026-09-29), in the same style
 as the modular strip (source/modular.py): screens in order, stacked where they fit, all columns one height,
 no numbered dots.
 One column per screen, every screen cropped to a regular phone screen (375 x 812), on request 2026-09-29.
@@ -55,9 +55,8 @@ def main():
            + '\n</div>\n<!-- FINAL end -->')
     page = open(SITE, encoding='utf-8').read()
     if '<!-- FINAL start' not in page:
-        anchor = '<p class="txt">Growth finally caught up'
-        assert page.count(anchor) == 1, 'anchor line not found'
-        page = page.replace(anchor, '<!-- FINAL start -->\n<!-- FINAL end -->\n' + anchor)
+        m = re.search(r'<p class="txt[^"]*">Growth finally caught up[^<]*</p>', page)   # under the closing line (2026-09-29)
+        page = page[:m.end()] + '\n<!-- FINAL start -->\n<!-- FINAL end -->' + page[m.end():]
     page = re.sub(r'<!-- FINAL start[\s\S]*?<!-- FINAL end -->', lambda m: row, page)
     open(SITE, 'w', encoding='utf-8').write(page)
     print('%d screens in %d columns of %.1fpx, tallest column %dpx' % (len(ORDER), len(cols), tw, height))

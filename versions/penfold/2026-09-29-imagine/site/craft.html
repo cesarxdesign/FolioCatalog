@@ -35,13 +35,14 @@
   --orange:rgba(255,154,2,.6);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#FAFAFA;overflow:hidden}
+html{color-scheme:light}   /* same scheme as the host's iframe element, or the browser paints the frame opaque */
+html,body{background:transparent;overflow:hidden}   /* no panel around the frame: the host page shows through (2026-09-29) */
 svg{display:block;overflow:visible}
 
 /* ---------- the craft frame (2212 x 1416), scaled to the window by the script ---------- */
-.craft{position:relative;width:2212px;height:1416px;background:#FAFAFA;transform-origin:0 0;
+.craft{position:relative;width:2212px;height:1416px;background:transparent;transform-origin:0 0;
        transform:scale(var(--k,1)) translate(var(--cx,0),var(--cy,0))}
-.frame3{position:absolute;left:227px;top:132px;width:1734px;height:1109px;overflow:hidden;background:#FFFFFF}
+.frame3{position:absolute;left:227px;top:132px;width:1734px;height:1109px;overflow:hidden;background:#FFFFFF;border-radius:12px}   /* only the screens' frame keeps a white ground (the 60% try was reset, 2026-09-29) */   /* only the screens' frame keeps a white ground */
 .layer{position:absolute;inset:0}
 /* the cut runs from the bottom-left corner of the 2nd bottom screen through the top-right corner of the
    3rd top screen (moved 2026-09-29; the 2020 frame had it at the 4th top screen's top-left) */
@@ -134,6 +135,7 @@ svg{display:block;overflow:visible}
 .mark{position:absolute;border-radius:8px;background:var(--orange);mix-blend-mode:multiply}
 .mark.is-red{box-shadow:inset 0 0 0 4px #FF0000}
 .spot{position:absolute;border-radius:50%;background:var(--orange);mix-blend-mode:multiply}
+.anns{position:absolute;inset:0}
 .arrow{position:absolute;left:0;top:0;transform-origin:0 0;fill:#000}
 .alert{fill:none}
 
@@ -143,7 +145,8 @@ svg{display:block;overflow:visible}
 .bare .frame3{border-radius:12px}
 /* dark: white ink with difference blending, so a note or arrow reads light on the page and dark where it
    crosses the white frame, as the black ink did in Figma */
-.bare.dark .note,.bare.dark .arrow{color:#FFFFFF;fill:#FFFFFF;mix-blend-mode:difference}
+.bare.dark .note,.bare.dark .arrow{color:#FFFFFF;fill:#FFFFFF}   /* notes and arrows sit on the page: white in dark */
+.bare.dark .arrow:not(.alert){mix-blend-mode:difference}   /* arrows keep the split-colour behaviour: dark wherever they meet the frame */
 .bare.dark .alert{fill:none;mix-blend-mode:normal}
 .note{position:absolute;white-space:nowrap;color:#000;letter-spacing:0;
       font:400 44px/46.2px "Journal fallback",cursive}
@@ -169,27 +172,30 @@ svg{display:block;overflow:visible}
   <div class="mark is-red" style="left:1166px;top:1073px;width:134px;height:116px"></div>
   <div class="spot" style="left:821px;top:322px;width:34px;height:34px"></div>
 
+  <div class="anns">
   <!-- the six handwritten notes (Journal 44/1.05 in Figma) -->
-  <p class="note" style="left:33px;top:327px">Review copy.<br>Tighten, more clear.</p>
-  <p class="note" style="left:1938px;top:505px">More contrast<br>check WCAG</p>
-  <p class="note" style="left:1934px;top:866px">Check touch targets</p>
+  <p class="note" style="left:5px;top:327px">Review copy.<br>Tighten, more clear.</p>
+  <p class="note" style="left:1969px;top:505px">More contrast<br>check WCAG</p>
+  <p class="note" style="left:1969px;top:866px">Check touch targets</p>
   <p class="note" style="left:627px;top:1260px">Not helpfull for small values</p>
-  <p class="note" style="left:1218px;top:1273px">Allows unconsistent state</p>
-  <p class="note" style="left:871px;top:92px">Spacing</p>
+  <p class="note" style="left:1218px;top:1297px">Allows unconsistent state</p>
+  <p class="note" style="left:871px;top:40px">Spacing</p>
 
-  <!-- the elbow arrows (Vectors 1 to 6), each at its Figma transform; the exports start 1 unit left of the node -->
-  <svg class="arrow" style="transform:matrix(1,0,0,1,85.5,434)" width="145.5" height="26.2735" viewBox="-1 0 145.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM144.5 20.5L134.5 14.7265V26.2735L144.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H135.5V20.5V19.5H0V20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(-1,0,0,1,1983.5,612)" width="89.5" height="26.2735" viewBox="-1 0 89.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM88.5 20.5L78.5 14.7265V26.2735L88.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H79.5V20.5V19.5H0V20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(-1,0,0,1,1990.5,927)" width="57.5" height="26.2735" viewBox="-1 0 57.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM56.5 20.5L46.5 14.7265V26.2735L56.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H47.5V20.5V19.5H0V20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(0,-1,-1,0,611.5,1290)" width="218" height="26.2735" viewBox="-1 0 218 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM217 20.5L207 14.7265V26.2735L217 20.5ZM0 0L-1 0V20.5H0H1V0L0 0ZM0 20.5L0 21.5L208 21.5V20.5V19.5L0 19.5L0 20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(0,-1,-1,0,1202.5,1301)" width="99" height="26.2735" viewBox="-1 0 99 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM98 20.5L88 14.7265V26.2735L98 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5L0 21.5L89 21.5V20.5V19.5L0 19.5L0 20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(0,1,-1,0,856.5,122)" width="193.5" height="26.2735" viewBox="-1 0 193.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM192.5 20.5L182.5 14.7265V26.2735L192.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H183.5V20.5V19.5H0V20.5Z"/></svg>
+  <!-- the elbow arrows (Vectors 1 to 6): tips where Figma had them, at the marks inside the frame; stems stretched
+       to the notes, which were moved clear of the frame (2026-09-29). The exports start 1 unit left of the node. -->
+  <svg class="arrow" style="transform:matrix(1,0,0,1,57.5,434)" width="173.5" height="26.2735" viewBox="-1 0 173.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM172.5 20.5L162.5 14.7265V26.2735L172.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H163.5V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(-1,0,0,1,2014.5,612)" width="120.5" height="26.2735" viewBox="-1 0 120.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM119.5 20.5L109.5 14.7265V26.2735L119.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H110.5V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(-1,0,0,1,2025.5,927)" width="92.5" height="26.2735" viewBox="-1 0 92.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM91.5 20.5L81.5 14.7265V26.2735L91.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H82.5V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(0,-1,-1,0,611.5,1290)" width="218" height="26.2735" viewBox="-1 0 218 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM217 20.5L207 14.7265V26.2735L217 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H208V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(0,-1,-1,0,1202.5,1325)" width="123" height="26.2735" viewBox="-1 0 123 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM122 20.5L112 14.7265V26.2735L122 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H113V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(0,1,-1,0,856.5,90)" width="225.5" height="26.2735" viewBox="-1 0 225.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM224.5 20.5L214.5 14.7265V26.2735L224.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H215.5V20.5V19.5H0V20.5Z"/></svg>
 
   <!-- alert-triangle (feather), red -->
-  <svg class="arrow alert" style="transform:translate(1217px,1220px)" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#FF0000" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round">
+  <svg class="arrow alert" style="transform:translate(1217px,1249px)" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#FF0000" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round">
     <path d="M17.15 6.43327L3.03337 29.9999C2.74231 30.504 2.58831 31.0754 2.58668 31.6575C2.58505 32.2395 2.73585 32.8118 3.02408 33.3175C3.31231 33.8231 3.72791 34.2445 4.22955 34.5397C4.73118 34.8349 5.30137 34.9935 5.88337 34.9999H34.1167C34.6987 34.9935 35.2689 34.8349 35.7705 34.5397C36.2722 34.2445 36.6878 33.8231 36.976 33.3175C37.2642 32.8118 37.415 32.2395 37.4134 31.6575C37.4118 31.0754 37.2578 30.504 36.9667 29.9999L22.85 6.43327C22.5529 5.94345 22.1346 5.53847 21.6354 5.25741C21.1361 4.97635 20.5729 4.82869 20 4.82869C19.4271 4.82869 18.8639 4.97635 18.3647 5.25741C17.8655 5.53847 17.4472 5.94345 17.15 6.43327V6.43327Z"/>
     <path d="M20 15V21.6667"/><path d="M20 28.3333H20.0171"/>
   </svg>
+  </div>
 </div>
 
 <script>
