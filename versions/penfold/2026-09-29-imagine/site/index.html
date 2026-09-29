@@ -156,7 +156,7 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <p class="txt">If I had had more time, I&rsquo;d&rsquo;ve made a shorter onboarding. But I joined 7 days from a funding deadline that needed a live product with real customers. And I knew nothing about pensions.</p>
 <img class="shot" src="img/sketches-strip.webp" alt="Day-one sketches for Penfold: notes, a 3D pot, dashboard layouts, the donut and transaction rows" width="3974" height="1210">
 <!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->
-<ol class="flow" aria-label="The first onboarding, 33 steps in order">
+<ol class="flow" aria-label="The first onboarding, step by step">
 <li class="step run" style="--fw:1231;--fy:0;--gc:#CE372F" data-screen="penfold/desktop/three-things" data-state="nothing filled in"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1231px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 :host{--bg:#F6F6F6;--navy:#133253;--pink:#ED5E83;--blue:#5689EA;--green:#70E6B3}
@@ -1641,191 +1641,6 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
   </div>
 </div>
 </template></div></div><i class="bar"></i><span class="mono">12</span></li>
-<li class="step run" style="--fw:1182;--fy:0;--gc:#72D4B7" data-screen="penfold/desktop/savings-calculator" data-state="the assumptions, opened"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
-:host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
-*{box-sizing:border-box}
-:host{
-  --navy:#133253; --slate:#133253; --muted:#4C5D70; --pink:#ED5E83;
-  --indigo:#5F75DB; --indigo2:#7C8EE5; --indigo3:#92A4E9;
-  --track:#E5E5E5; --line:#DEDEDE;
-}
-.page{position:relative;width:1182px;height:2640px;background:transparent;
-  font-family:'Montserrat',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:var(--navy)}
-.col{position:absolute;left:183px;top:0;width:770px}
-.page h1{margin-top:92px;font:700 49px/57px 'Montserrat',sans-serif;letter-spacing:-.9px;color:var(--navy)}
-
-/* ---------- question rows ---------- */
-.row{display:flex;align-items:flex-start;gap:44px;margin-top:84px}
-.row .q{flex:1;margin:0;font:400 19.4px/28px 'Montserrat',sans-serif;color:var(--slate);padding-top:16px}
-.row .q b{font-weight:700;color:var(--navy)}
-.row .q .amt{color:var(--pink);font-weight:700}
-.row .q .why{color:var(--pink);font-weight:700}
-.ctrl{flex:0 0 213px}
-.val{display:block;width:213px;height:62px;border:1px solid var(--line);border-radius:5px;background:#fff;
-  text-align:center;font:700 23px/60px 'Montserrat',sans-serif;color:var(--navy)}
-.val.big{background:var(--indigo);border-color:var(--indigo);color:#fff}
-
-/* ---------- slider ---------- */
-.sl{-webkit-appearance:none;appearance:none;display:block;width:213px;height:26px;margin-top:8px;background:none;cursor:pointer}
-.sl::-webkit-slider-runnable-track{height:6px;border-radius:3px;
-  background:linear-gradient(to right,var(--pink) 0 var(--p,50%),var(--track) var(--p,50%) 100%)}
-.sl::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;
-  background:var(--navy);margin-top:-10px}
-.sl:focus{outline:none}
-
-/* ---------- help badge ---------- */
-.badge{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;
-  background:var(--pink);color:#fff;font:700 11.5px/1 'Montserrat',sans-serif;vertical-align:middle}
-
-/* ---------- actions ---------- */
-.acts{display:flex;justify-content:center;gap:14px;margin-top:35px}
-.btn{height:63px;border:0;border-radius:6px;background:var(--pink);color:#fff;
-  font:600 16px 'Montserrat',sans-serif;cursor:pointer;padding:0 20px}
-.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--navy);font-weight:700;line-height:1.15}
-.btn.next{width:145px}
-
-/* ---------- plan section (step 4) ---------- */
-.plan{margin-top:80px}
-.plan h2{margin:0;font:700 24.8px/1 'Montserrat',sans-serif;color:var(--navy)}
-.plan p{margin:8px 0 0;font:400 19.4px/26px 'Montserrat',sans-serif;color:var(--slate)}
-.plan p.note{margin:121px 0 0;font:400 16px/22px 'Montserrat',sans-serif;color:var(--muted);max-width:755px}
-.pays{margin-top:31px;display:flex;flex-direction:column;gap:22px}
-.pays div{display:flex;align-items:center;gap:26px}
-.pays span{display:grid;place-items:center;width:186px;height:60px;border-radius:5px;color:#fff;
-  font:700 21.3px/1 'Montserrat',sans-serif}
-.pays .p1{background:var(--indigo)} .pays .p2{background:var(--indigo2)} .pays .p3{background:var(--indigo3)}
-.pays em{font:400 18.6px/1 'Montserrat',sans-serif;font-style:normal;color:var(--slate)}
-.plan h2.retire{margin-top:72px}
-.chart{display:flex;align-items:center;gap:64px;margin-top:34px}
-.donut{position:relative;flex:0 0 268px;width:268px;height:268px;border-radius:50%;
-  background:conic-gradient(#E95D80 0 .66%,#5686E3 .66% 51.4%,#142E4E 51.4% 64.1%,#EBC97E 64.1% 100%)}
-.donut::after{content:"";position:absolute;inset:44px;border-radius:50%;background:#F6F6F6}
-.donut b{position:absolute;inset:0;display:grid;place-items:center;z-index:1;
-  font:700 26.6px/1 'Montserrat',sans-serif;color:var(--navy)}
-.key{display:flex;flex-direction:column;gap:22px}
-.key div{display:flex;align-items:center;gap:18px}
-.key i{flex:0 0 26px;width:26px;height:26px;border-radius:50%}
-.key .k1{background:#E95D80} .key .k2{background:#5686E3}
-.key .k3{background:#142E4E} .key .k4{background:#EBC97E}
-.key b{display:block;font:700 18.6px/1.35 'Montserrat',sans-serif;color:var(--navy)}
-.key em{display:block;font:400 18.6px/1.35 'Montserrat',sans-serif;font-style:normal;color:var(--slate)}
-.plan p.closing{margin-top:27px}
-.plan button.go{display:block;margin:12px 0 0 auto;width:145px}
-
-.foot{margin:62px 0 0;font:400 15.1px/1 'Montserrat',sans-serif;color:var(--muted)}
-.foot a{color:var(--pink);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
-
-/* ---------- step visibility ---------- */
-.s2,.s3,.s4,.acts,.foot{display:none}
-.page[data-step="1"] .acts.a12{display:flex}
-.page[data-step="2"] .s2,.page[data-step="3"] .s2,.page[data-step="4"] .s2{display:flex}
-.page[data-step="2"] .acts.a12{display:flex}
-.page[data-step="3"] .s3,.page[data-step="4"] .s3{display:flex}
-.page[data-step="3"] .acts.a3{display:flex}
-.page[data-step="4"] .s4{display:block}
-.page[data-step="4"]{height:2640px}
-.page[data-step="2"] .foot,.page[data-step="3"] .foot,.page[data-step="4"] .foot{display:block}
-
-.dim{position:absolute;inset:0;background:rgba(0,0,0,.5)}
-.dlg{position:absolute;left:216px;top:396px;width:743px;height:1114px;padding:68px 68px 0;background:#fff;border-radius:3px;color:var(--navy)}
-.dlg h2{margin:0;font:700 24px/1 'Montserrat',sans-serif}
-.dlg h3{margin:52px 0 0;font:700 20px/1 'Montserrat',sans-serif}
-.dlg h2+h3{margin-top:50px}
-.dlg p{margin:22px 0 0;font:400 17px/28px 'Montserrat',sans-serif;color:var(--slate)}
-.dlg .ok{display:block;width:100%;height:60px;margin-top:34px;border:1px solid var(--line);border-radius:5px;background:#fff;
-  color:var(--navy);font:400 14.2px 'Montserrat',sans-serif}
-.dlg .x{position:absolute;right:22px;top:16px;font:400 20px/1 'Montserrat',sans-serif;color:#C8C8C8}
-.page{isolation:isolate}.dim,.dlg{z-index:1}
-</style>
-<div class="page" data-step="1">
-  <div class="dim"></div>
-<div class="dlg"><span class="x">&times;</span>
-<h2>Widely used assumptions</h2>
-<h3>General assumptions</h3>
-<p>These calculations assume your money grows at 5% each year after deducting all fees, an inflation rate of 2.5% each year, and that you increase your payments each year by 2.5%. All numbers are shown in today&rsquo;s money, and your retirement income is based on 4% of your retirement pot including state pension at current levels.</p>
-<h3>Today&rsquo;s money &#129300;</h3>
-<p>To make things simple, all the numbers we show you are in &ldquo;today&rsquo;s money&rdquo;. This means they are based on what money is worth &amp; what things cost today.</p>
-<p>So, when thinking about how much you might need to live when you retire, just think about how much bills, shopping, holidays, school fees, socialising, all cost today.</p>
-<p>In real life, things get more expensive every year as you get older (by about 2-3% per year), but there&rsquo;s a simple trick. Each new year, increase your monthly payment by that same small amount and you&rsquo;ll stay on track. Don&rsquo;t worry though, we&rsquo;ll tell you exactly how much when the time comes.</p>
-<p>The very best thing to do is every time you start earning more money add a bit of that extra into your pension payment. Again, we&rsquo;ll help you decide how much on your Penfold Anniversary!</p>
-<button class="ok">OK, got it</button></div>
-<div class="col" style="z-index:-1">
-    <h1>Help me decide how much to save</h1>
-
-    <div class="row" style="margin-top:71px">
-      <p class="q">First, roughly how much do you earn?</p>
-      <div class="ctrl">
-        <span class="val" id="v-earn">&pound;50,000</span>
-        <input class="sl" id="s-earn" type="range" min="10000" max="150000" step="500" value="50000" style="--p:29%">
-      </div>
-    </div>
-
-    <div class="row s2">
-      <p class="q">We think you might need <span class="amt">&pound;2,792</span><span class="badge">?</span> per month after you retire. Select the amount that works for you.</p>
-      <div class="ctrl">
-        <span class="val" id="v-need">&pound;3,500</span>
-        <input class="sl" id="s-need" type="range" min="500" max="8000" step="50" value="3500" style="--p:40%">
-      </div>
-    </div>
-
-    <div class="row s3" style="margin-top:81px">
-      <p class="q">This means you might need this much saved up when you retire. <span class="why">Why</span><span class="badge">?</span></p>
-      <div class="ctrl"><span class="val big">&pound;830,820</span></div>
-    </div>
-
-    <div class="row s3" style="margin-top:58px">
-      <p class="q">How much do you think you have already?</p>
-      <div class="ctrl">
-        <span class="val" id="v-have">&pound;0</span>
-        <input class="sl" id="s-have" type="range" min="0" max="200000" step="500" value="0" style="--p:0%">
-      </div>
-    </div>
-
-    <div class="acts a12"><button class="btn next" data-next>Next</button></div>
-
-    <div class="acts a3">
-      <button class="btn ghost" style="width:174px">Not enough<br>for a big mac</button>
-      <button class="btn ghost" style="width:140px">No idea</button>
-      <button class="btn" style="width:142px" data-next>Next</button>
-    </div>
-
-    <section class="plan s4">
-      <div class="row" style="margin-top:0">
-        <p class="q">To reach your goal of <b>&pound;830,820</b>, the best way is to save <b>31.5%</b> of what you earn, or <span class="amt">&pound;1,049 per month</span><span class="badge">?</span>.</p>
-        <div class="ctrl">
-          <span class="val" id="v-pay">&pound;970</span>
-          <input class="sl" id="s-pay" type="range" min="100" max="1200" step="10" value="970" style="--p:79%">
-        </div>
-      </div>
-      <p class="note">From what you&rsquo;ve said you can save today but remember, the more you save today the less you might pay overall to reach your target.</p>
-
-      <h2 style="margin-top:66px">Each month you&rsquo;ll pay&hellip;</h2>
-      <p>Based on what you told us you can afford today, here&rsquo;s how much your savings might need to increase over the next few years to get on track with your goal, assuming your earnings and savings amount both grow with inflation (around 2.3% per year).</p>
-      <div class="pays">
-        <div><span class="p1">&pound;970</span><em>for the next year</em></div>
-        <div><span class="p2">&pound;1,012</span><em>for year after</em></div>
-        <div><span class="p3">&pound;1,055</span><em>until you retire</em></div>
-      </div>
-
-      <h2 class="retire">And you might retire with&hellip;</h2>
-      <div class="chart">
-        <div class="donut"><b>&pound;830,820</b></div>
-        <div class="key">
-          <div><i class="k1"></i><span><b>&pound;5,500</b><em>Your Pot Now</em></span></div>
-          <div><i class="k2"></i><span><b>&pound;423,629</b><em>Your Contributions</em></span></div>
-          <div><i class="k3"></i><span><b>&pound;105,907</b><em>Gov Contributions</em></span></div>
-          <div><i class="k4"></i><span><b>&pound;301,283</b><em>Einstein Money</em></span></div>
-        </div>
-      </div>
-
-      <p class="closing">The above is just an illustration for how your payments might increase over time to reach your goal. Each year we will help you set a new target based on how much you&rsquo;ve saved, how much you earn and other factors.</p>
-      <button class="btn go">Next</button>
-    </section>
-
-    <p class="foot">Calculations are based on a set of <a href="#">widely used assumptions</a>.</p>
-  </div>
-</div>
-</template></div></div><i class="bar"></i><span class="mono">13</span></li>
 <li class="step run" style="--fw:1182;--fy:440;--gc:#72D4B7" data-screen="penfold/desktop/savings-calculator" data-state="the plan, paying 480"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -1989,7 +1804,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="foot">Calculations are based on a set of <a href="#">widely used assumptions</a>.</p>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">14</span></li>
+</template></div></div><i class="bar"></i><span class="mono">13</span></li>
 <li class="step run" style="--fw:1182;--fy:0;--gc:#72D4B7" data-screen="penfold/desktop/savings-calculator" data-state="the plan, paying 3,000"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -2153,7 +1968,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="foot">Calculations are based on a set of <a href="#">widely used assumptions</a>.</p>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">15</span></li>
+</template></div></div><i class="bar"></i><span class="mono">14</span></li>
 <li class="step run" style="--fw:1182;--fy:0;--gc:#72D4B7" data-screen="penfold/desktop/savings-calculator" data-state="the plan, paying 970"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -2317,7 +2132,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="foot">Calculations are based on a set of <a href="#">widely used assumptions</a>.</p>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">16</span></li>
+</template></div></div><i class="bar"></i><span class="mono">15</span></li>
 <li class="step" style="--fw:1182;--fy:440;--gc:#72D4B7" data-screen="penfold/desktop/savings-calculator" data-state="the plan, ready to move on"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -2481,7 +2296,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="foot">Calculations are based on a set of <a href="#">widely used assumptions</a>.</p>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">17</span></li>
+</template></div></div><i class="bar"></i><span class="mono">16</span></li>
 <li class="step run" style="--fw:1182;--fy:0;--gc:#F9FD56" data-screen="penfold/desktop/monthly-payment" data-state="the amount carried over"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -2563,7 +2378,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <button class="next">Next</button>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">18</span></li>
+</template></div></div><i class="bar"></i><span class="mono">17</span></li>
 <li class="step" style="--fw:1182;--fy:0;--gc:#F9FD56" data-screen="penfold/desktop/monthly-payment" data-state="nothing entered"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -2645,7 +2460,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <button class="next">Next</button>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">19</span></li>
+</template></div></div><i class="bar"></i><span class="mono">18</span></li>
 <li class="step run" style="--fw:1182;--fy:0;--gc:#A638D8" data-screen="penfold/desktop/plan-selection" data-state="three plans"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -2988,7 +2803,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <p class="note">*Your investments are covered by the government&rsquo;s <a href="#">Financial Services Compensation Scheme</a> up to a limit of &pound;85,000. Please be aware that this does not cover a fall in the value of your investment.</p>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">20</span></li>
+</template></div></div><i class="bar"></i><span class="mono">19</span></li>
 <li class="step run" style="--fw:1182;--fy:540;--gc:#A638D8" data-screen="penfold/desktop/plan-selection" data-state="risk levels 1 to 3"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -3331,7 +3146,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <p class="note">*Your investments are covered by the government&rsquo;s <a href="#">Financial Services Compensation Scheme</a> up to a limit of &pound;85,000. Please be aware that this does not cover a fall in the value of your investment.</p>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">21</span></li>
+</template></div></div><i class="bar"></i><span class="mono">20</span></li>
 <li class="step run" style="--fw:1182;--fy:540;--gc:#A638D8" data-screen="penfold/desktop/plan-selection" data-state="risk levels 3 to 5"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -3674,7 +3489,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <p class="note">*Your investments are covered by the government&rsquo;s <a href="#">Financial Services Compensation Scheme</a> up to a limit of &pound;85,000. Please be aware that this does not cover a fall in the value of your investment.</p>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">22</span></li>
+</template></div></div><i class="bar"></i><span class="mono">21</span></li>
 <li class="step run" style="--fw:1182;--fy:1505;--gc:#A638D8" data-screen="penfold/desktop/plan-selection" data-state="level 4 chosen, risks to accept"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -4017,7 +3832,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <p class="note">*Your investments are covered by the government&rsquo;s <a href="#">Financial Services Compensation Scheme</a> up to a limit of &pound;85,000. Please be aware that this does not cover a fall in the value of your investment.</p>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">23</span></li>
+</template></div></div><i class="bar"></i><span class="mono">22</span></li>
 <li class="step" style="--fw:1182;--fy:1505;--gc:#A638D8" data-screen="penfold/desktop/plan-selection" data-state="risks accepted"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -4360,7 +4175,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <p class="note">*Your investments are covered by the government&rsquo;s <a href="#">Financial Services Compensation Scheme</a> up to a limit of &pound;85,000. Please be aware that this does not cover a fall in the value of your investment.</p>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">24</span></li>
+</template></div></div><i class="bar"></i><span class="mono">23</span></li>
 <li class="step run" style="--fw:1182;--fy:0;--gc:#3D91F7" data-screen="penfold/desktop/document-consent" data-state="first doc open"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -4450,7 +4265,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="all" disabled>Accept all terms</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">25</span></li>
+</template></div></div><i class="bar"></i><span class="mono">24</span></li>
 <li class="step" style="--fw:1182;--fy:0;--gc:#3D91F7" data-screen="penfold/desktop/document-consent" data-state="every doc accepted"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -4540,7 +4355,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="all" disabled>Accept all terms</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">26</span></li>
+</template></div></div><i class="bar"></i><span class="mono">25</span></li>
 <li class="step run" style="--fw:1182;--fy:0;--gc:#3D91F7" data-screen="penfold/desktop/sign-up-form" data-state="not yet answered, the form waits"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -4734,7 +4549,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="submit">Set up your account</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">27</span></li>
+</template></div></div><i class="bar"></i><span class="mono">26</span></li>
 <li class="step run" style="--fw:1182;--fy:0;--gc:#3D91F7" data-screen="penfold/desktop/sign-up-form" data-state="the address, filled from the search"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -4928,7 +4743,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="submit">Set up your account</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">28</span></li>
+</template></div></div><i class="bar"></i><span class="mono">27</span></li>
 <li class="step run" style="--fw:1182;--fy:157;--gc:#3D91F7" data-screen="penfold/desktop/sign-up-form" data-state="sent without an account number"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -5123,8 +4938,8 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="submit">Set up your account</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">29</span></li>
-<li class="step run" style="--fw:1182;--fy:157;--gc:#3D91F7" data-screen="penfold/desktop/sign-up-form" data-state="the account could not be made"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">28</span></li>
+<li class="step" style="--fw:1182;--fy:157;--gc:#3D91F7" data-screen="penfold/desktop/sign-up-form" data-state="the account could not be made"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 
@@ -5321,107 +5136,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="submit">Set up your account</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">30</span></li>
-<li class="step" style="--fw:1182;--fy:0;--gc:#3D91F7" data-screen="penfold/desktop/sign-up-form" data-state="identity checks running"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
-:host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
-*{box-sizing:border-box}
-
-:host{
-  --navy:#133253;
-  --slate:#133253;
-  --muted:#4C5D70;
-  --pink:#ED5E83;
-  --ring:#9FB4E6;
-  --fill-auto:#F6F8BF;
-  --line:#DEDEDE;
-  --placeholder:#E2E2E2;
-}
-
-.page{
-  position:relative;
-  width:1182px;height:2640px;overflow:hidden;
-  background:transparent;
-  font-family:'Montserrat',-apple-system,sans-serif;
-  -webkit-font-smoothing:antialiased;
-  color:var(--navy);
-}
-.col{position:absolute;left:183px;top:0;width:770px}
-
-.page h1{margin-top:92px;font:700 49px/57px 'Montserrat',sans-serif;letter-spacing:-.9px;color:var(--navy)}
-
-.q{margin:74px 0 0;font:400 28.4px/1 'Montserrat',sans-serif;color:var(--navy)}
-.q u{text-decoration:underline;text-underline-offset:3px}
-
-.sect{margin:39px 0 0;font:400 28.4px/1 'Montserrat',sans-serif;color:var(--navy)}
-
-.row{margin-top:15px}
-.row label,.lab{display:block;margin:0 0 4px;font:400 16.8px/19px 'Montserrat',sans-serif;color:var(--muted)}
-
-.f{
-  display:block;width:100%;height:62px;
-  border:1px solid var(--line);border-radius:4px;
-  background:#fff;
-  padding:0 18px;
-  font:400 19.4px/1 'Montserrat',sans-serif;color:var(--slate);
-  font-family:'Montserrat',sans-serif;
-}
-.f::placeholder{color:var(--placeholder)}
-.f:focus{outline:none}
-.f.auto{background:var(--fill-auto)}
-.f.focus{border:2px solid var(--ring);box-shadow:0 0 0 3px rgba(159,180,230,.45)}
-
-select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M0 0 L5.5 7 L11 0 Z' fill='%233D5165'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 18px center}
-
-.pair{display:flex;gap:13px}
-.pair>div{flex:1}
-.pair>div.narrow{flex:0 0 312px}
-.hasicon{position:relative}
-.hasicon .icon{position:absolute;right:14px;bottom:0;height:62px;display:flex;align-items:center;gap:4px;
-  pointer-events:none;color:#5C6B7C}
-.hasicon .icon svg{display:block}
-
-.acctrow{display:flex;gap:16px}
-.acctrow>div:first-child{flex:0 0 376px}
-.acctrow .cono{flex:1}
-.acctrow .cono .lab{margin-bottom:4px}
-.help a{color:var(--pink);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
-.submit{display:block;width:770px;height:63px;margin-top:28px;border:0;border-radius:6px;
-  background:var(--pink);color:#fff;font:600 16px 'Montserrat',sans-serif;cursor:pointer}
-.note{margin:13px 0 0;font:400 19.4px/1 'Montserrat',sans-serif;color:var(--muted)}
-.help{margin:14px 0 0;font:400 19px/1 'Montserrat',sans-serif;color:var(--muted)}
-
-/* ---------- check options ---------- */
-.opts{display:flex;margin-top:5px;font:400 19.4px/1 'Montserrat',sans-serif;color:var(--navy)}
-.opts label{display:flex;align-items:center;gap:16px;cursor:pointer}
-.opts input{
-  appearance:none;-webkit-appearance:none;margin:0;
-  flex:0 0 36px;width:36px;height:36px;
-  border:1px solid #E8E8E8;border-radius:3px;background:#fff;cursor:pointer;
-}
-.opts input:checked{border-color:var(--pink);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M9 18 L15 24 L27 12' fill='none' stroke='%23EB5F83' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
-.opts.yesno label:first-child{width:104px}
-.opts.gender label:first-child{width:119px}
-.opts.acct  label:first-child{width:157px}
-.opts input:checked+span{color:var(--pink)}
-.opts.yesno label:first-child span{color:var(--pink)}
-
-/* search field with a clear button */
-.search{position:relative}
-.search .clear{position:absolute;right:18px;top:23px;height:62px;display:flex;align-items:center;
-  border:0;background:none;color:var(--slate);font:400 19.4px/1 'Montserrat',sans-serif;cursor:pointer}
-.wait{margin:117px 0 0;display:flex;justify-content:center;gap:16px}.wait i{width:14px;height:14px;border-radius:50%;background:var(--pink)}.wait i:first-child{opacity:.18;transform:scale(.6)}.waitmsg{margin:50px 0 0;text-align:center;font:400 19.4px/1 'Montserrat',sans-serif;color:var(--navy)}
-</style>
-<div class="page">
-  <div class="col">
-    <h1>Hold on while we run some<br>checks</h1>
-    <div class="wait"><i></i><i></i></div>
-    <p class="waitmsg">Verifying identity..</p>
-  </div>
-</div>
-</template></div></div><i class="bar"></i><span class="mono">31</span></li>
+</template></div></div><i class="bar"></i><span class="mono">29</span></li>
 <li class="step run" style="--fw:1182;--fy:0;--gc:#F9FD56" data-screen="penfold/desktop/standing-order" data-state="standing order details"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -5491,7 +5206,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="btn go">I&rsquo;ve set up the standing order</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">32</span></li>
+</template></div></div><i class="bar"></i><span class="mono">30</span></li>
 <li class="step" style="--fw:1182;--fy:0;--gc:#F9FD56" data-screen="penfold/desktop/confirmation" data-state="done"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;min-height:2640px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -5532,7 +5247,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="p m2">Please get in touch via <a href="#">Live Chat</a> and join our <a href="#">Community</a> to let us know what would make the perfect pension for you.</p>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">33</span></li>
+</template></div></div><i class="bar"></i><span class="mono">31</span></li>
 </ol>
 <!-- FLOW33 end -->
 <p class="txt">I had to work fast. Day one: read code from proof of concept, start sketching. Day two: check all required steps are covered. Day three: high fidelity. Day four: handover to our developer, with three days to ship it. Tick. Tock.</p>

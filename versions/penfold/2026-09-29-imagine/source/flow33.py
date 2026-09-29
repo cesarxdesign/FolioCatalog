@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The 33-step first onboarding, as one straight row of live screens.
+"""The first onboarding, as one straight row of live screens: 31 of its 33 steps.
 
 Each step is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.html) put into
 the state the step shows: sections shown or hidden, values changed, the page scrolled. Nothing
@@ -12,8 +12,9 @@ across one square.
 
 Order and states follow the flow picture (Portfolio/penfold-air/img/onboarding-mvp.webp),
 left to right, top to bottom. Values that differ from the catalogue screen were read off that
-picture. Three things are not in the catalogue and were drawn here from the picture: the
-assumptions dialog (step 13), the accepted docs state (step 26) and the checks screen (step 31).
+picture. Two steps on the picture are left out by request: the assumptions dialog and the
+"Hold on while we run some checks" screen. One state is not in the catalogue and was drawn here
+from the picture: every doc accepted (step 25).
 """
 import os, re, sys
 
@@ -111,35 +112,6 @@ def calc_step2():
     calc_val(s, 'v-need', 's-need', '&pound;2,792', '30.6%')
     return s
 
-ASSUMPTIONS_CSS = '''
-.dim{position:absolute;inset:0;background:rgba(0,0,0,.5)}
-.dlg{position:absolute;left:216px;top:396px;width:743px;height:1114px;padding:68px 68px 0;background:#fff;border-radius:3px;color:var(--navy)}
-.dlg h2{margin:0;font:700 24px/1 'Montserrat',sans-serif}
-.dlg h3{margin:52px 0 0;font:700 20px/1 'Montserrat',sans-serif}
-.dlg h2+h3{margin-top:50px}
-.dlg p{margin:22px 0 0;font:400 17px/28px 'Montserrat',sans-serif;color:var(--slate)}
-.dlg .ok{display:block;width:100%;height:60px;margin-top:34px;border:1px solid var(--line);border-radius:5px;background:#fff;
-  color:var(--navy);font:400 14.2px 'Montserrat',sans-serif}
-.dlg .x{position:absolute;right:22px;top:16px;font:400 20px/1 'Montserrat',sans-serif;color:#C8C8C8}
-'''
-ASSUMPTIONS = '''<div class="dim"></div>
-<div class="dlg"><span class="x">&times;</span>
-<h2>Widely used assumptions</h2>
-<h3>General assumptions</h3>
-<p>These calculations assume your money grows at 5% each year after deducting all fees, an inflation rate of 2.5% each year, and that you increase your payments each year by 2.5%. All numbers are shown in today&rsquo;s money, and your retirement income is based on 4% of your retirement pot including state pension at current levels.</p>
-<h3>Today&rsquo;s money &#129300;</h3>
-<p>To make things simple, all the numbers we show you are in &ldquo;today&rsquo;s money&rdquo;. This means they are based on what money is worth &amp; what things cost today.</p>
-<p>So, when thinking about how much you might need to live when you retire, just think about how much bills, shopping, holidays, school fees, socialising, all cost today.</p>
-<p>In real life, things get more expensive every year as you get older (by about 2-3% per year), but there&rsquo;s a simple trick. Each new year, increase your monthly payment by that same small amount and you&rsquo;ll stay on track. Don&rsquo;t worry though, we&rsquo;ll tell you exactly how much when the time comes.</p>
-<p>The very best thing to do is every time you start earning more money add a bit of that extra into your pension payment. Again, we&rsquo;ll help you decide how much on your Penfold Anniversary!</p>
-<button class="ok">OK, got it</button></div>
-'''
-def calc_assumptions():
-    s = calc('the assumptions, opened', 1, css=ASSUMPTIONS_CSS)
-    s.sub('<div class="col">', ASSUMPTIONS + '<div class="col" style="z-index:-1">')
-    s.extra += '.page{isolation:isolate}.dim,.dlg{z-index:1}'
-    return s
-
 CALC_Y = 440   # the page scrolled until the second question sits at the top
 
 def calc_480():
@@ -199,7 +171,7 @@ def docs_accepted():
     return Step('document-consent', 'every doc accepted', css=css)
 
 
-# ---------------------------------------------------------------- sign-up form (27-31)
+# ---------------------------------------------------------------- sign-up form
 SIGN_Y = 157
 
 def sign(note, **kw):
@@ -264,18 +236,8 @@ def sign_problem():
     s.sub('<p class="q">', '<p class="oops">There was a problem creating your account</p>\n    <p class="q">')
     return s
 
-def sign_checks():
-    s = sign('identity checks running',
-             css='.wait{margin:117px 0 0;display:flex;justify-content:center;gap:16px}'
-                 '.wait i{width:14px;height:14px;border-radius:50%;background:var(--pink)}.wait i:first-child{opacity:.18;transform:scale(.6)}'
-                 '.waitmsg{margin:50px 0 0;text-align:center;font:400 19.4px/1 \'Montserrat\',sans-serif;color:var(--navy)}')
-    s.rsub(r'<div class="col">[\s\S]*</div>\s*</div>\s*$',
-           '<div class="col">\n    <h1>Hold on while we run some<br>checks</h1>\n'
-           '    <div class="wait"><i></i><i></i></div>\n    <p class="waitmsg">Verifying identity..</p>\n  </div>\n</div>')
-    return s
 
-
-# ---------------------------------------------------------------- the 33, in order
+# ---------------------------------------------------------------- the steps, in order
 def steps():
     return [
         things_blank(),
@@ -290,7 +252,6 @@ def steps():
         calc('what you earn', 1),
         calc_step2(),
         calc('what you need saved, what you have', 3),
-        calc_assumptions(),
         calc_480(),
         calc_3000(),
         calc_970('the plan, paying 970'),
@@ -308,15 +269,14 @@ def steps():
         sign_address_found(),
         sign_account_missing(),
         sign_problem(),
-        sign_checks(),
         Step('standing-order', 'standing order details'),
         Step('confirmation', 'done'),
     ]
 
 
 # The squares on the flow picture: the modules the flow was later split into, and their colours there.
-GROUPS = [(6, '#CE372F'), (8, '#ECB73E'), (9, '#CE372F'), (17, '#72D4B7'), (19, '#F9FD56'),
-          (24, '#A638D8'), (26, '#3D91F7'), (31, '#3D91F7'), (33, '#F9FD56')]   # (last step, colour)
+GROUPS = [(6, '#CE372F'), (8, '#ECB73E'), (9, '#CE372F'), (16, '#72D4B7'), (18, '#F9FD56'),
+          (23, '#A638D8'), (25, '#3D91F7'), (29, '#3D91F7'), (31, '#F9FD56')]   # (last step, colour)
 
 def group(n):
     """(colour, whether the next step is in the same square)"""
@@ -336,16 +296,16 @@ def tile(n, s):
 
 def main():
     all_steps = steps()
-    assert len(all_steps) == 33
+    assert len(all_steps) == 31
     row = ('<!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->\n'
-           '<ol class="flow" aria-label="The first onboarding, 33 steps in order">\n'
+           '<ol class="flow" aria-label="The first onboarding, step by step">\n'
            + '\n'.join(tile(i + 1, s) for i, s in enumerate(all_steps))
            + '\n</ol>\n<!-- FLOW33 end -->')
     page = open(SITE, encoding='utf-8').read()
     assert page.count('<!-- FLOW33 start') == 1, 'markers missing in site/index.html'
     page = re.sub(r'<!-- FLOW33 start[\s\S]*?<!-- FLOW33 end -->', lambda m: row, page)
     open(SITE, 'w', encoding='utf-8').write(page)
-    print('33 steps, %.0f KB in the row' % (len(row) / 1024))
+    print('%d steps, %.0f KB in the row' % (len(all_steps), len(row) / 1024))
 
 
 if __name__ == '__main__':
