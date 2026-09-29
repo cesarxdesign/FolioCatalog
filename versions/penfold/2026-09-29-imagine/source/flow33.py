@@ -118,10 +118,12 @@ def screens():
         Screen('sign-up-upper', 'name, phone and password', [8], AMBER),
         Screen('savings-path', 'know the amount, or get help', [9], RED),
         calculator(),
-        Screen('monthly-payment', 'amount and day', [17, 18], YELLOW),
         plans(),
         Screen('document-consent', 'first doc open', range(24, 28), BLUE),   # four docs, one step each
         Screen('sign-up-form', 'the whole form, filled', range(28, 32), BLUE),
+        # Monthly payment is steps 17 and 18, but may sit anywhere after the start and before 32.
+        # Here it evens out the last column; the strip is no taller for it.
+        Screen('monthly-payment', 'amount and day', [17, 18], YELLOW),
         Screen('standing-order', 'standing order details', [32], YELLOW),
         Screen('confirmation', 'done', [33], YELLOW),
     ]
@@ -141,7 +143,7 @@ def tile(s, tw):
 def main():
     all_screens = screens()
     steps = [n for s in all_screens for n in s.steps]
-    assert steps == list(range(1, 34)), steps
+    assert sorted(steps) == list(range(1, 34)), steps
     cols, tw, room = columns(all_screens)
     height = round(room * tw / 1182)
     row = ('<!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->\n'
