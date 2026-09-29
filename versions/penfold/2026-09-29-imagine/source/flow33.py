@@ -23,7 +23,7 @@ CAT = os.path.abspath(os.path.join(HERE, *['..'] * 5, 'CodeCatalog', 'screens', 
 
 # Where each screen's content ends, in its own pixels, measured in Chrome (see NOTES.md).
 ENDS = {'three-things': 2320, 'enter-email': 427, 'sign-up-upper': 1032, 'savings-path': 428,
-        'savings-calculator': 2325, 'monthly-payment': 473, 'plan-selection': 3512, 'document-consent': 1174,
+        'savings-calculator': 2497, 'monthly-payment': 473, 'plan-selection': 3512, 'document-consent': 1174,
         'sign-up-form': 2200, 'standing-order': 1157, 'confirmation': 1017}
 WIDTH = 894           # the text column the strip has to fit, px on the page
 GAP = 16              # between columns
@@ -60,9 +60,10 @@ def load(sid):
 
 
 class Screen:
-    def __init__(self, sid, note, steps, colour, width=1182):
+    def __init__(self, sid, note, steps, colour, width=1182, grow=1):
+        """grow: this frame's share of its column's spare height; 0 keeps it at its least height."""
         self.sid, self.note, self.steps, self.colour = sid, note, list(steps), colour
-        self.width = width
+        self.width, self.grow = width, grow
         self.css, self.body = load(sid)
 
     def sub(self, old, new, count=1):
@@ -123,7 +124,8 @@ def screens():
     """The columns of the strip, left to right, each top to bottom. Laid out by hand."""
     return [
         [three_things(), sign_up_upper()],
-        [Screen('savings-path', 'know the amount, or get help', [9], RED), calculator()],
+        # savings path stays at its least height, so the gap under it sits well clear of the annotation line
+        [Screen('savings-path', 'know the amount, or get help', [9], RED, grow=0), calculator()],
         [plans()],
         [Screen('sign-up-form', 'the whole form, filled', range(28, 32), BLUE),
          Screen('document-consent', 'first doc open', range(24, 28), BLUE)],   # four docs, one step each
@@ -145,15 +147,15 @@ ANNOTATIONS = [
 
 def boxes(cols, tw, height):
     """Where each frame lands in the strip, in page pixels: {screen: (left, top, width, height)}.
-    Mirrors the CSS: a column's spare height is shared equally between its frames."""
+    Mirrors the CSS: a column's spare height is shared between its frames by their grow."""
     out = {}
     for i, c in enumerate(cols):
         base = [round(need(s) * tw / 1182) for s in c]
-        spare = (height - sum(base) - STACK_GAP * (len(c) - 1)) / len(c)
+        spare = (height - sum(base) - STACK_GAP * (len(c) - 1)) / sum(s.grow for s in c)
         top = 0
         for s, b in zip(c, base):
-            out[s.sid] = (i * (tw + GAP), top, tw, b + spare)
-            top += b + spare + STACK_GAP
+            out[s.sid] = (i * (tw + GAP), top, tw, b + spare * s.grow)
+            top += b + spare * s.grow + STACK_GAP
     return out
 
 
@@ -183,10 +185,10 @@ def tile(s, tw):
     # the screens are fixed 2640 frames that clip; here the frame is the tile, so let them run
     css = (":host{display:block;width:%dpx;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}\n" % s.width
            + s.css + '\n.page{overflow:visible}\n')
-    return ('<div class="step" style="--fw:%d;--fb:%d" data-screen="penfold/desktop/%s" data-steps="%s" data-module="%s" data-state="%s">'
+    return ('<div class="step" style="--fw:%d;--fb:%d;flex-grow:%d" data-screen="penfold/desktop/%s" data-steps="%s" data-module="%s" data-state="%s">'
             '<div class="win"><div class="pg"><template shadowrootmode="open"><style>\n%s\n</style>\n%s\n</template></div>'
             '</div></div>'
-            % (s.width, round(need(s) * tw / 1182), s.sid, ' '.join('%02d' % n for n in s.steps), s.colour, s.note, css, s.body))
+            % (s.width, round(need(s) * tw / 1182), s.grow, s.sid, ' '.join('%02d' % n for n in s.steps), s.colour, s.note, css, s.body))
 
 
 def main():

@@ -80,3 +80,9 @@ left gutter (title and short text). First one: "Unoptimized.", in Cesar's own wo
 details (sign-up with email, sign-up form). A line leaves each ring: the one from the sign-up form runs under the
 screens and shows only in the gaps between columns. A bracket in the gutter joins the two, with the caption at its middle.
 Copy and ring targets are in `ANNOTATIONS` in `flow33.py`.
+
+## Column 2
+
+Savings path stays at its least height (4:3) and the calculator takes the column's spare height, so the gap between
+them sits well above the annotation line that runs under the screens. The calculator's lower half was opened up in
+CodeCatalog the same day, which also made it longer.
