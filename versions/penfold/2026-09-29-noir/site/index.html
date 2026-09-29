@@ -81,6 +81,10 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 .closer .big{font-size:104px;line-height:1;letter-spacing:-.05em;font-weight:600}
 
 
+/* light/dark toggle in the nav */
+#theme{font:inherit;font-size:14px;color:var(--ink);background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer}
+#theme:hover{color:var(--mut)}
+
 footer{margin-top:auto;padding:48px 0 64px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end}
 footer .next{display:flex;flex-direction:column;gap:8px}
 footer .next a{font-size:40px;letter-spacing:-.03em;font-weight:600}
@@ -97,6 +101,7 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <a href="https://cesarxdesign.com">Work</a>
 <a href="https://cesarxdesign.com/cv.pdf">CV</a>
 <a href="mailto:cesarxdesign@gmail.com">Contact</a>
+<button type="button" id="theme" aria-pressed="false">Dark</button>
 </div>
 </nav>
 
@@ -222,5 +227,12 @@ footer .links{display:flex;gap:36px;font-size:14px}
 
 </div>
 </div>
+<script>
+(function(){var page=document.querySelector('.page'),b=document.getElementById('theme');
+function set(t){page.setAttribute('data-theme',t);b.textContent=t==='dark'?'Light':'Dark';b.setAttribute('aria-pressed',t==='dark');try{localStorage.setItem('noir-theme',t)}catch(e){}}
+var saved=null;try{saved=localStorage.getItem('noir-theme')}catch(e){}
+set(saved||'light');
+b.addEventListener('click',function(){set(page.getAttribute('data-theme')==='dark'?'light':'dark')});})();
+</script>
 </body>
 </html>
