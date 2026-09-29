@@ -81,9 +81,9 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 /* the first onboarding: its screens, live from CodeCatalog, whole, in one strip as tall as the longest */
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:100 900;font-display:block;src:url(_vendor/Montserrat.woff2) format('woff2')}
 @font-face{font-family:'Roboto Mono';font-style:normal;font-weight:100 700;font-display:block;src:url(_vendor/RobotoMono.woff2) format('woff2')}
-.flow{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:16px}
-.stack{display:flex;flex-direction:column;gap:12px;height:calc(var(--h)*1px)}
-.step{flex:1 1 calc(var(--fb)*1px);min-height:0;display:flex;flex-direction:column;gap:6px}
+.flow{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:16px;align-items:start}
+.stack{display:flex;flex-direction:column;gap:12px}
+.step{flex:none;height:calc(var(--fb)*1px);display:flex;flex-direction:column}   /* every frame at its least height, none stretched */
 .win{flex:1;min-height:0;overflow:hidden;background:#F6F6F6;border-radius:5px;position:relative;pointer-events:none}
 .win::after{content:"";position:absolute;inset:0;border-radius:5px;box-shadow:inset 0 0 0 1px var(--line)}
 .pg{width:calc(var(--fw)*1px);transform-origin:0 0;transform:scale(calc(var(--tw)/var(--fw)))}
