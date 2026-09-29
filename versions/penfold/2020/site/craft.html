@@ -145,10 +145,7 @@ svg{display:block;overflow:visible}
 .bare .frame3{border-radius:12px}
 /* dark: white ink with difference blending, so a note or arrow reads light on the page and dark where it
    crosses the white frame, as the black ink did in Figma */
-.bare.dark .note,.bare.dark .arrow{color:#FFFFFF;fill:#FFFFFF}
-/* the notes sit fully outside the frame (moved out 2026-09-29); in dark, the arrows stop at its edge instead of
-   crossing it in a second colour: the annotation layer is clipped to everything outside the frame */
-.bare.dark .anns{clip-path:path(evenodd,"M0 0H2212V1416H0Z M227 132H1961V1241H227Z")}
+.bare.dark .note,.bare.dark .arrow{color:#FFFFFF;fill:#FFFFFF}   /* notes and arrows sit wholly on the page, so one colour each theme */
 .bare.dark .alert{fill:none;mix-blend-mode:normal}
 .note{position:absolute;white-space:nowrap;color:#000;letter-spacing:0;
       font:400 44px/46.2px "Journal fallback",cursive}
@@ -181,15 +178,16 @@ svg{display:block;overflow:visible}
   <p class="note" style="left:1969px;top:866px">Check touch targets</p>
   <p class="note" style="left:627px;top:1260px">Not helpfull for small values</p>
   <p class="note" style="left:1218px;top:1297px">Allows unconsistent state</p>
-  <p class="note" style="left:871px;top:78px">Spacing</p>
+  <p class="note" style="left:871px;top:40px">Spacing</p>
 
-  <!-- the elbow arrows (Vectors 1 to 6), each at its Figma transform; the exports start 1 unit left of the node -->
-  <svg class="arrow" style="transform:matrix(1,0,0,1,85.5,434)" width="145.5" height="26.2735" viewBox="-1 0 145.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM144.5 20.5L134.5 14.7265V26.2735L144.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H135.5V20.5V19.5H0V20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(-1,0,0,1,1983.5,612)" width="89.5" height="26.2735" viewBox="-1 0 89.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM88.5 20.5L78.5 14.7265V26.2735L88.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H79.5V20.5V19.5H0V20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(-1,0,0,1,1990.5,927)" width="57.5" height="26.2735" viewBox="-1 0 57.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM56.5 20.5L46.5 14.7265V26.2735L56.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H47.5V20.5V19.5H0V20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(0,-1,-1,0,611.5,1290)" width="218" height="26.2735" viewBox="-1 0 218 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM217 20.5L207 14.7265V26.2735L217 20.5ZM0 0L-1 0V20.5H0H1V0L0 0ZM0 20.5L0 21.5L208 21.5V20.5V19.5L0 19.5L0 20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(0,-1,-1,0,1202.5,1325)" width="99" height="26.2735" viewBox="-1 0 99 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM98 20.5L88 14.7265V26.2735L98 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5L0 21.5L89 21.5V20.5V19.5L0 19.5L0 20.5Z"/></svg>
-  <svg class="arrow" style="transform:matrix(0,1,-1,0,856.5,126)" width="193.5" height="26.2735" viewBox="-1 0 193.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM192.5 20.5L182.5 14.7265V26.2735L192.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H183.5V20.5V19.5H0V20.5Z"/></svg>
+  <!-- the elbow arrows (Vectors 1 to 6), redrawn 2026-09-29: stretched from each note to 6 units short of the
+       frame, so they sit wholly on the page, never on the frame (the exports start 1 unit left of the node) -->
+  <svg class="arrow" style="transform:matrix(1,0,0,1,57.5,434)" width="164.5" height="26.2735" viewBox="-1 0 164.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM163.5 20.5L153.5 14.7265V26.2735L163.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H154.5V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(-1,0,0,1,2014.5,612)" width="48.5" height="26.2735" viewBox="-1 0 48.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM47.5 20.5L37.5 14.7265V26.2735L47.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H38.5V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(-1,0,0,1,2025.5,927)" width="59.5" height="26.2735" viewBox="-1 0 59.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM58.5 20.5L48.5 14.7265V26.2735L58.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H49.5V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(0,-1,-1,0,611.5,1290)" width="44" height="26.2735" viewBox="-1 0 44 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM43 20.5L33 14.7265V26.2735L43 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H34V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(0,-1,-1,0,1202.5,1325)" width="79" height="26.2735" viewBox="-1 0 79 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM78 20.5L68 14.7265V26.2735L78 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H69V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(0,1,-1,0,856.5,90)" width="37" height="26.2735" viewBox="-1 0 37 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM36 20.5L26 14.7265V26.2735L36 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H27V20.5V19.5H0V20.5Z"/></svg>
 
   <!-- alert-triangle (feather), red -->
   <svg class="arrow alert" style="transform:translate(1217px,1249px)" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#FF0000" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round">
