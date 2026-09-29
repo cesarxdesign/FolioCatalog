@@ -114,8 +114,10 @@ def plans():
 def screens():
     return [
         three_things(),
-        Screen('enter-email', 'email', [7], AMBER),
+        # Enter your email is step 07 but sits after 08, at the top of the second column: that
+        # takes it out of the first column, which was the tallest, and shortens the strip.
         Screen('sign-up-upper', 'name, phone and password', [8], AMBER),
+        Screen('enter-email', 'email', [7], AMBER),
         Screen('savings-path', 'know the amount, or get help', [9], RED),
         calculator(),
         plans(),

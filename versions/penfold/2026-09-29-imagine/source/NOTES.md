@@ -17,9 +17,10 @@ Under the sketches: the first onboarding as one strip of its 11 screens that fit
 sideways scroll. Each is the live CodeCatalog desktop screen in its longest state, shown whole (3 things
 with all three sections open, the calculator with the whole plan, plans through to risks accepted, the
 sign-up form filled). The strip has five columns, 166px each. Screens are stacked in sequence, split so the tallest
-column is as short as it can be: 3 things + email + sign-up upper | savings path + calculator |
+column is as short as it can be: 3 things + sign-up upper | email + savings path + calculator |
 plan selection | docs + sign-up form | monthly payment + standing order + confirmation. Monthly payment
-(steps 17 18) is out of sequence on purpose: it may sit anywhere but the start, and there it evens the columns. Frames stretch to fill their column.
+(steps 17 18) is out of sequence on purpose: it may sit anywhere but the start, and there it evens the columns.
+Enter your email (step 07) is out of sequence on purpose too: in the second column it shortens the strip. Frames stretch to fill their column.
 Built by `source/flow33.py`.
 
 No bars or step numbers under the screens (removed by request). A dot at the bottom right of each frame gives the
