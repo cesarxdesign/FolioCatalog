@@ -13,11 +13,15 @@ Exported whole from the Figma file `__Folio-study` and kept in CodeCatalog under
 
 ## The onboarding row
 
-Under the sketches: the first onboarding as one straight row of 31 live screens, scrolled sideways. Built by
-`source/flow33.py` from the CodeCatalog desktop screens, each put into the state its step shows. Order and
-states follow the flow picture (`Portfolio/penfold-air/img/onboarding-mvp.webp`). The bar under each step is
-the colour of its square on that picture, the modules the flow was later split into.
+Under the sketches: the first onboarding as one straight row of its 11 screens, scrolled sideways. Each is the
+live CodeCatalog desktop screen in its longest state, shown whole (3 things with all three sections open, the
+calculator with the whole plan, plans through to risks accepted, the sign-up form filled). Frames are 200px
+wide and as tall as the screen needs. Built by `source/flow33.py`.
+
+Under each screen: a bar in the colour of its square on the flow picture
+(`Portfolio/penfold-air/img/onboarding-mvp.webp`), the modules the flow was later split into, and the numbers
+of the steps that screen covers, 01 to 31.
 
 Left out by request: the assumptions dialog and the "Hold on while we run some checks" screen.
-Not in CodeCatalog, drawn in `flow33.py` from the picture: every doc accepted (step 25), still to be revisited.
+The all-docs-accepted state is not in CodeCatalog and is not shown; to be revisited.
 Montserrat and Roboto Mono are in `site/_vendor/` for these screens.
