@@ -13,5 +13,5 @@
     "screenshots": "source/screenshots (the old live site, captured 2024-07-07, 2x of a 2048px window)",
     "originals": "source/originals: Figma frames hero (121:5411), sketches (120:5372), craft (120:5379), exports and their raw images"
   },
-  "note": "The Penfold case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text; hero, sketches and montage are the original Figma frames; the 20 phone screens are cut from the screenshots and clipped to their measured boxes, ready to be swapped for originals."
+  "note": "The Penfold case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text; hero and sketches are the original Figma frames; the wireframe montage is rebuilt as code (craft.html); the 20 phone screens are cut from the screenshots and clipped to their measured boxes, ready to be swapped for originals."
 }

@@ -54,3 +54,26 @@ a 2 px black strip. Figma's font is Journal (Fontourist), which is not in google
 not shipped; Loved by the King (OFL, `site/fonts/`) stands in, with size-adjust 75% to match
 Journal's line widths and ascent/descent overrides that put the baseline where Journal's was.
 The unedited frame stays in `originals/craft/export.png`.
+
+## Montage rebuilt as code (2026-09-29)
+
+`site/craft.html` replaces `img/craft.webp` (now unused) so the montage can be edited. It rebuilds
+the craft frame (120:5379, 2212 x 1416) whole: Frame 3's two 2020 screenshots become the 12 Estimate
+screens coded from Figma "05 Estimate" (kt8yiHLl862LQIAT8GLvkP, section 10:4927), drawn twice,
+once in Figma's outline mode (left of the diagonal) and once in colour (right of it, clipped by
+Rectangle 1 with Rectangle 2's shadow). On top: the file's 59 prototype links, read with the Plugin
+API and drawn as connectors, Figma's frame selection and badges, then the orange marks, the six
+notes (moved here from index.html, same Loved by the King stand-in) and the elbow arrows at their
+Figma transforms.
+
+- Each screen's 2020 state is the `STATES` table: the file now holds every toggle off and every
+  field empty. Values the file lacks were read from the 2020 screenshot (`originals/craft/raw3.png`):
+  filled fields #FBFBFB, the 87% dot #4CD964, toggles on #FF5081.
+- Canvas zoom in the screenshot: 0.617363 craft units per canvas unit (screen edges 562 px apart
+  at 2x for 455 units), frame corner at (47.5, 43.5) in Frame 3.
+- Connector routing is not in the API; the curves leave the hotspot's right-middle sideways and
+  enter the facing edge of the destination (its side on the same row, its top or bottom across rows).
+- Outline mode: shapes solid, frames and groups dashed (6.5/3.2), 1 screen px (1.62 canvas units),
+  glyphs stroked. It mimics Figma's Outline view; it is not Figma's renderer.
+- SF Pro Text (status bar) is not shipped; the system font stands in. Montserrat is the variable
+  OFL font in `site/fonts/Montserrat.woff2`.
