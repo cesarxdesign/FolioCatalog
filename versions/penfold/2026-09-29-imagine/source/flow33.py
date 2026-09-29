@@ -137,10 +137,9 @@ def screens():
 # in the left gutter. The line leaves from the first ringed screen, which has to touch the left edge.
 ANNOTATIONS = [
     dict(rings=['sign-up-upper', 'sign-up-form'],
-         title='Unoptimized.',
-         body='The sequence was not ideal, breaking in and out of topic repeatedly. But to save engineering effort, '
-              'I made the call to keep it as close to the source code as possible, minimizing chances a dependency '
-              'would break or some data was needed before we actually captured it. A conscious tradeoff.'),   # Cesar's words
+         title='Unoptimised.',
+         body='The sequence broke in and out of topic. But each step relied on data captured before it, so '
+              'reordering risked breaking the flow. I traded UX for the deadline, and for a job our developer could finish.'),
 ]
 
 
