@@ -77,3 +77,8 @@ Figma transforms.
   glyphs stroked. It mimics Figma's Outline view; it is not Figma's renderer.
 - SF Pro Text (status bar) is not shipped; the system font stands in. Montserrat is the variable
   OFL font in `site/fonts/Montserrat.woff2`.
+
+2026-09-29 (later), on request ("fix this on source"): craft.html now carries the Imagine changes as its
+defaults and is byte-identical to penfold/2026-09-29-imagine/site/craft.html: transparent page, the white
+frame as the only ground (12px corners), no Figma selection outline, handles, size label or flow badge, and
+the diagonal cut moved to the 3rd top screen's top-right corner. The page embeds craft.html?v=3.

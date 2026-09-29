@@ -35,13 +35,13 @@
   --orange:rgba(255,154,2,.6);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#FAFAFA;overflow:hidden}
+html,body{background:transparent;overflow:hidden}   /* no panel around the frame: the host page shows through (2026-09-29) */
 svg{display:block;overflow:visible}
 
 /* ---------- the craft frame (2212 x 1416), scaled to the window by the script ---------- */
-.craft{position:relative;width:2212px;height:1416px;background:#FAFAFA;transform-origin:0 0;
+.craft{position:relative;width:2212px;height:1416px;background:transparent;transform-origin:0 0;
        transform:scale(var(--k,1)) translate(var(--cx,0),var(--cy,0))}
-.frame3{position:absolute;left:227px;top:132px;width:1734px;height:1109px;overflow:hidden;background:#FFFFFF}
+.frame3{position:absolute;left:227px;top:132px;width:1734px;height:1109px;overflow:hidden;background:#FFFFFF;border-radius:12px}   /* only the screens' frame keeps a white ground */
 .layer{position:absolute;inset:0}
 /* the cut runs from the bottom-left corner of the 2nd bottom screen through the top-right corner of the
    3rd top screen (moved 2026-09-29; the 2020 frame had it at the 4th top screen's top-left) */
@@ -134,7 +134,17 @@ svg{display:block;overflow:visible}
 .mark{position:absolute;border-radius:8px;background:var(--orange);mix-blend-mode:multiply}
 .mark.is-red{box-shadow:inset 0 0 0 4px #FF0000}
 .spot{position:absolute;border-radius:50%;background:var(--orange);mix-blend-mode:multiply}
-.arrow{position:absolute;left:0;top:0;transform-origin:0 0}
+.arrow{position:absolute;left:0;top:0;transform-origin:0 0;fill:#000}
+.alert{fill:none}
+
+/* craft.html#bare: no grey around the white frame, which becomes the edge; the notes hang outside it
+   on the host page, so they follow its light/dark theme (Penfold Imagine) */
+.bare,.bare body,.bare .craft{background:transparent}
+.bare .frame3{border-radius:12px}
+/* dark: white ink with difference blending, so a note or arrow reads light on the page and dark where it
+   crosses the white frame, as the black ink did in Figma */
+.bare.dark .note,.bare.dark .arrow{color:#FFFFFF;fill:#FFFFFF;mix-blend-mode:difference}
+.bare.dark .alert{fill:none;mix-blend-mode:normal}
 .note{position:absolute;white-space:nowrap;color:#000;letter-spacing:0;
       font:400 44px/46.2px "Journal fallback",cursive}
 </style>
@@ -176,7 +186,7 @@ svg{display:block;overflow:visible}
   <svg class="arrow" style="transform:matrix(0,1,-1,0,856.5,122)" width="193.5" height="26.2735" viewBox="-1 0 193.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM192.5 20.5L182.5 14.7265V26.2735L192.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H183.5V20.5V19.5H0V20.5Z"/></svg>
 
   <!-- alert-triangle (feather), red -->
-  <svg class="arrow" style="transform:translate(1217px,1220px)" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#FF0000" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round">
+  <svg class="arrow alert" style="transform:translate(1217px,1220px)" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#FF0000" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round">
     <path d="M17.15 6.43327L3.03337 29.9999C2.74231 30.504 2.58831 31.0754 2.58668 31.6575C2.58505 32.2395 2.73585 32.8118 3.02408 33.3175C3.31231 33.8231 3.72791 34.2445 4.22955 34.5397C4.73118 34.8349 5.30137 34.9935 5.88337 34.9999H34.1167C34.6987 34.9935 35.2689 34.8349 35.7705 34.5397C36.2722 34.2445 36.6878 33.8231 36.976 33.3175C37.2642 32.8118 37.415 32.2395 37.4134 31.6575C37.4118 31.0754 37.2578 30.504 36.9667 29.9999L22.85 6.43327C22.5529 5.94345 22.1346 5.53847 21.6354 5.25741C21.1361 4.97635 20.5729 4.82869 20 4.82869C19.4271 4.82869 18.8639 4.97635 18.3647 5.25741C17.8655 5.53847 17.4472 5.94345 17.15 6.43327V6.43327Z"/>
     <path d="M20 15V21.6667"/><path d="M20 28.3333H20.0171"/>
   </svg>
@@ -357,17 +367,15 @@ for(const [hx,hy,hw,hh,dest] of LINKS){
   add('circle',{cx:f(sx),cy:f(sy),r:2.9},dots);
 }
 
-/* the selected frame: blue line, corner handles, size badge, flow-start badge */
-const [fx0,fy0]=P(0,0), [fx1,fy1]=P(2650,1664);
-add('rect',{x:f(fx0-.25),y:f(fy0-.25),width:f(fx1-fx0+.5),height:f(fy1-fy0+.5),fill:'none',stroke:'#18A0FB','stroke-width':.5});
-for(const [x,y] of [[fx0,fy0],[fx1,fy0],[fx0,fy1],[fx1,fy1]])
-  add('rect',{x:f(x-2.4),y:f(y-2.4),width:4.8,height:4.8,fill:'#FFFFFF',stroke:'#18A0FB','stroke-width':.5});
-const bx=(fx0+fx1)/2;
-add('rect',{x:f(bx-23.5),y:f(fy1+4.4),width:47,height:11,rx:2,fill:'#18A0FB'});
-const bt=add('text',{x:f(bx),y:f(fy1+12.4),'text-anchor':'middle',fill:'#FFFFFF','font-size':7.6,'font-family':'Inter,-apple-system,system-ui,sans-serif','font-weight':500});
-bt.textContent='2650 × 1664';
-add('rect',{x:f(fx0-15),y:f(fy0),width:15,height:15,fill:'#18A0FB'});
-add('path',{d:`M${f(fx0-10)} ${f(fy0+4.2)}V${f(fy0+10.8)}L${f(fx0-4.4)} ${f(fy0+7.5)}Z`,fill:'none',stroke:'#FFFFFF','stroke-width':.6,'stroke-linejoin':'round'});
+/* the selected frame (blue line, corner handles, size badge, flow-start badge) was cut on request, 2026-09-29 */
+
+/* ---------- #bare: transparent page, notes in the host page's theme ---------- */
+if(/(^|[#&])bare\b/.test(location.hash)){
+  const root=document.documentElement; root.classList.add('bare');
+  try{const pg=parent.document.querySelector('.page[data-theme]');
+    const sync=()=>root.classList.toggle('dark',pg.getAttribute('data-theme')==='dark');
+    sync(); new MutationObserver(sync).observe(pg,{attributes:true,attributeFilter:['data-theme']});}catch(e){}
+}
 
 /* ---------- fit the frame to the window; craft.html#crop=x,y,w,h shows only that box ---------- */
 const crop=((location.hash.match(/crop=([-\d.,]+)/)||[])[1]||'0,0,2212').split(',').map(Number);
