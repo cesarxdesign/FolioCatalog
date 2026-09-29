@@ -159,19 +159,25 @@ def boxes(cols, tw, height):
 
 
 def annotations(cols, tw, height):
-    pos, rings, caps = boxes(cols, tw, height), [], []
+    """(rings and lines that sit inside the grid, captions and brackets that sit in the gutter)"""
+    pos, inside, gutter = boxes(cols, tw, height), [], []
     for a in ANNOTATIONS:
+        mids = []
         for sid in a['rings']:
             l, t, w, h = pos[sid]
-            rings.append('<div class="ring" style="left:%.3f%%;top:%.3f%%;width:%.3f%%;height:%.3f%%"></div>'
-                         % (100 * l / WIDTH, 100 * t / height, 100 * w / WIDTH, 100 * h / height))
-        l, t, w, h = pos[a['rings'][0]]
-        mid = 100 * (t + h / 2) / height
-        caps.append('<div class="lead" style="top:%.3f%%;width:calc(%.3f%% + 40px)"></div>'
-                    '<div class="dot" style="top:calc(%.3f%% - 3.5px)"></div>'
-                    '<figcaption class="cap" style="top:calc(%.3f%% - 14px)"><span class="ct">%s</span><span class="cb">%s</span></figcaption>'
-                    % (mid, 100 * l / WIDTH, mid, mid, a['title'], a['body']))
-    return '\n'.join(rings), '\n'.join(caps)
+            inside.append('<div class="ring" style="left:%.3f%%;top:%.3f%%;width:%.3f%%;height:%.3f%%"></div>'
+                          % (100 * l / WIDTH, 100 * t / height, 100 * w / WIDTH, 100 * h / height))
+            mids.append(100 * (t + h / 2) / height)
+            if l > 0:       # not at the left edge: its line runs under the screens to the gutter
+                inside.append('<div class="lead under" style="top:%.3f%%;width:%.3f%%"></div>' % (mids[-1], 100 * l / WIDTH))
+        cap = '<span class="ct">%s</span><span class="cb">%s</span>' % (a['title'], a['body'])
+        if len(mids) == 1:
+            gutter.append('<div class="lead" style="top:%.3f%%;width:40px"></div><div class="dot" style="top:calc(%.3f%% - 3.5px)"></div>'
+                          '<figcaption class="cap" style="top:calc(%.3f%% - 14px)">%s</figcaption>' % (mids[0], mids[0], mids[0], cap))
+        else:               # a bracket from the highest line to the lowest, the caption at its middle
+            gutter.append('<div class="bracket" style="top:%.3f%%;bottom:%.3f%%"><div class="dot"></div>'
+                          '<figcaption class="cap">%s</figcaption></div>' % (min(mids), 100 - max(mids), cap))
+    return '\n'.join(inside), '\n'.join(gutter)
 
 
 def tile(s, tw):

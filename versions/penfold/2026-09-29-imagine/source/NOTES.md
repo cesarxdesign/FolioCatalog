@@ -77,4 +77,6 @@ the modular onboarding.
 
 Annotations on the grid follow the live Cable page's design: a ring on the screen, a line out to a caption in the
 left gutter (title and short text). First one: "Unfamiliar sequence.", ringing the two screens that ask for personal
-details (sign-up with email, sign-up form). Copy and ring targets are in `ANNOTATIONS` in `flow33.py`.
+details (sign-up with email, sign-up form). A line leaves each ring: the one from the sign-up form runs under the
+screens and shows only in the gaps between columns. A bracket in the gutter joins the two, with the caption at its middle.
+Copy and ring targets are in `ANNOTATIONS` in `flow33.py`.
