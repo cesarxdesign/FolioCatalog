@@ -43,7 +43,9 @@ svg{display:block;overflow:visible}
        transform:scale(var(--k,1)) translate(var(--cx,0),var(--cy,0))}
 .frame3{position:absolute;left:227px;top:132px;width:1734px;height:1109px;overflow:hidden;background:#FFFFFF}
 .layer{position:absolute;inset:0}
-.select{background:#FFFFFF;clip-path:polygon(915.5px 0,1754.5px 0,1754.5px 1109px,309px 1109px)}
+/* the cut runs from the bottom-left corner of the 2nd bottom screen through the top-right corner of the
+   3rd top screen (moved 2026-09-29; the 2020 frame had it at the 4th top screen's top-left) */
+.select{background:#FFFFFF;clip-path:polygon(862.5px 0,1754.5px 0,1754.5px 1109px,309.3px 1109px)}
 .cutshadow{position:absolute;left:285px;top:-20px}
 .view{position:absolute;left:47.5px;top:43.5px;width:2650px;height:1664px;transform-origin:0 0;
       transform:scale(.617363)}
@@ -143,7 +145,7 @@ svg{display:block;overflow:visible}
     <div class="layer wire ol" id="wire"><div class="view" id="wireView"></div></div>
     <svg class="cutshadow" width="1493.5" height="1157" viewBox="0 0 1493.5 1157" aria-hidden="true">
       <filter id="cs" x="0" y="0" width="1493.5" height="1157" filterUnits="userSpaceOnUse"><feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#000" flood-opacity=".24"/></filter>
-      <path d="M630.5 20L1469.5 20V1129H24L630.5 20Z" fill="#C4C4C4" filter="url(#cs)"/>
+      <path d="M577.5 20L1469.5 20V1129H24.3L577.5 20Z" fill="#C4C4C4" filter="url(#cs)"/>
     </svg>
     <div class="layer select" id="select"><div class="view" id="selectView"></div></div>
     <svg class="over" id="over" width="1734" height="1109" aria-hidden="true"></svg>
