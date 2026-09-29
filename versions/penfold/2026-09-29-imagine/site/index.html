@@ -78,17 +78,17 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 .voices .by{font-size:14px;line-height:1.4;color:var(--mut)}
 
 
-/* the first onboarding: its screens, live from CodeCatalog, whole, in one row scrolled sideways */
+/* the first onboarding: its screens, live from CodeCatalog, whole, in one strip as tall as the longest */
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:100 900;font-display:block;src:url(_vendor/Montserrat.woff2) format('woff2')}
 @font-face{font-family:'Roboto Mono';font-style:normal;font-weight:100 700;font-display:block;src:url(_vendor/RobotoMono.woff2) format('woff2')}
-.flow{list-style:none;margin:0;padding:0 0 16px;display:flex;align-items:flex-start;gap:16px;overflow-x:auto;scrollbar-width:thin}
-.step{flex:0 0 auto;display:flex;flex-direction:column;gap:10px}
-.win{width:200px;height:calc(var(--fh)*1px);overflow:hidden;background:#F6F6F6;border-radius:6px;position:relative;pointer-events:none}
-.win::after{content:"";position:absolute;inset:0;border-radius:6px;box-shadow:inset 0 0 0 1px var(--line)}
-.step .bar{display:block;height:4px;border-radius:2px;background:var(--gc)}
-.step.run .bar{width:calc(100% + 16px);border-radius:2px 0 0 2px}
-.step.run + .step .bar{border-top-left-radius:0;border-bottom-left-radius:0}
-.pg{width:calc(var(--fw)*1px);transform-origin:0 0;transform:scale(calc(200/var(--fw)))}
+.flow{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:16px}
+.stack{display:flex;flex-direction:column;gap:12px;height:calc(var(--h)*1px)}
+.step{flex:1 1 calc(var(--fb)*1px);min-height:0;display:flex;flex-direction:column;gap:6px}
+.win{flex:1;min-height:0;overflow:hidden;background:#F6F6F6;border-radius:5px;position:relative;pointer-events:none}
+.win::after{content:"";position:absolute;inset:0;border-radius:5px;box-shadow:inset 0 0 0 1px var(--line)}
+.step .bar{display:block;flex:none;height:4px;border-radius:2px;background:var(--gc)}
+.step .mono{flex:none;font-size:10px;line-height:12px;letter-spacing:0;white-space:nowrap}
+.pg{width:calc(var(--fw)*1px);transform-origin:0 0;transform:scale(calc(var(--tw)/var(--fw)))}
 
 /* images: the hero and shot treatment from the live Cable page */
 .heroimg{display:block;width:100%;height:600px;object-fit:cover;border-radius:12px;box-shadow:0 60px 140px -40px var(--halo)}
@@ -157,8 +157,9 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <p class="txt">If I had had more time, I&rsquo;d&rsquo;ve made a shorter onboarding. But I joined 7 days from a funding deadline that needed a live product with real customers. And I knew nothing about pensions.</p>
 <img class="shot" src="img/sketches-strip.webp" alt="Day-one sketches for Penfold: notes, a 3D pot, dashboard layouts, the donut and transaction rows" width="3974" height="1210">
 <!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->
-<ol class="flow" aria-label="The first onboarding, screen by screen">
-<li class="step" style="--fw:1231;--fh:393;--gc:#CE372F" data-screen="penfold/desktop/three-things" data-state="all three sections open"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+<div class="flow" style="--n:6;--tw:135.667;--h:458" role="group" aria-label="The first onboarding, screen by screen">
+<div class="stack">
+<div class="step" style="--fw:1231;--fb:284;--gc:#CE372F" data-screen="penfold/desktop/three-things" data-state="all three sections open"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1231px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 :host{--bg:#F6F6F6;--navy:#133253;--pink:#ED5E83;--blue:#5689EA;--green:#70E6B3}
 *{box-sizing:border-box}
@@ -292,8 +293,8 @@ h1{font:700 49px/57px 'Montserrat';letter-spacing:-.9px}
 <button class="cta">Get started</button>
 <p class="foot">With pensions, as with all investments, your capital is at risk and the value of your pension with Penfold may go up as well as down. You may get back less than you put in.</p>
 </main>
-</template></div></div><i class="bar"></i><span class="mono">01 02 03 04 05 06</span></li>
-<li class="step run" style="--fw:1182;--fh:326;--gc:#ECB73E" data-screen="penfold/desktop/enter-email" data-state="email"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">01 02 03 04 05 06</span></div>
+<div class="step" style="--fw:1182;--fb:78;--gc:#ECB73E" data-screen="penfold/desktop/enter-email" data-state="email"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 :host{
@@ -338,8 +339,10 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="btn go" disabled>Get Started</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">07</span></li>
-<li class="step" style="--fw:1182;--fh:326;--gc:#ECB73E" data-screen="penfold/desktop/sign-up-upper" data-state="name, phone and password"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">07</span></div>
+</div>
+<div class="stack">
+<div class="step" style="--fw:1182;--fb:136;--gc:#ECB73E" data-screen="penfold/desktop/sign-up-upper" data-state="name, phone and password"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 :host{
@@ -433,8 +436,8 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="btn go" disabled>Set up your account</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">08</span></li>
-<li class="step" style="--fw:1182;--fh:326;--gc:#CE372F" data-screen="penfold/desktop/savings-path" data-state="know the amount, or get help"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">08</span></div>
+<div class="step" style="--fw:1182;--fb:78;--gc:#CE372F" data-screen="penfold/desktop/savings-path" data-state="know the amount, or get help"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 :host{
@@ -483,8 +486,10 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     </div>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">09</span></li>
-<li class="step" style="--fw:1182;--fh:410;--gc:#72D4B7" data-screen="penfold/desktop/savings-calculator" data-state="the whole plan"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">09</span></div>
+</div>
+<div class="stack">
+<div class="step" style="--fw:1182;--fb:296;--gc:#72D4B7" data-screen="penfold/desktop/savings-calculator" data-state="the whole plan"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 :host{
@@ -648,8 +653,8 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="foot">Calculations are based on a set of <a href="#">widely used assumptions</a>.</p>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">10 11 12 13 14 15 16</span></li>
-<li class="step" style="--fw:1182;--fh:326;--gc:#F9FD56" data-screen="penfold/desktop/monthly-payment" data-state="amount and day"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">10 11 12 13 14 15 16</span></div>
+<div class="step" style="--fw:1182;--fb:83;--gc:#F9FD56" data-screen="penfold/desktop/monthly-payment" data-state="amount and day"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 
@@ -731,8 +736,10 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <button class="next">Next</button>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">17 18</span></li>
-<li class="step" style="--fw:1182;--fh:610;--gc:#A638D8" data-screen="penfold/desktop/plan-selection" data-state="plan, risk level and risks accepted"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">17 18</span></div>
+</div>
+<div class="stack">
+<div class="step" style="--fw:1182;--fb:432;--gc:#A638D8" data-screen="penfold/desktop/plan-selection" data-state="plan, risk level and risks accepted"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 
@@ -1075,8 +1082,10 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 
   <p class="note">*Your investments are covered by the government&rsquo;s <a href="#">Financial Services Compensation Scheme</a> up to a limit of &pound;85,000. Please be aware that this does not cover a fall in the value of your investment.</p>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">19 20 21 22 23</span></li>
-<li class="step" style="--fw:1182;--fh:326;--gc:#3D91F7" data-screen="penfold/desktop/document-consent" data-state="first doc open"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">19 20 21 22 23</span></div>
+</div>
+<div class="stack">
+<div class="step" style="--fw:1182;--fb:164;--gc:#3D91F7" data-screen="penfold/desktop/document-consent" data-state="first doc open"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 
@@ -1166,8 +1175,8 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="all" disabled>Accept all terms</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">24 25 26 27</span></li>
-<li class="step" style="--fw:1182;--fh:374;--gc:#3D91F7" data-screen="penfold/desktop/sign-up-form" data-state="the whole form, filled"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">24 25 26 27</span></div>
+<div class="step" style="--fw:1182;--fb:281;--gc:#3D91F7" data-screen="penfold/desktop/sign-up-form" data-state="the whole form, filled"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 
@@ -1364,8 +1373,10 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="submit">Set up your account</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">28 29 30 31</span></li>
-<li class="step run" style="--fw:1182;--fh:326;--gc:#F9FD56" data-screen="penfold/desktop/standing-order" data-state="standing order details"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">28 29 30 31</span></div>
+</div>
+<div class="stack">
+<div class="step" style="--fw:1182;--fb:162;--gc:#F9FD56" data-screen="penfold/desktop/standing-order" data-state="standing order details"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 :host{--navy:#133253;--slate:#133253;--muted:#4C5D70;--pink:#ED5E83;--indigo:#7C90E7}
@@ -1435,8 +1446,8 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <button class="btn go">I&rsquo;ve set up the standing order</button>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">32</span></li>
-<li class="step" style="--fw:1182;--fh:326;--gc:#F9FD56" data-screen="penfold/desktop/confirmation" data-state="done"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+</template></div></div><i class="bar"></i><span class="mono">32</span></div>
+<div class="step" style="--fw:1182;--fb:146;--gc:#F9FD56" data-screen="penfold/desktop/confirmation" data-state="done"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 :host{--navy:#133253;--slate:#133253;--muted:#4C5D70;--pink:#ED5E83;--indigo:#7C90E7}
@@ -1477,8 +1488,9 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="p m2">Please get in touch via <a href="#">Live Chat</a> and join our <a href="#">Community</a> to let us know what would make the perfect pension for you.</p>
   </div>
 </div>
-</template></div></div><i class="bar"></i><span class="mono">33</span></li>
-</ol>
+</template></div></div><i class="bar"></i><span class="mono">33</span></div>
+</div>
+</div>
 <!-- FLOW33 end -->
 <p class="txt">I had to work fast. Day one: read code from proof of concept, start sketching. Day two: check all required steps are covered. Day three: high fidelity. Day four: handover to our developer, with three days to ship it. Tick. Tock.</p>
 <div class="group"><p class="txt">We made the deadline. The flow was 33 steps long, took more than 10 minutes to finish, and needed about 5 days to set up a pension.</p><p class="txt">Funding secured.</p></div>

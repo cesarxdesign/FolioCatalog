@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""The first onboarding, as one straight row of live screens: one tile per screen.
+"""The first onboarding, as one strip of live screens that fits the column: one tile per screen.
 
 Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.html) in its
-longest, most complete state, shown whole: nothing is cropped or scrolled. Under it, a bar in
+longest, most complete state, shown whole: nothing is cropped or scrolled. The strip is as tall
+as the longest screen (Plan selection). Shorter screens are stacked in one column, in sequence,
+as many as fit that height, and their frames stretch to fill it. Under each screen, a bar in
 the colour of its square on the flow picture (the modules the flow was later split into) and
 the numbers of the steps that screen covers. Nothing is clickable; each tile is one fixed state
 in its own shadow root.
@@ -22,9 +24,35 @@ CAT = os.path.abspath(os.path.join(HERE, *['..'] * 5, 'CodeCatalog', 'screens', 
 # Where each screen's content ends, in its own pixels, measured in Chrome (see NOTES.md).
 ENDS = {'three-things': 2320, 'enter-email': 427, 'sign-up-upper': 936, 'savings-path': 428,
         'savings-calculator': 2325, 'monthly-payment': 473, 'plan-selection': 3512, 'document-consent': 1174,
-        'sign-up-form': 2113, 'standing-order': 1157, 'confirmation': 1017}
-BELOW = 96            # room left under a screen's last element, in screen pixels
-FRAME = 326           # a frame's height on the page; taller only where the screen needs it
+        'sign-up-form': 2200, 'standing-order': 1157, 'confirmation': 1017}
+WIDTH = 894           # the text column the strip has to fit, px on the page
+GAP = 16              # between columns
+BELOW = 60            # least room under a screen's last element, in screen pixels
+TALLEST = 290         # room under the longest screen; sets the strip's height
+LABEL = 22            # bar and step numbers under a frame, px on the page
+STACK_GAP = 12        # between two screens in one column, px on the page
+
+
+def need(s):
+    """A screen's height at the 1182 frame width, with the least room under it."""
+    return (ENDS[s.sid] + BELOW) * 1182 / s.width
+
+
+def columns(all_screens):
+    """Screens packed into columns in sequence; a column takes screens until the next would not fit.
+    The column count decides the scale, and the scale decides what the labels cost, so try counts."""
+    room = max(ENDS[s.sid] * 1182 / s.width for s in all_screens) + TALLEST
+    for n in range(1, len(all_screens) + 1):
+        tw = (WIDTH - GAP * (n - 1)) / n
+        extra = (LABEL + STACK_GAP) * 1182 / tw          # what one more screen in a column costs
+        cols = [[]]
+        for s in all_screens:
+            used = sum(need(x) for x in cols[-1]) + extra * len(cols[-1])
+            if cols[-1] and used + need(s) > room:
+                cols.append([])
+            cols[-1].append(s)
+        if len(cols) <= n:
+            return cols, (WIDTH - GAP * (len(cols) - 1)) / len(cols), room
 
 
 def load(sid):
@@ -41,9 +69,9 @@ def load(sid):
 
 
 class Screen:
-    def __init__(self, sid, note, steps, colour, joins_next=False, width=1182):
+    def __init__(self, sid, note, steps, colour, width=1182):
         self.sid, self.note, self.steps, self.colour = sid, note, list(steps), colour
-        self.joins_next, self.width = joins_next, width
+        self.width = width
         self.css, self.body = load(sid)
 
     def sub(self, old, new, count=1):
@@ -85,7 +113,7 @@ def plans():
 def screens():
     return [
         three_things(),
-        Screen('enter-email', 'email', [7], AMBER, joins_next=True),
+        Screen('enter-email', 'email', [7], AMBER),
         Screen('sign-up-upper', 'name, phone and password', [8], AMBER),
         Screen('savings-path', 'know the amount, or get help', [9], RED),
         calculator(),
@@ -93,20 +121,19 @@ def screens():
         plans(),
         Screen('document-consent', 'first doc open', range(24, 28), BLUE),   # four docs, one step each
         Screen('sign-up-form', 'the whole form, filled', range(28, 32), BLUE),
-        Screen('standing-order', 'standing order details', [32], YELLOW, joins_next=True),
+        Screen('standing-order', 'standing order details', [32], YELLOW),
         Screen('confirmation', 'done', [33], YELLOW),
     ]
 
 
-def tile(s):
-    frame_h = max(FRAME, round((ENDS[s.sid] + BELOW) * 200 / s.width))
+def tile(s, tw):
     # the screens are fixed 2640 frames that clip; here the frame is the tile, so let them run
     css = (":host{display:block;width:%dpx;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}\n" % s.width
            + s.css + '\n.page{overflow:visible}\n')
-    return ('<li class="step%s" style="--fw:%d;--fh:%d;--gc:%s" data-screen="penfold/desktop/%s" data-state="%s">'
+    return ('<div class="step" style="--fw:%d;--fb:%d;--gc:%s" data-screen="penfold/desktop/%s" data-state="%s">'
             '<div class="win"><div class="pg"><template shadowrootmode="open"><style>\n%s\n</style>\n%s\n</template></div></div>'
-            '<i class="bar"></i><span class="mono">%s</span></li>'
-            % (' run' if s.joins_next else '', s.width, frame_h, s.colour, s.sid, s.note, css, s.body,
+            '<i class="bar"></i><span class="mono">%s</span></div>'
+            % (s.width, round(need(s) * tw / 1182) + LABEL, s.colour, s.sid, s.note, css, s.body,
                ' '.join('%02d' % n for n in s.steps)))
 
 
@@ -114,14 +141,18 @@ def main():
     all_screens = screens()
     steps = [n for s in all_screens for n in s.steps]
     assert steps == list(range(1, 34)), steps
+    cols, tw, room = columns(all_screens)
+    height = round(room * tw / 1182) + LABEL
     row = ('<!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->\n'
-           '<ol class="flow" aria-label="The first onboarding, screen by screen">\n'
-           + '\n'.join(tile(s) for s in all_screens) + '\n</ol>\n<!-- FLOW33 end -->')
+           '<div class="flow" style="--n:%d;--tw:%.3f;--h:%d" role="group" aria-label="The first onboarding, screen by screen">\n' % (len(cols), tw, height)
+           + '\n'.join('<div class="stack">\n' + '\n'.join(tile(s, tw) for s in c) + '\n</div>' for c in cols)
+           + '\n</div>\n<!-- FLOW33 end -->')
     page = open(SITE, encoding='utf-8').read()
     assert page.count('<!-- FLOW33 start') == 1, 'markers missing in site/index.html'
     page = re.sub(r'<!-- FLOW33 start[\s\S]*?<!-- FLOW33 end -->', lambda m: row, page)
     open(SITE, 'w', encoding='utf-8').write(page)
-    print('%d screens, %d steps, %.0f KB in the row' % (len(all_screens), len(steps), len(row) / 1024))
+    print('%d screens in %d columns of %.1fpx, strip %dpx tall' % (len(all_screens), len(cols), tw, height))
+    for c in cols: print('  ', ' + '.join('%s (%s)' % (x.sid, ' '.join('%02d' % n for n in x.steps)) for x in c))
 
 
 if __name__ == '__main__':
