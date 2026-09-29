@@ -87,3 +87,5 @@ Copy and ring targets are in `ANNOTATIONS` in `flow33.py`.
 Savings path stays at its least height (4:3) and the calculator takes the column's spare height, so the gap between
 them sits well above the annotation line that runs under the screens. The calculator's lower half was opened up in
 CodeCatalog the same day, which also made it longer.
+
+Annotation rings, lines, bracket and dot are Penfold's pink, #FF5081 ("Pinkfold" in the Figma file). The page dots stay in the accent blue.

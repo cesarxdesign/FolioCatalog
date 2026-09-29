@@ -9,8 +9,8 @@
 <style>
 /* Penfold Imagine: the Colour page with images. Hero image as on the live Cable page. Light and dark. */
 /* palette taken from the live Penfold page (cesarxdesign.com/penfold) */
-[data-theme="light"]{--bg:#f2f5f7;--ink:#151515;--soft:#98a0a8;--mut:#6b737b;--body:#5b6470;--line:#e7e8ea;--acc:#6076DD;--acc2:#98a6e9;--accg:#6076DD;--chip:#6076DD;--glow:rgba(96,118,221,.05);--halo:rgba(96,118,221,.14)}
-[data-theme="dark"]{--bg:#101519;--ink:#eef0f2;--soft:#7c8188;--mut:#8b9198;--body:#b3b7bd;--line:#2a2d33;--acc:#6076DD;--acc2:#b7c1f0;--accg:#6076DD;--chip:#6076DD;--glow:rgba(96,118,221,.07);--halo:rgba(96,118,221,.30)}
+[data-theme="light"]{--bg:#f2f5f7;--ink:#151515;--soft:#98a0a8;--mut:#6b737b;--body:#5b6470;--line:#e7e8ea;--acc:#6076DD;--acc2:#98a6e9;--accg:#6076DD;--chip:#6076DD;--ann:#FF5081;--annglow:rgba(255,80,129,.10);--glow:rgba(96,118,221,.05);--halo:rgba(96,118,221,.14)}
+[data-theme="dark"]{--bg:#101519;--ink:#eef0f2;--soft:#7c8188;--mut:#8b9198;--body:#b3b7bd;--line:#2a2d33;--acc:#6076DD;--acc2:#b7c1f0;--accg:#6076DD;--chip:#6076DD;--ann:#FF5081;--annglow:rgba(255,80,129,.16);--glow:rgba(96,118,221,.07);--halo:rgba(96,118,221,.30)}
 body:has([data-theme="dark"]){background:#101519}
 body{margin:0;background:#f2f5f7;font-family:'Geist',-apple-system,'Helvetica Neue',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 a{color:var(--ink);text-decoration:none}a:hover{color:var(--acc)}
@@ -90,18 +90,19 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 .win::after{content:"";position:absolute;inset:0;border-radius:5px;box-shadow:inset 0 0 0 1px var(--line)}
 .pg{width:calc(var(--fw)*1px);transform-origin:0 0;transform:scale(calc(var(--tw)/var(--fw)))}
 .num{position:absolute;right:6px;top:6px;z-index:1;width:18px;height:18px;border-radius:50%;background:var(--chip);color:#FFFFFF;display:grid;place-items:center;font:500 11px/1 'Geist Mono',ui-monospace,monospace}
-/* annotations, as on the live Cable page: a ring on the screen, a line out to a caption in the left gutter */
+/* annotations, as on the live Cable page: a ring on the screen, a line out to a caption in the left gutter.
+   Drawn in Penfold's pink (#FF5081, "Pinkfold" in the Figma file), not the page accent */
 .ann{position:relative;margin:0}
 .sw{position:relative}
-.ring{position:absolute;box-sizing:border-box;border:2px solid var(--acc);border-radius:6px;box-shadow:0 0 0 4px var(--glow);pointer-events:none}
-.lead{position:absolute;left:-40px;height:1px;background:var(--acc)}
-.ann .dot{position:absolute;left:-44px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.ring{position:absolute;box-sizing:border-box;border:2px solid var(--ann);border-radius:6px;box-shadow:0 0 0 4px var(--annglow);pointer-events:none}
+.lead{position:absolute;left:-40px;height:1px;background:var(--ann)}
+.ann .dot{position:absolute;left:-44px;width:8px;height:8px;border-radius:50%;background:var(--ann)}
 .cap{position:absolute;right:calc(100% + 64px);width:242px;display:flex;flex-direction:column;gap:10px}
 .cap .ct{font-size:22px;line-height:1.25;letter-spacing:-.02em;font-weight:500;color:var(--ink)}
 .cap .cb{font-size:15px;line-height:1.5;color:var(--mut)}
 /* two rings, one caption: a bracket in the gutter joins a line from each, as on Cable. A line from a ring
    further in runs under the screens, so it only shows in the gaps between columns */
-.bracket{position:absolute;left:-40px;width:40px;box-sizing:border-box;border:1px solid var(--acc);border-right:none;border-radius:12px 0 0 12px}
+.bracket{position:absolute;left:-40px;width:40px;box-sizing:border-box;border:1px solid var(--ann);border-right:none;border-radius:12px 0 0 12px}
 .bracket .dot{left:-4.5px;top:calc(50% - 4px)}
 .bracket .cap{right:63px;top:50%;transform:translateY(-50%)}
 .sw .flow{position:relative;z-index:1}
