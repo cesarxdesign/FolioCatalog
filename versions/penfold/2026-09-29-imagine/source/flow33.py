@@ -46,9 +46,9 @@ def measure(cols):
     return tw, max(sum(need(x) for x in c) + extra * (len(c) - 1) for c in cols)
 
 
-def load(sid):
+def load(sid, file='screen.html'):
     """(css, body) of a catalogue screen, made ready for a shadow root (as CodeCatalog's build does)."""
-    src = open(os.path.join(CAT, sid, 'screen.html'), encoding='utf-8').read()
+    src = open(os.path.join(CAT, sid, file), encoding='utf-8').read()
     css = "\n".join(m.group(1) for m in re.finditer(r'<style[^>]*>([\s\S]*?)</style>', src))
     body = re.search(r'<body[^>]*>([\s\S]*?)</body>', src).group(1)
     body = re.sub(r'<script[\s\S]*?</script>', '', body).strip()
@@ -60,11 +60,11 @@ def load(sid):
 
 
 class Screen:
-    def __init__(self, sid, note, steps, colour, width=1182, grow=1):
+    def __init__(self, sid, note, steps, colour, width=1182, grow=1, file='screen.html'):
         """grow: this frame's share of its column's spare height; 0 keeps it at its least height."""
         self.sid, self.note, self.steps, self.colour = sid, note, list(steps), colour
         self.width, self.grow = width, grow
-        self.css, self.body = load(sid)
+        self.css, self.body = load(sid, file)
 
     def sub(self, old, new, count=1):
         assert self.body.count(old) == count, (self.sid, old, self.body.count(old))
@@ -110,14 +110,9 @@ def plans():
 
 
 def sign_up_upper():
-    # Enter your email (step 07) is not shown as a screen of its own: its field sits here, before
-    # the password. Same field and placeholder as the catalogue's enter-email screen.
-    s = Screen('sign-up-upper', 'name, phone, email and password', [7, 8], AMBER)
-    s.sub('<div class="row" style="margin-top:18px">\n      <label class="lab" for="f-pass">Password</label>',
-          '<div class="row" style="margin-top:18px">\n      <label class="lab" for="f-email">Email</label>\n'
-          '      <input class="f" id="f-email" type="email" style="width:377px" placeholder="you@somewhere.com">\n    </div>\n\n'
-          '    <div class="row">\n      <label class="lab" for="f-pass">Password</label>')
-    return s
+    # Enter your email (step 07) is not shown as a screen of its own: the catalogue's variant of this
+    # screen has its field, before the password.
+    return Screen('sign-up-upper', 'name, phone, email and password', [7, 8], AMBER, file='state-with-email.html')
 
 
 def screens():
