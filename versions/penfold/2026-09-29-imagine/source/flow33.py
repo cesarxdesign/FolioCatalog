@@ -5,8 +5,8 @@ Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.h
 longest, most complete state, shown whole: nothing is cropped or scrolled. The strip is as tall
 as the longest screen (Plan selection). Shorter screens are stacked in one column, in sequence,
 split across the columns as evenly as the sequence allows, and their frames stretch to fill it.
-A dot at the bottom right of each frame gives the number of steps that screen covers; which
-steps they are is kept in its data-steps attribute. Nothing is clickable; each tile is one fixed state
+A dot at the bottom right of each frame gives the running total of steps up to and including
+that screen, in two digits (06, 07 ... 33); which steps a screen covers is kept in data-steps. Nothing is clickable; each tile is one fixed state
 in its own shadow root.
 
     python3 source/flow33.py        rewrites the row between the FLOW33 markers in site/index.html
@@ -136,9 +136,9 @@ def tile(s, tw):
            + s.css + '\n.page{overflow:visible}\n')
     return ('<div class="step" style="--fw:%d;--fb:%d" data-screen="penfold/desktop/%s" data-steps="%s" data-state="%s">'
             '<div class="win"><div class="pg"><template shadowrootmode="open"><style>\n%s\n</style>\n%s\n</template></div>'
-            '<b class="dot" aria-label="%d step%s">%d</b></div></div>'
+            '<b class="dot" aria-label="%d steps so far">%02d</b></div></div>'
             % (s.width, round(need(s) * tw / 1182), s.sid, ' '.join('%02d' % n for n in s.steps), s.note, css, s.body,
-               len(s.steps), '' if len(s.steps) == 1 else 's', len(s.steps)))
+               s.steps[-1], s.steps[-1]))
 
 
 def main():

@@ -21,7 +21,7 @@ stacked in sequence, split across six columns as evenly as the sequence allows s
 most spare height, and their frames stretch to fill the column. Built by `source/flow33.py`.
 
 No bars or step numbers under the screens (removed by request). A dot at the bottom right of each frame gives the
-number of steps that screen covers. The steps each screen covers, 01 to 33,
+running total of steps up to and including that screen, in two digits: 06, 07, 08, 09, 16, 18, 23, 27, 31, 32, 33. The steps each screen covers, 01 to 33,
 are kept in its `data-steps` attribute; the docs screen is four steps, one per doc.
 
 Left out by request: the assumptions dialog and the "Hold on while we run some checks" screen.
