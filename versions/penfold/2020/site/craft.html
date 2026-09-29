@@ -145,7 +145,8 @@ svg{display:block;overflow:visible}
 .bare .frame3{border-radius:12px}
 /* dark: white ink with difference blending, so a note or arrow reads light on the page and dark where it
    crosses the white frame, as the black ink did in Figma */
-.bare.dark .note,.bare.dark .arrow{color:#FFFFFF;fill:#FFFFFF}   /* notes and arrows sit wholly on the page, so one colour each theme */
+.bare.dark .note,.bare.dark .arrow{color:#FFFFFF;fill:#FFFFFF}   /* notes and arrows sit on the page: white in dark */
+.bare.dark .arrow:not(.alert){mix-blend-mode:difference}   /* arrows keep the split-colour behaviour: dark wherever they meet the frame */
 .bare.dark .alert{fill:none;mix-blend-mode:normal}
 .note{position:absolute;white-space:nowrap;color:#000;letter-spacing:0;
       font:400 44px/46.2px "Journal fallback",cursive}

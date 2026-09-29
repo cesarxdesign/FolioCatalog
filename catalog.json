@@ -263,7 +263,7 @@
       "originals": "source/originals: Figma frames hero (121:5411), sketches (120:5372), craft (120:5379), exports and their raw images"
     },
     "note": "The Penfold case study from the 2020 Squarespace site, rebuilt from screenshots with image2code. Text is live text; hero and sketches are the original Figma frames; the wireframe montage is rebuilt as code (craft.html); the 20 phone screens are cut from the screenshots and clipped to their measured boxes, ready to be swapped for originals.",
-    "path": "versions/penfold/2020/site/index.html?v=c25292c0"
+    "path": "versions/penfold/2020/site/index.html?v=3024a97f"
   },
   {
     "project": "penfold",
@@ -424,7 +424,7 @@
       "from": "Color (2026-09-29-color), with images exported from the Figma file __Folio-study"
     },
     "note": "Color with images. Hero image placed as on the live Cable page; the sketches strip sits in Shipping. Never shipped.",
-    "path": "versions/penfold/2026-09-29-imagine/site/index.html?v=e1923411"
+    "path": "versions/penfold/2026-09-29-imagine/site/index.html?v=b25a0bf7"
   },
   {
     "project": "penfold",
