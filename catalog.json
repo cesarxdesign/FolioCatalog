@@ -396,6 +396,22 @@
   },
   {
     "project": "penfold",
+    "id": "2026-09-29-color",
+    "name": "Color",
+    "page": "site/index.html",
+    "width": 1440,
+    "shipped": null,
+    "until": null,
+    "made": "2026-09-29",
+    "source": {
+      "kind": "written",
+      "from": "Noir (2026-09-29-noir), with the Cable colour treatment and the palette from the live Penfold page"
+    },
+    "note": "Noir's text with colour, before images. Accent gradient on headings, numbers and the main quote; palette taken from cesarxdesign.com/penfold. Section labels are now five verbs and Outcome; hero stats are 0 to 1, 3,000 savers and £4M. Never shipped.",
+    "path": "versions/penfold/2026-09-29-color/site/index.html?v=4289c874"
+  },
+  {
+    "project": "penfold",
     "id": "2026-09-29-noir",
     "name": "Noir",
     "page": "site/index.html",
