@@ -92,8 +92,10 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 /* images: the hero and shot treatment from the live Cable page */
 .heroimg{display:block;width:100%;height:600px;object-fit:cover;border-radius:12px;box-shadow:0 60px 140px -40px var(--halo)}
 .shot{display:block;width:100%;height:auto;border-radius:12px}
-/* the sketches are ink on white paper: multiplied, the paper takes the page colour. Light only; on the dark page the ink would vanish */
+/* the sketches are ink on white paper: multiplied, the paper takes the page colour. */
 [data-theme="light"] .shot{mix-blend-mode:multiply}
+/* dark: the image is inverted, so the ink is white and the paper black; screened, the black paper takes the page colour */
+[data-theme="dark"] .shot{filter:invert(1);mix-blend-mode:screen}
 
 .closer{padding:200px 0 120px;border-top:1px solid var(--line)}
 .closer .big{font-size:104px;line-height:1;letter-spacing:-.05em;font-weight:600}

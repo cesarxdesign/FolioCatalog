@@ -56,3 +56,5 @@ No frame is shorter than 900px of screen (126px on the page, a 4:3 frame), and e
 
 `img/sketches-strip.webp` is the Figma export multiplied by itself three times (each pixel cubed), the same as
 stacking three copies with multiply. The untouched export is in CodeCatalog, `images/penfold/sketches-strip/`.
+
+In dark the sketches are inverted and blended with screen: white ink, and the paper takes the dark page colour.
