@@ -114,7 +114,7 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 .it-row{position:relative;z-index:1;display:flex}
 .it-step{margin:0;flex:0 0 calc(var(--tw)*1px);min-width:0;display:flex;flex-direction:column;gap:14px}
 .it-step .step{flex:none;height:calc(var(--fb)*1px)}   /* an annotated strip, the same room above its label */
-.group > .flow{margin-block:12px}
+.group > .flow,.group > .ann{margin-block:12px}
 .lite{width:100%}   /* a Lite screen: its shadow root scales itself to this width (source/impact.py) */   /* a strip between two lines of a text group gets a little more room */   /* room between the screens and the label under them */
 .num{position:absolute;right:6px;top:6px;z-index:1;width:18px;height:18px;border-radius:50%;background:#101519;color:#FFFFFF;display:grid;place-items:center;font:500 11px/1 'Geist Mono',ui-monospace,monospace}
 /* annotations, as on the live Cable page: a ring on the screen, a line out to a caption in the left gutter.
@@ -3176,6 +3176,7 @@ svg { display: block; }
 </div>
 <p class="txt">We relayed a series of IDs from the custodian, to the operator, and finally the bank. Each took the ID and a really long time, to create an ID of their own. Once we got the last ID, some 5 days later, we could finally create a pension. Legally and technically, this was peak efficiency, and also textbook region-beta paradox: a bad process gets tolerated, but this one I had to crack.</p>
 <div class="group"><h3>Slow and manual turned out to be the upside.</h3><p class="txt">In a mix of blind optimism and youthful arrogance, I offered to help the parties speed things up. They declined, but explained their process, which gave me a key insight: ID checks were manual and rare, and mistaken IDs were simply overridden with a correct one. So I suggested sending all three provisional IDs at once, swapping in the real ones later. That afternoon, we eradicated days of overhead with a simple tracking database.</p><!-- FAST start: built by source/fast.py from CodeCatalog screens, do not edit by hand -->
+<figure class="ann"><div class="sw">
 <div class="flow fast" style="--n:5;--tw:166.000;--h:359" role="group" aria-label="The modular onboarding on mobile, screen by screen">
 <div class="stack"><div class="step" style="--fw:375;--fb:359" data-screen="penfold/mobile/modular-sign-up"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:375px;height:812px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
@@ -4508,6 +4509,11 @@ svg { display: block; }
 </div>
 </template></div></div></div></div>
 </div>
+<div class="ring" style="left:40.716%;top:0;width:18.568%;height:100%"></div>
+<div class="lead under" style="top:50%;width:40.716%"></div>
+</div>
+<div class="lead" style="top:50%;width:40px"></div><div class="dot" style="top:calc(50% - 3.5px)"></div><figcaption class="cap" style="top:calc(50% - 14px)"><span class="ct">The final piece of the puzzle.</span><span class="cb">Our little tracking exercise almost didn't work: money paid in immediately couldn't be received until all the IDs were corrected. But the investment fund took a few days to accept its first sum, so it acted as an unofficial escrow of sorts, covering every edge case.</span></figcaption>
+</figure>
 <!-- FAST end -->
 <p class="txt">Now we were fast!</p></div>
 </div>

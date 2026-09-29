@@ -33,9 +33,22 @@ for sid in SCREENS:
     css = ":host{display:block;width:%dpx;height:%dpx;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}\n%s" % (W, H, css)
     tiles.append('<div class="stack"><div class="step" style="--fw:%d;--fb:%d" data-screen="penfold/mobile/%s"><div class="win"><div class="pg">'
                  '<template shadowrootmode="open"><style>\n%s\n</style>\n%s\n</template></div></div></div></div>' % (W, h, sid, css, body))
+# a Cable-style annotation on the fund screen: ring on the frame, its line under the screens to a caption in the
+# left gutter. Cesar's own draft, reviewed on request (2026-09-29)
+ANN = dict(ring='modular-fund', title='The final piece of the puzzle.',
+           body='Our little tracking exercise almost didn\'t work: money paid in immediately couldn\'t be received '
+                'until all the IDs were corrected. But the investment fund took a few days to accept its first sum, so '
+                'it acted as an unofficial escrow of sorts, covering every edge case.')
+l = SCREENS.index(ANN['ring']) * (tw + GAP)
+ring = ('<div class="ring" style="left:%.3f%%;top:0;width:%.3f%%;height:100%%"></div>\n'
+        '<div class="lead under" style="top:50%%;width:%.3f%%"></div>' % (100 * l / WIDTH, 100 * tw / WIDTH, 100 * l / WIDTH))
+cap = ('<div class="lead" style="top:50%%;width:40px"></div><div class="dot" style="top:calc(50%% - 3.5px)"></div>'
+       '<figcaption class="cap" style="top:calc(50%% - 14px)"><span class="ct">%s</span><span class="cb">%s</span></figcaption>'
+       % (ANN['title'], ANN['body']))
 row = ('<!-- FAST start: built by source/fast.py from CodeCatalog screens, do not edit by hand -->\n'
+       '<figure class="ann"><div class="sw">\n'
        '<div class="flow fast" style="--n:%d;--tw:%.3f;--h:%d" role="group" aria-label="The modular onboarding on mobile, screen by screen">\n' % (len(SCREENS), tw, h)
-       + '\n'.join(tiles) + '\n</div>\n<!-- FAST end -->')
+       + '\n'.join(tiles) + '\n</div>\n' + ring + '\n</div>\n' + cap + '\n</figure>\n<!-- FAST end -->')
 page = open(SITE, encoding='utf-8').read()
 if '<!-- FAST start' not in page:
     anchor = '<p class="txt">Now we were fast!</p>'
