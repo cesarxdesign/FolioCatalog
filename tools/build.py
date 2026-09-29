@@ -70,6 +70,8 @@ main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 .cap select{flex:1;min-width:0;max-width:none;font-size:12px;font-weight:600;text-overflow:ellipsis}
 .cap .x{flex:none;width:26px;padding:0;font-size:16px;line-height:1;color:var(--muted)}
 .cap .x:hover{color:var(--accent);border-color:var(--accent)}
+.cap a.x{display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px solid var(--line);border-radius:6px}
+.cap a.x svg{width:13px;height:13px}
 .view{flex:1;min-height:0;position:relative;overflow:hidden;background:#fff}
 .view iframe{position:absolute;top:0;border:0;transform-origin:0 0;background:#fff}
 
@@ -353,6 +355,14 @@ function pickerFor(i) {
   return s;
 }
 
+function openerFor(i) {
+  // Opens this pane's page on its own, as a plain website, in a new browser tab.
+  const a = el('a', {className: 'x', href: byKey[state.picks[i]].path, target: '_blank', rel: 'noopener', title: 'Open this page on its own'});
+  a.setAttribute('aria-label', `Open pane ${i + 1} on its own`);
+  a.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h4v4M13 3L7.5 8.5M11 9.5V13H3V5h3.5"/></svg>';
+  return a;
+}
+
 function closerFor(i) {
   // Takes this pane out of the view; the others keep their pages and their order.
   const b = el('button', {type: 'button', className: 'x', textContent: '×', title: 'Remove this page from the view'});
@@ -394,7 +404,7 @@ function render() {
       pane.dataset.path = v.path;
       pane.dataset.width = v.width || 1440;
     }
-    pane.querySelector('.cap').replaceChildren(pickerFor(i), closerFor(i));
+    pane.querySelector('.cap').replaceChildren(pickerFor(i), openerFor(i), closerFor(i));
     return pane;
   });
   const same = panes.length === $('panes').children.length && panes.every((p, j) => $('panes').children[j] === p);
