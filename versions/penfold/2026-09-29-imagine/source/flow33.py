@@ -2,9 +2,9 @@
 """The first onboarding, as one strip of live screens that fits the column: one tile per screen.
 
 Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.html) in its
-longest, most complete state, shown whole: nothing is cropped or scrolled. The strip is as tall
-as the longest screen (Plan selection). Shorter screens are stacked in one column, in sequence,
-split across the columns as evenly as the sequence allows, and their frames stretch to fill it.
+longest, most complete state, shown whole: nothing is cropped or scrolled. The strip has five columns.
+Screens are stacked in sequence, split so the tallest column is as short as it can be; that
+column sets the strip's height, and frames in the other columns stretch to fill it.
 A dot at the bottom right of each frame gives the running total of steps up to and including
 that screen, in two digits (06, 07 ... 33); which steps a screen covers is kept in data-steps. Nothing is clickable; each tile is one fixed state
 in its own shadow root.
@@ -28,7 +28,7 @@ ENDS = {'three-things': 2320, 'enter-email': 427, 'sign-up-upper': 936, 'savings
 WIDTH = 894           # the text column the strip has to fit, px on the page
 GAP = 16              # between columns
 BELOW = 60            # least room under a screen's last element, in screen pixels
-TALLEST = 290         # room under the longest screen; sets the strip's height
+COLUMNS = 5           # how many columns the strip has
 STACK_GAP = 12        # between two screens in one column, px on the page
 
 
@@ -38,25 +38,20 @@ def need(s):
 
 
 def columns(all_screens):
-    """Screens split into columns, in sequence. The fewest columns that fit are used, so the screens
-    stay as wide as they can; among the ways to fill that many columns, the most even one wins, so
-    every column keeps as much spare height as it can."""
-    room = max(ENDS[s.sid] * 1182 / s.width for s in all_screens) + TALLEST
-    count = len(all_screens)
-    for n in range(1, count + 1):
-        tw = (WIDTH - GAP * (n - 1)) / n
-        extra = STACK_GAP * 1182 / tw          # what one more screen in a column costs
-        def used(col): return sum(need(x) for x in col) + extra * (len(col) - 1)
-        best = None
-        for cuts in itertools.combinations(range(1, count), n - 1):
-            edges = (0,) + cuts + (count,)
-            cols = [all_screens[a:b] for a, b in zip(edges, edges[1:])]
-            fill = [used(c) for c in cols]
-            if max(fill) > room: continue
-            score = (max(fill), sum(f * f for f in fill))
-            if best is None or score < best[0]: best = (score, cols)
-        if best:
-            return best[1], tw, room
+    """Screens split into COLUMNS columns, in sequence. Of every way to do that, the one with the
+    shortest tallest column wins, and among equals the most even one. That tallest column sets the
+    strip's height; every other column has spare height, shared out between its frames."""
+    count, n = len(all_screens), COLUMNS
+    tw = (WIDTH - GAP * (n - 1)) / n
+    extra = STACK_GAP * 1182 / tw                        # what one more screen in a column costs
+    best = None
+    for cuts in itertools.combinations(range(1, count), n - 1):
+        edges = (0,) + cuts + (count,)
+        cols = [all_screens[a:b] for a, b in zip(edges, edges[1:])]
+        fill = [sum(need(x) for x in c) + extra * (len(c) - 1) for c in cols]
+        score = (max(fill), sum(f * f for f in fill))
+        if best is None or score < best[0]: best = (score, cols)
+    return best[1], tw, best[0][0]
 
 
 def load(sid):

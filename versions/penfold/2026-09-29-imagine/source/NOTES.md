@@ -16,9 +16,10 @@ Exported whole from the Figma file `__Folio-study` and kept in CodeCatalog under
 Under the sketches: the first onboarding as one strip of its 11 screens that fits the text column, no
 sideways scroll. Each is the live CodeCatalog desktop screen in its longest state, shown whole (3 things
 with all three sections open, the calculator with the whole plan, plans through to risks accepted, the
-sign-up form filled). The strip is as tall as the longest screen, Plan selection. Shorter screens are
-stacked in sequence, split across six columns as evenly as the sequence allows so each page keeps the
-most spare height, and their frames stretch to fill the column. Built by `source/flow33.py`.
+sign-up form filled). The strip has five columns, 166px each. Screens are stacked in sequence, split so the tallest
+column is as short as it can be: 3 things + email + sign-up upper | savings path + calculator + monthly payment |
+plan selection | docs + sign-up form | standing order + confirmation. Frames stretch to fill their column.
+Built by `source/flow33.py`.
 
 No bars or step numbers under the screens (removed by request). A dot at the bottom right of each frame gives the
 running total of steps up to and including that screen, in two digits: 06, 07, 08, 09, 16, 18, 23, 27, 31, 32, 33. The steps each screen covers, 01 to 33,
