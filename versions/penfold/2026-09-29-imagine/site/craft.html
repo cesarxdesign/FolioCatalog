@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Estimate prototype montage</title>
+<!-- The "craft" montage (Figma "Penfold _new" 120:5379, 2212 x 1416), rebuilt as code so it can be
+     tweaked. It was two screenshots of Figma taken 2020-04-22 (outline mode left of the diagonal,
+     the designs right of it) with orange marks and handwritten notes on top.
+
+     Everything is laid out in the craft frame's own units and scaled to the window width.
+     - The 12 Estimate screens come from Figma "05 Estimate" (kt8yiHLl862LQIAT8GLvkP, section 10:4927,
+       main component Estimate/mobile 10:2256). STATES below sets each one to the state it had in
+       2020; values the file no longer holds (filled fields #FBFBFB, the 87% dot #4CD964) were read
+       from the 2020 screenshot.
+     - LINKS are the file's 59 prototype links, read from the Plugin API (hotspot box, destination).
+       Figma's own connector routing is not exposed, so the curves are drawn here: they leave the
+       hotspot's right edge and enter the facing side of the destination.
+     - Figma's canvas zoom in the 2020 screenshot was 0.617363 canvas units per craft unit, with the
+       prototype frame's corner at (47.5, 43.5) inside Frame 3. UI chrome (lines, circles, badges) is
+       sized in craft units, as Figma draws it at a constant screen size.
+     - SF Pro Text (status bar) cannot be shipped; the system font stands in. -->
+<style>
+@font-face{font-family:"Montserrat";src:url(fonts/Montserrat.woff2) format("woff2");font-weight:100 900}
+/* Journal (Figma's note font) is not a Google font; Loved by the King stands in, tuned so its
+   line widths and baseline match Journal's (same face as the 2020 page used). */
+@font-face{font-family:"Journal fallback";src:url(fonts/LovedbytheKing.woff2) format("woff2");
+     size-adjust:75%;ascent-override:99.1%;descent-override:40.9%;line-gap-override:0%}
+
+:root{
+  --navy:#123456; --pink:#FF5081; --g1:#FBFBFB; --g2:#F4F4F4; --g3:#F0F0F0; --g4:#D8D8D8; --lb:#E7EBED;
+  --ol:#7B61FF;      /* Figma outline-mode purple */
+  --proto:#18A0FB;   /* Figma prototype blue */
+  --orange:rgba(255,154,2,.6);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#FAFAFA;overflow:hidden}
+svg{display:block;overflow:visible}
+
+/* ---------- the craft frame (2212 x 1416), scaled to the window by the script ---------- */
+.craft{position:relative;width:2212px;height:1416px;background:#FAFAFA;transform-origin:0 0;
+       transform:scale(var(--k,1)) translate(var(--cx,0),var(--cy,0))}
+.frame3{position:absolute;left:227px;top:132px;width:1734px;height:1109px;overflow:hidden;background:#FFFFFF}
+.layer{position:absolute;inset:0}
+/* the cut runs from the bottom-left corner of the 2nd bottom screen through the top-right corner of the
+   3rd top screen (moved 2026-09-29; the 2020 frame had it at the 4th top screen's top-left) */
+.select{background:#FFFFFF;clip-path:polygon(862.5px 0,1754.5px 0,1754.5px 1109px,309.3px 1109px)}
+.cutshadow{position:absolute;left:285px;top:-20px}
+.view{position:absolute;left:47.5px;top:43.5px;width:2650px;height:1664px;transform-origin:0 0;
+      transform:scale(.617363)}
+.over{position:absolute;left:0;top:0;width:1734px;height:1109px}
+
+/* ---------- one Estimate screen, 375 x 812 (Estimate/mobile) ---------- */
+.scr{position:absolute;width:375px;height:812px;background:var(--g2);overflow:hidden;
+     font-family:"Montserrat",sans-serif;color:var(--navy);font-feature-settings:"lnum" 1,"tnum" 1}
+.abs{position:absolute}
+.t{position:absolute;white-space:nowrap;line-height:normal}
+
+.sb-bg{left:0;top:0;width:375px;height:63px;background:rgba(248,248,248,.7)}
+.sb-div{left:0;top:62.5px;width:375px;height:.5px;background:rgba(0,0,0,.2)}
+.sb-bar{left:0;top:0;width:375px;height:44px}
+.sb-time{left:19.89px;top:14px;width:54px;text-align:center;font:600 15px/18px -apple-system,"SF Pro Text",system-ui,sans-serif;letter-spacing:-.165px;color:#000}
+.sb-url{left:145px;top:40px;width:84px;text-align:center;font:400 12px -apple-system,"SF Pro Text",system-ui,sans-serif;letter-spacing:-.35px;color:#000;line-height:normal}
+.sb-sig{left:293.5px;top:17.6px}
+.sb-wifi{left:315.6px;top:17.4px}
+.sb-bat{left:336px;top:17.16px}
+.sb-batfill{left:338px;top:19.08px;width:18px;height:7.667px;border-radius:1.6px;background:#000}
+
+.hd{left:0;top:63px;width:375px;height:72px}
+.hd-bg{left:0;top:0;width:375px;height:72px;background:#FFFFFF;box-shadow:inset 0 0 0 .333px var(--g4)}
+.hd-title{right:32px;top:35px;transform:translateY(-50%);font-weight:700;font-size:28px;letter-spacing:-.8px}
+.hd-back{left:0;top:16px;width:120px;height:40px;display:flex;align-items:center}
+.hd-chev{position:relative;width:40px;height:40px;flex:none}
+.hd-lab{position:relative;padding:4px;flex:none}
+.hd-labt{font-weight:700;font-size:20px;line-height:normal;white-space:nowrap}
+
+.row-pay{left:0;top:135px;width:375px;height:129px}
+.row-inc{left:0;top:264px;width:375px;height:177px}
+.tf{width:148px;height:81px}
+.tf-lab{left:0;bottom:52px;font-weight:700;font-size:24px;letter-spacing:-.8px}
+.tf-box{left:0;bottom:0;width:148px;height:40px;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 2px var(--g4)}
+.tf-box.is-full{background:var(--g1);box-shadow:none}
+.tf-val{left:16px;right:16px;top:calc(50% + .5px);transform:translateY(-50%);text-align:center;
+        font-weight:600;font-size:24px;letter-spacing:-.8px;color:var(--g4)}
+.tf-box.is-full .tf-val{color:var(--navy)}
+
+.rec{width:65px;height:40px}
+.rec-ic{left:13px;top:0;transform:scaleX(-1)}
+
+.tg{width:66px;height:40px}
+.tg-bg{inset:0;border-radius:20px;background:var(--lb);box-shadow:inset 0 1px 3px rgba(0,0,0,.08)}
+.tg.is-on .tg-bg{background:var(--pink)}
+.tg-cap{left:6px;top:6px;width:28px;height:28px;border-radius:50%;background:var(--g1);
+        box-shadow:inset 0 0 0 1px #FFFFFF,0 2px 2px rgba(0,0,0,.16)}
+.tg.is-on .tg-cap{left:32px}
+.lab{left:50%;bottom:calc(100% + 4px);transform:translateX(-50%);font-weight:500;font-size:12px}
+
+.pill{width:66px;height:40px}
+.pill-bg{inset:0;border-radius:20px;background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--lb)}
+.pill-val{left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-weight:600;font-size:16px;letter-spacing:-.8px}
+.stp{width:40px;height:40px}
+.stp-pl{left:4px;top:4px;width:32px;height:32px;border-radius:20px;background:var(--g1);
+        box-shadow:inset 0 0 0 1px #FFFFFF,0 2px 2px rgba(0,0,0,.16)}
+.stp-t{left:50%;top:50%;transform:translate(-50%,-50%);font-weight:700;font-size:20px}
+
+.helper{left:16px;top:417px;width:343px;height:75px;text-align:center;font-weight:400;font-size:12px;line-height:normal;white-space:normal}
+
+.gr{left:0;top:441px;width:375px;height:152px}
+.gr-dot{width:8px;height:8px;border-radius:4px}
+.gr-title{left:57px;top:16px;font-size:10px;font-weight:400}
+.gr-b{font-weight:700}
+.gr-bars{left:39px;top:36px}
+.gr-total{left:225px;width:90px;top:101px;text-align:right;font-weight:700;font-size:10px}
+.gr-key{top:107px;transform:translateY(-50%);font-weight:400;font-size:8px}
+
+.ctl{left:0;top:593px;width:375px;height:219px}
+.ctl-bg{inset:0;background:var(--g3)}
+.col40{left:131px;top:45px;width:114px;height:126px}
+.save{left:0;top:80px;width:114px;height:46px;border-radius:8px;background:var(--lb);
+      display:flex;align-items:center;justify-content:center}
+.save.is-on{background:var(--pink)}
+.save-t{position:relative;font-weight:700;font-size:20px;color:#FFFFFF;line-height:normal}
+
+/* ---------- outline mode (Figma's Outline view): no paint, purple glyph outlines ---------- */
+.ol .scr{background:none}
+.ol .ink{background:none!important;box-shadow:none!important}
+.ol .scr .t,.ol .scr .helper{color:transparent!important;-webkit-text-stroke:1.3px var(--ol)}
+.ol .ic{--f:none;--s:var(--ol);--sw:1.3px}
+.ol .scr .sb-url,.ol .scr .lab,.ol .scr .helper,.ol .scr .gr-title,.ol .scr .gr-key,.ol .scr .gr-total{-webkit-text-stroke-width:.7px}  /* small text: a thinner line keeps it legible */
+.ol .gr-dot,.ol .sb-batfill{background:none}
+
+/* ---------- annotations on top of the montage ---------- */
+.mark{position:absolute;border-radius:8px;background:var(--orange);mix-blend-mode:multiply}
+.mark.is-red{box-shadow:inset 0 0 0 4px #FF0000}
+.spot{position:absolute;border-radius:50%;background:var(--orange);mix-blend-mode:multiply}
+.arrow{position:absolute;left:0;top:0;transform-origin:0 0;fill:#000}
+.alert{fill:none}
+
+/* craft.html#bare: no grey around the white frame, which becomes the edge; the notes hang outside it
+   on the host page, so they follow its light/dark theme (Penfold Imagine) */
+.bare,.bare body,.bare .craft{background:transparent}
+.bare .frame3{border-radius:12px}
+/* dark: white ink with difference blending, so a note or arrow reads light on the page and dark where it
+   crosses the white frame, as the black ink did in Figma */
+.bare.dark .note,.bare.dark .arrow{color:#FFFFFF;fill:#FFFFFF;mix-blend-mode:difference}
+.bare.dark .alert{fill:none;mix-blend-mode:normal}
+.note{position:absolute;white-space:nowrap;color:#000;letter-spacing:0;
+      font:400 44px/46.2px "Journal fallback",cursive}
+</style>
+</head>
+<body>
+<div class="craft" id="craft">
+  <div class="frame3">
+    <div class="layer wire ol" id="wire"><div class="view" id="wireView"></div></div>
+    <svg class="cutshadow" width="1493.5" height="1157" viewBox="0 0 1493.5 1157" aria-hidden="true">
+      <filter id="cs" x="0" y="0" width="1493.5" height="1157" filterUnits="userSpaceOnUse"><feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#000" flood-opacity=".24"/></filter>
+      <path d="M577.5 20L1469.5 20V1129H24.3L577.5 20Z" fill="#C4C4C4" filter="url(#cs)"/>
+    </svg>
+    <div class="layer select" id="select"><div class="view" id="selectView"></div></div>
+    <svg class="over" id="over" width="1734" height="1109" aria-hidden="true"></svg>
+  </div>
+
+  <!-- orange marks: Rectangles 3 to 7 and Ellipse 1 -->
+  <div class="mark" style="left:254px;top:419px;width:268px;height:74px"></div>
+  <div class="mark" style="left:1727px;top:603px;width:140px;height:60px"></div>
+  <div class="mark" style="left:1821px;top:921px;width:98px;height:50px"></div>
+  <div class="mark" style="left:545px;top:1007px;width:254px;height:50px"></div>
+  <div class="mark is-red" style="left:1166px;top:1073px;width:134px;height:116px"></div>
+  <div class="spot" style="left:821px;top:322px;width:34px;height:34px"></div>
+
+  <!-- the six handwritten notes (Journal 44/1.05 in Figma) -->
+  <p class="note" style="left:33px;top:327px">Review copy.<br>Tighten, more clear.</p>
+  <p class="note" style="left:1938px;top:505px">More contrast<br>check WCAG</p>
+  <p class="note" style="left:1934px;top:866px">Check touch targets</p>
+  <p class="note" style="left:627px;top:1260px">Not helpfull for small values</p>
+  <p class="note" style="left:1218px;top:1273px">Allows unconsistent state</p>
+  <p class="note" style="left:871px;top:92px">Spacing</p>
+
+  <!-- the elbow arrows (Vectors 1 to 6), each at its Figma transform; the exports start 1 unit left of the node -->
+  <svg class="arrow" style="transform:matrix(1,0,0,1,85.5,434)" width="145.5" height="26.2735" viewBox="-1 0 145.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM144.5 20.5L134.5 14.7265V26.2735L144.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H135.5V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(-1,0,0,1,1983.5,612)" width="89.5" height="26.2735" viewBox="-1 0 89.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM88.5 20.5L78.5 14.7265V26.2735L88.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H79.5V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(-1,0,0,1,1990.5,927)" width="57.5" height="26.2735" viewBox="-1 0 57.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM56.5 20.5L46.5 14.7265V26.2735L56.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H47.5V20.5V19.5H0V20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(0,-1,-1,0,611.5,1290)" width="218" height="26.2735" viewBox="-1 0 218 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM217 20.5L207 14.7265V26.2735L217 20.5ZM0 0L-1 0V20.5H0H1V0L0 0ZM0 20.5L0 21.5L208 21.5V20.5V19.5L0 19.5L0 20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(0,-1,-1,0,1202.5,1301)" width="99" height="26.2735" viewBox="-1 0 99 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM98 20.5L88 14.7265V26.2735L98 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5L0 21.5L89 21.5V20.5V19.5L0 19.5L0 20.5Z"/></svg>
+  <svg class="arrow" style="transform:matrix(0,1,-1,0,856.5,122)" width="193.5" height="26.2735" viewBox="-1 0 193.5 26.2735"><path d="M0 20.5H-1C-1 21.0523-.552285 21.5 0 21.5L0 20.5ZM192.5 20.5L182.5 14.7265V26.2735L192.5 20.5ZM0 0H-1V20.5H0H1V0H0ZM0 20.5V21.5H183.5V20.5V19.5H0V20.5Z"/></svg>
+
+  <!-- alert-triangle (feather), red -->
+  <svg class="arrow alert" style="transform:translate(1217px,1220px)" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#FF0000" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17.15 6.43327L3.03337 29.9999C2.74231 30.504 2.58831 31.0754 2.58668 31.6575C2.58505 32.2395 2.73585 32.8118 3.02408 33.3175C3.31231 33.8231 3.72791 34.2445 4.22955 34.5397C4.73118 34.8349 5.30137 34.9935 5.88337 34.9999H34.1167C34.6987 34.9935 35.2689 34.8349 35.7705 34.5397C36.2722 34.2445 36.6878 33.8231 36.976 33.3175C37.2642 32.8118 37.415 32.2395 37.4134 31.6575C37.4118 31.0754 37.2578 30.504 36.9667 29.9999L22.85 6.43327C22.5529 5.94345 22.1346 5.53847 21.6354 5.25741C21.1361 4.97635 20.5729 4.82869 20 4.82869C19.4271 4.82869 18.8639 4.97635 18.3647 5.25741C17.8655 5.53847 17.4472 5.94345 17.15 6.43327V6.43327Z"/>
+    <path d="M20 15V21.6667"/><path d="M20 28.3333H20.0171"/>
+  </svg>
+</div>
+
+<script>
+/* ======================= DATA: edit these to change the montage ======================= */
+
+/* Each screen, in the frame's 6 x 2 grid (columns 455 apart, rows 852 apart).
+   oneOff / salary: toggles on. rec: the crossed recurring icon (null = hidden).
+   pay, income: field text ('' = empty field, null = no income row). pct: the "Save as a %" pill
+   (null = hidden). helper: the explainer copy. chart: 87 or 12 (null = none). save: button enabled. */
+const STATES = {
+  '10:3552': {col:0,row:0, oneOff:false, rec:null,   pay:'', income:null,       pct:null, helper:true,  chart:null, salary:false, save:false},
+  '10:3549': {col:1,row:0, oneOff:true,  rec:'grey', pay:'', income:null,       pct:null, helper:true,  chart:null, salary:false, save:false},
+  '10:3556': {col:2,row:0, oneOff:false, rec:null,   pay:'', income:'',         pct:null, helper:true,  chart:null, salary:true,  save:false},
+  '10:3553': {col:3,row:0, oneOff:true,  rec:'grey', pay:'', income:'',         pct:null, helper:true,  chart:null, salary:true,  save:false},
+  '10:3560': {col:4,row:0, oneOff:false, rec:null,   pay:'', income:'£ 2,500',  pct:'0%', helper:false, chart:null, salary:true,  save:false},
+  '10:3557': {col:5,row:0, oneOff:true,  rec:'grey', pay:'', income:'£ 2,500',  pct:'0%', helper:false, chart:null, salary:true,  save:false},
+  '10:3550': {col:0,row:1, oneOff:false, rec:null,   pay:'£ 250', income:null,      pct:null, helper:false, chart:87, salary:false, save:true},
+  '10:3551': {col:1,row:1, oneOff:true,  rec:'pink', pay:'£ 250', income:null,      pct:null, helper:false, chart:12, salary:false, save:true},
+  '10:3554': {col:2,row:1, oneOff:false, rec:null,   pay:'£ 250', income:'',        pct:null, helper:false, chart:87, salary:true,  save:true},
+  '10:3555': {col:3,row:1, oneOff:true,  rec:'pink', pay:'£ 250', income:'',        pct:null, helper:false, chart:12, salary:true,  save:true},
+  '10:3558': {col:4,row:1, oneOff:false, rec:null,   pay:'£ 250', income:'£ 2,500', pct:'2%', helper:false, chart:87, salary:true,  save:true},
+  '10:3559': {col:5,row:1, oneOff:true,  rec:'pink', pay:'£ 250', income:'£ 2,500', pct:'2%', helper:false, chart:12, salary:true,  save:true},
+};
+
+/* The file's prototype links: [hotspot x, y, w, h in the "05 Estimate" section's coordinates, destination].
+   The section puts the screens at x 80 + 455n and y 80 / 1012; the 2020 frame at x 455n and y 0 / 852. */
+const LINKS = [
+  [690,718,66,40,'10:3553'],[567,280,148,40,'10:3551'],[812,280,66,40,'10:3552'],[535,143,375,72,'10:3552'],
+  [235,1650,66,40,'10:3554'],[211,1730,114,46,'10:3552'],[357,1212,66,40,'10:3551'],[80,1075,375,72,'10:3552'],
+  [690,1650,66,40,'10:3555'],[666,1730,114,46,'10:3552'],[812,1212,66,40,'10:3550'],[535,1075,375,72,'10:3552'],
+  [235,718,66,40,'10:3556'],[112,280,148,40,'10:3550'],[357,280,66,40,'10:3549'],
+  [1600,718,66,40,'10:3549'],[1477,409,148,40,'10:3557'],[1477,280,148,40,'10:3555'],[1722,280,66,40,'10:3556'],[1445,143,375,72,'10:3552'],
+  [1145,1650,66,40,'10:3550'],[1121,1730,114,46,'10:3552'],[1022,1341,148,40,'10:3558'],[1267,1212,66,40,'10:3555'],[990,1075,375,72,'10:3552'],
+  [1600,1650,66,40,'10:3551'],[1576,1730,114,46,'10:3552'],[1477,1341,148,40,'10:3559'],[1722,1212,66,40,'10:3554'],[1445,1075,375,72,'10:3552'],
+  [1145,718,66,40,'10:3552'],[1022,409,148,40,'10:3560'],[1022,280,148,40,'10:3554'],[1267,280,66,40,'10:3553'],[990,143,375,72,'10:3552'],
+  [2510,718,66,40,'10:3549'],[2632,409,66,40,'10:3559'],[2665,457,40,40,'10:3559'],[2387,280,148,40,'10:3559'],[2632,280,66,40,'10:3560'],[2355,143,375,72,'10:3552'],
+  [2055,1650,66,40,'10:3550'],[2031,1730,114,46,'10:3552'],[2177,1341,66,40,'10:3560'],[2170,1389,40,40,'10:3560'],[2177,1212,66,40,'10:3559'],[1900,1075,375,72,'10:3552'],
+  [2510,1650,66,40,'10:3551'],[2486,1730,114,46,'10:3552'],[2632,1341,66,40,'10:3557'],[2625,1389,40,40,'10:3557'],[2632,1212,66,40,'10:3558'],[2355,1075,375,72,'10:3552'],
+  [2055,718,66,40,'10:3552'],[2177,409,66,40,'10:3558'],[2210,457,40,40,'10:3558'],[1932,280,148,40,'10:3558'],[2177,280,66,40,'10:3557'],[1900,143,375,72,'10:3552'],
+];
+
+/* The chart's bars (x = 18 + 10n, bottoms at 64, clipped at 61), from the Graph components' exports. */
+const BARS = {
+  87: {light:[14,18,18,18,23,23,28,28,32,32,35,37,37,37,37,41,41,46,49,51,51,54,55,59,60,64],
+       dark:[8.96875,11.5312,11.5312,11.5312,14.7344,14.7344,17.9375,17.9375,20.5,20.5,23.7031,23.7031,23.7031,23.7031,23.7031,26.2656,26.2656,29.4688,32.6719,32.6719,32.6719,32.6719,35.2344,38.4375,40.4375,43],
+       dot:'#4CD964', total:'£312,281'},
+  12: {light:[3.9375,5.0625,5.0625,5.0625,6.46875,6.46875,7.875,7.875,9,9,9.8438,10.4062,10.4062,10.4062,10.4062,11.5312,11.5312,12.9375,13.7812,14.3438,14.3438,15.1875,15.4688,16.5938,16.875,18],
+       dark:Array(26).fill(8), dot:'#E63B3B', total:'£2,925'},
+};
+
+/* ======================= the screen ======================= */
+const ICON = {
+  sig:'<svg class="abs sb-sig ic" width="17.1" height="10.7" viewBox="0 0 17.1 10.7"><path fill-rule="evenodd" d="M14.123 .965892C14.1 1.08181 14.1 1.22121 14.1 1.5V9.2C14.1 9.47879 14.1 9.61819 14.123 9.73411C14.2177 10.2101 14.5899 10.5823 15.0659 10.6769C15.1818 10.7 15.3212 10.7 15.6 10.7C15.8788 10.7 16.0182 10.7 16.1341 10.6769C16.6101 10.5823 16.9822 10.2101 17.0769 9.73411C17.1 9.61819 17.1 9.47879 17.1 9.2V1.5C17.1 1.22121 17.1 1.08181 17.0769 .965892C16.9822 .489863 16.6101 .117746 16.1341 .0230577C16.0182 0 15.8788 0 15.6 0C15.3212 0 15.1818 0 15.0659 .0230577C14.5899 .117746 14.2177 .489863 14.123 .965892ZM9.4 3.9C9.4 3.62121 9.4 3.48181 9.42305 3.36589C9.51774 2.88986 9.88986 2.51775 10.3659 2.42306C10.4818 2.4 10.6212 2.4 10.9 2.4C11.1788 2.4 11.3182 2.4 11.4341 2.42306C11.9101 2.51775 12.2822 2.88986 12.3769 3.36589C12.4 3.48181 12.4 3.62121 12.4 3.9V9.2C12.4 9.4788 12.4 9.61819 12.3769 9.73411C12.2822 10.2101 11.9101 10.5823 11.4341 10.6769C11.3182 10.7 11.1788 10.7 10.9 10.7C10.6212 10.7 10.4818 10.7 10.3659 10.6769C9.88986 10.5823 9.51774 10.2101 9.42305 9.73411C9.4 9.61819 9.4 9.4788 9.4 9.2V3.9ZM4.82305 5.6659C4.8 5.78182 4.8 5.92121 4.8 6.2V9.2C4.8 9.4788 4.8 9.61819 4.82305 9.73411C4.91773 10.2101 5.28985 10.5823 5.76588 10.6769C5.8818 10.7 6.02119 10.7 6.3 10.7C6.57878 10.7 6.71818 10.7 6.8341 10.6769C7.31012 10.5823 7.68224 10.2101 7.77693 9.73411C7.8 9.61819 7.8 9.4788 7.8 9.2V6.2C7.8 5.92121 7.8 5.78182 7.77693 5.6659C7.68224 5.18987 7.31012 4.81775 6.8341 4.72306C6.71818 4.7 6.57878 4.7 6.3 4.7C6.02119 4.7 5.8818 4.7 5.76588 4.72306C5.28985 4.81775 4.91773 5.18987 4.82305 5.6659ZM.0230577 7.6659C0 7.78182 0 7.92121 0 8.2V9.2C0 9.4788 0 9.61819 .0230577 9.73411C.117746 10.2101 .489863 10.5823 .965892 10.6769C1.08181 10.7 1.22121 10.7 1.5 10.7C1.77879 10.7 1.91819 10.7 2.03411 10.6769C2.51014 10.5823 2.88225 10.2101 2.97694 9.73411C3 9.61819 3 9.4788 3 9.2V8.2C3 7.92121 3 7.78182 2.97694 7.6659C2.88225 7.18987 2.51014 6.81775 2.03411 6.72306C1.91819 6.7 1.77879 6.7 1.5 6.7C1.22121 6.7 1.08181 6.7 .965892 6.72306C.489863 6.81775 .117746 7.18987 .0230577 7.6659Z" fill="var(--f,#000)" stroke="var(--s,none)" stroke-width="var(--sw,0)"/></svg>',
+  wifi:'<svg class="abs sb-wifi ic" width="15.4" height="11.057" viewBox="0 0 15.4 11.057"><path fill-rule="evenodd" d="M7.70042 2.29636C9.93483 2.29646 12.0838 3.15501 13.7032 4.69457C13.8251 4.81343 14.02 4.81193 14.1401 4.69121L15.3058 3.51479C15.3666 3.45356 15.4005 3.37062 15.4 3.28433C15.3995 3.19803 15.3646 3.11549 15.3031 3.05498C11.0528 -1.01833 4.3474 -1.01833 .0970716 3.05498C.0355014 3.11545 .000571881 3.19796 .0000072 3.28426C-.000567562 3.37055 .033283 3.45352 .0940465 3.51479L1.26005 4.69121C1.38006 4.81211 1.57513 4.81361 1.697 4.69457C3.31657 3.15491 5.4658 2.29636 7.70042 2.29636ZM7.70042 6.12375C8.92809 6.12367 10.1119 6.57999 11.022 7.40402C11.145 7.52097 11.3389 7.51844 11.4589 7.39831L12.6232 6.22189C12.6845 6.16019 12.7186 6.07648 12.7177 5.98949C12.7168 5.90251 12.6811 5.8195 12.6185 5.75906C9.84735 3.18131 5.55584 3.18131 2.78469 5.75906C2.72209 5.8195 2.68637 5.90255 2.68555 5.98956C2.68473 6.07657 2.71887 6.16028 2.78031 6.22189L3.9443 7.39831C4.06427 7.51844 4.25817 7.52097 4.38125 7.40402C5.29065 6.58053 6.47357 6.12426 7.70042 6.12375ZM9.93797 8.93135C10.0002 8.87024 10.0345 8.78614 10.0327 8.69891C10.031 8.61168 9.99327 8.52905 9.92855 8.47053C8.64232 7.38263 6.75852 7.38263 5.47229 8.47053C5.40753 8.529 5.36977 8.6116 5.36792 8.69883C5.36608 8.78606 5.40031 8.87019 5.46254 8.93135L7.4769 10.9639C7.53594 11.0236 7.61643 11.0572 7.70042 11.0572C7.78441 11.0572 7.8649 11.0236 7.92394 10.9639L9.93797 8.93135Z" fill="var(--f,#000)" stroke="var(--s,none)" stroke-width="var(--sw,0)"/></svg>',
+  bat:'<svg class="abs sb-bat ic" width="24.5" height="11.5" viewBox="0 0 24.5 11.5"><path fill-rule="evenodd" d="M3.58944 0H18.4106C19.6587 0 20.1113 .129956 20.5676 .373986C21.0239 .618016 21.382 .97612 21.626 1.43242C21.87 1.88871 22 2.34131 22 3.58944V7.91056C22 9.15869 21.87 9.61129 21.626 10.0676C21.382 10.5239 21.0239 10.882 20.5676 11.126C20.1113 11.37 19.6587 11.5 18.4106 11.5H3.58944C2.34131 11.5 1.88871 11.37 1.43242 11.126C.97612 10.882 .618016 10.5239 .373986 10.0676C.129956 9.61129 0 9.15869 0 7.91056V3.58944C0 2.34131 .129956 1.88871 .373986 1.43242C.618016 .97612 .97612 .618016 1.43242 .373986C1.88871 .129956 2.34131 0 3.58944 0ZM3.58944 1C2.60246 1 2.2579 1.06654 1.90401 1.2558C1.62199 1.40663 1.40663 1.62199 1.2558 1.90401C1.06654 2.2579 1 2.60246 1 3.58944V7.91056C1 8.89754 1.06654 9.2421 1.2558 9.59599C1.40663 9.87801 1.62199 10.0934 1.90401 10.2442C2.2579 10.4335 2.60246 10.5 3.58944 10.5H18.4106C19.3975 10.5 19.7421 10.4335 20.096 10.2442C20.378 10.0934 20.5934 9.87801 20.7442 9.59599C20.9335 9.2421 21 8.89754 21 7.91056V3.58944C21 2.60246 20.9335 2.2579 20.7442 1.90401C20.5934 1.62199 20.378 1.40663 20.096 1.2558C19.7421 1.06654 19.3975 1 18.4106 1H3.58944ZM24.5 5.69C24.5 6.92657 23 7.69 23 7.69V3.69C23 3.69 24.5 4.45343 24.5 5.69Z" fill="var(--f,#000)" fill-opacity=".36" stroke="var(--s,none)" stroke-width="var(--sw,0)"/></svg>',
+  chev:'<svg class="ic" width="40" height="40" viewBox="0 0 40 40"><path d="M22 24L18 20L22 16" fill="none" stroke="var(--s,#123456)" stroke-width="var(--sw,3)" stroke-linecap="round"/></svg>',
+  rec:c=>'<svg class="abs rec-ic ic" width="40" height="40" viewBox="0 0 40 40" fill="var(--f,'+c+')" stroke="var(--s,none)" stroke-width="var(--sw,0)"><path d="M19.9999 12C18.1223 12 17.7421 12.0656 15.9993 13.0718C15.521 13.3479 14.9094 13.1841 14.6333 12.7058C14.3572 12.2275 14.521 11.6159 14.9993 11.3397C16.5799 10.43 18.2999 10 19.9999 10C21.5779 10 23.0705 10.3655 24.3977 11.0165L22.8801 12.5341C21.9864 12.1892 21.0152 12 19.9999 12Z"/><path d="M29.9999 20V23.8112L32.6754 21.4941C33.0929 21.1325 33.7244 21.1779 34.086 21.5953C34.4475 22.0128 34.4022 22.6444 33.9847 23.0059L28.9999 27.3229L24.0152 23.0059C23.5977 22.6444 23.5523 22.0128 23.9139 21.5953C24.2754 21.1779 24.907 21.1325 25.3245 21.4941L27.9999 23.811V20C27.9999 17.4305 26.7885 15.1439 24.9056 13.6802L26.3287 12.2571C28.5696 14.091 29.9999 16.8785 29.9999 20Z"/><path fill-rule="evenodd" d="M31.7071 8.29289C32.0976 8.68342 32.0976 9.31658 31.7071 9.70711L9.70711 31.7071C9.31658 32.0976 8.68342 32.0976 8.29289 31.7071C7.90237 31.3166 7.90237 30.6834 8.29289 30.2929L30.2929 8.29289C30.6834 7.90237 31.3166 7.90237 31.7071 8.29289Z"/><path d="M20.0001 28C21.6731 28 23 27.5 24.0007 26.9282C24.479 26.6521 25.0906 26.8159 25.3667 27.2942C25.6428 27.7725 25.479 28.3841 25.0007 28.6603C23.4201 29.57 21.7001 30 20.0001 30C16.8785 30 14.091 28.5697 12.2571 26.3287L13.6802 24.9056C15.1439 26.7885 17.4305 28 20.0001 28Z"/><path d="M10.0001 20V16.1888L7.32459 18.5059C6.9071 18.8675 6.27556 18.8221 5.91401 18.4047C5.55245 17.9872 5.5978 17.3556 6.01528 16.9941L11.0001 12.6771L15.9848 16.9941C16.4023 17.3556 16.4477 17.9872 16.0861 18.4047C15.7246 18.8221 15.093 18.8675 14.6755 18.5059L12.0001 16.189V20C12.0001 21.0153 12.1893 21.9864 12.5342 22.88L11.0165 24.3977C10.3656 23.0705 10.0001 21.5779 10.0001 20Z"/></svg>',
+};
+
+function bars(b){
+  let s='<svg class="abs gr-bars ic" width="296" height="61" viewBox="0 0 296 61"><clipPath id="bc"><rect width="296" height="61"/></clipPath><g clip-path="url(#bc)" stroke="var(--s,none)" stroke-width="var(--sw,0)">';
+  for(const [hs,c] of [[b.light,'#5C85D6'],[b.dark,'#20499A']])
+    hs.forEach((h,i)=>{s+=`<rect x="${18+10*i}" y="${64-h}" width="8" height="${h}" rx="${Math.min(4,h/2)}" fill="var(--f,${c})"/>`});
+  return s+'<rect y="60" width="296" height="1" fill="var(--f,#FBFBFB)"/></g></svg>';
+}
+
+/* o-s / o-d: outlined solid or dashed in outline mode (shapes solid, frames and groups dashed). */
+function field(label,val,x,y){
+  const full=val!=='';
+  return `<div class="abs tf o-d" style="left:${x}px;top:${y}px"><p class="t tf-lab">${label}</p>
+    <div class="abs tf-box ink o-s${full?' is-full':''}"><p class="t tf-val">${full?val:'£'}</p></div></div>`;
+}
+function toggle(on,label,x,y){
+  return `<div class="abs tg o-d${on?' is-on':''}" style="left:${x}px;top:${y}px"><div class="abs tg-bg ink o-s"></div><div class="abs tg-cap ink o-s"></div><p class="t lab">${label}</p></div>`;
+}
+function screen(st){
+  let h=`<div class="abs sb-bg ink o-s"></div><div class="abs sb-div ink"></div>
+    <div class="abs sb-bar o-d"></div><p class="t sb-time o-d">8:24</p><p class="t sb-url o-d">getpenfold.com</p>
+    ${ICON.sig}${ICON.wifi}${ICON.bat}<div class="abs sb-batfill ink o-s"></div>
+    <div class="abs hd o-d"><div class="abs hd-bg ink o-s"></div><p class="t hd-title">Estimate</p>
+      <div class="abs hd-back"><div class="hd-chev o-d">${ICON.chev}</div><div class="hd-lab o-d"><p class="hd-labt t" style="position:relative">Back</p></div></div></div>
+    <div class="abs row-pay o-d"></div>
+    ${field('Pay-in amount',st.pay,32,159)}
+    ${st.rec?`<div class="abs rec o-d" style="left:196px;top:200px">${ICON.rec(st.rec==='pink'?'#FF5081':'#D8D8D8')}</div>`:''}
+    ${toggle(st.oneOff,'One off',277,200)}`;
+  if(st.income!==null){
+    h+=`<div class="abs row-inc o-d"></div>${field('Monthly income',st.income,32,288)}`;
+    if(st.pct) h+=`<div class="abs pill o-d" style="left:277px;top:329px"><div class="abs pill-bg ink o-s"></div><p class="t pill-val">${st.pct}</p><p class="t lab">Save as a %</p></div>
+      <div class="abs stp o-d" style="left:270px;top:377px"><div class="abs stp-pl ink o-s"></div><p class="t stp-t">-</p></div>
+      <div class="abs stp o-d" style="left:310px;top:377px"><div class="abs stp-pl ink o-s"></div><p class="t stp-t">+</p></div>`;
+  }
+  if(st.helper) h+=`<p class="abs helper">Choose an amount to pay into your pension.<br><br>Start with a one off top up, or set it as a recurring monthly contribution. Define the value based on your income, or try to hit the 100% ideal savings goal.</p>`;
+  if(st.chart){
+    const b=BARS[st.chart];
+    h+=`<div class="abs gr o-d"><div class="abs gr-dot ink o-s" style="left:45px;top:18px;background:${b.dot}"></div>
+      <p class="t gr-title"><span class="gr-b">${st.chart}%</span> of ideal pot</p>${bars(b)}
+      <div class="abs gr-dot ink o-s" style="left:57px;top:103px;background:#5C85D6"></div><p class="t gr-key" style="left:69px">Paid in</p>
+      <div class="abs gr-dot ink o-s" style="left:107px;top:103px;background:#20499A"></div><p class="t gr-key" style="left:119px">Growth</p>
+      <p class="t gr-total">Total pot: ${b.total}</p></div>`;
+  }
+  h+=`<div class="abs ctl"><div class="abs ctl-bg ink o-s"></div><div class="abs col40 o-d">
+      ${toggle(st.salary,'Salary based',24,0)}
+      <div class="abs save ink o-d${st.save?' is-on':''}"><p class="save-t t">Save</p></div></div></div>`;
+  return h;
+}
+
+/* ======================= build ======================= */
+const S=.617363, O={x:47.5,y:43.5};                 // canvas zoom and frame corner, in Frame 3
+const P=(x,y)=>[O.x+S*x,O.y+S*y];                     // frame units -> Frame 3 craft units
+const NS='http://www.w3.org/2000/svg';
+const screens={};
+for(const [id,st] of Object.entries(STATES)) screens[id]={...st, x:455*st.col, y:852*st.row};
+
+for(const viewId of ['wireView','selectView']){
+  const view=document.getElementById(viewId);
+  for(const [id,s] of Object.entries(screens)){
+    const el=document.createElement('div');
+    el.className='scr'; el.style.left=s.x+'px'; el.style.top=s.y+'px'; el.dataset.id=id;
+    el.innerHTML=screen(s);
+    view.appendChild(el);
+  }
+}
+
+/* Outline mode: trace every o-s / o-d box of the wire layer in purple, as Figma's Outline view does. */
+function box(el,root){let x=0,y=0,n=el;while(n&&n!==root){x+=n.offsetLeft;y+=n.offsetTop;n=n.offsetParent}return [x,y,el.offsetWidth,el.offsetHeight]}
+for(const scr of document.querySelectorAll('#wireView .scr')){
+  const svg=document.createElementNS(NS,'svg');
+  svg.setAttribute('class','abs'); svg.setAttribute('width',375); svg.setAttribute('height',812);
+  svg.style.left=0; svg.style.top=0;
+  for(const el of scr.querySelectorAll('.o-s,.o-d')){
+    const [x,y,w,h]=box(el,scr); if(!w||!h) continue;
+    const r=document.createElementNS(NS,'rect');
+    const rad=Math.min(parseFloat(getComputedStyle(el).borderTopLeftRadius)||0,w/2,h/2);
+    Object.entries({x:x+.81,y:y+.81,width:w-1.62,height:h-1.62,rx:rad,fill:'none',stroke:'#7B61FF','stroke-width':1.62}).forEach(([k,v])=>r.setAttribute(k,v));
+    if(el.classList.contains('o-d')) r.setAttribute('stroke-dasharray','6.5 3.2');
+    svg.appendChild(r);
+  }
+  scr.appendChild(svg);
+}
+
+/* ---------- Figma's UI over both layers: screen outlines, prototype connectors, selection ---------- */
+const over=document.getElementById('over');
+const add=(tag,attrs,parent=over)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e};
+const f=n=>+n.toFixed(2);
+
+for(const s of Object.values(screens)){                // each screen's purple frame line
+  const [x,y]=P(s.x,s.y);
+  add('rect',{x:f(x+.25),y:f(y+.25),width:f(375*S-.5),height:f(812*S-.5),fill:'none',stroke:'#7B61FF','stroke-width':.5});
+}
+
+const lines=add('g',{fill:'none',stroke:'#18A0FB','stroke-width':1.5,'stroke-linecap':'round','stroke-linejoin':'round'});
+const dots=add('g',{fill:'#FFFFFF',stroke:'#18A0FB','stroke-width':1.5});
+for(const [hx,hy,hw,hh,dest] of LINKS){
+  const row=hy>=1012?1:0;
+  const fx=hx-80, fy=hy-(row?1012:80)+852*row;           // hotspot in frame units
+  const src=screens[Object.keys(screens).find(k=>screens[k].col===Math.floor(fx/455)&&screens[k].row===row)];
+  const d=screens[dest];
+  const [sx,sy]=P(fx+hw,fy+hh/2);                          // the hotspot's right-middle
+  let ex,ey,c1,c2;
+  if(d.row!==src.row){                                     // another row: enter the facing edge's middle
+    const below=d.row>src.row;
+    [ex,ey]=P(d.x+187.5,below?d.y:d.y+812);
+    const kx=Math.abs(ex-sx)*.5*Math.sign(ex-sx), ky=Math.max(Math.abs(ey-sy)*.5,24)*(below?1:-1);
+    c1=[sx+kx,sy]; c2=[ex,ey-ky];                          // leaves sideways, arrives upright
+  }else{                                                   // same row: enter the facing side's middle
+    const right=d.col>src.col;
+    [ex,ey]=P(right?d.x:d.x+375,d.y+406);
+    const k=Math.max(Math.abs(ex-sx)*.5,24)*(right?1:-1);
+    c1=[sx+k,sy]; c2=[ex-k,ey];
+  }
+  add('path',{d:`M${f(sx)} ${f(sy)}C${f(c1[0])} ${f(c1[1])} ${f(c2[0])} ${f(c2[1])} ${f(ex)} ${f(ey)}`},lines);
+  const a=Math.atan2(ey-c2[1],ex-c2[0]), L=6;              // arrowhead, tip on the edge
+  const p1=[ex-L*Math.cos(a-Math.PI/4),ey-L*Math.sin(a-Math.PI/4)], p2=[ex-L*Math.cos(a+Math.PI/4),ey-L*Math.sin(a+Math.PI/4)];
+  add('path',{d:`M${f(p1[0])} ${f(p1[1])}L${f(ex)} ${f(ey)}L${f(p2[0])} ${f(p2[1])}`},lines);
+  add('circle',{cx:f(sx),cy:f(sy),r:2.9},dots);
+}
+
+/* the selected frame (blue line, corner handles, size badge, flow-start badge) was cut on request, 2026-09-29 */
+
+/* ---------- #bare: transparent page, notes in the host page's theme ---------- */
+if(/(^|[#&])bare\b/.test(location.hash)){
+  const root=document.documentElement; root.classList.add('bare');
+  try{const pg=parent.document.querySelector('.page[data-theme]');
+    const sync=()=>root.classList.toggle('dark',pg.getAttribute('data-theme')==='dark');
+    sync(); new MutationObserver(sync).observe(pg,{attributes:true,attributeFilter:['data-theme']});}catch(e){}
+}
+
+/* ---------- fit the frame to the window; craft.html#crop=x,y,w,h shows only that box ---------- */
+const crop=((location.hash.match(/crop=([-\d.,]+)/)||[])[1]||'0,0,2212').split(',').map(Number);
+const fit=()=>{const c=document.getElementById('craft').style;
+  c.setProperty('--k',innerWidth/crop[2]); c.setProperty('--cx',-crop[0]+'px'); c.setProperty('--cy',-crop[1]+'px')};
+fit(); addEventListener('resize',fit);
+</script>
+</body>
+</html>

@@ -89,3 +89,18 @@ them sits well above the annotation line that runs under the screens. The calcul
 CodeCatalog the same day, which also made it longer.
 
 The page dots are Penfold's pink, #FF5081 ("Pinkfold" in the Figma file). Annotation rings, lines, bracket and dot are the accent blue.
+
+## Sketches, coloured
+
+Two groups of sketches are drawn in colour, in the areas Cesar outlined on screenshots (2026-09-29): the donut
+sketches with the taxback note, and the pot with the three dashboard screens. Both are Penfold blue (#5081FF) in
+light and Penfold pink (#FF5081) in dark. `source/sketches.py` makes both image files from the untouched export in CodeCatalog and the two masks
+in `source/`.
+
+## Annotated prototype
+
+In Tuning, after the first paragraph: `craft.html` (since 2026-09-29; it was `img/prototype-annotated.webp`, now unused), the craft montage from the 2020 Squarespace page
+rebuilt as code (a copy of FolioCatalog `penfold/2020/site/craft.html`, see that version's NOTES), cropped by `#crop=10.7,82,2143.6,1249.5`
+to the same box as the picture. The picture was
+(FolioCatalog `penfold/2020`, `source/originals/craft/export.png`, the unedited frame with its handwritten notes), shadow
+margin cropped, trimmed to content, 2400 wide.
