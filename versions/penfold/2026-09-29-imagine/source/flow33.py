@@ -5,9 +5,9 @@ Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.h
 longest, most complete state, shown whole: nothing is cropped or scrolled. The strip has five columns,
 laid out by hand (see screens()). All columns are the height of the tallest one: a column's
 spare height is shared between its frames, as room at the bottom of each.
-A dot at the bottom right of each frame gives the running total of steps up to and including
-that screen, counted in the order the strip is read (down each column, left to right), in two
-digits, ending on 33; which steps a screen covers in the real flow is kept in data-steps. Nothing is clickable; each tile is one fixed state
+A dot at the top right of each frame carries the colour of the screen's square on the flow
+picture (the modules the flow was later split into). No step counts are shown; which steps a
+screen covers is kept in its data-steps attribute. Nothing is clickable; each tile is one fixed state
 in its own shadow root.
 
     python3 source/flow33.py        rewrites the row between the FLOW33 markers in site/index.html
@@ -127,15 +127,15 @@ def screens():
     ]
 
 
-def tile(s, tw, total):
+def tile(s, tw):
     # the screens are fixed 2640 frames that clip; here the frame is the tile, so let them run
     css = (":host{display:block;width:%dpx;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}\n" % s.width
            + s.css + '\n.page{overflow:visible}\n')
     return ('<div class="step" style="--fw:%d;--fb:%d" data-screen="penfold/desktop/%s" data-steps="%s" data-state="%s">'
             '<div class="win"><div class="pg"><template shadowrootmode="open"><style>\n%s\n</style>\n%s\n</template></div>'
-            '<b class="dot" aria-label="%d steps so far">%02d</b></div></div>'
+            '<i class="dot" style="background:%s"></i></div></div>'
             % (s.width, round(need(s) * tw / 1182), s.sid, ' '.join('%02d' % n for n in s.steps), s.note, css, s.body,
-               total, total))
+               s.colour))
 
 
 def main():
@@ -144,15 +144,10 @@ def main():
     steps = [n for s in all_screens for n in s.steps]
     assert sorted(steps) == list(range(1, 34)), steps
     tw, room = measure(cols)
-    # the dot counts steps in the order the strip is read: down each column, left to right
-    totals, run = {}, 0
-    for s in all_screens:
-        run += len(s.steps)
-        totals[s.sid] = run
     height = round(room * tw / 1182)
     row = ('<!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->\n'
            '<div class="flow" style="--n:%d;--tw:%.3f;--h:%d" role="group" aria-label="The first onboarding, screen by screen">\n' % (len(cols), tw, height)
-           + '\n'.join('<div class="stack">\n' + '\n'.join(tile(s, tw, totals[s.sid]) for s in c) + '\n</div>' for c in cols)
+           + '\n'.join('<div class="stack">\n' + '\n'.join(tile(s, tw) for s in c) + '\n</div>' for c in cols)
            + '\n</div>\n<!-- FLOW33 end -->')
     page = open(SITE, encoding='utf-8').read()
     assert page.count('<!-- FLOW33 start') == 1, 'markers missing in site/index.html'
