@@ -40,3 +40,8 @@ Dark is unchanged. The sketches image is blended with multiply in light, so its 
 
 No frame is shorter than 900px of screen (126px on the page, a 4:3 frame), and every screen keeps at least
 170px of its own space under its last element, so short screens still read as screens and the dot sits clear.
+
+## Sketches, darker
+
+`img/sketches-strip.webp` is the Figma export multiplied by itself three times (each pixel cubed), the same as
+stacking three copies with multiply. The untouched export is in CodeCatalog, `images/penfold/sketches-strip/`.
