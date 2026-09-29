@@ -4,9 +4,8 @@
 Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.html) in its
 longest, most complete state, shown whole: nothing is cropped or scrolled. The strip is as tall
 as the longest screen (Plan selection). Shorter screens are stacked in one column, in sequence,
-split across the columns as evenly as the sequence allows, and their frames stretch to fill it. Under each screen, a bar in
-the colour of its square on the flow picture (the modules the flow was later split into) and
-the numbers of the steps that screen covers. Nothing is clickable; each tile is one fixed state
+split across the columns as evenly as the sequence allows, and their frames stretch to fill it.
+No labels: the steps each screen covers are kept in its data-steps attribute only. Nothing is clickable; each tile is one fixed state
 in its own shadow root.
 
     python3 source/flow33.py        rewrites the row between the FLOW33 markers in site/index.html
@@ -29,7 +28,6 @@ WIDTH = 894           # the text column the strip has to fit, px on the page
 GAP = 16              # between columns
 BELOW = 60            # least room under a screen's last element, in screen pixels
 TALLEST = 290         # room under the longest screen; sets the strip's height
-LABEL = 22            # bar and step numbers under a frame, px on the page
 STACK_GAP = 12        # between two screens in one column, px on the page
 
 
@@ -46,7 +44,7 @@ def columns(all_screens):
     count = len(all_screens)
     for n in range(1, count + 1):
         tw = (WIDTH - GAP * (n - 1)) / n
-        extra = (LABEL + STACK_GAP) * 1182 / tw          # what one more screen in a column costs
+        extra = STACK_GAP * 1182 / tw          # what one more screen in a column costs
         def used(col): return sum(need(x) for x in col) + extra * (len(col) - 1)
         best = None
         for cuts in itertools.combinations(range(1, count), n - 1):
@@ -135,11 +133,10 @@ def tile(s, tw):
     # the screens are fixed 2640 frames that clip; here the frame is the tile, so let them run
     css = (":host{display:block;width:%dpx;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}\n" % s.width
            + s.css + '\n.page{overflow:visible}\n')
-    return ('<div class="step" style="--fw:%d;--fb:%d;--gc:%s" data-screen="penfold/desktop/%s" data-state="%s">'
+    return ('<div class="step" style="--fw:%d;--fb:%d" data-screen="penfold/desktop/%s" data-steps="%s" data-state="%s">'
             '<div class="win"><div class="pg"><template shadowrootmode="open"><style>\n%s\n</style>\n%s\n</template></div></div>'
-            '<i class="bar"></i><span class="mono">%s</span></div>'
-            % (s.width, round(need(s) * tw / 1182) + LABEL, s.colour, s.sid, s.note, css, s.body,
-               ' '.join('%02d' % n for n in s.steps)))
+            '</div>'
+            % (s.width, round(need(s) * tw / 1182), s.sid, ' '.join('%02d' % n for n in s.steps), s.note, css, s.body))
 
 
 def main():
@@ -147,7 +144,7 @@ def main():
     steps = [n for s in all_screens for n in s.steps]
     assert steps == list(range(1, 34)), steps
     cols, tw, room = columns(all_screens)
-    height = round(room * tw / 1182) + LABEL
+    height = round(room * tw / 1182)
     row = ('<!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->\n'
            '<div class="flow" style="--n:%d;--tw:%.3f;--h:%d" role="group" aria-label="The first onboarding, screen by screen">\n' % (len(cols), tw, height)
            + '\n'.join('<div class="stack">\n' + '\n'.join(tile(s, tw) for s in c) + '\n</div>' for c in cols)

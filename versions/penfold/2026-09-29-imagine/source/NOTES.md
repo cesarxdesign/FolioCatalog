@@ -20,9 +20,8 @@ sign-up form filled). The strip is as tall as the longest screen, Plan selection
 stacked in sequence, split across six columns as evenly as the sequence allows so each page keeps the
 most spare height, and their frames stretch to fill the column. Built by `source/flow33.py`.
 
-Under each screen: a bar in the colour of its square on the flow picture
-(`Portfolio/penfold-air/img/onboarding-mvp.webp`), the modules the flow was later split into, and the numbers
-of the steps that screen covers, 01 to 33. The docs screen is four steps, one per doc.
+No bars or step numbers under the screens (removed by request). The steps each screen covers, 01 to 33,
+are kept in its `data-steps` attribute; the docs screen is four steps, one per doc.
 
 Left out by request: the assumptions dialog and the "Hold on while we run some checks" screen.
 The all-docs-accepted state is not in CodeCatalog and is not shown; to be revisited.
