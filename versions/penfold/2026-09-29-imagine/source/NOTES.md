@@ -72,3 +72,9 @@ the modular onboarding.
 | plan selection | purple #8E4EC6 |
 | sign-up form, document consent | indigo #3E63DD |
 | monthly payment, standing order, confirmation | green #46A758 |
+
+## Grid annotation
+
+Annotations on the grid follow the live Cable page's design: a ring on the screen, a line out to a caption in the
+left gutter (title and short text). First one: "Unfamiliar sequence.", ringing the two screens that ask for personal
+details (sign-up with email, sign-up form). Copy and ring targets are in `ANNOTATIONS` in `flow33.py`.

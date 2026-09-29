@@ -133,6 +133,47 @@ def screens():
     ]
 
 
+# Annotations on the grid, in the live Cable page's form: rings on screens, one line out to a caption
+# in the left gutter. The line leaves from the first ringed screen, which has to touch the left edge.
+ANNOTATIONS = [
+    dict(rings=['sign-up-upper', 'sign-up-form'],
+         title='Unfamiliar sequence.',
+         body='To save engineering effort, I followed the proof of concept&rsquo;s code as closely as I could. '
+              'So the flow was long, and it didn&rsquo;t keep like with like. It asked for personal details at the '
+              'start and again at the end, and wove in and out of money decisions in between.'),
+]
+
+
+def boxes(cols, tw, height):
+    """Where each frame lands in the strip, in page pixels: {screen: (left, top, width, height)}.
+    Mirrors the CSS: a column's spare height is shared equally between its frames."""
+    out = {}
+    for i, c in enumerate(cols):
+        base = [round(need(s) * tw / 1182) for s in c]
+        spare = (height - sum(base) - STACK_GAP * (len(c) - 1)) / len(c)
+        top = 0
+        for s, b in zip(c, base):
+            out[s.sid] = (i * (tw + GAP), top, tw, b + spare)
+            top += b + spare + STACK_GAP
+    return out
+
+
+def annotations(cols, tw, height):
+    pos, rings, caps = boxes(cols, tw, height), [], []
+    for a in ANNOTATIONS:
+        for sid in a['rings']:
+            l, t, w, h = pos[sid]
+            rings.append('<div class="ring" style="left:%.3f%%;top:%.3f%%;width:%.3f%%;height:%.3f%%"></div>'
+                         % (100 * l / WIDTH, 100 * t / height, 100 * w / WIDTH, 100 * h / height))
+        l, t, w, h = pos[a['rings'][0]]
+        mid = 100 * (t + h / 2) / height
+        caps.append('<div class="lead" style="top:%.3f%%;width:calc(%.3f%% + 40px)"></div>'
+                    '<div class="dot" style="top:calc(%.3f%% - 3.5px)"></div>'
+                    '<figcaption class="cap" style="top:calc(%.3f%% - 14px)"><span class="ct">%s</span><span class="cb">%s</span></figcaption>'
+                    % (mid, 100 * l / WIDTH, mid, mid, a['title'], a['body']))
+    return '\n'.join(rings), '\n'.join(caps)
+
+
 def tile(s, tw):
     # the screens are fixed 2640 frames that clip; here the frame is the tile, so let them run
     css = (":host{display:block;width:%dpx;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}\n" % s.width
@@ -150,10 +191,12 @@ def main():
     assert sorted(steps) == list(range(1, 34)), steps
     tw, room = measure(cols)
     height = round(room * tw / 1182)
+    rings, caps = annotations(cols, tw, height)
     row = ('<!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->\n'
+           '<figure class="ann"><div class="sw">\n'
            '<div class="flow" style="--n:%d;--tw:%.3f;--h:%d" role="group" aria-label="The first onboarding, screen by screen">\n' % (len(cols), tw, height)
            + '\n'.join('<div class="stack">\n' + '\n'.join(tile(s, tw) for s in c) + '\n</div>' for c in cols)
-           + '\n</div>\n<!-- FLOW33 end -->')
+           + '\n</div>\n' + rings + '\n</div>\n' + caps + '\n</figure>\n<!-- FLOW33 end -->')
     page = open(SITE, encoding='utf-8').read()
     assert page.count('<!-- FLOW33 start') == 1, 'markers missing in site/index.html'
     page = re.sub(r'<!-- FLOW33 start[\s\S]*?<!-- FLOW33 end -->', lambda m: row, page)
