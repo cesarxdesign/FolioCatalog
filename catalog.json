@@ -395,6 +395,22 @@
     "path": "versions/penfold/2026-09-25-texas/site/index.html?v=e6f670e0"
   },
   {
+    "project": "penfold",
+    "id": "2026-09-29-noir",
+    "name": "Noir",
+    "page": "site/index.html",
+    "width": 1440,
+    "shipped": null,
+    "until": null,
+    "made": "2026-09-29",
+    "source": {
+      "kind": "written",
+      "from": "Noir (2026-09-25-noir), rewritten section by section with Cesar, 25 to 29 September 2026"
+    },
+    "note": "Text only, in the Cable Noir system. The full rewrite: every section workshopped with Cesar, facts settled in TheRecord. Written to sell on words alone; the real screens come later. Never shipped.",
+    "path": "versions/penfold/2026-09-29-noir/site/index.html?v=ffd2f5f6"
+  },
+  {
     "project": "starcount",
     "id": "2020-07-01",
     "name": "Observatory",
