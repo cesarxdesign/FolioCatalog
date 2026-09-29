@@ -17,8 +17,8 @@ Under the sketches: the first onboarding as one strip of its 11 screens that fit
 sideways scroll. Each is the live CodeCatalog desktop screen in its longest state, shown whole (3 things
 with all three sections open, the calculator with the whole plan, plans through to risks accepted, the
 sign-up form filled). The strip is as tall as the longest screen, Plan selection. Shorter screens are
-stacked in one column, in sequence, as many as fit that height, and their frames stretch to fill it:
-six columns. Built by `source/flow33.py`.
+stacked in sequence, split across six columns as evenly as the sequence allows so each page keeps the
+most spare height, and their frames stretch to fill the column. Built by `source/flow33.py`.
 
 Under each screen: a bar in the colour of its square on the flow picture
 (`Portfolio/penfold-air/img/onboarding-mvp.webp`), the modules the flow was later split into, and the numbers

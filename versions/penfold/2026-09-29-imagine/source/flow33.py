@@ -4,7 +4,7 @@
 Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.html) in its
 longest, most complete state, shown whole: nothing is cropped or scrolled. The strip is as tall
 as the longest screen (Plan selection). Shorter screens are stacked in one column, in sequence,
-as many as fit that height, and their frames stretch to fill it. Under each screen, a bar in
+split across the columns as evenly as the sequence allows, and their frames stretch to fill it. Under each screen, a bar in
 the colour of its square on the flow picture (the modules the flow was later split into) and
 the numbers of the steps that screen covers. Nothing is clickable; each tile is one fixed state
 in its own shadow root.
@@ -15,7 +15,7 @@ Order and step counts follow the flow picture (Portfolio/penfold-air/img/onboard
 left to right, top to bottom. Two steps on the picture are left out by request: the assumptions
 dialog and the "Hold on while we run some checks" screen.
 """
-import os, re
+import itertools, os, re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(HERE, '..', 'site', 'index.html')
@@ -39,20 +39,25 @@ def need(s):
 
 
 def columns(all_screens):
-    """Screens packed into columns in sequence; a column takes screens until the next would not fit.
-    The column count decides the scale, and the scale decides what the labels cost, so try counts."""
+    """Screens split into columns, in sequence. The fewest columns that fit are used, so the screens
+    stay as wide as they can; among the ways to fill that many columns, the most even one wins, so
+    every column keeps as much spare height as it can."""
     room = max(ENDS[s.sid] * 1182 / s.width for s in all_screens) + TALLEST
-    for n in range(1, len(all_screens) + 1):
+    count = len(all_screens)
+    for n in range(1, count + 1):
         tw = (WIDTH - GAP * (n - 1)) / n
         extra = (LABEL + STACK_GAP) * 1182 / tw          # what one more screen in a column costs
-        cols = [[]]
-        for s in all_screens:
-            used = sum(need(x) for x in cols[-1]) + extra * len(cols[-1])
-            if cols[-1] and used + need(s) > room:
-                cols.append([])
-            cols[-1].append(s)
-        if len(cols) <= n:
-            return cols, (WIDTH - GAP * (len(cols) - 1)) / len(cols), room
+        def used(col): return sum(need(x) for x in col) + extra * (len(col) - 1)
+        best = None
+        for cuts in itertools.combinations(range(1, count), n - 1):
+            edges = (0,) + cuts + (count,)
+            cols = [all_screens[a:b] for a, b in zip(edges, edges[1:])]
+            fill = [used(c) for c in cols]
+            if max(fill) > room: continue
+            score = (max(fill), sum(f * f for f in fill))
+            if best is None or score < best[0]: best = (score, cols)
+        if best:
+            return best[1], tw, room
 
 
 def load(sid):
