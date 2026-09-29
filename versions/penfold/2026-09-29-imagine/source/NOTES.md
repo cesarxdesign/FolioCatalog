@@ -33,7 +33,8 @@ Montserrat and Roboto Mono are in `site/_vendor/` for these screens.
 
 ## Background
 
-The light page background is white (#FFFFFF), not Color's #f2f5f7. Dark is unchanged.
+The light page background is a light blue tint, #F5F8FD, the same as the live Cable page (Color's is #f2f5f7).
+Dark is unchanged. The sketches image is blended with multiply in light, so its white paper takes the page colour.
 
 ## Frame sizes in the strip
 

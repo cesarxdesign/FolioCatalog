@@ -9,10 +9,10 @@
 <style>
 /* Penfold Imagine: the Colour page with images. Hero image as on the live Cable page. Light and dark. */
 /* palette taken from the live Penfold page (cesarxdesign.com/penfold) */
-[data-theme="light"]{--bg:#FFFFFF;--ink:#151515;--soft:#98a0a8;--mut:#6b737b;--body:#5b6470;--line:#dfe2e6;--acc:#6076DD;--acc2:#98a6e9;--accg:#6076DD;--chip:#6076DD;--glow:rgba(96,118,221,.07);--halo:rgba(96,118,221,.14)}
+[data-theme="light"]{--bg:#F5F8FD;--ink:#151515;--soft:#98a0a8;--mut:#6b737b;--body:#5b6470;--line:#dfe2e6;--acc:#6076DD;--acc2:#98a6e9;--accg:#6076DD;--chip:#6076DD;--glow:rgba(96,118,221,.07);--halo:rgba(96,118,221,.14)}
 [data-theme="dark"]{--bg:#101519;--ink:#eef0f2;--soft:#7c8188;--mut:#8b9198;--body:#b3b7bd;--line:#2a2d33;--acc:#98a6e9;--acc2:#b7c1f0;--accg:#6076DD;--chip:#6076DD;--glow:rgba(96,118,221,.10);--halo:rgba(96,118,221,.30)}
 body:has([data-theme="dark"]){background:#101519}
-body{margin:0;background:#FFFFFF;font-family:'Geist',-apple-system,'Helvetica Neue',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+body{margin:0;background:#F5F8FD;font-family:'Geist',-apple-system,'Helvetica Neue',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 a{color:var(--ink);text-decoration:none}a:hover{color:var(--acc)}
 p,h1,h2,h3,blockquote{margin:0}
 
@@ -92,6 +92,8 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 /* images: the hero and shot treatment from the live Cable page */
 .heroimg{display:block;width:100%;height:600px;object-fit:cover;border-radius:12px;box-shadow:0 60px 140px -40px var(--halo)}
 .shot{display:block;width:100%;height:auto;border-radius:12px}
+/* the sketches are ink on white paper: multiplied, the paper takes the page colour. Light only; on the dark page the ink would vanish */
+[data-theme="light"] .shot{mix-blend-mode:multiply}
 
 .closer{padding:200px 0 120px;border-top:1px solid var(--line)}
 .closer .big{font-size:104px;line-height:1;letter-spacing:-.05em;font-weight:600}
