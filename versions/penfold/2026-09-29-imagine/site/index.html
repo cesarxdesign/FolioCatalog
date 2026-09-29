@@ -157,7 +157,7 @@ footer .links{display:flex;gap:36px;font-size:14px}
 <img class="shot" src="img/sketches-strip.webp" alt="Day-one sketches for Penfold: notes, a 3D pot, dashboard layouts, the donut and transaction rows" width="3974" height="1210">
 <p class="txt">I had to work fast. Day one: read code from proof of concept, start sketching. Day two: check all required steps are covered. Day three: high fidelity. Day four: handover to our developer, with three days to ship it. Tick. Tock.</p>
 <!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->
-<div class="flow" style="--n:5;--tw:166.000;--h:627" role="group" aria-label="The first onboarding, screen by screen">
+<div class="flow" style="--n:5;--tw:166.000;--h:534" role="group" aria-label="The first onboarding, screen by screen">
 <div class="stack">
 <div class="step" style="--fw:1231;--fb:336" data-screen="penfold/desktop/three-things" data-steps="01 02 03 04 05 06" data-state="all three sections open"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1231px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
@@ -294,7 +294,7 @@ h1{font:700 49px/57px 'Montserrat';letter-spacing:-.9px}
 <p class="foot">With pensions, as with all investments, your capital is at risk and the value of your pension with Penfold may go up as well as down. You may get back less than you put in.</p>
 </main>
 </template></div><b class="dot" aria-label="6 steps so far">06</b></div></div>
-<div class="step" style="--fw:1182;--fb:155" data-screen="penfold/desktop/sign-up-upper" data-steps="08" data-state="name, phone and password"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+<div class="step" style="--fw:1182;--fb:169" data-screen="penfold/desktop/sign-up-upper" data-steps="07 08" data-state="name, phone, email and password"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
 :host{
@@ -379,6 +379,11 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
     <p class="err">Please use YYYY-MM-DD format</p>
 
     <div class="row" style="margin-top:18px">
+      <label class="lab" for="f-email">Email</label>
+      <input class="f" id="f-email" type="email" style="width:377px" placeholder="you@somewhere.com">
+    </div>
+
+    <div class="row">
       <label class="lab" for="f-pass">Password</label>
       <input class="f" id="f-pass" type="password" style="width:377px" placeholder="Password">
     </div>
@@ -391,52 +396,6 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 </template></div><b class="dot" aria-label="8 steps so far">08</b></div></div>
 </div>
 <div class="stack">
-<div class="step" style="--fw:1182;--fb:126" data-screen="penfold/desktop/enter-email" data-steps="07" data-state="email"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
-:host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
-*{box-sizing:border-box}
-:host{
-  --navy:#133253; --slate:#133253; --muted:#4C5D70;
-  --pink:#ED5E83; --err:#D2453C; --focus:#8E6BB8;
-  --fill-auto:#F6F8BF; --line:#DEDEDE; --placeholder:#E2E2E2; --disabled:#D0D0D0;
-}
-.page{position:relative;width:1182px;height:2640px;overflow:hidden;background:transparent;
-  font-family:'Montserrat',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:var(--navy)}
-.page h1{margin:0;font:700 49px/57px 'Montserrat',sans-serif;letter-spacing:-.9px;color:var(--navy)}
-.lab{display:block;margin:0 0 4px;font:400 16.8px/19px 'Montserrat',sans-serif;color:var(--muted)}
-.f{display:block;width:100%;height:62px;border:1px solid var(--line);border-radius:4px;background:#fff;
-  padding:0 18px;font:400 19.4px/1 'Montserrat',sans-serif;color:var(--slate);font-family:'Montserrat',sans-serif}
-.f::placeholder{color:var(--placeholder)}
-.f:focus{outline:none}
-.f.auto{background:var(--fill-auto)}
-select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M0 0 L5.5 7 L11 0 Z' fill='%233D5165'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 18px center}
-.err{margin:0;font:400 18.6px/1 'Montserrat',sans-serif;color:var(--err)}
-.btn{display:block;height:63px;border:0;border-radius:6px;background:var(--pink);color:#fff;
-  font:600 16px 'Montserrat',sans-serif;cursor:pointer}
-.btn[disabled]{background:var(--disabled);color:#F0F0F0;cursor:default}
-
-.col{position:absolute;left:183px;top:0;width:770px}
-.col h1{margin-top:92px}
-.field{margin-top:77px}
-.field .f{border:1px solid var(--err);box-shadow:0 0 0 3px var(--focus)}
-.err{margin-top:17px}
-.go{width:770px;margin-top:17px}
-.page{overflow:visible}
-
-</style>
-<div class="page">
-  <div class="col">
-    <h1>Enter your email</h1>
-    <div class="field">
-      <label class="lab" for="f-email">Email</label>
-      <input class="f" id="f-email" type="email" placeholder="you@somewhere.com">
-    </div>
-    <p class="err">We need your email</p>
-    <button class="btn go" disabled>Get Started</button>
-  </div>
-</div>
-</template></div><b class="dot" aria-label="7 steps so far">07</b></div></div>
 <div class="step" style="--fw:1182;--fb:126" data-screen="penfold/desktop/savings-path" data-steps="09" data-state="know the amount, or get help"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -1000,97 +959,6 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 </template></div><b class="dot" aria-label="23 steps so far">23</b></div></div>
 </div>
 <div class="stack">
-<div class="step" style="--fw:1182;--fb:189" data-screen="penfold/desktop/document-consent" data-steps="24 25 26 27" data-state="first doc open"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
-:host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
-*{box-sizing:border-box}
-
-:host{
-  --navy:#133253;
-  --slate:#133253;
-  --pink:#ED5E83;
-}
-
-.page{
-  position:relative;
-  width:1182px;height:2640px;overflow:hidden;
-  background:transparent;
-  font-family:'Montserrat',-apple-system,sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
-
-.page h1{position:absolute;left:183px;top:92px;margin:0;
-   font:700 49px/57px 'Montserrat',sans-serif;letter-spacing:-.9px;color:var(--navy)}
-
-.stack{position:absolute;left:183px;top:231px;width:770px}
-
-/* ---------- accordion ---------- */
-.doc{margin-top:26px}
-.doc:first-child{margin-top:0}
-.doc h2{
-  margin:0;height:76px;
-  display:flex;align-items:center;padding:0 26px;
-  background:var(--navy);color:#fff;
-  font:400 25.7px/1 'Montserrat',sans-serif;
-}
-.doc .body{
-  background:#fff;
-  padding:29px 24px 0;
-  position:relative;
-  height:473px;
-}
-.doc .body p{margin:0;font:400 14.2px/22px 'Montserrat',sans-serif;color:var(--slate)}
-.doc .body p+p{margin-top:23px}
-.doc .body a{display:block;margin-top:35px;
-  font:400 14.2px/1 'Montserrat',sans-serif;color:var(--pink);text-decoration:none}
-.doc .body a+a{margin-top:34px}
-
-.fade{position:absolute;left:0;right:0;top:379px;height:22px;
-  background:linear-gradient(to bottom,rgba(18,51,86,0) 0%,rgba(18,51,86,.075) 55%,rgba(18,51,86,0) 100%)}
-
-.accept{position:absolute;left:24px;top:416px;
-  display:flex;align-items:center;gap:12px;
-  font:400 17.7px/1 'Montserrat',sans-serif;color:var(--navy);cursor:pointer}
-.accept input{
-  appearance:none;-webkit-appearance:none;margin:0;
-  width:35px;height:35px;border:1px solid #E2E2E2;background:#fff;cursor:pointer;
-}
-.accept input:checked{border-color:var(--navy);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 35 35'%3E%3Cpath d='M8 18 L15 25 L27 11' fill='none' stroke='%23123356' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
-
-/* ---------- action ---------- */
-.all{
-  display:block;width:770px;height:64px;margin-top:24px;
-  border:0;border-radius:6px;
-  background:#D2D2D2;color:#EFEFEF;
-  font:600 16px 'Montserrat',sans-serif;cursor:default;
-}
-.page{overflow:visible}
-
-</style>
-<div class="page">
-  <h1>A few docs to agree to&hellip;</h1>
-
-  <div class="stack">
-    <section class="doc">
-      <h2>Penfold Terms</h2>
-      <div class="body">
-        <p>Penfold&rsquo;s role is to arrange your pension for you. This means everything from explaining what you need to know about pensions, helping you open one, helping you decide how much to save, and providing a range of features that help you manage your pension in the best way possible over your lifetime. It also means bringing together all the partners that make your pension work behind the scenes.</p>
-        <p>Please read and accept our terms and conditions document below which outlines in more detail our service and how this interacts with our partners. Please remember though Penfold should always be your first (and only) port of call for anything that you would like to do with your pension.</p>
-        <a href="#">Penfold Terms and Conditions</a>
-        <a href="#">Penfold Charges Guide</a>
-        <div class="fade"></div>
-        <label class="accept"><input type="checkbox"> Accept?</label>
-      </div>
-    </section>
-
-    <section class="doc"><h2>Scheme Administrator Terms</h2></section>
-    <section class="doc"><h2>Key Features Document</h2></section>
-    <section class="doc"><h2>Member Declaration</h2></section>
-
-    <button class="all" disabled>Accept all terms</button>
-  </div>
-</div>
-</template></div><b class="dot" aria-label="27 steps so far">27</b></div></div>
 <div class="step" style="--fw:1182;--fb:333" data-screen="penfold/desktop/sign-up-form" data-steps="28 29 30 31" data-state="the whole form, filled"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
 *{box-sizing:border-box}
@@ -1289,6 +1157,97 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
   </div>
 </div>
 </template></div><b class="dot" aria-label="31 steps so far">31</b></div></div>
+<div class="step" style="--fw:1182;--fb:189" data-screen="penfold/desktop/document-consent" data-steps="24 25 26 27" data-state="first doc open"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
+:host{display:block;width:1182px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
+*{box-sizing:border-box}
+
+:host{
+  --navy:#133253;
+  --slate:#133253;
+  --pink:#ED5E83;
+}
+
+.page{
+  position:relative;
+  width:1182px;height:2640px;overflow:hidden;
+  background:transparent;
+  font-family:'Montserrat',-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.page h1{position:absolute;left:183px;top:92px;margin:0;
+   font:700 49px/57px 'Montserrat',sans-serif;letter-spacing:-.9px;color:var(--navy)}
+
+.stack{position:absolute;left:183px;top:231px;width:770px}
+
+/* ---------- accordion ---------- */
+.doc{margin-top:26px}
+.doc:first-child{margin-top:0}
+.doc h2{
+  margin:0;height:76px;
+  display:flex;align-items:center;padding:0 26px;
+  background:var(--navy);color:#fff;
+  font:400 25.7px/1 'Montserrat',sans-serif;
+}
+.doc .body{
+  background:#fff;
+  padding:29px 24px 0;
+  position:relative;
+  height:473px;
+}
+.doc .body p{margin:0;font:400 14.2px/22px 'Montserrat',sans-serif;color:var(--slate)}
+.doc .body p+p{margin-top:23px}
+.doc .body a{display:block;margin-top:35px;
+  font:400 14.2px/1 'Montserrat',sans-serif;color:var(--pink);text-decoration:none}
+.doc .body a+a{margin-top:34px}
+
+.fade{position:absolute;left:0;right:0;top:379px;height:22px;
+  background:linear-gradient(to bottom,rgba(18,51,86,0) 0%,rgba(18,51,86,.075) 55%,rgba(18,51,86,0) 100%)}
+
+.accept{position:absolute;left:24px;top:416px;
+  display:flex;align-items:center;gap:12px;
+  font:400 17.7px/1 'Montserrat',sans-serif;color:var(--navy);cursor:pointer}
+.accept input{
+  appearance:none;-webkit-appearance:none;margin:0;
+  width:35px;height:35px;border:1px solid #E2E2E2;background:#fff;cursor:pointer;
+}
+.accept input:checked{border-color:var(--navy);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 35 35'%3E%3Cpath d='M8 18 L15 25 L27 11' fill='none' stroke='%23123356' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+
+/* ---------- action ---------- */
+.all{
+  display:block;width:770px;height:64px;margin-top:24px;
+  border:0;border-radius:6px;
+  background:#D2D2D2;color:#EFEFEF;
+  font:600 16px 'Montserrat',sans-serif;cursor:default;
+}
+.page{overflow:visible}
+
+</style>
+<div class="page">
+  <h1>A few docs to agree to&hellip;</h1>
+
+  <div class="stack">
+    <section class="doc">
+      <h2>Penfold Terms</h2>
+      <div class="body">
+        <p>Penfold&rsquo;s role is to arrange your pension for you. This means everything from explaining what you need to know about pensions, helping you open one, helping you decide how much to save, and providing a range of features that help you manage your pension in the best way possible over your lifetime. It also means bringing together all the partners that make your pension work behind the scenes.</p>
+        <p>Please read and accept our terms and conditions document below which outlines in more detail our service and how this interacts with our partners. Please remember though Penfold should always be your first (and only) port of call for anything that you would like to do with your pension.</p>
+        <a href="#">Penfold Terms and Conditions</a>
+        <a href="#">Penfold Charges Guide</a>
+        <div class="fade"></div>
+        <label class="accept"><input type="checkbox"> Accept?</label>
+      </div>
+    </section>
+
+    <section class="doc"><h2>Scheme Administrator Terms</h2></section>
+    <section class="doc"><h2>Key Features Document</h2></section>
+    <section class="doc"><h2>Member Declaration</h2></section>
+
+    <button class="all" disabled>Accept all terms</button>
+  </div>
+</div>
+</template></div><b class="dot" aria-label="27 steps so far">27</b></div></div>
 </div>
 <div class="stack">
 <div class="step" style="--fw:1182;--fb:126" data-screen="penfold/desktop/monthly-payment" data-steps="17 18" data-state="amount and day"><div class="win"><div class="pg"><template shadowrootmode="open"><style>

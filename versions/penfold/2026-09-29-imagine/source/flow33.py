@@ -2,10 +2,9 @@
 """The first onboarding, as one strip of live screens that fits the column: one tile per screen.
 
 Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.html) in its
-longest, most complete state, shown whole: nothing is cropped or scrolled. The strip has five columns.
-Screens are stacked in sequence, split so the tallest column is as short as it can be; that
-column sets the strip's height. Frames are not stretched: each is as tall as its screen needs,
-so the columns end at different heights.
+longest, most complete state, shown whole: nothing is cropped or scrolled. The strip has five columns,
+laid out by hand (see screens()). Frames are not stretched: each is as tall as its screen
+needs, so the columns end at different heights.
 A dot at the bottom right of each frame gives the running total of steps up to and including
 that screen, in two digits (06, 07 ... 33); which steps a screen covers is kept in data-steps. Nothing is clickable; each tile is one fixed state
 in its own shadow root.
@@ -16,21 +15,20 @@ Order and step counts follow the flow picture (Portfolio/penfold-air/img/onboard
 left to right, top to bottom. Two steps on the picture are left out by request: the assumptions
 dialog and the "Hold on while we run some checks" screen.
 """
-import itertools, os, re
+import os, re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(HERE, '..', 'site', 'index.html')
 CAT = os.path.abspath(os.path.join(HERE, *['..'] * 5, 'CodeCatalog', 'screens', 'penfold', 'desktop'))
 
 # Where each screen's content ends, in its own pixels, measured in Chrome (see NOTES.md).
-ENDS = {'three-things': 2320, 'enter-email': 427, 'sign-up-upper': 936, 'savings-path': 428,
+ENDS = {'three-things': 2320, 'enter-email': 427, 'sign-up-upper': 1032, 'savings-path': 428,
         'savings-calculator': 2325, 'monthly-payment': 473, 'plan-selection': 3512, 'document-consent': 1174,
         'sign-up-form': 2200, 'standing-order': 1157, 'confirmation': 1017}
 WIDTH = 894           # the text column the strip has to fit, px on the page
 GAP = 16              # between columns
 BELOW = 170           # least room under a screen's last element, in screen pixels; clears the dot
 SHORTEST = 900        # no frame is shorter than this, in screen pixels: it still has to look like a screen
-COLUMNS = 5           # how many columns the strip has
 STACK_GAP = 12        # between two screens in one column, px on the page
 
 
@@ -40,21 +38,12 @@ def need(s):
     return max(SHORTEST, (ENDS[s.sid] + BELOW) * 1182 / s.width)
 
 
-def columns(all_screens):
-    """Screens split into COLUMNS columns, in sequence. Of every way to do that, the one with the
-    shortest tallest column wins, and among equals the most even one. That tallest column sets the
-    strip's height; every other column has spare height, shared out between its frames."""
-    count, n = len(all_screens), COLUMNS
+def measure(cols):
+    """(width of a column on the page, height of the tallest column in screen pixels)"""
+    n = len(cols)
     tw = (WIDTH - GAP * (n - 1)) / n
     extra = STACK_GAP * 1182 / tw                        # what one more screen in a column costs
-    best = None
-    for cuts in itertools.combinations(range(1, count), n - 1):
-        edges = (0,) + cuts + (count,)
-        cols = [all_screens[a:b] for a, b in zip(edges, edges[1:])]
-        fill = [sum(need(x) for x in c) + extra * (len(c) - 1) for c in cols]
-        score = (max(fill), sum(f * f for f in fill))
-        if best is None or score < best[0]: best = (score, cols)
-    return best[1], tw, best[0][0]
+    return tw, max(sum(need(x) for x in c) + extra * (len(c) - 1) for c in cols)
 
 
 def load(sid):
@@ -112,23 +101,28 @@ def plans():
     return s
 
 
+def sign_up_upper():
+    # Enter your email (step 07) is not shown as a screen of its own: its field sits here, before
+    # the password. Same field and placeholder as the catalogue's enter-email screen.
+    s = Screen('sign-up-upper', 'name, phone, email and password', [7, 8], AMBER)
+    s.sub('<div class="row" style="margin-top:18px">\n      <label class="lab" for="f-pass">Password</label>',
+          '<div class="row" style="margin-top:18px">\n      <label class="lab" for="f-email">Email</label>\n'
+          '      <input class="f" id="f-email" type="email" style="width:377px" placeholder="you@somewhere.com">\n    </div>\n\n'
+          '    <div class="row">\n      <label class="lab" for="f-pass">Password</label>')
+    return s
+
+
 def screens():
+    """The columns of the strip, left to right, each top to bottom. Laid out by hand."""
     return [
-        three_things(),
-        # Enter your email is step 07 but sits after 08, at the top of the second column: that
-        # takes it out of the first column, which was the tallest, and shortens the strip.
-        Screen('sign-up-upper', 'name, phone and password', [8], AMBER),
-        Screen('enter-email', 'email', [7], AMBER),
-        Screen('savings-path', 'know the amount, or get help', [9], RED),
-        calculator(),
-        plans(),
-        Screen('document-consent', 'first doc open', range(24, 28), BLUE),   # four docs, one step each
-        Screen('sign-up-form', 'the whole form, filled', range(28, 32), BLUE),
-        # Monthly payment is steps 17 and 18, but may sit anywhere after the start and before 32.
-        # Here it evens out the last column; the strip is no taller for it.
-        Screen('monthly-payment', 'amount and day', [17, 18], YELLOW),
-        Screen('standing-order', 'standing order details', [32], YELLOW),
-        Screen('confirmation', 'done', [33], YELLOW),
+        [three_things(), sign_up_upper()],
+        [Screen('savings-path', 'know the amount, or get help', [9], RED), calculator()],
+        [plans()],
+        [Screen('sign-up-form', 'the whole form, filled', range(28, 32), BLUE),
+         Screen('document-consent', 'first doc open', range(24, 28), BLUE)],   # four docs, one step each
+        [Screen('monthly-payment', 'amount and day', [17, 18], YELLOW),
+         Screen('standing-order', 'standing order details', [32], YELLOW),
+         Screen('confirmation', 'done', [33], YELLOW)],
     ]
 
 
@@ -144,10 +138,11 @@ def tile(s, tw):
 
 
 def main():
-    all_screens = screens()
+    cols = screens()
+    all_screens = [s for c in cols for s in c]
     steps = [n for s in all_screens for n in s.steps]
     assert sorted(steps) == list(range(1, 34)), steps
-    cols, tw, room = columns(all_screens)
+    tw, room = measure(cols)
     height = round(room * tw / 1182)
     row = ('<!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->\n'
            '<div class="flow" style="--n:%d;--tw:%.3f;--h:%d" role="group" aria-label="The first onboarding, screen by screen">\n' % (len(cols), tw, height)
