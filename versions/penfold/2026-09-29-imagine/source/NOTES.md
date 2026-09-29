@@ -32,3 +32,8 @@ Montserrat and Roboto Mono are in `site/_vendor/` for these screens.
 ## Background
 
 The light page background is white (#FFFFFF), not Color's #f2f5f7. Dark is unchanged.
+
+## Frame sizes in the strip
+
+No frame is shorter than 900px of screen (126px on the page, a 4:3 frame), and every screen keeps at least
+170px of its own space under its last element, so short screens still read as screens and the dot sits clear.

@@ -27,14 +27,16 @@ ENDS = {'three-things': 2320, 'enter-email': 427, 'sign-up-upper': 936, 'savings
         'sign-up-form': 2200, 'standing-order': 1157, 'confirmation': 1017}
 WIDTH = 894           # the text column the strip has to fit, px on the page
 GAP = 16              # between columns
-BELOW = 60            # least room under a screen's last element, in screen pixels
+BELOW = 170           # least room under a screen's last element, in screen pixels; clears the dot
+SHORTEST = 900        # no frame is shorter than this, in screen pixels: it still has to look like a screen
 COLUMNS = 5           # how many columns the strip has
 STACK_GAP = 12        # between two screens in one column, px on the page
 
 
 def need(s):
-    """A screen's height at the 1182 frame width, with the least room under it."""
-    return (ENDS[s.sid] + BELOW) * 1182 / s.width
+    """A screen's height at the 1182 frame width: its content and the least room under it, and
+    never less than the shortest frame allowed."""
+    return max(SHORTEST, (ENDS[s.sid] + BELOW) * 1182 / s.width)
 
 
 def columns(all_screens):
