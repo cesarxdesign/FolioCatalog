@@ -77,7 +77,14 @@ class Screen:
         return self
 
 
-RED, AMBER, TEAL, YELLOW, PURPLE, BLUE = '#CE372F', '#ECB73E', '#72D4B7', '#F9FD56', '#A638D8', '#3D91F7'
+# One colour per module, to show which screens belong together. The names are the colours on the
+# flow picture; the values are a set picked to tell apart at dot size on the light frames.
+RED    = '#D6409F'    # pink:   3 things, savings path
+AMBER  = '#F76B15'    # orange: sign-up with email
+TEAL   = '#00A2C7'    # cyan:   savings calculator
+YELLOW = '#46A758'    # green:  monthly payment, standing order, confirmation
+PURPLE = '#8E4EC6'    # purple: plan selection
+BLUE   = '#3E63DD'    # indigo: sign-up form, docs
 
 
 def three_things():

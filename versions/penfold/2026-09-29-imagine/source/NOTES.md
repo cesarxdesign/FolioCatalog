@@ -58,3 +58,18 @@ No frame is shorter than 900px of screen (126px on the page, a 4:3 frame), and e
 stacking three copies with multiply. The untouched export is in CodeCatalog, `images/penfold/sketches-strip/`.
 
 In dark the sketches are inverted and blended with screen: white ink, and the paper takes the dark page colour.
+
+## Module colours
+
+The dot on each frame shows which module the screen belongs to. The colours on the flow picture were picked at
+random and read badly (yellow invisible, amber close to red), so they are replaced by this set. Reuse these for
+the modular onboarding.
+
+| Screens | Colour |
+|---|---|
+| 3 things, savings path | pink #D6409F |
+| sign-up with email | orange #F76B15 |
+| savings calculator | cyan #00A2C7 |
+| plan selection | purple #8E4EC6 |
+| sign-up form, document consent | indigo #3E63DD |
+| monthly payment, standing order, confirmation | green #46A758 |
