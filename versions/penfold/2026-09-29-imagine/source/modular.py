@@ -18,12 +18,19 @@ SITE = os.path.join(HERE, '..', 'site', 'index.html')
 # (screen, height shown, the screen's own background at its foot). A frame taller than its screen
 # is filled below with that colour, so the screen has no visible bottom edge. Payment is shown to
 # 1637: below that its Figma frame is a stray 38px band of #FBFBFB left under the pasted pictures.
-ORDER = [('modular-calculator', 1249, '#FBFBFB'), ('modular-fund', 1373, '#FBFBFB'), ('modular-details', 2478, '#FBFBFB'),
+ORDER = [('modular-calculator', 1311, '#FBFBFB'), ('modular-fund', 1311, '#FBFBFB'), ('modular-details', 2478, '#FBFBFB'),
          ('modular-payment', 1637, '#F6F6F6'), ('modular-confirmation', 812, '#F6F6F6')]   # the dashboard was cut too
 COLUMNS, WIDTH, GAP, STACK_GAP, W = 3, 820, 16, 12, 1200   # 820: it sits inside the Modular and Mobile list, which is 820 wide
 
+# The annotation's line runs at half the strip's height; screens 1 and 2 share the first column, so their gap is
+# set on that line (on request, 2026-09-29): the calculator gets 62px more air under its nav (1249 -> 1311),
+# the fund loses 62px of empty space at its foot (1373 -> 1311; its content ends at 1272)
+AIR = {'modular-calculator': 62}
+
 def tile(sid, frame_h, bg, tw, n, last):
     css, body = f.load(sid)
+    if sid in AIR:
+        css += '\n.page > :not(.nav){translate:0 %dpx}\n' % AIR[sid]
     css = (":host{display:block;width:%dpx;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}\n" % W
            + css + '\n.page{height:%dpx;overflow:hidden}\n' % frame_h)
     mark = f.CHECK if last else str(n)
@@ -35,10 +42,9 @@ def tile(sid, frame_h, bg, tw, n, last):
 # the screens to a caption in the left gutter. Cesar's own draft, tightened on request (2026-09-29).
 ANN = dict(ring='modular-details',
            title='Optimized for users.',
-           body='Clean, with room to breathe, the revised onboarding had half the screens, and the information '
-                'followed a logical flow. We\'d first help you figure out how much to save, then how to invest it, '
-                'and only ask for personal information once you\'d committed. It spared you the infuriating '
-                'experience of filling in every detail, only to discover the product doesn\'t fit your needs.')
+           body='Clean, with room to breathe, the revised onboarding had half the screens, in a logical flow. '
+                'First, how much to save, then how to invest it, and only once you\'d committed, your personal '
+                'information. No more filling in every detail, only to discover the product doesn\'t fit your needs.')
 
 def annotation(cols, tw, height):
     i = next(n for n, c in enumerate(cols) if any(s == ANN['ring'] for s, _, _ in c))
