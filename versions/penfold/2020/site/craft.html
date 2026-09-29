@@ -42,7 +42,7 @@ svg{display:block;overflow:visible}
 /* ---------- the craft frame (2212 x 1416), scaled to the window by the script ---------- */
 .craft{position:relative;width:2212px;height:1416px;background:transparent;transform-origin:0 0;
        transform:scale(var(--k,1)) translate(var(--cx,0),var(--cy,0))}
-.frame3{position:absolute;left:227px;top:132px;width:1734px;height:1109px;overflow:hidden;background:#FFFFFF;border-radius:12px}   /* only the screens' frame keeps a white ground */
+.frame3{position:absolute;left:227px;top:132px;width:1734px;height:1109px;overflow:hidden;background:rgba(255,255,255,.6);border-radius:12px}   /* the outline-view side (left of the cut) at 60% white; the designs side keeps its own opaque white (.select) */   /* only the screens' frame keeps a white ground */
 .layer{position:absolute;inset:0}
 /* the cut runs from the bottom-left corner of the 2nd bottom screen through the top-right corner of the
    3rd top screen (moved 2026-09-29; the 2020 frame had it at the 4th top screen's top-left) */
