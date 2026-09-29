@@ -5,9 +5,8 @@ Each tile is a CodeCatalog desktop screen (screens/penfold/desktop/<id>/screen.h
 longest, most complete state, shown whole: nothing is cropped or scrolled. The strip has five columns,
 laid out by hand (see screens()). All columns are the height of the tallest one: a column's
 spare height is shared between its frames, as room at the bottom of each.
-A dot at the top right of each frame carries the colour of the screen's square on the flow
-picture (the modules the flow was later split into). No step counts are shown; which steps a
-screen covers is kept in its data-steps attribute. Nothing is clickable; each tile is one fixed state
+Nothing is drawn on the frames: no dots, no counts. Which steps a screen covers and its module
+colour are kept in its data-steps and data-module attributes. Nothing is clickable; each tile is one fixed state
 in its own shadow root.
 
     python3 source/flow33.py        rewrites the row between the FLOW33 markers in site/index.html
@@ -138,11 +137,10 @@ def tile(s, tw):
     # the screens are fixed 2640 frames that clip; here the frame is the tile, so let them run
     css = (":host{display:block;width:%dpx;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}\n" % s.width
            + s.css + '\n.page{overflow:visible}\n')
-    return ('<div class="step" style="--fw:%d;--fb:%d" data-screen="penfold/desktop/%s" data-steps="%s" data-state="%s">'
+    return ('<div class="step" style="--fw:%d;--fb:%d" data-screen="penfold/desktop/%s" data-steps="%s" data-module="%s" data-state="%s">'
             '<div class="win"><div class="pg"><template shadowrootmode="open"><style>\n%s\n</style>\n%s\n</template></div>'
-            '<i class="dot" style="background:%s"></i></div></div>'
-            % (s.width, round(need(s) * tw / 1182), s.sid, ' '.join('%02d' % n for n in s.steps), s.note, css, s.body,
-               s.colour))
+            '</div></div>'
+            % (s.width, round(need(s) * tw / 1182), s.sid, ' '.join('%02d' % n for n in s.steps), s.colour, s.note, css, s.body))
 
 
 def main():

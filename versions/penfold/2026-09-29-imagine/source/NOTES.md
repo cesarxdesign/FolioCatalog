@@ -23,8 +23,7 @@ added to the sign-up upper half, before the password. All columns are the height
 (sign-up form + docs); a column's spare height is shared between its frames, as room at the bottom of each. Built by `source/flow33.py`.
 
 No bars or step numbers under the screens (removed by request).
-A dot at the top right of each frame carries the colour of the screen's square on the flow picture (the
-modules the flow was later split into). No step counts are shown. The steps each screen covers, 01 to 33,
+Nothing is drawn on the frames: no dots, no step counts (removed by request). The steps each screen covers, 01 to 33,
 are kept in its `data-steps` attribute; the docs screen is four steps, one per doc.
 
 Left out by request: the assumptions dialog and the "Hold on while we run some checks" screen.
@@ -61,7 +60,7 @@ In dark the sketches are inverted and blended with screen: white ink, and the pa
 
 ## Module colours
 
-The dot on each frame shows which module the screen belongs to. The colours on the flow picture were picked at
+The colour dots are off the frames (removed by request); each frame keeps its colour in `data-module`. The colours on the flow picture were picked at
 random and read badly (yellow invisible, amber close to red), so they are replaced by this set. Reuse these for
 the modular onboarding.
 
