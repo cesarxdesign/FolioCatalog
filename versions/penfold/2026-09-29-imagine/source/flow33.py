@@ -91,10 +91,10 @@ def screens():
         calculator(),
         Screen('monthly-payment', 'amount and day', [17, 18], YELLOW),
         plans(),
-        Screen('document-consent', 'first doc open', [24, 25], BLUE),
-        Screen('sign-up-form', 'the whole form, filled', range(26, 30), BLUE),
-        Screen('standing-order', 'standing order details', [30], YELLOW, joins_next=True),
-        Screen('confirmation', 'done', [31], YELLOW),
+        Screen('document-consent', 'first doc open', range(24, 28), BLUE),   # four docs, one step each
+        Screen('sign-up-form', 'the whole form, filled', range(28, 32), BLUE),
+        Screen('standing-order', 'standing order details', [32], YELLOW, joins_next=True),
+        Screen('confirmation', 'done', [33], YELLOW),
     ]
 
 
@@ -113,7 +113,7 @@ def tile(s):
 def main():
     all_screens = screens()
     steps = [n for s in all_screens for n in s.steps]
-    assert steps == list(range(1, 32)), steps
+    assert steps == list(range(1, 34)), steps
     row = ('<!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->\n'
            '<ol class="flow" aria-label="The first onboarding, screen by screen">\n'
            + '\n'.join(tile(s) for s in all_screens) + '\n</ol>\n<!-- FLOW33 end -->')

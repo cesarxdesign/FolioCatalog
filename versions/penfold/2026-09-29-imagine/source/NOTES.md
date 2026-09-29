@@ -20,7 +20,7 @@ wide and as tall as the screen needs. Built by `source/flow33.py`.
 
 Under each screen: a bar in the colour of its square on the flow picture
 (`Portfolio/penfold-air/img/onboarding-mvp.webp`), the modules the flow was later split into, and the numbers
-of the steps that screen covers, 01 to 31.
+of the steps that screen covers, 01 to 33. The docs screen is four steps, one per doc.
 
 Left out by request: the assumptions dialog and the "Hold on while we run some checks" screen.
 The all-docs-accepted state is not in CodeCatalog and is not shown; to be revisited.
