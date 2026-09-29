@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<meta name="robots" content="noindex">
+<title>Penfold Imagine</title>
+<link rel="stylesheet" href="_vendor/25028d0170-css2.css">
+<style>
+/* Penfold Imagine: the Colour page with images. Hero image as on the live Cable page. Light and dark. */
+/* palette taken from the live Penfold page (cesarxdesign.com/penfold) */
+[data-theme="light"]{--bg:#f2f5f7;--ink:#151515;--soft:#98a0a8;--mut:#6b737b;--body:#5b6470;--line:#dfe2e6;--acc:#6076DD;--acc2:#98a6e9;--accg:#6076DD;--chip:#6076DD;--glow:rgba(96,118,221,.07);--halo:rgba(96,118,221,.14)}
+[data-theme="dark"]{--bg:#101519;--ink:#eef0f2;--soft:#7c8188;--mut:#8b9198;--body:#b3b7bd;--line:#2a2d33;--acc:#98a6e9;--acc2:#b7c1f0;--accg:#6076DD;--chip:#6076DD;--glow:rgba(96,118,221,.10);--halo:rgba(96,118,221,.30)}
+body:has([data-theme="dark"]){background:#101519}
+body{margin:0;background:#f2f5f7;font-family:'Geist',-apple-system,'Helvetica Neue',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration:none}a:hover{color:var(--acc)}
+p,h1,h2,h3,blockquote{margin:0}
+
+.page{color:var(--ink);width:1440px;box-sizing:border-box;background:var(--bg);padding:0 120px;display:flex;flex-direction:column;align-items:center}
+.col{width:100%;max-width:1200px;display:flex;flex-direction:column}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--mut)}
+.soft{color:var(--soft)}
+
+nav{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+nav .me{font-size:15px;font-weight:600;letter-spacing:-.01em}
+nav .links{display:flex;gap:36px;font-size:14px}
+
+header{padding:168px 0 120px;display:flex;flex-direction:column;gap:48px}
+header .mono{font-size:13px}
+h1{font-size:136px;line-height:.96;letter-spacing:-.05em;font-weight:600}
+.lede{max-width:900px;font-size:32px;line-height:1.34;letter-spacing:-.022em}
+.lede span{color:var(--soft)}
+.stats{display:flex;flex-wrap:wrap;gap:32px 80px;padding-top:48px;border-top:1px solid var(--line)}
+.stat{display:flex;flex-direction:column;gap:10px}
+.stat b{font-size:52px;line-height:1;letter-spacing:-.045em;font-weight:600}
+.meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 40px;padding-top:32px;border-top:1px solid var(--line);font-size:16px;line-height:1.5}
+
+section.ch{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:140px 0;border-top:1px solid var(--line)}
+section.ch.first{padding-top:120px;border-top-color:var(--ink)}
+.tag{grid-column:1/span 3;display:flex;flex-direction:column;gap:10px}
+.tag b{font-size:44px;line-height:1;letter-spacing:-.04em;font-weight:600}
+.tag .mono{font-size:13px}
+.body{grid-column:4/span 9;display:flex;flex-direction:column;gap:56px}
+h2{font-size:68px;line-height:1.02;letter-spacing:-.045em;font-weight:600}
+.txt{max-width:820px;font-size:19px;line-height:1.6;color:var(--body)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
+.two .txt{max-width:none}
+
+/* a big line that carries the section for skimmers */
+.pull{padding-top:40px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.pull .big{font-size:40px;line-height:1.15;letter-spacing:-.03em;font-weight:500}
+.pull .small{max-width:820px;font-size:16px;line-height:1.5;color:var(--mut)}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 48px;padding-top:44px;border-top:1px solid var(--line)}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.stack{grid-template-columns:minmax(0,1fr);max-width:820px}
+.grid.four{grid-template-columns:repeat(4,minmax(0,1fr));gap:44px 32px}
+.item{display:flex;flex-direction:column;gap:10px}
+.item .mono{margin-bottom:2px}
+h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
+.item p{font-size:17px;line-height:1.55;color:var(--body)}
+
+.box{display:flex;flex-direction:column;gap:16px;padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:900px}
+.box p{font-size:22px;line-height:1.45;letter-spacing:-.01em;color:var(--ink)}
+.box .capt{max-width:720px;font-size:17px;line-height:1.55;letter-spacing:0;color:var(--mut)}
+.box + .pull{border-top:0;padding-top:0}
+.group{display:flex;flex-direction:column;gap:20px}
+.sub{font-size:22px;line-height:1.25;letter-spacing:-.02em;font-weight:500;color:var(--ink)}
+
+/* what users said: the big quote leads, the rest follow in a row. Verbatim, dated */
+.voices{display:flex;flex-direction:column;gap:40px;padding:44px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote{padding:8px 0 8px 36px;border-left:2px solid var(--ink);display:flex;flex-direction:column;gap:20px}
+.quote .q{font-size:56px;line-height:1.08;letter-spacing:-.035em;font-weight:500}
+.quote .who{font-size:16px;line-height:1.5;color:var(--body)}
+.voices .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.voices .row blockquote{display:flex;flex-direction:column;gap:12px}
+.voices .row p{font-size:19px;line-height:1.4;letter-spacing:-.01em;font-weight:500}
+.voices .by{font-size:14px;line-height:1.4;color:var(--mut)}
+
+
+/* images: the hero and shot treatment from the live Cable page */
+.heroimg{display:block;width:100%;height:600px;object-fit:cover;border-radius:12px;box-shadow:0 60px 140px -40px var(--halo)}
+.shot{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 2px 6px rgba(14,27,51,.08),0 24px 56px rgba(14,27,51,.18)}
+
+.closer{padding:200px 0 120px;border-top:1px solid var(--line)}
+.closer .big{font-size:104px;line-height:1;letter-spacing:-.05em;font-weight:600}
+
+
+
+/* the Cable treatment: accent gradient on the second half of every heading, the numbers and the big quote */
+h1 .soft,h2 .soft,.closer .soft,.stat b,.quote .q{background:linear-gradient(115deg,var(--acc2) 10%,var(--accg) 78%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--acc);padding-right:.08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.tag .mono{color:var(--acc)}
+.tag{padding-top:14px}
+.quote{border-left-color:var(--acc)}
+header .kick{display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.08em}
+.chip{padding:5px 9px;border-radius:4px;background:var(--chip);color:#FFFFFF}
+section.ch.first{border-top-color:var(--ink)}
+
+/* light/dark toggle in the nav */
+#theme{font:inherit;font-size:14px;color:var(--ink);background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer}
+#theme:hover{color:var(--mut)}
+
+footer{margin-top:auto;padding:48px 0 64px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end}
+footer .next{display:flex;flex-direction:column;gap:8px}
+footer .next a{font-size:40px;letter-spacing:-.03em;font-weight:600}
+footer .links{display:flex;gap:36px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="page" data-theme="light">
+<div class="col">
+
+<nav>
+<a class="me" href="https://cesarxdesign.com">Cesar Garcia</a>
+<div class="links">
+<a href="https://cesarxdesign.com">Work</a>
+<a href="https://cesarxdesign.com/cv.pdf">CV</a>
+<a href="mailto:cesarxdesign@gmail.com">Contact</a>
+<button type="button" id="theme" aria-pressed="false">Dark</button>
+</div>
+</nav>
+
+<header>
+<div class="mono kick"><span class="chip">Penfold</span><span>Pensions &middot; B2C fintech, mobile and web</span></div>
+<h1>Pensions took days.<br><span class="soft">Ours took minutes.</span></h1>
+<p class="lede">First hire, lured by an impossible, and irresistible mandate to &ldquo;make pensions sexy&rdquo;. <span>Shipped an ugly, slow, and cumbersome first version within 7 days. And in less than a year, iterated our way into 3,000 savers and &pound;4M under management.</span></p>
+<img class="heroimg" src="img/hero.webp" alt="Five Penfold app screens on tilted phones beside the Penfold logo" width="2500" height="1406" fetchpriority="high">
+<div class="stats">
+<div class="stat"><b>0 &rarr; 1</b><span class="mono">Live product in 7 days</span></div>
+<div class="stat"><b>3,000</b><span class="mono">Savers, year one</span></div>
+<div class="stat"><b>&pound;4M</b><span class="mono">Under management, year one</span></div>
+</div>
+<div class="meta">
+<div><span class="mono">Role</span>&nbsp;&nbsp;Founding Designer, first hire</div>
+<div><span class="mono">Timeline</span>&nbsp;&nbsp;Jun 2019 to May 2020</div>
+<div><span class="mono">Users</span>&nbsp;&nbsp;UK savers</div>
+</div>
+</header>
+
+
+<section class="ch first">
+<div class="tag"><span class="mono">Shipping</span></div>
+<div class="body">
+<h2>Proof of concept to live product <span class="soft">in 7 days.</span></h2>
+<p class="txt">If I had had more time, I&rsquo;d&rsquo;ve made a shorter onboarding. But I joined 7 days from a funding deadline that needed a live product with real customers. And I knew nothing about pensions.</p>
+<p class="txt">I had to work fast. Day one: read code from proof of concept, start sketching. Day two: check all required steps are covered. Day three: high fidelity. Day four: handover to our developer, with three days to ship it. Tick. Tock.</p>
+<img class="shot" src="img/sketches-strip.webp" alt="Day-one sketches for Penfold: notes, a 3D pot, dashboard layouts, the donut and transaction rows" width="3974" height="1210" loading="lazy" decoding="async">
+<div class="group"><p class="txt">We made the deadline. The flow was 33 steps long, took more than 10 minutes to finish, and needed about 5 days to set up a pension.</p><p class="txt">Funding secured.</p></div>
+</div>
+</section>
+
+<section class="ch">
+<div class="tag"><span class="mono">Onboarding</span></div>
+<div class="body">
+<h2>Added mobile and modular onboarding. <span class="soft">Signups tripled.</span></h2>
+<p class="txt">The long onboarding secured a win, but bled users from day one. Drop-off was around 80%, which hurt acquisition and growth, metrics our investors paid close attention to. However, I had anticipated this and was already working on improvements.</p>
+<div class="grid stack">
+<div class="item"><span class="mono">Mobile</span><h3>The wrong platform.</h3><p>One developer meant one platform, and I argued a mobile-only pension would look less serious, favoring desktop. The live data disagreed: we needed mobile. So I created a mobile flow that reused the same components to derive a desktop flow. We had our 2 for 1. Signups followed.</p></div>
+<div class="item"><span class="mono">Modular</span><h3>The wrong architecture.</h3><p>As a pension service, we assumed every account would have a pension, and never treated zero as a valid state. So onboarding drop-off meant no pension, no account, nothing saved. We broke the dependency, and I split onboarding into modules people could finish in their own time. Signups lifted again.</p></div>
+</div>
+</div>
+</section>
+
+<section class="ch">
+<div class="tag"><span class="mono">Cracking</span></div>
+<div class="body">
+<h2>A pension in minutes, <span class="soft">not days, or weeks.</span></h2>
+<div class="group"><p class="txt">With onboarding smoothed out, signup was now a few minutes start to finish. But creating the pension required one final step, reliant on three external parties, none of which shared our enthusiasm for speed. This added several days of overhead. Still faster than a bank.</p><p class="txt">Just not actually fast.</p></div>
+<div class="grid three">
+<div class="item"><span class="mono">Up to 24 hours</span><h3>The Custodian</h3><p>Bad.</p></div>
+<div class="item"><span class="mono">Up to 72 hours</span><h3>The Operator</h3><p>Much worse.</p></div>
+<div class="item"><span class="mono">Up to 48 hours</span><h3>The Bank</h3><p>No relief.</p></div>
+</div>
+<p class="txt">We relayed a series of IDs from the custodian, to the operator, and finally the bank. Each took the ID and a really long time, to create an ID of their own. Once we got the last ID, some 5 days later, we could finally create a pension. Legally and technically, this was peak efficiency, and also textbook region-beta paradox: a bad process gets tolerated, but this one I had to crack.</p>
+<div class="group"><h3>Slow and manual turned out to be the upside.</h3><p class="txt">In a mix of blind optimism and youthful arrogance, I offered to help the parties speed things up. They declined, but explained their process, which gave me a key insight: ID checks were manual and rare, and mistaken IDs were simply overridden with a correct one. So I suggested sending all three provisional IDs at once, swapping in the real ones later. That afternoon, we eradicated days of overhead with a simple tracking database.</p><p class="txt">Now we were fast!</p></div>
+</div>
+</section>
+
+<section class="ch">
+<div class="tag"><span class="mono">Tuning</span></div>
+<div class="body">
+<h2>Amplifying the signal, <span class="soft">listening for growth.</span></h2>
+<p class="txt">Onboarding was fast, and the major leaks patched. So I turned to the quieter work: single-digit gains, and finding several of them. Tuning the engine that grows the product: reliable, repeatable. Unremarkable work, executed remarkably.</p>
+<div class="grid">
+<div class="item"><span class="mono">Funnel</span><h3>Daily drops analysed.</h3><p>We checked the funnel daily, and every drop was discussed at the morning stand-up. I followed up with FullStory, rage clicks and coffee.</p></div>
+<div class="item"><span class="mono">Support</span><h3>Customer Support gold mine.</h3><p>Every Friday, Support and I, and the occasional guest user, went through the week&rsquo;s top complaints and requests, setting up the week ahead.</p></div>
+<div class="item"><span class="mono">Beta</span><h3>A voluntary beta programme.</h3><p>Some users are very keen to try new stuff, and eager to give feedback. I started the programme to make it easier for their voices to be heard.</p></div>
+<div class="item"><span class="mono">Appreciation</span><h3>Early users, kept in the loop.</h3><p>When we shipped what a user had asked for, I thanked them personally. We also set up an auto-reply for every fix on a reported bug or feature.</p></div>
+</div>
+<div class="box">
+<p class="sub">&ldquo;But what if I die?&rdquo;</p>
+<p class="capt">That&rsquo;s how Joe T. wrapped a Friday guest session. And after a chuckle, it got me thinking: what if? So after the meeting, I asked Customer Support to call our partners and find out. Turns out it was a manual process (surprise!) and all we needed were a few inputs. So I put up a single screen, built entirely from existing components, and challenged the engineers to ship it before drinks that afternoon.</p>
+<p class="capt">From request in the morning, to shipped in the afternoon, to us thanking Joe from the pub!</p>
+</div>
+<p class="txt">So if it was all working, why the stale growth?</p>
+</div>
+</section>
+
+<section class="ch">
+<div class="tag"><span class="mono">Targeting</span></div>
+<div class="body">
+<h2>Growth. <span class="soft">Boom.</span></h2>
+<div class="group"><p class="txt">In the UK, most people get their pension from an employer, often retiring to multiple pensions. The self-employed are left to set it up themselves, and often don&rsquo;t. We were trying to help them with that, yet they simply weren&rsquo;t tuning in.</p><p class="txt">So I made the case to flip the strategy. The product was already built to handle either market. And by targeting users with existing pensions, we&rsquo;d be taking market from other services, competing on product merits, not just ad spend.</p></div>
+<div class="grid stack">
+<div class="item"><span class="mono">Message</span><h3>A new target.</h3><p>We were in the midst of a website redesign, so the timing was in our favour. First, the message changed from free money to how simple and fast Penfold was. Second, we moved the section on existing pensions closer to the top. The signal was clear: the redesign helped conversion overall, but the new targeting was a much better match.</p></div>
+<div class="item"><span class="mono">Combine</span><h3>A new flagship.</h3><p>Most new users now went straight to Combine, our overnight flagship, and it had my full attention. Friction there cost us pensions, so every improvement shipped the moment it was ready, however small. Some days that meant several releases. And it went beyond Combine itself: I reworked the places that led to it, like notifications, which gained Combine actions of their own.</p></div>
+</div>
+<p class="txt">Growth finally caught up with the product, as the new strategy yielded 6x the signups.</p>
+</div>
+</section>
+
+<section class="ch">
+<div class="tag"><span class="mono">Outcome</span></div>
+<div class="body">
+<h2>From 0 to 3,000 savers, <span class="soft">and &pound;4M under management.</span></h2>
+<div class="group"><p class="txt">We got here by moving fast and testing what we believed. That meant refusing to accept a wait that sat outside our remit, and reversing the very strategy Penfold was founded on.</p><p class="txt">All the while, the focus stayed on the people using it, and how every part of Penfold felt to them.</p></div>
+<div class="voices">
+<div class="mono">App Store, April to June 2020 &middot; 12 reviews, all five stars</div>
+<blockquote class="quote"><p class="q">&ldquo;Setting up my pension with Penfold took me 5mins.&rdquo;</p><p class="who">Bobby, 14 May 2020</p></blockquote>
+<div class="row">
+<blockquote><p>&ldquo;I&rsquo;ve put off sorting out my pension for AGES as I always assumed it would be annoying and complicated.&rdquo;</p><span class="by">Kim, 13 May 2020</span></blockquote>
+<blockquote><p>&ldquo;I&rsquo;m a self-employed wedding photographer so I didn&rsquo;t feel like I fit in properly with other providers.&rdquo;</p><span class="by">Cara, 14 May 2020</span></blockquote>
+<blockquote><p>&ldquo;&hellip;customer service was not patronising just helpful&rdquo;</p><span class="by">Michelle, 18 May 2020</span></blockquote>
+</div>
+</div>
+<p class="txt">Penfold now manages over &pound;1B, and was voted Best Pension 2026.</p>
+</div>
+</section>
+
+<section class="closer">
+<p class="big">Ship often.<br>Make it fast.<br><span class="soft">Target accordingly.</span></p>
+</section>
+
+<footer>
+<div class="next">
+<div class="mono">Next</div>
+<a href="https://cesarxdesign.com/cable">Cable &rarr;</a>
+</div>
+<div class="links">
+<a href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a>
+<a href="https://cesarxdesign.com/cv.pdf">CV</a>
+</div>
+</footer>
+
+</div>
+</div>
+<script>
+(function(){var page=document.querySelector('.page'),b=document.getElementById('theme');
+function set(t){page.setAttribute('data-theme',t);b.textContent=t==='dark'?'Light':'Dark';b.setAttribute('aria-pressed',t==='dark');try{localStorage.setItem('penfold-imagine-theme',t)}catch(e){}}
+var saved=null;try{saved=localStorage.getItem('penfold-imagine-theme')}catch(e){}
+set(saved||'light');
+b.addEventListener('click',function(){set(page.getAttribute('data-theme')==='dark'?'light':'dark')});})();
+</script>
+</body>
+</html>
