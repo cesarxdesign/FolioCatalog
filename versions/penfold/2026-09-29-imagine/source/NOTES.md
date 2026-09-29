@@ -76,7 +76,7 @@ the modular onboarding.
 ## Grid annotation
 
 Annotations on the grid follow the live Cable page's design: a ring on the screen, a line out to a caption in the
-left gutter (title and short text). First one: "Speed over sequence." (the copy owns the trade-off and never blames the proof of concept). Before that: "Nobody would ask in this order." (earlier: "Unfamiliar sequence.", "Related questions, far apart.", "The order the code needed."), ringing the two screens that ask for personal
+left gutter (title and short text). First one: "Unoptimized.", in Cesar's own words (2026-09-29). Before that: "Speed over sequence." (the copy owns the trade-off and never blames the proof of concept). Before that: "Nobody would ask in this order." (earlier: "Unfamiliar sequence.", "Related questions, far apart.", "The order the code needed."), ringing the two screens that ask for personal
 details (sign-up with email, sign-up form). A line leaves each ring: the one from the sign-up form runs under the
 screens and shows only in the gaps between columns. A bracket in the gutter joins the two, with the caption at its middle.
 Copy and ring targets are in `ANNOTATIONS` in `flow33.py`.
