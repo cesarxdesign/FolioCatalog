@@ -26,3 +26,7 @@ are kept in its `data-steps` attribute; the docs screen is four steps, one per d
 Left out by request: the assumptions dialog and the "Hold on while we run some checks" screen.
 The all-docs-accepted state is not in CodeCatalog and is not shown; to be revisited.
 Montserrat and Roboto Mono are in `site/_vendor/` for these screens.
+
+## Background
+
+The light page background is white (#FFFFFF), not Color's #f2f5f7. Dark is unchanged.
