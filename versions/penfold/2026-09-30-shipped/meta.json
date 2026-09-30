@@ -1,0 +1,16 @@
+{
+  "project": "penfold",
+  "id": "2026-09-30-shipped",
+  "name": "Shipped",
+  "page": "site/penfold/index.html",
+  "width": 1440,
+  "shipped": "2026-09-30T18:43:46+01:00",
+  "until": null,
+  "source": {
+    "kind": "portfolio",
+    "ref": "47a4059",
+    "commit": "47a4059473b80481d79fe8c556f4609a89c3a573",
+    "committed": "2026-09-30T18:43:46+01:00"
+  },
+  "note": "The page as live on cesarxdesign.com/penfold after the 30 September review: Imagine carried into the site, then its copy and layout reworked in the artifact (lede, day list, the 6-days and instant-pension cards with ID tags, Cracking, Targeting and the Outcome close). Shipped is the push to main (Portfolio 47a4059)."
+}
