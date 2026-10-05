@@ -106,29 +106,11 @@ Shipped is the same page: `git show a4abbf9:versions/cable/2026-09-23-crazy/meta
 ## Live, 5 October 2026
 
 All five case studies went onto one styling on 5 Oct 2026 16:18 (Portfolio f0fb65a; stored here
-from c017d76, with that day's later fixes). Each project has a `2026-10-05-live`, named **Live**.
+from c017d76, with that day's later fixes). The styling is `harmony.css` at the folio's root; it was
+worked out here in a local project called Harmony, deleted once the result was live. Each project has a `2026-10-05-live`, named **Live**.
 The pages they replaced are named **Mismatch**: Cable `2026-09-23-shipped` and Penfold
 `2026-09-30-shipped` (both called Shipped until then), and Confirmo, Mara and Starcount
 `2026-07-29` (called Lite until then).
-
-## Harmony
-
-One styling for the five live case studies: same rhythm, spacing and sizes on every page, each
-keeping its own colours. Worked on here, side by side, and only here: nothing in it is live. The
-whole project stays on this machine: `versions/harmony/` holds a file named `.local`, so it is
-not in git, `tools/build.py` leaves it out of `index.html` and writes it to `local.json` (not in
-git either), and the page adds it to the catalog only where it finds that file beside itself.
-The public page never does.
-
-    http://localhost:4174/index.html#harmony/5/0
-
-`Current` is the five live pages as they were. Every other round is `Current` plus
-`versions/harmony/_system/harmony.css`, which sets each size and spacing once, from Penfold and
-Cable. A round is named by the time it was built:
-
-    python3 tools/harmony.py        a new round from the stylesheet as it stands, e.g. 15:42:07
-
-A refresh of the viewer opens on whatever was stored since the last visit.
 
 ## Adding a version
 
