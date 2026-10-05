@@ -2,7 +2,8 @@
 
 What is next. An empty backlog means finished, and that is information.
 
-- [ ] The other projects' earlier live versions (Penfold, Mara, Confirmo, Starcount, DONE).
-      Portfolio history goes back to 2026-07-08; Vercel lists production deploys from 2026-08-06.
-- [ ] `Portfolio/OlderVersions/` is fully covered here now (Cable v1, Cable _air, Penfold _air).
-      It can go.
+- [ ] Harmony's `current-*` copies are the pages as they were before the ship, so they are no
+      longer what is live. Take them again from Portfolio before the next styling round, and
+      make `tools/harmony.py --ship` handle content edits on pages already on the system.
+- [ ] Uncommitted: `tools/harmony.py` (changes since 578ac04) and nine Penfold Imagine files
+      (edits from before 2026-10-05).

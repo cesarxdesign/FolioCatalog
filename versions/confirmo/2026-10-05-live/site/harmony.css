@@ -1,0 +1,157 @@
+/* Harmony: one styling for the five case studies.
+   Sizes, spacing and rhythm are set here, once, and every page reads them. Colour is never set
+   here: each page keeps its own palette (--ink, --body, --mut, --line, --accent and friends).
+   Penfold and Cable are the reference: a value here is theirs, and where the two disagreed the
+   one that fits all five pages was taken (noted beside it).
+   Three markups read the same numbers: Penfold's, Cable's, and the Lite pages' (Confirmo, Mara,
+   Starcount). tools/harmony.py copies this file into each page of a round. */
+:root{
+  --h-sans:'Inter',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;   /* Inter and IBM Plex Mono on all five (trial, 2026-10-05); Geist and Geist Mono before */
+  --h-mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  /* page */
+  --h-pageW:1440px; --h-pageX:120px; --h-gutter:24px;
+  /* hero */
+  --h-heroT:168px;                 /* Penfold (Cable had 150) */
+  --h-heroB:120px; --h-heroGap:48px;
+  --h-h1:136px; --h-h1L:.96; --h-h1S:-.05em;      /* Penfold (Cable had 156 / .94 / -.055em): 156 breaks the longer headlines onto a third line */
+  --h-lede:32px; --h-ledeL:1.34; --h-ledeS:-.022em; --h-ledeW:900px;
+  --h-statsGap:32px 80px; --h-statsT:0px;        /* no rule above the numbers (on request, 2026-10-05); the 48 that sat under the rule went with it */
+  --h-stat:52px; --h-statS:-.045em;               /* Penfold (Cable had 60) */
+  --h-key:12px; --h-keyS:.04em;                   /* the small mono labels */
+  --h-facts:16px; --h-factsL:1.5;
+  --h-factsB:32px;                 /* the facts line sits this far above the thick rule that opens the first section; the hero's break (--h-heroB) is above the facts, and no rule divides them (on request, 2026-10-05) */
+  /* sections */
+  --h-sec:140px; --h-secFirst:120px; --h-secGap:56px;
+  --h-lab:44px; --h-labS:-.04em; --h-labTag:13px;
+  --h-labT:14px;                   /* Penfold: the label sits 14 down, level with the heading's cap (Cable had 0) */
+  --h-h2:68px; --h-h2L:1.02; --h-h2S:-.045em;
+  --h-text:19px; --h-textL:1.6; --h-textW:820px;
+  --h-sub:22px; --h-subL:1.25; --h-subS:-.02em;
+  --h-h3:22px; --h-h3L:1.2;
+  --h-item:17px; --h-itemL:1.55;
+  --h-group:20px;                  /* Penfold (Cable had 16 in its stylesheet, 20 on the page) */
+  --h-box:22px; --h-boxL:1.45; --h-boxS:-.01em; --h-boxY:32px; --h-boxW:900px;
+  /* quote and closer */
+  --h-quote:40px; --h-quoteL:1.12; --h-quoteS:-.03em; --h-who:500;   /* Penfold (Cable had 56 / 1.08 / -.035em, name at 400) */
+  --h-closer:104px; --h-closerL:1; --h-closerS:-.05em;               /* Penfold (Cable had 120 / .98 / -.055em) */
+  --h-closerT:200px; --h-closerB:120px;                              /* Penfold (Cable had 60 below) */
+}
+
+@media (min-width:761px){
+
+/* ---------- Penfold's markup ---------- */
+:where(body[data-h="penfold"]) header{padding:var(--h-heroT) 0 var(--h-factsB);gap:var(--h-heroGap)}
+:where(body[data-h="penfold"]) h1{font-size:var(--h-h1);line-height:var(--h-h1L);letter-spacing:var(--h-h1S)}
+:where(body[data-h="penfold"]) .lede{max-width:var(--h-ledeW);font-size:var(--h-lede);line-height:var(--h-ledeL);letter-spacing:var(--h-ledeS)}
+:where(body[data-h="penfold"]) .stats{gap:var(--h-statsGap);padding-top:var(--h-statsT);border-top:0}
+:where(body[data-h="penfold"]) .stat b{font-size:var(--h-stat);letter-spacing:var(--h-statS)}
+:where(body[data-h="penfold"]) .meta{margin-top:calc(var(--h-heroB) - var(--h-heroGap));padding-top:0;border-top:0;font-size:var(--h-facts);line-height:var(--h-factsL)}
+:where(body[data-h="penfold"]) section.ch{column-gap:var(--h-gutter);padding:var(--h-sec) 0}
+:where(body[data-h="penfold"]) section.ch.first{padding-top:var(--h-secFirst)}
+:where(body[data-h="penfold"]) .tag{padding-top:var(--h-labT)}
+:where(body[data-h="penfold"]) .tag b{font-size:var(--h-lab);letter-spacing:var(--h-labS)}
+:where(body[data-h="penfold"]) .tag .mono{font-size:var(--h-labTag)}
+:where(body[data-h="penfold"]) .body{gap:var(--h-secGap)}
+:where(body[data-h="penfold"]) h2{font-size:var(--h-h2);line-height:var(--h-h2L);letter-spacing:var(--h-h2S)}
+:where(body[data-h="penfold"]) .txt{max-width:var(--h-textW);font-size:var(--h-text);line-height:var(--h-textL)}
+:where(body[data-h="penfold"]) .ans li{font-size:var(--h-text);line-height:var(--h-textL)}
+:where(body[data-h="penfold"]) .group{gap:var(--h-group)}
+:where(body[data-h="penfold"]) .quote .q{font-size:var(--h-quote);line-height:var(--h-quoteL);letter-spacing:var(--h-quoteS)}
+:where(body[data-h="penfold"]) .quote .who{font-weight:var(--h-who)}
+:where(body[data-h="penfold"]) .closer{padding:var(--h-closerT) 0 var(--h-closerB)}
+:where(body[data-h="penfold"]) .closer .big{font-size:var(--h-closer);line-height:var(--h-closerL);letter-spacing:var(--h-closerS)}
+
+/* ---------- Cable's markup ---------- */
+:where(body[data-h="cable"]) .hero{padding:var(--h-heroT) 0 var(--h-factsB);gap:var(--h-heroGap)}
+:where(body[data-h="cable"]) .h1{font-size:var(--h-h1);line-height:var(--h-h1L);letter-spacing:var(--h-h1S)}
+:where(body[data-h="cable"]) .lede{max-width:var(--h-ledeW);font-size:var(--h-lede);line-height:var(--h-ledeL);letter-spacing:var(--h-ledeS)}
+:where(body[data-h="cable"]) .metrics{gap:var(--h-statsGap);padding-top:var(--h-statsT);border-top:0}
+:where(body[data-h="cable"]) .metric .n{font-size:var(--h-stat);letter-spacing:var(--h-statS)}
+:where(body[data-h="cable"]) .facts{margin-top:calc(var(--h-heroB) - var(--h-heroGap));padding-top:0;border-top:0;font-size:var(--h-facts);line-height:var(--h-factsL)}
+:where(body[data-h="cable"]) .ver{column-gap:var(--h-gutter);padding:var(--h-sec) 0}
+:where(body[data-h="cable"]) .ver.first{padding:var(--h-secFirst) 0 var(--h-sec)}
+:where(body[data-h="cable"]) .ver.tight{padding:var(--h-sec) 0}   /* Cable's short sections had 96 and a 40 gap; they take the standard rhythm (2026-10-05) */
+:where(body[data-h="cable"]) .vlab{padding-top:var(--h-labT)}
+:where(body[data-h="cable"]) .vlab .v{font-size:var(--h-lab);letter-spacing:var(--h-labS)}
+:where(body[data-h="cable"]) .vlab .t{font-size:var(--h-labTag)}
+:where(body[data-h="cable"]) .col{gap:var(--h-secGap)}
+:where(body[data-h="cable"]) .ver.tight .col{gap:var(--h-secGap)}
+:where(body[data-h="cable"]) .h2{font-size:var(--h-h2);line-height:var(--h-h2L);letter-spacing:var(--h-h2S)}
+:where(body[data-h="cable"]) .body{max-width:var(--h-textW);font-size:var(--h-text);line-height:var(--h-textL)}
+:where(body[data-h="cable"]) .sub{font-size:var(--h-sub);line-height:var(--h-subL);letter-spacing:var(--h-subS)}
+:where(body[data-h="cable"]) .group{gap:var(--h-group)}
+:where(body[data-h="cable"]) .quote .q{font-size:var(--h-quote);line-height:var(--h-quoteL);letter-spacing:var(--h-quoteS)}
+:where(body[data-h="cable"]) .quote .who{font-weight:var(--h-who)}
+:where(body[data-h="cable"]) .closer{padding:var(--h-closerT) 0 var(--h-closerB)}
+:where(body[data-h="cable"]) .closer p{font-size:var(--h-closer);line-height:var(--h-closerL);letter-spacing:var(--h-closerS)}
+
+/* ---------- the Lite pages' markup (Confirmo, Mara, Starcount) ---------- */
+body:where([data-h="lite"]){--h-grad:linear-gradient(115deg,var(--accent2) 10%,var(--accent) 78%);--figT:0px;--figB:0px;padding-bottom:0}
+:where(body[data-h="lite"]) .sfoot{--sfootW:1200px}
+:where(body[data-h="lite"]) .page{width:var(--h-pageW);max-width:none;box-sizing:border-box;margin:0 auto;padding:0 var(--h-pageX);font-family:var(--h-sans)}
+
+/* hero: chip, headline, lede, numbers, facts. The same hero as the flagships, in its variant without
+   an image; these pages also end on their last section, with no closing line. Both are meant. */
+:where(body[data-h="lite"]) .hd{display:flex;flex-direction:column;gap:var(--h-heroGap);padding:var(--h-heroT) 0 var(--h-factsB)}
+:where(body[data-h="lite"]) .hd:not(:has(.band)){padding-bottom:0}
+:where(body[data-h="lite"]) .hd>.wrap{display:contents}
+:where(body[data-h="lite"]) .hkick{display:flex;align-items:center;gap:16px;font:400 var(--h-key)/normal var(--h-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+:where(body[data-h="lite"]) .hchip{padding:5px 9px;border-radius:4px;background:var(--accent);color:#FFFFFF}
+:root[data-theme="dark"] :where(body[data-h="lite"]) .hchip{color:var(--bg)}
+:where(body[data-h="lite"]) h1{max-width:none;margin:0 0 -.18em;padding-bottom:.18em;font:600 var(--h-h1)/var(--h-h1L) var(--h-sans);letter-spacing:var(--h-h1S);text-wrap:wrap;
+  background:var(--h-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:var(--ink)}
+:where(body[data-h="lite"]) h1 em{font-style:normal;-webkit-text-fill-color:transparent;white-space:nowrap}   /* the accent line stays whole: Confirmo's runs 20px past the column rather than drop a word */
+:where(body[data-h="lite"]) .lede{max-width:var(--h-ledeW);margin:0;font:400 var(--h-lede)/var(--h-ledeL) var(--h-sans);letter-spacing:var(--h-ledeS);color:var(--ink)}
+:where(body[data-h="lite"]) .band{display:flex;flex-direction:column;gap:var(--h-heroGap);margin:0;padding:0;border:0}
+:where(body[data-h="lite"]) .hd+.band{margin-top:var(--h-heroGap);padding-bottom:var(--h-factsB)}
+:where(body[data-h="lite"]) .band .in{display:flex;flex-wrap:wrap;gap:var(--h-statsGap);padding-top:var(--h-statsT);border-top:0}
+:where(body[data-h="lite"]) .band .stat{display:flex;flex-direction:column;gap:10px;padding:0;border:0}
+:where(body[data-h="lite"]) .band .stat b{font:600 var(--h-stat)/1 var(--h-sans);letter-spacing:var(--h-statS);padding-right:.08em;
+  background:var(--h-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--accent)}
+:where(body[data-h="lite"]) .band .stat span{margin:0;font:400 var(--h-key)/normal var(--h-mono);letter-spacing:var(--h-keyS);text-transform:uppercase;color:var(--mut)}
+:where(body[data-h="lite"]) .hfacts{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 40px;margin-top:calc(var(--h-heroB) - var(--h-heroGap));padding-top:0;border-top:0;font:400 var(--h-facts)/var(--h-factsL) var(--h-sans);color:var(--ink)}
+:where(body[data-h="lite"]) .hfacts .k{margin-right:10px;font:400 var(--h-key)/normal var(--h-mono);letter-spacing:var(--h-keyS);text-transform:uppercase;color:var(--mut)}
+
+/* sections: label in 3 columns, content in 9 */
+:where(body[data-h="lite"]) .sec{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--h-gutter);row-gap:var(--h-secGap);margin:0;padding:var(--h-sec) 0;border-top:1px solid var(--line);border-image:none}
+:where(body[data-h="lite"]) .sec:first-of-type{margin-top:0;padding-top:var(--h-secFirst);border-top:1px solid var(--ink)}
+:where(body[data-h="lite"]) .sec>.wrap{display:contents}
+:where(body[data-h="lite"]) .sec>*,:where(body[data-h="lite"]) .sec>.wrap>*{grid-column:4/span 9;min-width:0;margin-top:0!important;margin-bottom:0!important}
+/* the label is the chapter's name at the label size, one word a line; no number */
+:where(body[data-h="lite"]) .sec .lab{grid-column:1/span 3;grid-row:1;align-self:start;display:block;width:min-content;max-width:none;padding-top:var(--h-labT);
+  font:600 var(--h-lab)/1 var(--h-sans);letter-spacing:var(--h-labS);text-transform:none;color:var(--ink)}
+:where(body[data-h="lite"]) .sec .lab::before{content:none}
+:where(body[data-h="lite"]) .sec .lab::first-letter{text-transform:uppercase}
+:where(body[data-h="lite"]) .sec h2{grid-row:1;max-width:none;margin-bottom:-.18em!important;padding-bottom:.18em;font:600 var(--h-h2)/var(--h-h2L) var(--h-sans);letter-spacing:var(--h-h2S);text-wrap:wrap}
+:where(body[data-h="lite"]) .ans{max-width:var(--h-textW)}
+:where(body[data-h="lite"]) .ans li{margin:0 0 12px;font:400 var(--h-text)/var(--h-textL) var(--h-sans)}
+:where(body[data-h="lite"]) .ans li:last-child{margin-bottom:0}
+:where(body[data-h="lite"]) .ans li::before{top:.66em}
+
+/* the bridge between two sections: set as the flagships' boxed line, closing the section above it */
+:where(body[data-h="lite"]) .sec:has(+ .brg){padding-bottom:var(--h-secGap)}
+:where(body[data-h="lite"]) .brg{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--h-gutter);max-width:none;margin:0;padding:0 0 var(--h-sec)}
+:where(body[data-h="lite"]) .brg>.wrap{display:contents}
+:where(body[data-h="lite"]) .brg p{grid-column:4/span 9;max-width:var(--h-boxW);margin:0;padding:var(--h-boxY) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  font:400 var(--h-box)/var(--h-boxL) var(--h-sans);letter-spacing:var(--h-boxS);color:var(--ink)}
+:where(body[data-h="lite"]) .brg p:first-child::before{display:none}
+}
+
+/* phones: Penfold and Cable already match there. The Lite pages keep their own phone layout
+   in this round; only what the round added to their markup is kept out of its way. */
+@media (max-width:760px){
+  :where(body[data-h="lite"]) .hkick{display:none}
+  :where(body[data-h="lite"]) h1 em{font-style:normal}
+  :where(body[data-h="lite"]) .hfacts{display:flex;flex-direction:column;gap:10px;margin-top:20px;font:400 15px/1.45 var(--h-sans);color:var(--ink)}
+  :where(body[data-h="lite"]) .hfacts>div{display:flex;justify-content:space-between;gap:16px;text-align:right}
+  :where(body[data-h="lite"]) .hfacts .k{font:400 11px/normal var(--h-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mut)}
+}
+
+/* the hero image sits flat on the page: no shadow under it, at any width (on request, 2026-10-05) */
+:where(body[data-h="penfold"],body[data-h="cable"]) .heroimg{box-shadow:none}
+
+/* the typefaces, on the flagships' own markup, at any width (the product screens keep their own fonts) */
+body:where([data-h="penfold"]),:where(body[data-h="cable"]) .case,:where(body[data-h="cable"]) .badge{font-family:var(--h-sans)}
+:where(body[data-h="cable"]) .mono,
+:where(body[data-h="penfold"]) :is(.mono,.ans b,.web-prev,.st-n,.it-cap,.num,.ans code,.relay code){font-family:var(--h-mono)}

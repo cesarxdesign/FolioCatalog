@@ -103,6 +103,14 @@ The Crazy canvas itself, desktop and mobile, is kept in git history rather than 
 Shipped is the same page: `git show a4abbf9:versions/cable/2026-09-23-crazy/meta.json`, or
 `git worktree add ../crazy a4abbf9` for the whole folder.
 
+## Live, 5 October 2026
+
+All five case studies went onto one styling on 5 Oct 2026 16:18 (Portfolio f0fb65a; stored here
+from c017d76, with that day's later fixes). Each project has a `2026-10-05-live`, named **Live**.
+The pages they replaced are named **Mismatch**: Cable `2026-09-23-shipped` and Penfold
+`2026-09-30-shipped` (both called Shipped until then), and Confirmo, Mara and Starcount
+`2026-07-29` (called Lite until then).
+
 ## Harmony
 
 One styling for the five live case studies: same rhythm, spacing and sizes on every page, each

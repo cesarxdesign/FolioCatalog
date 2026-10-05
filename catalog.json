@@ -97,36 +97,70 @@
   {
     "project": "cable",
     "id": "2026-09-23-shipped",
-    "name": "Shipped",
+    "name": "Mismatch",
     "page": "site/cable/index.html",
     "width": 1440,
     "shipped": "2026-09-23T23:12:11+01:00",
-    "until": null,
+    "until": "2026-10-05T16:18:43+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "78b4426",
       "commit": "78b4426f7c8a0aede5d4dbfeb3fb401924bd6e59",
       "committed": "2026-09-23T23:12:08+01:00"
     },
-    "note": "Live on cesarxdesign.com/cable.",
+    "note": "Live on cesarxdesign.com/cable. Called Shipped until 2026-10-05; renamed Mismatch when the five pages went onto one styling and this one left the folio.",
     "path": "versions/cable/2026-09-23-shipped/site/cable/index.html?v=ee731222"
+  },
+  {
+    "project": "cable",
+    "id": "2026-10-05-live",
+    "name": "Live",
+    "page": "site/cable/index.html",
+    "width": 1440,
+    "shipped": "2026-10-05T16:18:43+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "c017d76",
+      "commit": "c017d761df4f2e6e22346ef2769392e981345ae5",
+      "committed": "2026-10-05T16:42:06+01:00"
+    },
+    "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
+    "path": "versions/cable/2026-10-05-live/site/cable/index.html?v=5e00e2a2"
   },
   {
     "project": "confirmo",
     "id": "2026-07-29",
-    "name": "Lite",
+    "name": "Mismatch",
     "page": "site/confirmo/index.html",
     "width": 1440,
     "shipped": "2026-07-29T01:51:15+01:00",
-    "until": null,
+    "until": "2026-10-05T16:18:43+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "352313a",
       "commit": "352313a7671d40c0bcac72fd6cabce5a8b2427cc",
       "committed": "2026-09-24T00:39:42+01:00"
     },
-    "note": "The page as live on cesarxdesign.com/confirmo on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time).",
+    "note": "The page as live on cesarxdesign.com/confirmo on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time). Called Lite until 2026-10-05; renamed Mismatch when the five pages went onto one styling and this one left the folio.",
     "path": "versions/confirmo/2026-07-29/site/confirmo/index.html?v=7095ee8a"
+  },
+  {
+    "project": "confirmo",
+    "id": "2026-10-05-live",
+    "name": "Live",
+    "page": "site/confirmo/index.html",
+    "width": 1440,
+    "shipped": "2026-10-05T16:18:43+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "c017d76",
+      "commit": "c017d761df4f2e6e22346ef2769392e981345ae5",
+      "committed": "2026-10-05T16:42:06+01:00"
+    },
+    "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
+    "path": "versions/confirmo/2026-10-05-live/site/confirmo/index.html?v=17b35fe9"
   },
   {
     "project": "done",
@@ -233,19 +267,36 @@
   {
     "project": "mara",
     "id": "2026-07-29",
-    "name": "Lite",
+    "name": "Mismatch",
     "page": "site/mara/index.html",
     "width": 1440,
     "shipped": "2026-07-29T01:51:15+01:00",
-    "until": null,
+    "until": "2026-10-05T16:18:43+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "352313a",
       "commit": "352313a7671d40c0bcac72fd6cabce5a8b2427cc",
       "committed": "2026-09-24T00:39:42+01:00"
     },
-    "note": "The page as live on cesarxdesign.com/mara on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time).",
+    "note": "The page as live on cesarxdesign.com/mara on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time). Called Lite until 2026-10-05; renamed Mismatch when the five pages went onto one styling and this one left the folio.",
     "path": "versions/mara/2026-07-29/site/mara/index.html?v=d3a2d546"
+  },
+  {
+    "project": "mara",
+    "id": "2026-10-05-live",
+    "name": "Live",
+    "page": "site/mara/index.html",
+    "width": 1440,
+    "shipped": "2026-10-05T16:18:43+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "c017d76",
+      "commit": "c017d761df4f2e6e22346ef2769392e981345ae5",
+      "committed": "2026-10-05T16:42:06+01:00"
+    },
+    "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
+    "path": "versions/mara/2026-10-05-live/site/mara/index.html?v=e3d7e975"
   },
   {
     "project": "penfold",
@@ -445,19 +496,36 @@
   {
     "project": "penfold",
     "id": "2026-09-30-shipped",
-    "name": "Shipped",
+    "name": "Mismatch",
     "page": "site/penfold/index.html",
     "width": 1440,
     "shipped": "2026-09-30T18:43:46+01:00",
-    "until": null,
+    "until": "2026-10-05T16:18:43+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "47a4059",
       "commit": "47a4059473b80481d79fe8c556f4609a89c3a573",
       "committed": "2026-09-30T18:43:46+01:00"
     },
-    "note": "The page as live on cesarxdesign.com/penfold after the 30 September review: Imagine carried into the site, then its copy and layout reworked in the artifact (lede, day list, the 6-days and instant-pension cards with ID tags, Cracking, Targeting and the Outcome close). Shipped is the push to main (Portfolio 47a4059).",
+    "note": "The page as live on cesarxdesign.com/penfold after the 30 September review: Imagine carried into the site, then its copy and layout reworked in the artifact (lede, day list, the 6-days and instant-pension cards with ID tags, Cracking, Targeting and the Outcome close). Shipped is the push to main (Portfolio 47a4059). Called Shipped until 2026-10-05; renamed Mismatch when the five pages went onto one styling and this one left the folio.",
     "path": "versions/penfold/2026-09-30-shipped/site/penfold/index.html?v=3c18c898"
+  },
+  {
+    "project": "penfold",
+    "id": "2026-10-05-live",
+    "name": "Live",
+    "page": "site/penfold/index.html",
+    "width": 1440,
+    "shipped": "2026-10-05T16:18:43+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "c017d76",
+      "commit": "c017d761df4f2e6e22346ef2769392e981345ae5",
+      "committed": "2026-10-05T16:42:06+01:00"
+    },
+    "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
+    "path": "versions/penfold/2026-10-05-live/site/penfold/index.html?v=100f14c0"
   },
   {
     "project": "starcount",
@@ -513,18 +581,35 @@
   {
     "project": "starcount",
     "id": "2026-07-29",
-    "name": "Lite",
+    "name": "Mismatch",
     "page": "site/starcount/index.html",
     "width": 1440,
     "shipped": "2026-07-29T01:51:15+01:00",
-    "until": null,
+    "until": "2026-10-05T16:18:43+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "352313a",
       "commit": "352313a7671d40c0bcac72fd6cabce5a8b2427cc",
       "committed": "2026-09-24T00:39:42+01:00"
     },
-    "note": "The page as live on cesarxdesign.com/starcount on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time).",
+    "note": "The page as live on cesarxdesign.com/starcount on 2026-09-24 (Portfolio 352313a). First pushed live 2026-07-29 01:51 (commit time). Called Lite until 2026-10-05; renamed Mismatch when the five pages went onto one styling and this one left the folio.",
     "path": "versions/starcount/2026-07-29/site/starcount/index.html?v=4a9c4e17"
+  },
+  {
+    "project": "starcount",
+    "id": "2026-10-05-live",
+    "name": "Live",
+    "page": "site/starcount/index.html",
+    "width": 1440,
+    "shipped": "2026-10-05T16:18:43+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "c017d76",
+      "commit": "c017d761df4f2e6e22346ef2769392e981345ae5",
+      "committed": "2026-10-05T16:42:06+01:00"
+    },
+    "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
+    "path": "versions/starcount/2026-10-05-live/site/starcount/index.html?v=f25a682c"
   }
 ]

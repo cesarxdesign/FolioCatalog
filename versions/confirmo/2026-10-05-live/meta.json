@@ -1,0 +1,16 @@
+{
+  "project": "confirmo",
+  "id": "2026-10-05-live",
+  "name": "Live",
+  "page": "site/confirmo/index.html",
+  "width": 1440,
+  "shipped": "2026-10-05T16:18:43+01:00",
+  "until": null,
+  "source": {
+    "kind": "portfolio",
+    "ref": "c017d76",
+    "commit": "c017d761df4f2e6e22346ef2769392e981345ae5",
+    "committed": "2026-10-05T16:42:06+01:00"
+  },
+  "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76."
+}

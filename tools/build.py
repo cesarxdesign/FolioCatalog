@@ -359,8 +359,10 @@ function newest() {
   const fresh = ALL.filter(v => !known.includes(key(v)));
   if (!fresh.length) return;
   const last = fresh.reduce((a, b) => when(b) >= when(a) ? b : a);
-  const set = fresh.filter(v => v.project === last.project && when(v) === when(last));
-  Object.assign(state, {project: last.project, version: set.every(v => v.name === last.name) ? last.name : '', off: 0, n: Math.min(6, set.length), picks: set.map(key)});
+  // Pages stored together (a round, or one ship across projects) open together.
+  const set = fresh.filter(v => when(v) === when(last));
+  Object.assign(state, {project: set.every(v => v.project === last.project) ? last.project : 'all',
+                        version: set.every(v => v.name === last.name) ? last.name : '', off: 0, n: Math.min(6, set.length), picks: set.map(key)});
 }
 
 function pickerFor(i) {
