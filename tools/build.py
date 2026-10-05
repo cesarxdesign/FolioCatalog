@@ -18,12 +18,19 @@ def main():
         # A changed page gets a new address, so no browser shows a cached copy of the old one.
         m["path"] += "?v=" + hashlib.sha1((ROOT / m["path"]).read_bytes()).hexdigest()[:8]
     # Projects A-Z, versions oldest first, so side by side reads left to right in time.
-    metas.sort(key=lambda m: (m["project"], when(m), m["id"]))
+    # "order" places pages made together (a Harmony round) as the home page lists them.
+    metas.sort(key=lambda m: (m["project"], when(m), m.get("order", 0), m["id"]))
+    # A project whose folder holds a file named .local stays on this machine: it is not in git,
+    # so it is not in the page either. It goes to local.json (not in git), which the page reads
+    # when it finds it beside itself. The public page never does, and shows the public catalog.
+    here = [m for m in metas if (ROOT / "versions" / m["project"] / ".local").exists()]
+    metas = [m for m in metas if m not in here]
     (ROOT / "catalog.json").write_text(json.dumps(metas, indent=2, ensure_ascii=False) + "\n")
-    keep = ("project", "id", "name", "path", "width", "shipped", "until", "made")
-    data = json.dumps([{k: m.get(k) for k in keep} for m in metas], ensure_ascii=False)
-    (ROOT / "index.html").write_text(PAGE.replace("/*DATA*/[]", data))
-    print(f"index.html: {len(metas)} versions")
+    keep = ("project", "id", "name", "label", "path", "width", "shipped", "until", "made")
+    slim = lambda ms, **more: json.dumps([{**{k: m.get(k) for k in keep}, **more} for m in ms], ensure_ascii=False)
+    (ROOT / "index.html").write_text(PAGE.replace("/*DATA*/[]", slim(metas)))
+    (ROOT / "local.json").write_text(slim(here, local=True) + "\n") if here else (ROOT / "local.json").unlink(missing_ok=True)
+    print(f"index.html: {len(metas)} versions" + (f", local.json: {len(here)} more on this machine" if here else ""))
 
 
 PAGE = """<!doctype html>
@@ -95,11 +102,11 @@ main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 </header>
 <main id="panes"></main>
 <script>
-const ALL = /*DATA*/[];
+let ALL = /*DATA*/[];
 const MIN_PANE = 360;               // narrower than this and a pane stops being readable
 const $ = id => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.createElement(tag), props); e.append(...kids); return e; };
-const projects = [...new Set(ALL.map(v => v.project))];
+let projects = [...new Set(ALL.map(v => v.project))];
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 // project is one project or 'all'; version is one name (Lite, Noir...) or '' for every one.
 // picks holds what each pane shows, as "project:id", left to right.
@@ -268,8 +275,8 @@ function applyTheme() {
 }
 
 const key = v => v.project + ':' + v.id;
-const byKey = Object.fromEntries(ALL.map(v => [key(v), v]));
-const label = v => (state.project === 'all' ? cap(v.project) + ' · ' : '') + v.id.slice(0, 10) + (v.name ? ' · ' + v.name : '');
+let byKey = Object.fromEntries(ALL.map(v => [key(v), v]));
+const label = v => (state.project === 'all' ? cap(v.project) + ' · ' : '') + (v.label || v.id.slice(0, 10)) + (v.name ? ' · ' + v.name : '');
 const pool = () => ALL.filter(v => (state.project === 'all' || v.project === state.project) && (!state.version || v.name === state.version));
 const when = v => v.shipped || v.made || v.id.slice(0, 10);
 // Earliest to latest across projects too; ALL's own order (project, then time) breaks ties.
@@ -277,16 +284,17 @@ const byTime = (a, b) => { const x = when(byKey[a]), y = when(byKey[b]);
                            return x < y ? -1 : x > y ? 1 : ALL.indexOf(byKey[a]) - ALL.indexOf(byKey[b]); };
 
 function fillVersions() {
-  // The caption names that more than one page shares (Sqsp, Figma, Lite), oldest first. Each
-  // shows every page of that name across all projects.
-  const first = {}, count = {};
-  for (const v of ALL.filter(v => v.name)) {
+  // Only what the chosen project has, oldest first. One project: each of its version names.
+  // All projects: the names more than one page shares (Sqsp, Figma, Lite), each showing every
+  // page of that name across the projects.
+  const first = {}, count = {}, all = state.project === 'all';
+  for (const v of ALL.filter(v => v.name && (all ? !v.local : v.project === state.project))) {
     if (!(v.name in first) || when(v) < first[v.name]) first[v.name] = when(v);
     count[v.name] = (count[v.name] || 0) + 1;
   }
-  const names = Object.keys(first).filter(n => count[n] > 1)
+  const names = Object.keys(first).filter(n => !all || count[n] > 1)
     .sort((a, b) => first[a] < first[b] ? -1 : first[a] > first[b] ? 1 : 0);
-  if (!names.includes(state.version) || state.project !== 'all') state.version = '';
+  if (!names.includes(state.version)) state.version = '';
   $('version').replaceChildren(el('option', {value: '', textContent: 'All versions'}),
     ...names.map(n => el('option', {value: n, textContent: `${n} (${count[n]})`})));
   $('version').value = state.version;
@@ -297,7 +305,7 @@ function defaults() {
   const vs = pool();
   if (state.project !== 'all' || state.version) return vs.slice(-state.n).map(key);
   // A project's face is the page live on the folio now, or its newest if none is.
-  return projects.map(p => { const vs = ALL.filter(v => v.project === p), live = vs.filter(v => v.shipped && !v.until);
+  return projects.filter(p => !ALL.some(v => v.project === p && v.local)).map(p => { const vs = ALL.filter(v => v.project === p), live = vs.filter(v => v.shipped && !v.until);
                              return key((live.length ? live : vs).pop()); });
 }
 
@@ -326,7 +334,7 @@ function readHash() {
   // #project/n/off/project:id,.../version   (the version part only when one is chosen)
   const [p, a, b, c, d] = decodeURIComponent(location.hash.slice(1)).split('/');
   state.project = p === 'all' || projects.includes(p) ? p : projects[0];
-  state.version = p === 'all' && ALL.some(v => v.name === d) ? d : '';
+  state.version = ALL.some(v => v.name === d && (p === 'all' || v.project === p)) ? d : '';
   if (a && isNaN(+a)) {
     state.n = Math.min(6, Math.max(1, +b || 1));
     const vs = pool(), i = Math.max(0, vs.findIndex(v => v.id === a)), start = Math.max(0, Math.min(i, vs.length - state.n));
@@ -338,6 +346,21 @@ function readHash() {
     state.picks = (c || '').split(',').filter(k => byKey[k]);
   }
   fill();
+}
+
+// A refresh after new pages were stored opens on them, the newest set, whatever the address
+// still says. Once: after that the view is kept as it was left.
+function newest() {
+  // A browser that has not been here since this was added knows what its address shows, and
+  // everything older.
+  const stored = store.get('fc-known'), top = state.picks.map(k => when(byKey[k])).sort().pop() || '';
+  const known = stored ? stored.split(',') : ALL.filter(v => v.project !== state.project || when(v) <= top).map(key);
+  store.set('fc-known', ALL.map(key).join(','));
+  const fresh = ALL.filter(v => !known.includes(key(v)));
+  if (!fresh.length) return;
+  const last = fresh.reduce((a, b) => when(b) >= when(a) ? b : a);
+  const set = fresh.filter(v => v.project === last.project && when(v) === when(last));
+  Object.assign(state, {project: last.project, version: set.every(v => v.name === last.name) ? last.name : '', off: 0, n: Math.min(6, set.length), picks: set.map(key)});
 }
 
 function pickerFor(i) {
@@ -427,6 +450,7 @@ function fitFrames() {
   }
 }
 
+function start() {
 if (!ALL.length) {
   $('panes').append(el('p', {className: 'empty', textContent: 'Nothing stored yet.'}));
   document.querySelectorAll('header label').forEach(e => e.hidden = true);
@@ -436,9 +460,8 @@ if (!ALL.length) {
   for (let i = 1; i <= 6; i++) $('count').append(el('option', {value: i, textContent: i === 1 ? '1 page' : `${i} side by side`}));
   $('project').onchange = e => { state.project = e.target.value; state.picks = []; state.off = 0; render(); };
   $('version').onchange = e => {
-    // Picking a version shows every page of it across all projects, up to six.
+    // Picking a version shows every page of it in the chosen project (or across all), up to six.
     state.version = e.target.value; state.picks = []; state.off = 0;
-    if (state.version) state.project = 'all';
     if (state.version) state.n = Math.min(6, pool().length);
     render();
   };
@@ -454,8 +477,18 @@ if (!ALL.length) {
   applyTheme();
   applyLock();
   readHash();
+  newest();
   render();
 }
+}
+// Pages kept on this machine only (see tools/build.py) join the catalog when their list is here.
+fetch('local.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : []).catch(() => []).then(more => {
+  ALL = ALL.concat(more).sort((a, b) => a.project < b.project ? -1 : a.project > b.project ? 1 : 0);
+  projects = [...new Set(ALL.map(v => v.project))];
+  byKey = Object.fromEntries(ALL.map(v => [key(v), v]));
+  state.project = projects[0];
+  start();
+});
 </script>
 </body>
 </html>

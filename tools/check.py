@@ -63,10 +63,12 @@ def main():
                                  capture_output=True, text=True, check=True).stdout.split("\n")) - {""}
     dirty = subprocess.run(["git", "-C", str(ROOT), "status", "--porcelain", "--ignored", "versions"],
                            capture_output=True, text=True, check=True).stdout.strip()
-    if dirty:
-        problems += [f"not committed as is: {l}" for l in dirty.split("\n")]
+    # A project folder holding a file named .local is kept on this machine, out of git, on purpose.
+    local = tuple(f"versions/{p.parent.name}/" for p in (ROOT / "versions").glob("*/.local"))
+    dirty = [l for l in dirty.split("\n") if l and not l[3:].startswith(local)]
+    problems += [f"not committed as is: {l}" for l in dirty]
 
-    for vdir in sorted(p for p in (ROOT / "versions").glob("*/*") if p.is_dir()):
+    for vdir in sorted(p for p in (ROOT / "versions").glob("*/*") if p.is_dir() and not (p.parent / ".local").exists()):
         for f in sorted(vdir.rglob("*")):
             rel = f.relative_to(ROOT).as_posix()
             if f.is_symlink():
@@ -102,7 +104,7 @@ def main():
 
     for p in problems:
         print("FAIL", p)
-    n = len([p for p in (ROOT / "versions").glob("*/*") if p.is_dir()])
+    n = len([p for p in (ROOT / "versions").glob("*/*") if p.is_dir() and not (p.parent / ".local").exists()])
     print(f"{n} versions, {pages} pages, {files} files, {links} outbound links (navigation, fine)")
     print("OK: every page stands on its own" if not problems else f"{len(problems)} problems")
     sys.exit(1 if problems else 0)

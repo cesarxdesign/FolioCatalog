@@ -1,5 +1,5 @@
 """Shared by the tools that store a version: vendoring, meta, paths."""
-import hashlib, json, posixpath, re, urllib.request
+import hashlib, json, posixpath, re, urllib.error, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -41,7 +41,7 @@ def vendor(site: Path):
     """Download every external resource the pages load into site/_vendor/ and point at the copy.
 
     Links to other pages stay as they are: they are navigation, not part of this page."""
-    cache = {}
+    cache, missing = {}, {}
 
     def local_name(url, ctype):
         ext = {"text/css": ".css", "font/woff2": ".woff2", "font/woff": ".woff", "font/ttf": ".ttf",
@@ -54,7 +54,13 @@ def vendor(site: Path):
 
     def get(url):
         if url not in cache:
-            data, ctype = fetch(url)
+            try:
+                data, ctype = fetch(url)
+            except urllib.error.HTTPError as e:
+                # Missing on the live site too: the copy keeps the same dead link, and says so.
+                print(f"  not downloaded ({e.code}): {url}")
+                missing[url] = url
+                return url
             name = local_name(url, ctype)
             if name.endswith(".css"):
                 data = rewrite(data.decode(), name).encode()
@@ -66,7 +72,7 @@ def vendor(site: Path):
     def rewrite(text, rel_to):
         def swap(part):
             for rx in LOADS:
-                part = rx.sub(lambda m: m.group(1) + posixpath.relpath(get(m.group(2)), posixpath.dirname(rel_to) or "."), part)
+                part = rx.sub(lambda m: m.group(1) + (lambda g: g if g in missing else posixpath.relpath(g, posixpath.dirname(rel_to) or "."))(get(m.group(2))), part)
             return part
         return PRECONNECT.sub("", outside_data(text, swap))
 

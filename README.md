@@ -103,6 +103,25 @@ The Crazy canvas itself, desktop and mobile, is kept in git history rather than 
 Shipped is the same page: `git show a4abbf9:versions/cable/2026-09-23-crazy/meta.json`, or
 `git worktree add ../crazy a4abbf9` for the whole folder.
 
+## Harmony
+
+One styling for the five live case studies: same rhythm, spacing and sizes on every page, each
+keeping its own colours. Worked on here, side by side, and only here: nothing in it is live. The
+whole project stays on this machine: `versions/harmony/` holds a file named `.local`, so it is
+not in git, `tools/build.py` leaves it out of `index.html` and writes it to `local.json` (not in
+git either), and the page adds it to the catalog only where it finds that file beside itself.
+The public page never does.
+
+    http://localhost:4174/index.html#harmony/5/0
+
+`Current` is the five live pages as they were. Every other round is `Current` plus
+`versions/harmony/_system/harmony.css`, which sets each size and spacing once, from Penfold and
+Cable. A round is named by the time it was built:
+
+    python3 tools/harmony.py        a new round from the stylesheet as it stands, e.g. 15:42:07
+
+A refresh of the viewer opens on whatever was stored since the last visit.
+
 ## Adding a version
 
 From Portfolio's git history (store a page **before** its replacement is committed, or

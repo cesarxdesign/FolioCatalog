@@ -50,6 +50,10 @@ def main():
     ap.add_argument("--until", help="when it left the live folio, ISO 8601 with offset")
     ap.add_argument("--width", type=int, default=1440, help="width it was designed at")
     ap.add_argument("--note", default="")
+    ap.add_argument("--into", help="catalog project to store it under, when not the page's own (e.g. harmony)")
+    ap.add_argument("--label", help="what the pane caption calls it in place of the id's date, e.g. Cable")
+    ap.add_argument("--order", type=int, help="place among pages made together: 1 Penfold, 2 Cable, 3 Confirmo, 4 Mara, 5 Starcount")
+    ap.add_argument("--made", help="when the copy was made, ISO 8601 with offset")
     a = ap.parse_args()
 
     commit = git("rev-parse", a.ref + "^{commit}").strip()
@@ -73,7 +77,7 @@ def main():
                 if p.endswith(TEXT):
                     queue.append(p)
 
-    dest = new_dest(a.project, a.id)
+    dest = new_dest(a.into or a.project, a.id)
 
     def rewrite(from_file, text):
         def sub(m):
@@ -108,9 +112,12 @@ def main():
 
     tags = [t for t in git("tag", "--points-at", commit).split() if t]
     write_meta(dest, {
-        "project": a.project,
+        "project": a.into or a.project,
         "id": a.id,
         "name": a.name,
+        **({"label": a.label} if a.label else {}),
+        **({"made": a.made} if a.made else {}),
+        **({"order": a.order} if a.order else {}),
         "page": f"site/{page}",
         "width": a.width,
         "shipped": a.shipped,
