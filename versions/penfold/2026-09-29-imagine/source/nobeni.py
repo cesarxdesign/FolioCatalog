@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""The four nominate-a-beneficiary screens, in a row under the "But what if I die?" title.
+"""Three nominate-a-beneficiary screens in a row, with the "But what if I die?" copy to their right (the pop-up
+screen dropped, on request, 2026-09-30).
 
     python3 source/nobeni.py        rewrites the row between the NOBENI markers in site/index.html
 
@@ -10,11 +11,11 @@ import os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(HERE, '..', 'site', 'index.html')
 CAT = os.path.abspath(os.path.join(HERE, *['..'] * 5, 'CodeCatalog', 'screens', 'penfold', 'mobile'))
-SCREENS = ['nominate-beneficiary-form', 'nominate-beneficiary-popup', 'nominate-beneficiary-filled', 'nominate-beneficiary-done']
-WIDTH, GAP, W, H = 894, 16, 375, 812
+SCREENS = ['nominate-beneficiary-form', 'nominate-beneficiary-filled', 'nominate-beneficiary-done']
+WIDTH, GAP, W, H = 600, 16, 375, 812           # 600: the screens' share of the box; the copy takes the rest
 
 def load(sid):
-    src = open(os.path.join(CAT, sid, 'snippet.html'), encoding='utf-8').read()
+    src = open(os.path.join(CAT, sid, 'snippet.html'), encoding='utf-8').read().replace('backdrop-filter:blur(20.39px);', '')   # the iOS bar's blur pulls the page in at the frame edge: a dark smear on the dark page
     inner = re.search(r'<template shadowrootmode="open">([\s\S]*)</template>', src).group(1)
     css = re.search(r'<style>([\s\S]*?)</style>', inner).group(1)
     body = re.sub(r'<style>[\s\S]*?</style>', '', inner, count=1).strip()

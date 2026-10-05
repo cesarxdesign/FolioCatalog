@@ -17,7 +17,7 @@ WIDTH, GAP, W, H = 894, 16, 375, 812                 # 894: the section's body c
 COVER = {'modular-fund': (782, '#F6F6F6')}          # screen: (y where the white Risk acceptance panel starts, colour above)
 
 def load(sid):
-    src = open(os.path.join(MOB, sid, 'snippet.html'), encoding='utf-8').read()
+    src = open(os.path.join(MOB, sid, 'snippet.html'), encoding='utf-8').read().replace('backdrop-filter:blur(20.39px);', '')   # the iOS bar's blur pulls the page in at the frame edge: a dark smear on the dark page
     inner = re.search(r'<template shadowrootmode="open">([\s\S]*)</template>', src).group(1)
     css = re.search(r'<style>([\s\S]*?)</style>', inner).group(1)
     return css, re.sub(r'<style>[\s\S]*?</style>', '', inner, count=1).strip()

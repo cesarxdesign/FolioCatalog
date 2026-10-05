@@ -23,7 +23,7 @@ WIDTH, GAP, STACK_GAP, W, CROP = 894, 16, 12, 375, 812   # 894: the section's bo
 COLUMNS = len(ORDER)                                        # one screen per column
 
 def load(sid):
-    src = open(os.path.join(MOB, sid, 'snippet.html'), encoding='utf-8').read()
+    src = open(os.path.join(MOB, sid, 'snippet.html'), encoding='utf-8').read().replace('backdrop-filter:blur(20.39px);', '')   # the iOS bar's blur pulls the page in at the frame edge: a dark smear on the dark page
     inner = re.search(r'<template shadowrootmode="open">([\s\S]*)</template>', src).group(1)
     css = re.search(r'<style>([\s\S]*?)</style>', inner).group(1)
     return css, re.sub(r'<style>[\s\S]*?</style>', '', inner, count=1).strip()

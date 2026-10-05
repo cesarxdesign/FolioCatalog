@@ -60,7 +60,7 @@ def edit(sid, css, body):
     return css, body
 
 def load(sid):
-    src = open(os.path.join(MOB, sid, 'snippet.html'), encoding='utf-8').read()
+    src = open(os.path.join(MOB, sid, 'snippet.html'), encoding='utf-8').read().replace('backdrop-filter:blur(20.39px);', '')   # the iOS bar's blur pulls the page in at the frame edge: a dark smear on the dark page
     inner = re.search(r'<template shadowrootmode="open">([\s\S]*)</template>', src).group(1)
     css = re.search(r'<style>([\s\S]*?)</style>', inner).group(1)
     return css, re.sub(r'<style>[\s\S]*?</style>', '', inner, count=1).strip()
@@ -102,12 +102,13 @@ block = ('<!-- ITERATE start: built by source/iterate.py from CodeCatalog screen
          '<div class="st-phone">%s</div>\n<div class="st-list" role="tablist" aria-orientation="vertical" aria-label="Iteration">%s</div>\n</div>\n'
          '<script>(function(){var r=document.currentScript.previousElementSibling;var t=r.querySelectorAll(\'[role=tab]\'),s=r.querySelectorAll(\'.st-screen\');'
          'function go(i){t.forEach(function(b,j){b.setAttribute(\'aria-selected\',j===i);b.tabIndex=j===i?0:-1});s.forEach(function(e,j){e.hidden=j!==i})}'
-         't.forEach(function(b,i){b.addEventListener(\'click\',function(){go(i)});b.addEventListener(\'keydown\',function(e){var d=e.key===\'ArrowDown\'?1:e.key===\'ArrowUp\'?-1:0;if(d){e.preventDefault();var n=(i+d+t.length)%%t.length;go(n);t[n].focus()}})});go(0)})();</script>\n'
+        # hovering a step selects it, and the last one hovered stays selected; a click or tap still works (2026-09-30)
+         't.forEach(function(b,i){b.addEventListener(\'mouseenter\',function(){go(i)});b.addEventListener(\'click\',function(){go(i)});b.addEventListener(\'keydown\',function(e){var d=e.key===\'ArrowDown\'?1:e.key===\'ArrowUp\'?-1:0;if(d){e.preventDefault();var n=(i+d+t.length)%%t.length;go(n);t[n].focus()}})});go(0)})();</script>\n'
          '<!-- ITERATE end -->' % (PW, round(H * pk), '\n'.join(phones), ''.join(tabs)))
 page = open(SITE, encoding='utf-8').read()
 if '<!-- ITERATE start' not in page:
-    lab = '<div class="item"><span class="mono">Combine</span>'   # eyebrow, then the screens, then title and body (2026-09-29)
-    page = page.replace(lab, lab + '\n<!-- ITERATE start -->\n<!-- ITERATE end -->\n')
+    i = page.index('<h3>A new flagship.</h3>'); j = page.index('</p>', i) + 4   # eyebrow, title and body, then the screens (2026-09-30)
+    page = page[:j] + '\n<!-- ITERATE start -->\n<!-- ITERATE end -->' + page[j:]
 page = re.sub(r'<!-- ITERATE start[\s\S]*?<!-- ITERATE end -->', lambda m: block, page)
 open(SITE, 'w', encoding='utf-8').write(page)
 print('stepper: %d iterations, phone %d x %d' % (len(SCREENS), PW, round(H * pk)))

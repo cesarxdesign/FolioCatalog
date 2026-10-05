@@ -20,7 +20,7 @@ SITE = os.path.join(HERE, '..', 'site', 'index.html')
 # 1637: below that its Figma frame is a stray 38px band of #FBFBFB left under the pasted pictures.
 ORDER = [('modular-calculator', 1311, '#FBFBFB'), ('modular-fund', 1311, '#FBFBFB'), ('modular-details', 2478, '#FBFBFB'),
          ('modular-payment', 1637, '#F6F6F6'), ('modular-confirmation', 812, '#F6F6F6')]   # the dashboard was cut too
-COLUMNS, WIDTH, GAP, STACK_GAP, W = 3, 820, 16, 12, 1200   # 820: it sits inside the Modular and Mobile list, which is 820 wide
+COLUMNS, WIDTH, GAP, STACK_GAP, W = 3, 894, 16, 12, 1200   # 894: the section's body column, as the other strips
 
 # The annotation's line runs at half the strip's height; screens 1 and 2 share the first column, so their gap is
 # set on that line (on request, 2026-09-29): the calculator gets 62px more air under its nav (1249 -> 1311),

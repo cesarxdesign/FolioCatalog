@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# REMOVED from the page on request (2026-09-29): the "More than a home" strip is no longer shown. Do not rerun.
 """The five live-product phone screens from the Lite version's Impact strip (versions/penfold/2026-07-30),
 in a row between the big App Store review and the other three, framed like the other strips on this page.
 
@@ -14,7 +15,7 @@ LITE = os.path.abspath(os.path.join(HERE, '..', '..', '2026-07-30', 'site', 'pen
 WIDTH, GAP, N, FW, FH = 894, 16, 5, 375, 812          # 894: the section's body column; N: the Lite strip's screens
 CUT = [0]                                              # the Lite strip's first screen (Final step) was cut on request, 2026-09-29
 
-src = open(os.path.join(LITE, 'index.html'), encoding='utf-8').read()
+src = open(os.path.join(LITE, 'index.html'), encoding='utf-8').read().replace('>9:24<', '>8:24<')   # every mobile clock reads 8:24, as in CodeCatalog (2026-09-29)
 start = src.index('<div class="rack five">')
 screens = re.findall(r'<div class="scr ph">(<template shadowrootmode="open">[\s\S]*?</template>)</div>', src[start:])[:N]
 assert len(screens) == N, len(screens)
@@ -77,8 +78,9 @@ row = ('<!-- IMPACT start: built by source/impact.py from the Lite version\'s sc
        + '\n'.join(tiles) + '\n</div>\n' + ring + '\n</div>\n' + cap + '\n</figure>\n<!-- IMPACT end -->')
 page = open(SITE, encoding='utf-8').read()
 if '<!-- IMPACT start' not in page:
-    v = page.index('<div class="voices">'); r = page.index('<div class="row">', v)   # under the big review, above the other three
-    page = page[:r] + '<!-- IMPACT start -->\n<!-- IMPACT end -->\n' + page[r:]
+    a = '<p class="txt closing">Growth finally caught up with the product, as the new strategy yielded 6x the signups.</p>\n'
+    assert page.count(a) == 1   # under that line (moved from under the reviews, on request, 2026-09-29)
+    page = page.replace(a, a + '<!-- IMPACT start -->\n<!-- IMPACT end -->\n')
 page = re.sub(r'<!-- IMPACT start[\s\S]*?<!-- IMPACT end -->', lambda m: row, page)
 open(SITE, 'w', encoding='utf-8').write(page)
 print('%d screens, %.1fpx wide, %dpx tall, %d assets inlined' % (n, tw, h, len(cache)))
