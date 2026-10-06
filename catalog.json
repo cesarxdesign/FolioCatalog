@@ -118,7 +118,7 @@
     "page": "site/cable/index.html",
     "width": 1440,
     "shipped": "2026-10-05T16:18:43+01:00",
-    "until": null,
+    "until": "2026-10-06T10:17:48+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "c017d76",
@@ -127,6 +127,23 @@
     },
     "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
     "path": "versions/cable/2026-10-05-live/site/cable/index.html?v=5e00e2a2"
+  },
+  {
+    "project": "cable",
+    "id": "2026-10-06-heroes",
+    "name": "Heroes",
+    "page": "site/cable/index.html",
+    "width": 1440,
+    "shipped": "2026-10-06T10:45:40+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "072b564",
+      "commit": "072b564dac4d6f68636c9a2daaeca5064109615e",
+      "committed": "2026-10-06T10:56:45+01:00"
+    },
+    "note": "Live on cesarxdesign.com from 6 Oct 2026: a hero image on all five pages, their logos on one rule (65 from the left, 20px letters, centred 114 down on the 1200x600 hero); every lede in two tones; greys, small labels and spacing on one system. First parts went live 2026-10-06T10:17:48+01:00; the page as stored is Portfolio 072b564.",
+    "path": "versions/cable/2026-10-06-heroes/site/cable/index.html?v=92ebc847"
   },
   {
     "project": "confirmo",
@@ -152,7 +169,7 @@
     "page": "site/confirmo/index.html",
     "width": 1440,
     "shipped": "2026-10-05T16:18:43+01:00",
-    "until": null,
+    "until": "2026-10-06T10:17:48+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "c017d76",
@@ -161,6 +178,23 @@
     },
     "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
     "path": "versions/confirmo/2026-10-05-live/site/confirmo/index.html?v=17b35fe9"
+  },
+  {
+    "project": "confirmo",
+    "id": "2026-10-06-heroes",
+    "name": "Heroes",
+    "page": "site/confirmo/index.html",
+    "width": 1440,
+    "shipped": "2026-10-06T10:56:45+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "072b564",
+      "commit": "072b564dac4d6f68636c9a2daaeca5064109615e",
+      "committed": "2026-10-06T10:56:45+01:00"
+    },
+    "note": "Live on cesarxdesign.com from 6 Oct 2026: a hero image on all five pages, their logos on one rule (65 from the left, 20px letters, centred 114 down on the 1200x600 hero); every lede in two tones; greys, small labels and spacing on one system. First parts went live 2026-10-06T10:17:48+01:00; the page as stored is Portfolio 072b564.",
+    "path": "versions/confirmo/2026-10-06-heroes/site/confirmo/index.html?v=8823de4b"
   },
   {
     "project": "done",
@@ -288,7 +322,7 @@
     "page": "site/mara/index.html",
     "width": 1440,
     "shipped": "2026-10-05T16:18:43+01:00",
-    "until": null,
+    "until": "2026-10-06T10:17:48+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "c017d76",
@@ -297,6 +331,23 @@
     },
     "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
     "path": "versions/mara/2026-10-05-live/site/mara/index.html?v=e3d7e975"
+  },
+  {
+    "project": "mara",
+    "id": "2026-10-06-heroes",
+    "name": "Heroes",
+    "page": "site/mara/index.html",
+    "width": 1440,
+    "shipped": "2026-10-06T10:45:40+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "072b564",
+      "commit": "072b564dac4d6f68636c9a2daaeca5064109615e",
+      "committed": "2026-10-06T10:56:45+01:00"
+    },
+    "note": "Live on cesarxdesign.com from 6 Oct 2026: a hero image on all five pages, their logos on one rule (65 from the left, 20px letters, centred 114 down on the 1200x600 hero); every lede in two tones; greys, small labels and spacing on one system. First parts went live 2026-10-06T10:17:48+01:00; the page as stored is Portfolio 072b564.",
+    "path": "versions/mara/2026-10-06-heroes/site/mara/index.html?v=a8251250"
   },
   {
     "project": "penfold",
@@ -517,7 +568,7 @@
     "page": "site/penfold/index.html",
     "width": 1440,
     "shipped": "2026-10-05T16:18:43+01:00",
-    "until": null,
+    "until": "2026-10-06T10:17:48+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "c017d76",
@@ -526,6 +577,23 @@
     },
     "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
     "path": "versions/penfold/2026-10-05-live/site/penfold/index.html?v=100f14c0"
+  },
+  {
+    "project": "penfold",
+    "id": "2026-10-06-heroes",
+    "name": "Heroes",
+    "page": "site/penfold/index.html",
+    "width": 1440,
+    "shipped": "2026-10-06T10:54:10+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "072b564",
+      "commit": "072b564dac4d6f68636c9a2daaeca5064109615e",
+      "committed": "2026-10-06T10:56:45+01:00"
+    },
+    "note": "Live on cesarxdesign.com from 6 Oct 2026: a hero image on all five pages, their logos on one rule (65 from the left, 20px letters, centred 114 down on the 1200x600 hero); every lede in two tones; greys, small labels and spacing on one system. First parts went live 2026-10-06T10:17:48+01:00; the page as stored is Portfolio 072b564.",
+    "path": "versions/penfold/2026-10-06-heroes/site/penfold/index.html?v=13a67c5f"
   },
   {
     "project": "starcount",
@@ -602,7 +670,7 @@
     "page": "site/starcount/index.html",
     "width": 1440,
     "shipped": "2026-10-05T16:18:43+01:00",
-    "until": null,
+    "until": "2026-10-06T10:17:48+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "c017d76",
@@ -611,5 +679,22 @@
     },
     "note": "The page as live on cesarxdesign.com after 5 October 2026: the five case studies on one styling (harmony.css), with that day's content changes. Stored from Portfolio c017d76.",
     "path": "versions/starcount/2026-10-05-live/site/starcount/index.html?v=f25a682c"
+  },
+  {
+    "project": "starcount",
+    "id": "2026-10-06-heroes",
+    "name": "Heroes",
+    "page": "site/starcount/index.html",
+    "width": 1440,
+    "shipped": "2026-10-06T10:45:40+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "072b564",
+      "commit": "072b564dac4d6f68636c9a2daaeca5064109615e",
+      "committed": "2026-10-06T10:56:45+01:00"
+    },
+    "note": "Live on cesarxdesign.com from 6 Oct 2026: a hero image on all five pages, their logos on one rule (65 from the left, 20px letters, centred 114 down on the 1200x600 hero); every lede in two tones; greys, small labels and spacing on one system. First parts went live 2026-10-06T10:17:48+01:00; the page as stored is Portfolio 072b564.",
+    "path": "versions/starcount/2026-10-06-heroes/site/starcount/index.html?v=7d8be5dd"
   }
 ]

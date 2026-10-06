@@ -26,7 +26,7 @@ def main():
     here = [m for m in metas if (ROOT / "versions" / m["project"] / ".local").exists()]
     metas = [m for m in metas if m not in here]
     (ROOT / "catalog.json").write_text(json.dumps(metas, indent=2, ensure_ascii=False) + "\n")
-    keep = ("project", "id", "name", "label", "path", "width", "shipped", "until", "made")
+    keep = ("project", "id", "name", "sets", "label", "path", "width", "shipped", "until", "made")
     slim = lambda ms, **more: json.dumps([{**{k: m.get(k) for k in keep}, **more} for m in ms], ensure_ascii=False)
     (ROOT / "index.html").write_text(PAGE.replace("/*DATA*/[]", slim(metas)))
     (ROOT / "local.json").write_text(slim(here, local=True) + "\n") if here else (ROOT / "local.json").unlink(missing_ok=True)
@@ -285,7 +285,9 @@ function applyTheme() {
 const key = v => v.project + ':' + v.id;
 let byKey = Object.fromEntries(ALL.map(v => [key(v), v]));
 const label = v => (state.project === 'all' ? cap(v.project) + ' · ' : '') + (v.label || v.id.slice(0, 10)) + (v.name ? ' · ' + v.name : '');
-const pool = () => ALL.filter(v => (state.project === 'all' || v.project === state.project) && (!state.version || v.name === state.version));
+// A page answers to its own name and to any set it is filed in (meta "sets"): Heroes is the two Heroes pages plus the Live flagships.
+const namesOf = v => [v.name, ...(v.sets || [])].filter(Boolean);
+const pool = () => ALL.filter(v => (state.project === 'all' || v.project === state.project) && (!state.version || namesOf(v).includes(state.version)));
 const when = v => v.shipped || v.made || v.id.slice(0, 10);
 // Earliest to latest across projects too; ALL's own order (project, then time) breaks ties.
 const byTime = (a, b) => { const x = when(byKey[a]), y = when(byKey[b]);
@@ -298,7 +300,7 @@ function fillVersions() {
   const first = {}, count = {}, all = state.project === 'all';
   for (const v of ALL.filter(v => v.name && (all ? !v.local : v.project === state.project))) {
     if (!(v.name in first) || when(v) < first[v.name]) first[v.name] = when(v);
-    count[v.name] = (count[v.name] || 0) + 1;
+    for (const n of namesOf(v)) count[n] = (count[n] || 0) + 1;
   }
   const names = Object.keys(first).filter(n => !all || count[n] > 1)
     .sort((a, b) => first[a] < first[b] ? -1 : first[a] > first[b] ? 1 : 0);
@@ -342,7 +344,7 @@ function readHash() {
   // #project/n/off/project:id,.../version   (the version part only when one is chosen)
   const [p, a, b, c, d] = decodeURIComponent(location.hash.slice(1)).split('/');
   state.project = p === 'all' || projects.includes(p) ? p : projects[0];
-  state.version = ALL.some(v => v.name === d && (p === 'all' || v.project === p)) ? d : '';
+  state.version = ALL.some(v => namesOf(v).includes(d) && (p === 'all' || v.project === p)) ? d : '';
   if (a && isNaN(+a)) {
     state.n = Math.min(6, Math.max(1, +b || 1));
     const vs = pool(), i = Math.max(0, vs.findIndex(v => v.id === a)), start = Math.max(0, Math.min(i, vs.length - state.n));

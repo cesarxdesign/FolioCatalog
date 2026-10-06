@@ -1,0 +1,16 @@
+{
+  "project": "mara",
+  "id": "2026-10-06-heroes",
+  "name": "Heroes",
+  "page": "site/mara/index.html",
+  "width": 1440,
+  "shipped": "2026-10-06T10:45:40+01:00",
+  "until": null,
+  "source": {
+    "kind": "portfolio",
+    "ref": "072b564",
+    "commit": "072b564dac4d6f68636c9a2daaeca5064109615e",
+    "committed": "2026-10-06T10:56:45+01:00"
+  },
+  "note": "Live on cesarxdesign.com from 6 Oct 2026: a hero image on all five pages, their logos on one rule (65 from the left, 20px letters, centred 114 down on the 1200x600 hero); every lede in two tones; greys, small labels and spacing on one system. First parts went live 2026-10-06T10:17:48+01:00; the page as stored is Portfolio 072b564."
+}

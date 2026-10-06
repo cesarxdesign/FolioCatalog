@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="8.66998" height="14.012" viewBox="0 0 8.66998 14.012" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="battery">
+<mask id="mask0_0_1092" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="9" height="15">
+<path id="battery mask" fill-rule="evenodd" clip-rule="evenodd" d="M7.5976 1.14291H6.52518V0.0704902H2.23548V1.14291H1.16305C0.5196 1.14291 0.0906302 1.57188 0.0906302 2.21534V12.9396C0.0906302 13.583 0.5196 14.012 1.16305 14.012H7.5976C8.24105 14.012 8.67002 13.583 8.67002 12.9396V2.21534C8.67002 1.57188 8.24105 1.14291 7.5976 1.14291V1.14291Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_0_1092)">
+<g id="90" opacity="0.9">
+<path id="Rectangle-path" fill-rule="evenodd" clip-rule="evenodd" d="M0.0905497 10.7947V14.012H8.66994V10.7947H0.0905497Z" fill="#060610"/>
+<path id="Rectangle-path_2" fill-rule="evenodd" clip-rule="evenodd" d="M0.09059 7.57745V10.7947H8.66998V7.57745H0.09059Z" fill="#060610"/>
+</g>
+<g id="30" opacity="0.3">
+<path id="Rectangle-path_3" fill-rule="evenodd" clip-rule="evenodd" d="M0.09059 4.36018V7.57745H8.66998V4.36018H0.09059Z" fill="#060610"/>
+<path id="Rectangle-path_4" fill-rule="evenodd" clip-rule="evenodd" d="M0.09059 1.1429V4.36018H8.66998V1.1429H0.09059Z" fill="#060610"/>
+<path id="Rectangle-path_5" fill-rule="evenodd" clip-rule="evenodd" d="M2.23544 0.0704801V1.1429H6.52514V0.0704801H2.23544Z" fill="#060610"/>
+</g>
+</g>
+</g>
+</svg>

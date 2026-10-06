@@ -112,6 +112,14 @@ The pages they replaced are named **Mismatch**: Cable `2026-09-23-shipped` and P
 `2026-09-30-shipped` (both called Shipped until then), and Confirmo, Mara and Starcount
 `2026-07-29` (called Lite until then).
 
+## Heroes, 6 October 2026
+
+Each project has a `2026-10-06-heroes`, named **Heroes**: the live page from 6 Oct 2026. All five
+pages open on a hero image, with the logo on one rule (on the 1200x600 hero: 65 from the left,
+20px letters, centred 114 down). Confirmo's is new, built from the page's own glass-framed screens
+on a confirmo.com background; Penfold's is a new Figma export with the store badges and Trustpilot
+stars bottom left; Starcount's logo is STARCOUNT alone. The `2026-10-05-live` pages end that morning.
+
 ## Adding a version
 
 From Portfolio's git history (store a page **before** its replacement is committed, or
