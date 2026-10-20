@@ -1,0 +1,25 @@
+/* ----------------------------------------------------------------
+   THE case study footer. One component, shared by every case page, like
+   navbar.css: Next <project> on the left, the email on the right.
+   Colours come from the page's own --ink --mut --hair --accent, so the
+   arrow wears each project's accent. It sits on the site's 836 column;
+   a page with a wider column sets --sfootW. Nothing else may redeclare .sfoot.
+   ---------------------------------------------------------------- */
+@import url("_vendor/97fd80b07a-css2.css");
+
+.sfoot{box-sizing:border-box;width:min(var(--sfootW,836px),calc(100% - 40px));margin:120px auto 0;padding:56px 0 64px;
+  border-top:1px solid var(--hair);display:flex;justify-content:space-between;align-items:flex-end;gap:32px;
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+.sfoot .snx{display:flex;flex-direction:column;gap:8px}
+.sfoot .slab{font:400 12px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.sfoot .snext{font-size:48px;line-height:1.1;letter-spacing:-.035em;font-weight:600;color:var(--ink);text-decoration:none}
+.sfoot .snext span{color:var(--accent);transition:margin .2s}
+.sfoot .snext:hover span{margin-left:.12em}
+.sfoot .smail{font-size:14px;line-height:1.4;color:var(--ink);text-decoration:none}
+.sfoot a:hover{color:var(--accent)}
+
+@media (max-width:760px){
+  .sfoot{width:auto;margin:96px 16px 0;padding:32px 0 48px;flex-direction:column;align-items:flex-start;gap:28px}
+  .sfoot .slab{font-size:11px}
+  .sfoot .snext{font-size:34px}
+}

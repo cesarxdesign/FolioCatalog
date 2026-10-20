@@ -135,7 +135,7 @@
     "page": "site/cable/index.html",
     "width": 1440,
     "shipped": "2026-10-06T10:45:40+01:00",
-    "until": null,
+    "until": "2026-10-12T01:45:30+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "072b564",
@@ -144,6 +144,24 @@
     },
     "note": "Live on cesarxdesign.com from 6 Oct 2026: a hero image on all five pages, their logos on one rule (65 from the left, 20px letters, centred 114 down on the 1200x600 hero); every lede in two tones; greys, small labels and spacing on one system. First parts went live 2026-10-06T10:17:48+01:00; the page as stored is Portfolio 072b564.",
     "path": "versions/cable/2026-10-06-heroes/site/cable/index.html?v=92ebc847"
+  },
+  {
+    "project": "cable",
+    "id": "2026-10-12-journa",
+    "name": "Journa",
+    "order": 2,
+    "page": "site/cable/index.html",
+    "width": 1440,
+    "shipped": "2026-10-12T01:45:30+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "9909d01",
+      "commit": "9909d01997600a1f747290c71225c5fc0e15e1e8",
+      "committed": "2026-10-14T09:07:33+01:00"
+    },
+    "note": "Live on cesarxdesign.com from 12 Oct 2026: the Journa page, Cable's copy pass for the Revolut submission (what I did first, the reason after). Also live on cesargx.com (CXR) with the same content until CXR was retired. The page as stored is Portfolio 9909d01, live on 20 Oct 2026.",
+    "path": "versions/cable/2026-10-12-journa/site/cable/index.html?v=3f79949b"
   },
   {
     "project": "confirmo",
@@ -186,7 +204,7 @@
     "page": "site/confirmo/index.html",
     "width": 1440,
     "shipped": "2026-10-06T10:56:45+01:00",
-    "until": null,
+    "until": "2026-10-12T01:59:34+01:00",
     "source": {
       "kind": "portfolio",
       "ref": "072b564",
@@ -195,6 +213,24 @@
     },
     "note": "Live on cesarxdesign.com from 6 Oct 2026: a hero image on all five pages, their logos on one rule (65 from the left, 20px letters, centred 114 down on the 1200x600 hero); every lede in two tones; greys, small labels and spacing on one system. First parts went live 2026-10-06T10:17:48+01:00; the page as stored is Portfolio 072b564.",
     "path": "versions/confirmo/2026-10-06-heroes/site/confirmo/index.html?v=8823de4b"
+  },
+  {
+    "project": "confirmo",
+    "id": "2026-10-12-journa",
+    "name": "Journa",
+    "order": 1,
+    "page": "site/confirmo/index.html",
+    "width": 1440,
+    "shipped": "2026-10-12T01:59:34+01:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "9909d01",
+      "commit": "9909d01997600a1f747290c71225c5fc0e15e1e8",
+      "committed": "2026-10-14T09:07:33+01:00"
+    },
+    "note": "Live on cesarxdesign.com from 12 Oct 2026: the Journa page, the journalistic rewrite made for the Revolut submission, replaces the old case study; Confirmo leads the site order. Also live on cesargx.com (CXR) with the same content until CXR was retired. Phone and Try it fixes went live through 14 Oct; the page as stored is Portfolio 9909d01, live on 20 Oct 2026.",
+    "path": "versions/confirmo/2026-10-12-journa/site/confirmo/index.html?v=ac780a90"
   },
   {
     "project": "done",

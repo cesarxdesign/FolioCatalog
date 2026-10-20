@@ -120,6 +120,13 @@ pages open on a hero image, with the logo on one rule (on the 1200x600 hero: 65 
 on a confirmo.com background; Penfold's is a new Figma export with the store badges and Trustpilot
 stars bottom left; Starcount's logo is STARCOUNT alone. The `2026-10-05-live` pages end that morning.
 
+## Journa, 12 October 2026
+
+Confirmo and Cable each have a `2026-10-12-journa`, named **Journa**: the pages written for the
+Revolut submission, live on cesarxdesign.com from 12 Oct 2026 and the same content on cesargx.com
+(CXR). Stored from Portfolio 9909d01, the live state on 20 Oct 2026 (Confirmo's phone and Try it
+fixes ran to 14 Oct). Their `2026-10-06-heroes` pages end on 12 Oct.
+
 ## Adding a version
 
 From Portfolio's git history (store a page **before** its replacement is committed, or

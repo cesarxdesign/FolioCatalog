@@ -1,0 +1,17 @@
+{
+  "project": "cable",
+  "id": "2026-10-12-journa",
+  "name": "Journa",
+  "order": 2,
+  "page": "site/cable/index.html",
+  "width": 1440,
+  "shipped": "2026-10-12T01:45:30+01:00",
+  "until": null,
+  "source": {
+    "kind": "portfolio",
+    "ref": "9909d01",
+    "commit": "9909d01997600a1f747290c71225c5fc0e15e1e8",
+    "committed": "2026-10-14T09:07:33+01:00"
+  },
+  "note": "Live on cesarxdesign.com from 12 Oct 2026: the Journa page, Cable's copy pass for the Revolut submission (what I did first, the reason after). Also live on cesargx.com (CXR) with the same content until CXR was retired. The page as stored is Portfolio 9909d01, live on 20 Oct 2026."
+}
