@@ -198,61 +198,105 @@ function equalize() {
   }
 }
 
-// How far a pane's page can scroll, in its own px.
-const reach = f => { const d = docOf(f); return d ? Math.max(0, d.documentElement.scrollHeight - f.contentWindow.innerHeight) : 0; };
-
-function follow(from) {
-  // Synchronised: move every other pane to the same on-screen distance as the one being scrolled.
-  // Proportional: move every other pane to the same share of its own length.
-  const px = from.contentWindow.scrollY * scaleOf(from);
-  const max = reach(from), share = max ? Math.min(1, from.contentWindow.scrollY / max) : 0;
+// Each pane's numbers: its scale, and how far its page can scroll. Measured on load, on resize and
+// on a timer, never while scrolling: asking a page for its height makes the browser lay the whole
+// page out again, and doing that on every scroll tick is what made scrolling stutter.
+const NUM = new WeakMap();
+const num = f => NUM.get(f) || {s: 1, max: 0};
+function measure() {
   for (const f of frames()) {
-    if (f === from) continue;
-    try {
-      const w = f.contentWindow, y = mode === 'prop' ? share * reach(f) : px / scaleOf(f);
-      if (Math.abs(w.scrollY - y) < 1) continue;
-      // Its own scroll event is ours, not the user's: known by where we put it (the event can
-      // come late, when the browser is drawing slowly), and by time as before.
-      w.__fcPut = Math.max(0, Math.min(y, reach(f)));
-      w.__fcQuiet = performance.now() + 120;
-      w.scrollTo({top: y, behavior: 'instant'});
-    } catch (e) {}
+    const d = docOf(f);
+    if (d) NUM.set(f, {s: scaleOf(f), max: Math.max(0, d.documentElement.scrollHeight - f.contentWindow.innerHeight)});
   }
 }
 
+// Put every pane where `from` is (y, in from's own px), all in the same frame, so no pane trails
+// another. Synchronised: the same distance on screen. Proportional: the same share of its page.
+let lead = null;   // {f, y}: the pane the reader is scrolling, and where it is
+function place(from, y) {
+  const a = num(from);
+  y = Math.max(0, Math.min(y, a.max));
+  const px = y * a.s, share = a.max ? y / a.max : 0;
+  for (const f of frames()) {
+    if (!docOf(f)) continue;
+    const w = f.contentWindow, b = num(f);
+    const t = f === from ? y : Math.max(0, Math.min(mode === 'prop' ? share * b.max : px / b.s, b.max));
+    if (w.__fcPut != null && Math.abs(w.__fcPut - t) < .25) continue;
+    w.__fcPut = t;                  // its scroll event is ours, not the reader's: known by where we put it
+    w.scrollTo({top: t, behavior: 'instant'});
+  }
+  return y;
+}
+
+// A box inside a page that scrolls on its own keeps its own wheel.
+const BOXES = new WeakMap();
+function inBox(el, d) {
+  for (; el && el !== d.body && el !== d.documentElement && el.nodeType === 1; el = el.parentElement) {
+    let box = BOXES.get(el);
+    if (box === undefined) {
+      const o = d.defaultView.getComputedStyle(el).overflowY;
+      box = (o === 'auto' || o === 'scroll') && el.scrollHeight > el.clientHeight + 1;
+      BOXES.set(el, box);
+    }
+    if (box) return true;
+  }
+  return false;
+}
+
+let tick = 0;
 function hookScroll(f) {
   // On the loaded document, never the blank one an iframe starts with (the browser can keep
   // that window object for the real page, and a flag on it would claim a listener that is gone).
   const d = docOf(f);
   if (!d || d.__fcHooked) return;
   d.__fcHooked = true;
+  // The wheel and the trackpad: the viewer moves every pane itself, in the same frame.
+  d.addEventListener('wheel', e => {
+    if (mode === 'loose' || e.ctrlKey || e.defaultPrevented || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    if (inBox(e.target, d)) return;
+    e.preventDefault();
+    const w = d.defaultView;
+    const dy = e.deltaMode === 1 ? e.deltaY * 40 : e.deltaMode === 2 ? e.deltaY * w.innerHeight : e.deltaY;
+    const at = lead && lead.f === f ? lead.y : w.scrollY;
+    lead = {f, y: place(f, at + dy)};
+  }, {passive: false});
+  // Everything else that scrolls a page (keys, the scrollbar, a touch, the page itself): the other
+  // panes follow it, once a frame.
   d.addEventListener('scroll', () => {
     const w = d.defaultView;
-    if (mode === 'loose' || !w || performance.now() < (w.__fcQuiet || 0)) return;
-    if (w.__fcPut != null && Math.abs(w.scrollY - w.__fcPut) < 2) return;   // still where we put it
+    if (mode === 'loose' || !w) return;
+    const y = w.scrollY;
+    if (w.__fcPut != null && Math.abs(y - w.__fcPut) < 2) return;   // still where we put it
     w.__fcPut = null;
-    follow(f);
+    lead = {f, y};
+    if (!tick) tick = requestAnimationFrame(() => { tick = 0; if (lead && mode !== 'loose') lead.y = place(lead.f, lead.f.contentWindow.scrollY); });
   }, {passive: true});
+}
+
+function together(from) {
+  // Line every pane up with one of them: after a mode change, a (re)load or a resize.
+  equalize();                       // adds the ghosts for Synchronised, takes them away otherwise
+  measure();
+  for (const f of frames()) { try { f.contentWindow.__fcPut = null; } catch (e) {} }
+  from = from || (lead && docOf(lead.f) ? lead.f : frames().find(docOf));
+  if (mode !== 'loose' && from) lead = {f: from, y: place(from, from.contentWindow.scrollY)};
 }
 
 function joinIn(f) {
   // A pane that (re)loads while the panes scroll together starts where the others are.
   hookScroll(f);
+  measure();
   if (mode === 'loose') return;
-  equalize();
-  const other = frames().find(g => g !== f && docOf(g));
-  if (other) follow(other);
+  together(frames().find(g => g !== f && docOf(g)));
 }
 
 function applyMode() {
   store.set('fc-scroll-mode', mode);
   $('scroll').value = mode;
-  equalize();                       // adds the ghosts for Synchronised, takes them away otherwise
-  const first = frames().find(docOf);
-  if (mode !== 'loose' && first) follow(first);
+  together();
 }
-// Pages settle as images and fonts load; keep the ghosts right while Synchronised.
-setInterval(() => { if (mode === 'sync') equalize(); }, 1500);
+// Pages settle as images and fonts load; keep the ghosts and the numbers right.
+setInterval(() => { if (mode === 'sync') equalize(); measure(); }, 1500);
 
 function applyTheme() {
   document.documentElement.dataset.theme = theme;
@@ -479,6 +523,7 @@ function render() {
   }
   fitFrames();
   if (mode === 'sync') equalize();
+  measure();
   const hash = `#${state.project}/${state.n}/${state.off}/${set.join(',')}` + (state.version ? '/' + state.version : '');
   if (location.hash !== hash) history.replaceState(null, '', hash);
 }
