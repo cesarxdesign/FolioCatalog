@@ -16,9 +16,11 @@ compare across them), **Version** (a name more than one page shares, such as Lit
 page, across all projects), **Show** (1 to 6 pages side by side) and, when the screen is too narrow
 for all of them, **‹ ›** to step through, and a light/dark switch that sets every page shown
 that has both themes. **Resort** puts every page in the view in time order, earliest on the left (greyed out when they
-already are). **Scroll lock**, next to it and on by default, moves every pane by the same distance on
+already are). **Scroll**, next to it, sets how the panes scroll together, with the same three modes as the
+live folio's home page. **Synchronised** (the default) moves every pane by the same distance on
 screen; shorter pages get a striped "End of page" space (viewer only) so all of them reach the
-bottom together. Each pane's caption is a dropdown: pick what that pane shows (under All,
+bottom together. **Proportional** makes every page reach its middle and its end together, however
+long it is. **Individual** lets each pane scroll on its own. The choice is remembered in the browser. Each pane's caption is a dropdown: pick what that pane shows (under All,
 grouped by project); the × beside it takes that pane out of the view. A new pane starts on the next unshown page: a project's latest versions,
 or under All each project's live page. Panes the viewer fills itself run oldest to newest, left to right;
 a page picked in a caption stays where it was put. Panes are never narrower than 360px; the page never

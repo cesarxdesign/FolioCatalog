@@ -29,11 +29,10 @@ select{padding:4px 24px 4px 8px;appearance:none;max-width:260px;
 .step[hidden]{display:none}
 .step button{width:28px;height:26px;padding:0;font-size:15px;line-height:1}
 .step button:disabled{opacity:.35;cursor:default}
-#sort,#lock,#theme{display:flex;align-items:center;gap:6px;padding:4px 10px;font-size:12px}
+#sort,#theme{display:flex;align-items:center;gap:6px;padding:4px 10px;font-size:12px}
 #sort{margin-left:auto}
 #sort:disabled{opacity:.35;cursor:default}
-#lock[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
-#sort svg,#lock svg,#theme svg{width:14px;height:14px}
+#sort svg,#theme svg{width:14px;height:14px}
 select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 main{flex:1;min-height:0;display:flex;gap:10px;padding:10px 16px 0}
 .pane{flex:1 1 0;min-width:0;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
@@ -70,7 +69,11 @@ body.dragging iframe{pointer-events:none}
     <span id="range"></span>
   </div>
   <button type="button" id="sort" title="Put the pages shown in order, earliest on the left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h14M13 4l4 4-4 4M21 16H7M11 12l-4 4 4 4"/></svg>Resort</button>
-  <button type="button" id="lock" aria-pressed="true" title="Scroll every pane together"></button>
+  <label title="How the panes scroll together">Scroll <select id="scroll">
+    <option value="sync" title="Every page moves the same distance">Synchronised</option>
+    <option value="prop" title="Every page reaches its middle and its end together">Proportional</option>
+    <option value="loose" title="Each page scrolls on its own">Individual</option>
+  </select></label>
   <button type="button" id="theme" aria-label="Dark mode" aria-pressed="false" title="Light or dark, for every page shown that has both"></button>
 </header>
 <main id="panes"></main>
@@ -149,13 +152,17 @@ function watchFrame(f) {
   setTimeout(() => clearInterval(t), 20000);
 }
 
-// Scroll lock. Panes move by the same distance on screen, whatever each page's scale. So every
-// page can travel as far as the longest one, shorter pages get a blank "ghost" space after
-// their last line while the lock is on. Like the link-killing, this lives in the viewer only.
-// On unless this browser turned it off. (A new key: the old one stored "off" on every visit.)
-let locked = store.get('fc-scroll-lock') !== '0';
-const LOCK = {on: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
-              off: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>'};
+// Scroll modes, named as on the live folio's home page.
+//   sync   Synchronised: panes move by the same distance on screen, whatever each page's scale. So
+//          every page can travel as far as the longest one, shorter pages get a blank "ghost" space
+//          after their last line.
+//   prop   Proportional: every page reaches its middle and its end together, however long it is.
+//   loose  Individual: each pane scrolls on its own.
+// Like the link-killing, this lives in the viewer only. Synchronised unless this browser chose
+// otherwise (the older on/off key still counts: off there is Individual here).
+const MODES = ['sync', 'prop', 'loose'];
+let mode = MODES.includes(store.get('fc-scroll-mode')) ? store.get('fc-scroll-mode')
+         : store.get('fc-scroll-lock') === '0' ? 'loose' : 'sync';
 const frames = () => [...document.querySelectorAll('.view iframe')];
 const scaleOf = f => Math.min(1, f.parentElement.clientWidth / +f.closest('.pane').dataset.width);
 const docOf = f => { try { const d = f.contentDocument; return d && d.body && d.location.href !== 'about:blank' ? d : null; } catch (e) { return null; } };
@@ -178,7 +185,7 @@ function equalize() {
   for (const x of fs) { const g = ghostOf(x.d); x.h = x.d.documentElement.scrollHeight - (g ? g.offsetHeight : 0); }
   const top = Math.max(0, ...fs.map(x => x.h * x.s));
   for (const x of fs) {
-    const need = locked ? (top - x.h * x.s) / x.s : 0;
+    const need = mode === 'sync' ? (top - x.h * x.s) / x.s : 0;
     const g = ghostOf(x.d, need >= 1);
     if (!g) continue;
     if (need < 1) { g.remove(); continue; }
@@ -191,15 +198,23 @@ function equalize() {
   }
 }
 
+// How far a pane's page can scroll, in its own px.
+const reach = f => { const d = docOf(f); return d ? Math.max(0, d.documentElement.scrollHeight - f.contentWindow.innerHeight) : 0; };
+
 function follow(from) {
-  // Move every other pane to the same on-screen distance as the one being scrolled.
+  // Synchronised: move every other pane to the same on-screen distance as the one being scrolled.
+  // Proportional: move every other pane to the same share of its own length.
   const px = from.contentWindow.scrollY * scaleOf(from);
+  const max = reach(from), share = max ? Math.min(1, from.contentWindow.scrollY / max) : 0;
   for (const f of frames()) {
     if (f === from) continue;
     try {
-      const w = f.contentWindow, y = px / scaleOf(f);
+      const w = f.contentWindow, y = mode === 'prop' ? share * reach(f) : px / scaleOf(f);
       if (Math.abs(w.scrollY - y) < 1) continue;
-      w.__fcQuiet = performance.now() + 120;   // its own scroll event is ours, not the user's
+      // Its own scroll event is ours, not the user's: known by where we put it (the event can
+      // come late, when the browser is drawing slowly), and by time as before.
+      w.__fcPut = Math.max(0, Math.min(y, reach(f)));
+      w.__fcQuiet = performance.now() + 120;
       w.scrollTo({top: y, behavior: 'instant'});
     } catch (e) {}
   }
@@ -213,30 +228,31 @@ function hookScroll(f) {
   d.__fcHooked = true;
   d.addEventListener('scroll', () => {
     const w = d.defaultView;
-    if (!locked || !w || performance.now() < (w.__fcQuiet || 0)) return;
+    if (mode === 'loose' || !w || performance.now() < (w.__fcQuiet || 0)) return;
+    if (w.__fcPut != null && Math.abs(w.scrollY - w.__fcPut) < 2) return;   // still where we put it
+    w.__fcPut = null;
     follow(f);
   }, {passive: true});
 }
 
 function joinIn(f) {
-  // A pane that (re)loads while locked starts where the others are.
+  // A pane that (re)loads while the panes scroll together starts where the others are.
   hookScroll(f);
-  if (!locked) return;
+  if (mode === 'loose') return;
   equalize();
   const other = frames().find(g => g !== f && docOf(g));
   if (other) follow(other);
 }
 
-function applyLock() {
-  store.set('fc-scroll-lock', locked ? '1' : '0');
-  $('lock').innerHTML = LOCK[locked ? 'on' : 'off'] + 'Scroll lock';
-  $('lock').setAttribute('aria-pressed', locked);
-  equalize();
+function applyMode() {
+  store.set('fc-scroll-mode', mode);
+  $('scroll').value = mode;
+  equalize();                       // adds the ghosts for Synchronised, takes them away otherwise
   const first = frames().find(docOf);
-  if (locked && first) follow(first);
+  if (mode !== 'loose' && first) follow(first);
 }
-// Pages settle as images and fonts load; keep the ghosts right while locked.
-setInterval(() => { if (locked) equalize(); }, 1500);
+// Pages settle as images and fonts load; keep the ghosts right while Synchronised.
+setInterval(() => { if (mode === 'sync') equalize(); }, 1500);
 
 function applyTheme() {
   document.documentElement.dataset.theme = theme;
@@ -462,7 +478,7 @@ function render() {
     else m.replaceChildren(...panes);
   }
   fitFrames();
-  if (locked) equalize();
+  if (mode === 'sync') equalize();
   const hash = `#${state.project}/${state.n}/${state.off}/${set.join(',')}` + (state.version ? '/' + state.version : '');
   if (location.hash !== hash) history.replaceState(null, '', hash);
 }
@@ -500,11 +516,11 @@ if (!ALL.length) {
   window.onhashchange = () => { readHash(); render(); };
   let t; window.onresize = () => { clearTimeout(t); t = setTimeout(render, 60); };
   $('theme').onclick = () => { theme = theme === 'dark' ? 'light' : 'dark'; applyTheme(); };
-  $('lock').onclick = () => { locked = !locked; applyLock(); };
+  $('scroll').onchange = e => { mode = e.target.value; applyMode(); };
   // Every page in the view, not just the ones on screen, earliest to latest, left to right.
   $('sort').onclick = () => { state.picks.sort(byTime); render(); };
   applyTheme();
-  applyLock();
+  applyMode();
   readHash();
   newest();
   render();
