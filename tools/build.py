@@ -199,7 +199,7 @@ const MODES = ['sync', 'prop', 'loose'];
 let mode = MODES.includes(store.get('fc-scroll-mode')) ? store.get('fc-scroll-mode')
          : store.get('fc-scroll-lock') === '0' ? 'loose' : 'sync';
 const frames = () => [...document.querySelectorAll('.view iframe')];
-const scaleOf = f => f.parentElement.clientWidth / +f.closest('.pane').dataset.width;   // fills the pane, wider or narrower than the design
+const scaleOf = f => Math.min(1, f.parentElement.clientWidth / +f.closest('.pane').dataset.width);
 const docOf = f => { try { const d = f.contentDocument; return d && d.body && d.location.href !== 'about:blank' ? d : null; } catch (e) { return null; } };
 
 function ghostOf(d, make) {
@@ -567,9 +567,11 @@ function fitFrames() {
   // Each page is drawn at the width it was designed for and scaled to its pane.
   for (const pane of $('panes').children) {
     const view = pane.querySelector('.view'), f = view.querySelector('iframe');
-    // Edge to edge: the page always fills its pane's width, scaled down on a narrow pane and up on a wide one.
-    const w = +pane.dataset.width, pw = view.clientWidth, s = pw / w;
-    f.style.width = w + 'px';
+    // Like a browser window: a pane narrower than the design shows the page scaled down; a pane wider
+    // than the design gives the page the pane's full width at its real size, so the page's own
+    // background fills the sides. Never scaled up.
+    const w = +pane.dataset.width, pw = view.clientWidth, s = Math.min(1, pw / w);
+    f.style.width = Math.max(w, pw) + 'px';
     f.style.height = view.clientHeight / s + 'px';
     f.style.left = '0px';
     f.style.transform = `scale(${s})`;
