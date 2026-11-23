@@ -222,7 +222,7 @@
     "page": "site/confirmo/index.html",
     "width": 1440,
     "shipped": "2026-10-12T01:59:34+01:00",
-    "until": null,
+    "until": "2026-11-04T14:17:53+00:00",
     "source": {
       "kind": "portfolio",
       "ref": "9909d01",
@@ -231,6 +231,40 @@
     },
     "note": "Live on cesarxdesign.com from 12 Oct 2026: the Journa page, the journalistic rewrite made for the Revolut submission, replaces the old case study; Confirmo leads the site order. Also live on cesargx.com (CXR) with the same content until CXR was retired. Phone and Try it fixes went live through 14 Oct; the page as stored is Portfolio 9909d01, live on 20 Oct 2026.",
     "path": "versions/confirmo/2026-10-12-journa/site/confirmo/index.html?v=ac780a90"
+  },
+  {
+    "project": "confirmo",
+    "id": "2026-11-04-live",
+    "name": "Live",
+    "page": "site/confirmo/index.html",
+    "width": 1440,
+    "shipped": "2026-11-04T14:17:53+00:00",
+    "until": null,
+    "source": {
+      "kind": "portfolio",
+      "ref": "9036026",
+      "commit": "9036026b01d0e6c9bf191883adcb1ca23926b49a",
+      "committed": "2026-11-19T09:06:58Z"
+    },
+    "note": "Live on cesarxdesign.com on 23 Nov 2026: the Journa page with the site-wide type change to Geist (4 Nov, Portfolio d8ae71a) and the hero's Live demo link made clickable again (19 Nov). The page as stored is Portfolio 9036026.",
+    "path": "versions/confirmo/2026-11-04-live/site/confirmo/index.html?v=e20191cc"
+  },
+  {
+    "project": "confirmo",
+    "id": "2026-11-23-crit41",
+    "name": "crit41",
+    "page": "site/confirmo/index.html",
+    "width": 1440,
+    "shipped": null,
+    "until": null,
+    "source": {
+      "kind": "catalog",
+      "from": "confirmo/2026-11-04-live",
+      "portfolio_commit": "9036026b01d0e6c9bf191883adcb1ca23926b49a"
+    },
+    "note": "Never shipped. A copy of the live page (confirmo/2026-11-04-live) with the 12 changes drawn from the 45-crit squad's reads of live Confirmo and of folio42 draft 55, 23 Nov 2026: v4 states its own result and v3's rate moves to the end of Full rollout; the $135M is spelled out under the chart; chart bars are labelled by market and the industry-average bar is gone; $750M 'reached the checkout'; AI launch and Proto move after Common ground; 'My mistake, and the clue' joins Crumbled signal; the 3 front-end engineers and the CPO are named; the key-markets rollout is explained in The breadcrumbs; the AI paragraph, the wallet-first paragraph and the ending are cut back. Squad reports: Folio41/crits/runs.",
+    "made": "2026-11-23T15:58:12+00:00",
+    "path": "versions/confirmo/2026-11-23-crit41/site/confirmo/index.html?v=089417c7"
   },
   {
     "project": "done",

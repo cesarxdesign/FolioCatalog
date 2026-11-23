@@ -1,0 +1,16 @@
+{
+  "project": "confirmo",
+  "id": "2026-11-04-live",
+  "name": "Live",
+  "page": "site/confirmo/index.html",
+  "width": 1440,
+  "shipped": "2026-11-04T14:17:53+00:00",
+  "until": null,
+  "source": {
+    "kind": "portfolio",
+    "ref": "9036026",
+    "commit": "9036026b01d0e6c9bf191883adcb1ca23926b49a",
+    "committed": "2026-11-19T09:06:58Z"
+  },
+  "note": "Live on cesarxdesign.com on 23 Nov 2026: the Journa page with the site-wide type change to Geist (4 Nov, Portfolio d8ae71a) and the hero's Live demo link made clickable again (19 Nov). The page as stored is Portfolio 9036026."
+}
