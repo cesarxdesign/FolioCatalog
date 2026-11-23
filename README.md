@@ -24,8 +24,8 @@ long it is. **Individual** lets each pane scroll on its own. The choice is remem
 grouped by project); the × beside it takes that pane out of the view. A new pane starts on the next unshown page: a project's latest versions,
 or under All each project's live page. Panes the viewer fills itself run oldest to newest, left to right;
 a page picked in a caption stays where it was put. Panes are never narrower than 360px; the page never
-scrolls sideways. Each page is drawn at the width it was designed for and scaled into its
-pane. In a pane, text selects and the page scrolls, but nothing navigates: the viewer takes the
+scrolls sideways. Each page is drawn at the width it was designed for and scaled to fill its
+pane edge to edge, down on a narrow pane and up on a wide one. In a pane, text selects and the page scrolls, but nothing navigates: the viewer takes the
 address off every link and swallows clicks on anything clickable. The stored pages themselves
 are untouched, so a version taken out of `versions/` works in full. A view can be linked:
 `index.html#penfold/3/0/penfold:2026-09-25-impact,penfold:2026-09-25-linear,penfold:2026-09-25-saver`
