@@ -1,0 +1,211 @@
+@import url("navbar.css");
+@import url('_vendor/55875b7d5b-css2.css');
+
+/* ============================================================
+   Portfolio · CASE PAGE SYSTEM   v1.0   ·   2026-07-27
+   ------------------------------------------------------------
+   Loaded AFTER each page's own <style>, so it owns the shared
+   components and each page keeps only its palette and its
+   bespoke artwork.
+
+   Color comes ONLY from palette slots the page defines:
+     --bg  --ink  --body  --mut  --line  --hair  --accent
+   Never hardcode a color in this file.
+
+   Type pair: Inter everywhere, IBM Plex Mono for eyebrows,
+   the footer, and anything that should read as data.
+
+   Where each rule came from (Cesar's picks):
+     body copy .......... Confirmo
+     hero title + lede .. Confirmo
+     section title size . Starcount
+     section eyebrow .... Starcount, auto-numbered
+     stat frame ......... Starcount, left dividers, no rules
+     stat type .......... Confirmo canon sizes, in Inter
+     role summary line .. Confirmo
+     section rhythm ..... between Confirmo and Mara
+     figure spacing ..... Confirmo
+     footer ............. Confirmo
+   ============================================================ */
+
+:root{
+  --sysFont:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --sysMono:'IBM Plex Mono',ui-monospace,monospace;
+  --figT:48px;      /* air above a graphic  · Confirmo */
+  --figB:56px;      /* air below a graphic  · Confirmo */
+  --figT1:72px;     /* air above the HERO graphic, more than a section figure */
+  --secGap:166px;   /* section separation   · Confirmo 168, Mara 264, this lands between */
+  --secPadT:50px;   /* section top padding, under the rule */
+  --sec1Gap:140px;  /* before the FIRST section: 140 + 40 = 180 */
+  --sec1PadT:40px;
+  --heroTop:90px;   /* air above the hero  · Confirmo */
+  --colW:900px;     /* content column      · Confirmo */
+  --colPad:32px;    /* column side padding · Confirmo */
+}
+
+/* ---- page order ---------------------------------------------
+   HERO      h1 + .lede + artwork       no eyebrow, no number
+   STATS     .band > .in > .stat x4     no eyebrow, no number
+             + .roleline
+   SECTIONS  .sec, numbered 01..N       first one with body copy is 01
+   FOOTER    .foot
+   Only .sec increments the counter, so the hero and the stats
+   can never take a number.
+   ------------------------------------------------------------ */
+
+/* ---- body copy · Confirmo ---------------------------------- */
+body{font-family:var(--sysFont);font-size:16.5px;line-height:1.7;font-weight:450;-webkit-font-smoothing:antialiased;counter-reset:sec}
+p{font-family:var(--sysFont);font-size:16.5px;line-height:1.7;font-weight:450;color:var(--body);max-width:64ch;margin:0 0 16px}
+p:last-child{margin-bottom:0}
+b,strong{font-weight:600}
+
+/* ---- hero · Confirmo --------------------------------------- */
+.hd{padding-top:var(--heroTop)}
+/* hero title and lede run to 88% of the stat band's width */
+h1{font-family:var(--sysFont);font-size:clamp(38px,5.6vw,64px);line-height:1.04;letter-spacing:-.035em;font-weight:800;margin:0 0 24px;max-width:88%;color:var(--ink)}
+.lede{font-family:var(--sysFont);font-size:clamp(17px,1.6vw,19.5px);line-height:1.65;font-weight:450;max-width:88%;color:var(--body);margin:0}
+
+/* ---- section title · size from Starcount ------------------- */
+h2{font-family:var(--sysFont);font-size:clamp(30px,4.2vw,46px);line-height:1.12;letter-spacing:-.028em;font-weight:700;margin:0 0 22px;max-width:24ch;color:var(--ink)}
+
+/* ---- section eyebrow · Starcount, self-numbering ------------ */
+.sec{counter-increment:sec}
+.lab{font:600 11px/1 var(--sysMono);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+.lab::before{content:counter(sec,decimal-leading-zero) " \00b7  "}
+
+/* ---- section rhythm ---------------------------------------- */
+.sec{margin-top:var(--secGap);padding:var(--secPadT) 0 0;border-top:1px solid;border-image:linear-gradient(90deg,var(--hair),transparent 80%) 1}
+.sec:first-of-type{border-top:0;margin-top:var(--sec1Gap);padding-top:var(--sec1PadT)}   /* the hero separates it */
+
+/* ---- stats · Starcount frame, Confirmo canon type in Inter -- */
+.band{margin:64px 0 0;padding:0;border:0}
+.band .in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px}
+.band .stat{padding:6px 0 8px 20px;border-left:1px solid var(--line)}
+.band .stat b{display:block;font:700 clamp(24px,2.7vw,33px)/1.2 var(--sysFont);letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums}
+.band .stat span{display:block;margin-top:5px;font:500 11px/1.5 var(--sysFont);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.band .stat i{display:block;margin-top:4px;font:450 11px/1.45 var(--sysFont);font-style:normal;color:var(--mut);opacity:.75}
+
+/* ---- role summary · Confirmo ------------------------------- */
+.roleline{margin:20px 0 0;font:450 13.5px/1.65 var(--sysFont);color:var(--mut);max-width:none}
+.roleline b{color:var(--body);font-weight:600}
+
+/* ---- figures · Confirmo spacing ----------------------------
+   ALIGNMENT RULE: a figure that fits the column is LEFT aligned,
+   flush with the text edge. Only a composition wider than the
+   column is centered, and it centers by bleeding past the column
+   (left:50% + translateX(-50%)), never by auto side margins.
+   ------------------------------------------------------------ */
+.fig{margin:var(--figT) 0 var(--figB)}
+
+/* ---- footer · Confirmo -------------------------------------
+   Contract: Cesar Garcia · <role, exactly as spine.js> · <Company>
+   ------------------------------------------------------------ */
+.foot{margin-top:120px;border-top:1px solid var(--hair);padding:22px 0;font:400 12px/1.5 var(--sysMono);color:var(--mut);text-align:center;max-width:none}
+
+@media(max-width:760px){
+  .band .in{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
+  :root{--secGap:110px}
+}
+
+@media(max-width:560px){.flag .fv{font-size:10px}}
+
+/* ---- page invariant · settled on Confirmo 2026-08 -----------
+   The page NEVER scrolls sideways, at any width. clip, not hidden:
+   hidden makes body a pannable scroll container and breaks the sticky
+   bar. Sideways motion exists only inside strips that declare their
+   own overflow-x. Fix real overflow at its source too; this seals it. */
+html,body{overflow-x:clip}
+
+/* ---- mobile tier (max 480) · the system settled on Confirmo -
+   Rhythm: sections 88 (rule pad 36 keeps the rule attached, 2.4:1),
+   figures 36/44, hero top 56, first section 100.
+   --imgPad: an anchored image edge sits at the bullets' text indent
+   (.ans li 24px) from the column; full-bleed boxes use
+   calc(22px + --imgPad) = 46 from the screen edge. Never literals.
+   Type: h1 34 (the 38 floor runs heroes to 4 lines), full measure.
+   The page scrolls without a scrollbar on this tier only. */
+@media(max-width:480px){
+  /* --colPad drives the column, not a .page rule: page-local styles load
+     after this file and would out-cascade any literal padding here, but
+     every page's column reads the token, so the token IS the authority */
+  :root{--figT:36px;--figB:44px;--figT1:48px;--heroTop:56px;--secGap:88px;--sec1Gap:100px;--secPadT:36px;--imgPad:24px;--colPad:22px;--gapY:56px;--gapZ:120px}
+  h1{font-size:34px}
+  h1,.lede{max-width:none}
+  .band{margin-top:48px}
+  .band .in{gap:18px 14px}
+  html{scrollbar-width:none}
+  html::-webkit-scrollbar{display:none}
+  .foot .fnm{display:none}   /* the closer drops the name on mobile: title and company only */
+  /* the closer, mara's styling on every page: 120 air above AND below,
+     22 between line and words, and the divider spans the CONTENT with
+     the column air at its sides. Page-feet live inside the padded .page
+     (line spans their box); col-feet carry their own padding (line
+     insets by it). The !importants kill the page/body bottom paddings
+     that double-stacked under confirmo's and starcount's feet. */
+  .foot{position:relative;border-top:0;margin-top:120px;margin-bottom:60px!important;padding-top:22px;padding-bottom:22px}   /* Z above, Z/2 below; important: five pages carry local 120 foot margins that load later */
+  .foot::before{content:"";position:absolute;top:0;left:var(--colPad);right:var(--colPad);height:1px;background:var(--hair)}
+  .page .foot::before{left:0;right:0}
+  .page{padding-bottom:0!important}
+  body{padding-bottom:0!important}
+
+  /* ---- image placement system -------------------------------
+     THE RULE: a comp that FITS its box is CENTERED; one that
+     OVERFLOWS becomes a full-bleed swipe strip, left-aligned,
+     scrolling from the bullets' text line. Anchored edges sit at
+     --imgPad (the .ans indent) from the column; full-bleed content
+     lines sit at --colPad + --imgPad from the screen edge.
+     Tag the graphic: .gfit (fits) or .gstrip (overflows). The
+     fit judgment is the author's; the behavior lives here.
+     .gfit sets both alignment properties and no display, so it
+     centers a grid child or a flex container's content without
+     disturbing the comp's own layout.
+     .gstrip carries 32px block padding so glass shadows survive
+     the scroll clip, and its margins give it back: 28px from the
+     bullets above (-4 + 32), zero extra before the section gap. */
+  /* !important is deliberate: the class IS the placement verdict, and
+     page style blocks load after this file, so page-era margins and
+     alignments would silently out-cascade the system without it.
+     Two centering verbs, because they are not interchangeable:
+     .gfit  = the comp is a CONTAINER (flex row): it stays stretched and
+              centers its content. Never centers the box itself: shrinking
+              a box whose children are %-sized collapses them.
+     .gbox  = the comp is a fixed-size BOX (own intrinsic or max-width):
+              the box itself centers, in grid (justify-self) or in flow
+              (auto margins against its max-width). */
+  /* THE IMAGE BOX IS THE DEFAULT, carried by the class, never by
+     per-graphic math: .gfit pads its content into the box; .gbox caps
+     its own width to it. Tag the graphic and the law applies. */
+  .gfit{justify-content:center!important;padding-inline:var(--imgPad)!important}
+  .gbox{margin-inline:auto!important;max-width:calc(100% - 2*var(--imgPad))!important}   /* auto margins center in block AND grid; justify-self is banned here: engines shrink-to-fit plain blocks under it, collapsing cq-sized screens */
+  /* the two anatomies: graphics INSIDE a padded column pad by --imgPad
+     alone (above); a graphic that IS a body-level .col (penfold, cable,
+     done) carries the column padding itself, so the box compounds, and
+     its strip bleed has nothing to un-nest */
+  .col.gfit{padding-inline:calc(var(--colPad) + var(--imgPad))!important}
+  .col.gstrip{margin-inline:0!important}
+  /* ---- the seam laws: DECLARED, never emergent -------------
+     X = 28 text to image (strip top -4+32; grid gaps).
+     Y = 56 image to the next thing, whatever it is.
+     Z = 120 closer air, both sides.
+     No negative bottom margins anywhere: the follower declares its
+     distance; a strip's 32px shadow pad is part of the declared number
+     (visual = 32 + margin). Neighbor type can never change a seam. */
+  .gfit,.gbox{margin-bottom:0!important}
+  /* interlude air: declared 120 both sides on every page; sits BEFORE
+     the seam laws so an image-ended predecessor overrides its top */
+  .brg,.col.brg{margin-top:120px!important;margin-bottom:120px!important}
+  /* the laws see images at ANY depth (last-child anywhere inside the
+     block); box rules first, strip rules second, so a mixed block
+     resolves to the strip variant and its pad stays accounted */
+  :is(.gfit,.gbox)+*:not(.foot),:is(section,div):not(.page):has(:is(.gfit,.gbox):last-child)+*:not(.foot){margin-top:var(--gapY)!important}
+  :is(.gfit,.gbox)+.foot,:is(section,div):not(.page):has(:is(.gfit,.gbox):last-child)+.foot{margin-top:var(--gapZ)!important}
+  .gstrip+*:not(.foot),:is(section,div):not(.page):has(.gstrip:last-child)+*:not(.foot){margin-top:calc(var(--gapY) - 32px)!important}
+  .gstrip+.foot,:is(section,div):not(.page):has(.gstrip:last-child)+.foot{margin-top:calc(var(--gapZ) - 32px)!important}
+  /* flex, not block: a scroller drops its inline-END padding when the
+     overflowing child is a block box, so the strip would end flush at
+     the clip; flex layout keeps the end padding in the scroll area. */
+  .gstrip{display:flex!important;overflow-x:auto!important;margin:-4px calc(var(--colPad)*-1) 0!important;
+    padding:32px calc(var(--colPad) + var(--imgPad))!important;scrollbar-width:none}
+  .gstrip>*{flex:0 0 auto}
+  .gstrip::-webkit-scrollbar{display:none}
+}

@@ -1,0 +1,21 @@
+/* Geist trial (local, 2026-11-04): site type in Geist, numbers and labels in Geist Mono.
+   Loaded last on every page; only the site's own font variables change, so product mocks keep their fonts. */
+@font-face{font-family:'Geist';font-style:normal;font-weight:100 900;font-display:block;src:url(fonts/Geist-Variable.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-style:italic;font-weight:100 900;font-display:block;src:url(fonts/Geist-Italic-Variable.woff2) format('woff2')}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:100 900;font-display:block;src:url(fonts/GeistMono-Variable.woff2) format('woff2')}
+:root,:root[data-theme]{
+  --sysFont:'Geist',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif!important;
+  --sysMono:'Geist Mono',ui-monospace,monospace!important;
+  --h-sans:'Geist',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif!important;
+  --h-mono:'Geist Mono',ui-monospace,monospace!important;
+  --font:'Geist',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif!important}
+body{font-family:var(--sysFont)}
+.sfoot{font-family:var(--sysFont)}
+.sfoot .slab{font-family:var(--sysMono)}
+/* Starcount diagram labels name IBM Plex Mono directly */
+.rowlab,.prow4,.prow4 *,svg textPath{font-family:var(--sysMono)!important}
+/* Confirmo's closing line: Geist Serif replaces Instrument Serif (Geist Serif has no £; Georgia covers it) */
+@font-face{font-family:'Geist Serif';font-style:normal;font-weight:400;font-display:block;src:url(fonts/GeistSerif-Regular.woff2) format('woff2')}
+.closer .coda{font-family:'Geist Serif',Georgia,'Times New Roman',serif!important;font-size:30px!important;
+  -webkit-text-stroke:.4px var(--bg);paint-order:normal}   /* one weight only: a page-coloured hairline trims the strokes thinner */
+@media(max-width:760px){.closer .coda{font-size:22px!important;-webkit-text-stroke:.3px var(--bg)}}

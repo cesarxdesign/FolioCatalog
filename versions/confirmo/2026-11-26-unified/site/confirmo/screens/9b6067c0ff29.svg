@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="870 399 22 22" fill="none"><g id="Network / Arbitrum Â· clip">
+<g clip-path="url(#clip57_0_1)">
+<g id="Network / Arbitrum" clip-path="url(#clip58_0_1)">
+<g id="logo_13">
+<rect width="22" height="22" transform="translate(870 399)" fill="url(#paint0_linear_0_1)" />
+<g id="logo_14" clip-path="url(#clip59_0_1)">
+<path id="Vector_88" d="M876.609 414.124C876.684 411.883 877.066 409.791 877.704 408.164C878.513 406.104 879.683 404.969 880.999 404.969C882.316 404.969 883.486 406.104 884.294 408.164C884.715 409.236 885.024 410.51 885.208 411.895C885.224 412.019 885.238 412.145 885.252 412.27C885.257 412.278 885.26 412.285 885.259 412.291C885.259 412.291 885.367 412.961 885.39 414.124H885.377C885.218 413.994 883.333 412.52 880.209 412.947C880.256 412.421 880.321 411.909 880.405 411.418C880.409 411.393 880.414 411.369 880.418 411.344C881.643 411.307 882.716 411.449 883.538 411.634C883.535 411.615 883.533 411.595 883.53 411.576C883.361 410.528 883.111 409.569 882.79 408.749C882.264 407.409 881.578 406.576 880.999 406.576C880.421 406.576 879.735 407.409 879.209 408.749C879.082 409.073 878.966 409.419 878.862 409.784C878.716 410.295 878.593 410.842 878.495 411.418C878.35 412.268 878.259 413.18 878.226 414.124H876.609Z" fill="url(#paint1_linear_0_1)" />
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs><clipPath id="clip57_0_1">
+<rect x="870" y="399" width="22" height="22" rx="11" fill="white" />
+</clipPath>
+<clipPath id="clip58_0_1">
+<rect width="22" height="22" fill="white" transform="translate(870 399)" />
+</clipPath>
+<clipPath id="clip59_0_1">
+<rect width="8.7807" height="9.15549" fill="white" transform="translate(876.609 404.969)" />
+</clipPath>
+<linearGradient id="paint0_linear_0_1" x1="3.96" y1="-3.34502" x2="4.26019" y2="28.5588" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F4AC6E" />
+<stop offset="1" stop-color="#F3D5B1" />
+</linearGradient>
+<linearGradient id="paint1_linear_0_1" x1="878.19" y1="403.577" x2="878.32" y2="416.854" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1B3158" />
+<stop offset="0.629731" stop-color="#3E2B63" />
+<stop offset="1" stop-color="#942753" />
+</linearGradient>
+</defs></svg>

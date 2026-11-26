@@ -1,0 +1,16 @@
+{
+  "project": "confirmo",
+  "id": "2026-11-26-unified",
+  "name": "unified",
+  "made": "2026-11-26T18:00:00+00:00",
+  "page": "site/confirmo/index.html",
+  "width": 1440,
+  "shipped": null,
+  "until": null,
+  "source": {
+    "kind": "rebuild",
+    "from": "Portfolio a2c9b83, confirmo/index.html: the live page on 26 Nov 2026",
+    "built": "in a scratch clone of Portfolio (commit f39da9b there, not in Portfolio); nothing in Portfolio was changed"
+  },
+  "note": "Never shipped. The live Confirmo page rebuilt to be built exactly like Mara and Starcount, with every word, number, screen, chart value, link and section kept as it was. It loads the root case-shared.css and footer.css (no more forked copies); the section label, body text, quotes, subsection titles, closing line and the 56px rhythm between blocks are harmony's, as on the siblings; screen rows sit in the text column and are scaled to it by the siblings' own fit script; captions take Mara's caption type and the Before / After labels Starcount's row label; on phones the label is numbered (01 · SHIPPED), the hero is the siblings' 280px crop, sections carry no extra bottom air and the footer sits 16px in. The page CSS is three blocks in the head, none in the body; the 3.4MB of pictures and 0.9MB of fonts embedded in the phone screens are files now (confirmo/screens/), and the prototype script is proto.js: the page is 2.4MB (0.48MB gzipped) from 6.9MB (3.4MB). Every screen renders pixel for pixel as on the live page. One deliberate difference: the section labels keep their own case (v0.0, not V0.0)."
+}
